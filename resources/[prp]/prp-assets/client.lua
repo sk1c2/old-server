@@ -404,3 +404,42 @@ AddEventHandler("playerSpawned", function ()
         Tree = true
     end
 end)
+
+-- Crosshair
+local plyPed = PlayerPedId()
+local xhairActive = false
+local disableXhair = false
+
+RegisterCommand("togglexhair", function()
+    disableXhair = not disableXhair
+end)
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(500)
+        plyPed = PlayerPedId()
+        isArmed = IsPedArmed(plyPed, 7)
+
+        if isArmed then
+            if IsPlayerFreeAiming(PlayerId()) then
+                if not xhairActive then
+                    SendNUIMessage("xhairShow")
+                    xhairActive = true
+                end
+            elseif xhairActive then
+                SendNUIMessage("xhairHide")
+                xhairActive = false
+            end
+        elseif IsPedInAnyVehicle(plyPed, false) then
+            if xhairActive then
+                SendNUIMessage("xhairHide")
+                xhairActive = false
+            end
+        else
+            if xhairActive then
+                SendNUIMessage("xhairHide")
+                xhairActive = false
+            end
+        end
+    end
+end)

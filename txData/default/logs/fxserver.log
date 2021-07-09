@@ -1,6 +1,6 @@
 
 ================================================================
-======== FXServer starting - 09/07/2021, 22:24:22
+======== FXServer starting - 09/07/2021, 23:38:58
 ================================================================
 [38;5;161m[    c-scripting-core] Creating script environments for _cfx_internal
 [38;5;73m[ citizen-server-impl] Scanning resources.
@@ -71,6 +71,8 @@
 [38;5;161m[    c-scripting-core] Creating script environments for prp-login
 [38;5;73m[ citizen-server-impl] Started resource prp-login
 [38;5;161m[    c-scripting-core] Creating script environments for prp-errorlog
+[38;5;73m[ citizen-server-impl] Started resource prp-errorlog
+[38;5;161m[    c-scripting-core] Creating script environments for prp-infinity
 [38;5;73m[ citizen-server-impl] Started resource prp-infinity
 [38;5;161m[    c-scripting-core] Creating script environments for vSync
 [38;5;73m[ citizen-server-impl] Started resource vSync
@@ -221,6 +223,7 @@
 [38;5;73m[ citizen-server-impl] Started resource prp-stashouse
 [38;5;73m[ citizen-server-impl] Couldn't find resource prp-fightclub.
 [38;5;73m[ citizen-server-impl] Started resource prp-tow
+[38;5;73m[ citizen-server-impl] Started resource prp-cctv
 [38;5;73m[ citizen-server-impl] Started resource prp-welcome
 [38;5;73m[ citizen-server-impl] Started resource prp-target
 [38;5;73m[ citizen-server-impl] Started resource prp-interaction
@@ -249,9 +252,7 @@
 [38;5;73m[ citizen-server-impl] Started resource circlemap
 [38;5;73m[ citizen-server-impl] Started resource mhacking
 [38;5;161m[    c-scripting-core] Creating script environments for raid_clothes
-[38;5;73m[ citizen-server-impl] Started resource raid_clothes
-[38;5;73m[ citizen-server-impl] Started resource shops
-[38;5;73m[ citizen-server-impl] Started resource prp-mineshaft
+[38;5;73m[ citizen-server-[38;5;73m[ citizen-server-impl] Started resource prp-mineshaft
 [38;5;161m[    c-scripting-core] Creating script environments for emotes
 [38;5;73m[ citizen-server-impl] Started resource emotes
 [38;5;73m[ citizen-server-impl] Started resource raid_carmenu
@@ -315,14 +316,12 @@
 [38;5;128m[    script:EasyAdmin]                            Version 6.0
 [38;5;175m[     script:prp-base] [prp-base]: prp-base has been loaded successfully!
 [38;5;98m[ script:prp-mechanic] Coded for WonderRP
-[38;5;154m[   script:mapmanager] Started map fivem-map-hipster
-[38;5;73m[ citizen-server-impl] Started resource fivem-map-hipster
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 2148 milliseconds
+[38;5;154m[   script:mapmanager] Started map fivem-map-skater
+[38;5;73m[ citizen-server-impl] Started resource fivem-map-skater
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 1538 milliseconds
 [38;5;104m[script:discord_perms] An error occured, please check your config and ensure everything is correct. Error: 401
 [38;5;161m[    c-scripting-core] InvokeNative: execution failed: Argument at index 0 was null.
 [38;5;175m[     script:prp-base] SCRIPT ERROR: Execution of native 000000006e31e993 in script host failed: Argument at index 0 was null.
-[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
-[38;5;220m[    script:prp-phone] [prp-phone]: AUTHORIZED
 [38;5;159m[  script:mysql-async] [mysql-async] [SUCCESS] Database server connection established.
 [38;5;73m[ citizen-server-impl]         fff                          
 [38;5;73m[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
@@ -331,6 +330,9 @@
 [38;5;73m[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
 [38;5;73m[ citizen-server-impl]                                      
 [38;5;73m[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://benzovvv-p56a9a.users.cfx.re/
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 207 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;220m[    script:prp-phone] [prp-phone]: AUTHORIZED
 [38;5;128m[    script:EasyAdmin] 
 [38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
 [38;5;128m[    script:EasyAdmin] 
@@ -353,305 +355,225 @@
 [38;5;73m[ citizen-server-impl] Monetize your server using Tebex! Visit https://tebex.io/fivem for more info.
 [38;5;73m[ citizen-server-impl] ================
 [38;5;73m[ citizen-server-impl] 
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 128 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 162 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 119 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 147 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 155 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 141 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 158 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 113 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 155 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 122 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 124 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 168 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 211 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 115 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 124 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 136 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 121 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 119 milliseconds
-[38;5;220m[    script:prp-phone] Player Table : [{"timeJoined":68345,"sourceID":"steam:11000013fcd2349"}]
-[38;5;134m[      script:hardcap] Connecting: Evan
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 141 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 185 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 120 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 162 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 113 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 159 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 170 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 113 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 130 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 111 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 202 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 249 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 158 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 199 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 200 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 218 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 289 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 206 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 207 milliseconds
 [38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 193 milliseconds
-[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
-[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [165ms] SELECT count(item_id) as amount, id, item_id, name, information, slot, dropped FROM user_inventory2 WHERE name = 'ply-1' group by item_id : []
-[38;5;84m[   script:prp-motels] 4
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 111 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 161 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 146 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 170 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 230 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 148 milliseconds
-[38;5;73m[ citizen-server-impl] Couldn't find resource prp-garages.
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 172 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 168 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 151 milliseconds
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 148 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 185 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 154 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 167 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 222 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 127 milliseconds
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;175m[     script:prp-base] ID: 1 | Damage: 26
-[38;5;175m[     script:prp-base] ID: 1 | Damage: 80
-[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [206ms] UPDATE user_inventory2 SET slot='1', name='ply-1', dropped='0' WHERE slot='6' and name='ply-1' : []
-[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [165ms] UPDATE user_inventory2 SET slot='10', name='ply-1', dropped='0' WHERE slot='9' and name='ply-1' : []
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] network thread hitch warning: timer interval of 219 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 486 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 449 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 159 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 209 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 116 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 183 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 172 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 112 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 141 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 161 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 132 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 170 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 169 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 117 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 163 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 232 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 119 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 118 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 155 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 162 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 122 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 165 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 167 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 105 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 169 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 163 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 164 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 151 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 162 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 164 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 132 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 189 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 117 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 158 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 111 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 164 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 123 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 112 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 118 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 152 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 105 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 127 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 271 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 186 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 115 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 186 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 296 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 145 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 154 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 196 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 157 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 151 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 152 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 197 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 112 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 122 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [259ms] SELECT count(item_id) as amount, item_id, id, name, information, slot, dropped, creationDate, MIN(creationDate) as creationDate, quality FROM user_inventory2 WHERE name = 'ply-1' group by item_id : []
-[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [225ms] SELECT count(item_id) as amount, id, name, item_id, information, slot, dropped,quality, creationDate FROM user_inventory2 where name= 'ply-1' group by slot : []
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 202 milliseconds
 [38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 159 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 111 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 116 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 183 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 137 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 154 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 119 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 187 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 130 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 184 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 133 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 162 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 105 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 143 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 119 milliseconds
+[38;5;220m[    script:prp-phone] Player Table : [{"timeJoined":33589,"sourceID":"steam:11000013fcd2349"}]
+[38;5;134m[      script:hardcap] Connecting: Evan
 [38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 168 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
 [38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 146 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 160 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 130 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 192 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 151 milliseconds
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 125 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 166 milliseconds
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 180 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 165 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 145 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 181 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 117 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 126 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 127 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 118 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 169 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 116 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 119 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] Couldn't find resource prp-garages.
-[38;5;73m[ citizen-server-impl] Couldn't find resource garages.
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;105m[   script:prp-garage] Error parsing script @prp-garage/server/server.lua in resource prp-garage: @prp-garage/server/server.lua:92: 'end' expected (to close 'function' at line 85) near 'else'
-[38;5;161m[    c-scripting-core] Failed to load script server/server.lua.
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
-[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
-[38;5;73m[ citizen-server-impl] Started resource prp-garage
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 181 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 228 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 151 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 113 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 131 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 127 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 168 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 213 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 123 milliseconds
+[38;5;84m[   script:prp-motels] 4
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 186 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 137 milliseconds
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Stopping resource prp-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for prp-inventory
+[38;5;73m[ citizen-server-impl] Started resource prp-inventory
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 2610 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [524ms] DELETE FROM user_inventory2 WHERE quality like '0' : []
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [298ms] UPDATE user_inventory2 SET slot='5', name='ply-1', dropped='0' WHERE slot='10' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [157ms] UPDATE user_inventory2 SET slot='10', name='ply-1', dropped='0' WHERE slot='5' and name='ply-1' : []
+[38;5;73m[ citizen-server-impl] Stopping resource InteractSound
+[38;5;161m[    c-scripting-core] Creating script environments for InteractSound
+[38;5;73m[ citizen-server-impl] Started resource InteractSound
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 219 milliseconds
+[38;5;73m[ citizen-server-impl] Stopping resource prp-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for prp-inventory
+[38;5;73m[ citizen-server-impl] Started resource prp-inventory
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 1037 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;73m[ citizen-server-impl] Stopping resource prp-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for prp-inventory
+[38;5;73m[ citizen-server-impl] Started resource prp-inventory
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 2622 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [279ms] UPDATE user_inventory2 SET slot='1', name='ply-1', dropped='0' WHERE id IN (0,63,64,114,115,116,117,118,119,120,121,122,123) : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [277ms] UPDATE user_inventory2 SET slot='2', name ='ply-1', dropped='0' WHERE slot='1' AND name='ply-1' : []
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
 [38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 152 milliseconds
 [38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 116 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 121 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 179 milliseconds
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [366ms] UPDATE user_inventory2 SET slot='15', name='ply-1', dropped='0' WHERE slot='10' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [167ms] UPDATE user_inventory2 SET slot='10', name='ply-1', dropped='0' WHERE slot='9' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [416ms] UPDATE user_inventory2 SET slot='5', name='ply-1', dropped='0' WHERE slot='10' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [321ms] UPDATE user_inventory2 SET slot='10', name='ply-1', dropped='0' WHERE slot='5' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [180ms] UPDATE user_inventory2 SET slot='9', name='ply-1', dropped='0' WHERE slot='10' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [308ms] UPDATE user_inventory2 SET slot='3', name='ply-1', dropped='0' WHERE slot='4' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [246ms] UPDATE user_inventory2 SET slot='10', name='ply-1', dropped='0' WHERE slot='9' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [472ms] UPDATE user_inventory2 SET slot='4', name='ply-1', dropped='0' WHERE slot='5' and name='ply-1' : []
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 163 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 131 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 120 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 174 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 127 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 122 milliseconds
+[38;5;73m[ citizen-server-impl] Couldn't find resource prp-inventoryt.
+[38;5;73m[ citizen-server-impl] Couldn't find resource prp-inventory].
+[38;5;73m[ citizen-server-impl] Stopping resource prp-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for prp-inventory
+[38;5;73m[ citizen-server-impl] Started resource prp-inventory
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 4445 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;73m[ citizen-server-impl] Stopping resource prp-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for prp-inventory
+[38;5;73m[ citizen-server-impl] Started resource prp-inventory
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 3233 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 157 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 112 milliseconds
+[38;5;73m[ citizen-server-impl] Stopping resource prp-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for prp-inventory
+[38;5;73m[ citizen-server-impl] Started resource prp-inventory
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 1181 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 153 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 155 milliseconds
+[38;5;73m[ citizen-server-impl] Stopping resource prp-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for prp-inventory
+[38;5;73m[ citizen-server-impl] Started resource prp-inventory
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 3007 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
 [38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;175m[     script:prp-base] [prp-base]: Saved Evan |  Disconnected (Reason: Exiting)
-[38;5;175m[     script:prp-base] prp-BASE::GetCurrentCharacterInfo: Grabbed character {"job":"Bakery","huntlicense":"0","first_name":"James","bank":2147483647,"water":"78","last_name":"Williams","dob":"1994-04-07","playerSrc":1,"cash":2147483647,"food":"68","drivlicense":"0","stress":"0","methint":"1","uid":1,"stocks":"5","callsign":0,"license":"0","id":1,"rank":5,"phone_number":"4438729235","gender":0,"story":"Character's background, this can be short and simple","jail":0,"armor":"0","payslips":"0"}
-[38;5;175m[     script:prp-base] prp-BASE::GetCurrentCharacterInfo: Grabbed character {"job":"Bakery","huntlicense":"0","first_name":"James","bank":2147483647,"water":"78","last_name":"Williams","dob":"1994-04-07","playerSrc":1,"cash":2147483647,"food":"68","drivlicense":"0","stress":"0","methint":"1","uid":1,"stocks":"5","callsign":0,"license":"0","id":1,"rank":5,"phone_number":"4438729235","gender":0,"story":"Character's background, this can be short and simple","jail":0,"armor":"0","payslips":"0"}
+[38;5;73m[ citizen-server-impl] Stopping resource prp-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for prp-inventory
+[38;5;73m[ citizen-server-impl] Started resource prp-inventory
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 3214 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
+[38;5;73m[ citizen-server-impl] Stopping resource prp-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for prp-inventory
+[38;5;73m[ citizen-server-impl] Started resource prp-inventory
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 2920 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 163 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 122 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 172 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 155 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
+[38;5;73m[ citizen-server-impl] Stopping resource prp-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for prp-inventory
+[38;5;73m[ citizen-server-impl] Started resource prp-inventory
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 2334 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 161 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 154 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 163 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 118 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 113 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 153 milliseconds
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [249ms] UPDATE user_inventory2 SET slot='9', name='ply-1', dropped='0' WHERE slot='10' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [241ms] UPDATE user_inventory2 SET slot='10', name='ply-1', dropped='0' WHERE slot='9' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [206ms] UPDATE user_inventory2 SET slot='15', name='ply-1', dropped='0' WHERE slot='10' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [170ms] UPDATE user_inventory2 SET slot='9', name='ply-1', dropped='0' WHERE slot='10' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [189ms] UPDATE user_inventory2 SET slot='14', name='ply-1', dropped='0' WHERE slot='9' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [504ms] UPDATE user_inventory2 SET slot='11', name='ply-1', dropped='0' WHERE slot='7' and name='ply-1' : []
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [201ms] SELECT count(item_id) as amount, item_id, id, name, information, slot, dropped, creationDate, MIN(creationDate) as creationDate, quality FROM user_inventory2 WHERE name = 'ply-1' group by item_id : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [198ms] SELECT count(item_id) as amount, id, name, item_id, information, slot, dropped,quality, creationDate FROM user_inventory2 where name= 'ply-1' group by slot : []
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 204 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 122 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 124 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 133 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 173 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 126 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 160 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 105 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 139 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 161 milliseconds
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [169ms] SELECT count(item_id) as amount, id, name, item_id, information, slot, dropped,  quality, creationDate FROM user_inventory2 where name= 'ply-1'  group by slot : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [229ms] SELECT count(item_id) as amount, item_id, id, name, information, slot, dropped, creationDate, MIN(creationDate) as creationDate, quality FROM user_inventory2 WHERE name = 'ply-1' group by item_id : []
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 189 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 233 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 131 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 152 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 190 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 172 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 131 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 171 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 143 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 116 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 154 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 115 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 182 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 115 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 136 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 155 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 154 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 199 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 170 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 130 milliseconds
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [170ms] UPDATE user_inventory2 SET slot='9', name='ply-1', dropped='0' WHERE slot='4' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [296ms] UPDATE user_inventory2 SET slot='4', name='ply-1', dropped='0' WHERE slot='9' and name='ply-1' : []
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 181 milliseconds
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [169ms] UPDATE user_inventory2 SET slot='11', name='ply-1', dropped='0' WHERE slot='8' and name='ply-1' : []
+[38;5;159m[  script:mysql-async] [MariaDB:10.4.19-MariaDB] [WARNING] [prp-inventory] [179ms] UPDATE user_inventory2 SET slot='21', name='ply-1', dropped='0' WHERE slot='16' and name='ply-1' : []
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 115 milliseconds
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 121 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 142 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 180 milliseconds
 [38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress

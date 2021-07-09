@@ -1,0 +1,21 @@
+[
+  {
+    "name": "evanwoolfall",
+    "master": true,
+    "password_hash": "$2a$11$j5BB.9MnHfN92mj5s.8fDetBe/ppoAqJpn5a1HOPvv7BdxD9OPFky",
+    "providers": {
+      "citizenfx": {
+        "id": "evanwoolfall",
+        "identifier": "fivem:831959",
+        "data": {
+          "sub": "743e013ce17a326e19c03e578b0d5517",
+          "nameid": "https://forum.cfx.re/internal/user/831959",
+          "name": "evanwoolfall",
+          "picture": "https://forum.cfx.re/user_avatar/forum.cfx.re/evanwoolfall/256/678589_2.png",
+          "profile": "https://forum.cfx.re/u/evanwoolfall"
+        }
+      }
+    },
+    "permissions": []
+  }
+]

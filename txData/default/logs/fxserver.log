@@ -1,0 +1,90 @@
+
+================================================================
+======== FXServer starting - 09/07/2021, 20:40:37
+================================================================
+[38;5;161m[    c-scripting-core] Creating script environments for _cfx_internal
+[38;5;73m[ citizen-server-impl] Scanning resources.
+[38;5;73m[ citizen-server-impl] Found 169 resources.
+[38;5;73m[ citizen-server-impl] Some resources have an outdated resource manifest:
+[38;5;73m[ citizen-server-impl]     - InteractSound
+[38;5;73m[ citizen-server-impl]     - banking
+[38;5;73m[ citizen-server-impl]     - baseevents
+[38;5;73m[ citizen-server-impl]     - boatshop
+[38;5;73m[ citizen-server-impl]     - carwash
+[38;5;73m[ citizen-server-impl]     - debug
+[38;5;73m[ citizen-server-impl]     - es_taxi
+[38;5;73m[ citizen-server-impl]     - jobsystem
+[38;5;73m[ citizen-server-impl]     - kian
+[38;5;73m[ citizen-server-impl]     - position
+[38;5;73m[ citizen-server-impl]     - prp-actionbar
+[38;5;73m[ citizen-server-impl]     - prp-dealer
+[38;5;73m[ citizen-server-impl]     - prp-furniture
+[38;5;73m[ citizen-server-impl]     - prp-mining
+[38;5;73m[ citizen-server-impl]     - prp-news
+[38;5;73m[ citizen-server-impl]     - prp-notepad
+[38;5;73m[ citizen-server-impl]     - prp-oBinoculars
+[38;5;73m[ citizen-server-impl]     - prp-oCam
+[38;5;73m[ citizen-server-impl]     - prp-oGasStations
+[38;5;73m[ citizen-server-impl]     - prp-oHideFrames
+[38;5;73m[ citizen-server-impl]     - prp-oPlayerNumbers
+[38;5;73m[ citizen-server-impl]     - prp-oRecoil
+[38;5;73m[ citizen-server-impl]     - prp-oStress
+[38;5;73m[ citizen-server-impl]     - prp-stripperbitches
+[38;5;73m[ citizen-server-impl]     - prp-taskbarskill
+[38;5;73m[ citizen-server-impl]     - prp-tasknotify
+[38;5;73m[ citizen-server-impl]     - prp-taximeter
+[38;5;73m[ citizen-server-impl]     - prp-tow
+[38;5;73m[ citizen-server-impl]     - prp-tuner
+[38;5;73m[ citizen-server-impl]     - prp-uberdelivery
+[38;5;73m[ citizen-server-impl]     - sessionmanager
+[38;5;73m[ citizen-server-impl]     - towtruckjob
+[38;5;73m[ citizen-server-impl] 
+[38;5;73m[ citizen-server-impl] Please update these resources.
+[38;5;161m[    c-scripting-core] Creating script environments for sessionmanager
+[38;5;73m[ citizen-server-impl] Started resource sessionmanager
+[38;5;161m[    c-scripting-core] Creating script environments for monitor
+[38;5;84m[      script:monitor] [txAdminClient] Version 4.3.1 starting...
+[38;5;73m[ citizen-server-impl] Started resource monitor
+[38;5;78m[              cmdsys] No such command database=essentialmode.
+[38;5;78m[              cmdsys] No such command userid=root.
+[38;5;78m[              cmdsys] No such command ”.
+[38;5;161m[    c-scripting-core] Creating script environments for mapmanager
+[38;5;73m[ citizen-server-impl] Started resource mapmanager
+[38;5;161m[    c-scripting-core] Creating script environments for chat
+[38;5;73m[ citizen-server-impl] Started resource chat
+[38;5;154m[   script:mapmanager] Started gametype Freeroam
+[38;5;73m[ citizen-server-impl] Started resource basic-gamemode
+[38;5;73m[ citizen-server-impl] Started resource fivem
+[38;5;161m[    c-scripting-core] Creating script environments for hardcap
+[38;5;73m[ citizen-server-impl] Started resource hardcap
+[38;5;161m[    c-scripting-core] Creating script environments for rconlog
+[38;5;73m[ citizen-server-impl] Started resource rconlog
+[38;5;73m[ citizen-server-impl] Couldn't find resource prp-chat.
+[38;5;161m[    c-scripting-core] Creating script environments for ghmattimysql
+[38;5;73m[ citizen-server-impl] Started resource ghmattimysql
+[38;5;161m[    c-scripting-core] Creating script environments for async
+[38;5;73m[ citizen-server-impl] Started resource async
+[38;5;161m[    c-scripting-core] Creating script environments for mysql-async
+[38;5;73m[ citizen-server-impl] Started resource mysql-async
+[38;5;161m[    c-scripting-core] Creating script environments for prp-base
+[38;5;73m[ citizen-server-impl] Started resource prp-base
+[38;5;161m[    c-scripting-core] Creating script environments for prp-login
+[38;5;73m[ citizen-server-impl] Started resource prp-login
+[38;5;161m[    c-scripting-core] Creating script environments for prp-errorlog
+[38;5;73m[ citizen-server-impl] Started resource prp-errorlog
+[38;5;161m[    c-scripting-core] Creating script environments for prp-infinity
+[38;5;73m[ citizen-server-impl] Started resource prp-infinity
+[38;5;161m[    c-scripting-core] Creating script environments for vSync
+[38;5;73m[ citizen-server-impl] Started resource vSync
+[38;5;161m[    c-scripting-core] Creating script environments for radio
+[38;5;73m[ citizen-server-impl] Started resource radio
+[38;5;73m[ citizen-server-impl] Started resource loadscreen
+[38;5;161m[    c-scripting-core] Creating script environments for prp-doors
+[38;5;73m[ citizen-server-impl] Started resource prp-doors
+[38;5;161m[    c-scripting-core] Creating script environments for pma-voice
+[38;5;73m[ citizen-server-impl] Started resource pma-voice
+[38;5;73m[ citizen-server-impl] Couldn't find resource richpresence.
+[38;5;73m[ citizen-server-impl] Started resource warmenu
+[38;5;73m[ citizen-server-impl] Started resource bob74_ipl
+[38;5;73m[ citizen-server-impl] Started resource iplLoader
+[38;5;161m[    c-scripting-core] Creating script environments for InteractSound

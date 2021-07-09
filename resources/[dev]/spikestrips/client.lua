@@ -86,8 +86,8 @@ end)
 --     end
 -- end)
 
-RegisterNetEvent('wrp-spikes:removeSpike')
-AddEventHandler('wrp-spikes:removeSpike', function()
+RegisterNetEvent('prp-spikes:removeSpike')
+AddEventHandler('prp-spikes:removeSpike', function()
     if exports['isPed']:isPed('job') == 'Police' then
         if spikesSpawned then
             RemoveSpikes()
@@ -98,10 +98,10 @@ AddEventHandler('wrp-spikes:removeSpike', function()
     end
 end)
 
-RegisterNetEvent('wrp-spikes:place')
-AddEventHandler('wrp-spikes:place', function()
+RegisterNetEvent('prp-spikes:place')
+AddEventHandler('prp-spikes:place', function()
     if exports['isPed']:isPed('job') == 'Police' then
-        TriggerServerEvent('wrp-spikes:placeSpike')
+        TriggerServerEvent('prp-spikes:placeSpike')
     end
 end)
 

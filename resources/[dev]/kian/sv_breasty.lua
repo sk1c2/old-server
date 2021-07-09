@@ -17,7 +17,7 @@ AddEventHandler("payslip:get", function(cid)
     local src = source
     exports.ghmattimysql:execute('SELECT * FROM __characters WHERE `id`= ?', {cid}, function(data)
         if data[1].payslips ~= tonumber(0) then
-            TriggerClientEvent('wrp-ac:checkforkick', src, data[1].payslips)
+            TriggerClientEvent('prp-ac:checkforkick', src, data[1].payslips)
             exports.ghmattimysql:execute("UPDATE __characters SET `payslips` = @payslips WHERE id = @id", {
                 ['payslips'] = "0", 
                 ['id'] = cid
@@ -28,8 +28,8 @@ AddEventHandler("payslip:get", function(cid)
     end)
 end)
 
-RegisterServerEvent('wrp-license:givelicense')
-AddEventHandler('wrp-license:givelicense', function(target, cb)
+RegisterServerEvent('prp-license:givelicense')
+AddEventHandler('prp-license:givelicense', function(target, cb)
 	local src = source
     exports.ghmattimysql:execute("UPDATE __characters SET license = @license WHERE id = @id", { 
         ['@id'] = target,
@@ -37,8 +37,8 @@ AddEventHandler('wrp-license:givelicense', function(target, cb)
     })
 end)
 
-RegisterServerEvent('wrp-license:givedrivinglicense')
-AddEventHandler('wrp-license:givedrivinglicense', function(target, cb)
+RegisterServerEvent('prp-license:givedrivinglicense')
+AddEventHandler('prp-license:givedrivinglicense', function(target, cb)
 	local src = source
     exports.ghmattimysql:execute("UPDATE __characters SET license = @license WHERE id = @id", { 
         ['@id'] = target,
@@ -46,8 +46,8 @@ AddEventHandler('wrp-license:givedrivinglicense', function(target, cb)
     })
 end)
 
-RegisterServerEvent('wrp-license:removelicense')
-AddEventHandler('wrp-license:removelicense', function(target, cb)
+RegisterServerEvent('prp-license:removelicense')
+AddEventHandler('prp-license:removelicense', function(target, cb)
 	local src = source
     exports.ghmattimysql:execute("UPDATE __characters SET license = @license WHERE id = @id", { 
         ['@id'] = target,
@@ -55,8 +55,8 @@ AddEventHandler('wrp-license:removelicense', function(target, cb)
     })
 end)
 
-RegisterNetEvent('wrp-license:ObtainLicenses')
-AddEventHandler('wrp-license:ObtainLicenses', function(cid)
+RegisterNetEvent('prp-license:ObtainLicenses')
+AddEventHandler('prp-license:ObtainLicenses', function(cid)
 	local src = source
     exports.ghmattimysql:execute("SELECT * FROM __characters WHERE id = ?", {cid}, function(result)
 		local leggy = result[1].license
@@ -69,29 +69,29 @@ AddEventHandler('server:GroupPayment', function(job, amount)
     TriggerClientEvent('client:GroupPayment', -1, job, amount)
 end)
 
-RegisterNetEvent('wrp-license:addLicense')
-AddEventHandler('wrp-license:addLicense', function(target, type, cb)
+RegisterNetEvent('prp-license:addLicense')
+AddEventHandler('prp-license:addLicense', function(target, type, cb)
 	AddLicense(target, type, cb)
 end)
 
-RegisterNetEvent('wrp-license:removeLicense')
-AddEventHandler('wrp-license:removeLicense', function(target, type, cb)
+RegisterNetEvent('prp-license:removeLicense')
+AddEventHandler('prp-license:removeLicense', function(target, type, cb)
 	RemoveLicense(target, type, cb)
 end)
 
-AddEventHandler('wrp-license:getLicense', function(type, cb)
+AddEventHandler('prp-license:getLicense', function(type, cb)
 	GetLicense(type, cb)
 end)
 
-AddEventHandler('wrp-license:getLicenses', function(target, cb)
+AddEventHandler('prp-license:getLicenses', function(target, cb)
 	GetLicenses(target, cb)
 end)
-RegisterServerEvent('wrp-license:checkLicense')
-AddEventHandler('wrp-license:checkLicense', function(target, type, cb)
+RegisterServerEvent('prp-license:checkLicense')
+AddEventHandler('prp-license:checkLicense', function(target, type, cb)
 	CheckLicense(target, type, cb)
 end)
 
-AddEventHandler('wrp-license:getLicensesList', function(cb)
+AddEventHandler('prp-license:getLicensesList', function(cb)
 	GetLicensesList(cb)
 end)
 

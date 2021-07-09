@@ -39,8 +39,8 @@ RegisterCommand('vol', function(_, args)
 	end
 end)
 
-RegisterNetEvent('wrp-voice:updateRoutineAudio')
-AddEventHandler('wrp-voice:updateRoutineAudio', function(radioVolume)
+RegisterNetEvent('prp-voice:updateRoutineAudio')
+AddEventHandler('prp-voice:updateRoutineAudio', function(radioVolume)
 	local vol = tonumber(radioVolume)
 	if vol then
 		volume = vol / 100

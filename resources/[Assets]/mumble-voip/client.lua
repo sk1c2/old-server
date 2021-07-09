@@ -844,7 +844,7 @@ Citizen.CreateThread(function()
 			if mumbleConfig.radioEnabled then
 				if not mumbleConfig.controls.radio.pressed then
 					if IsControlJustPressed(0, mumbleConfig.controls.radio.key) and IsInputDisabled(0) then
-						if not exports['wrp-deathmanager']:GetDeath() then
+						if not exports['prp-deathmanager']:GetDeath() then
 						if playerData.radio > 0 then
 							StartRadioTask()
 							SetVoiceData("radioActive", true)

@@ -104,36 +104,36 @@ end)
 
 RegisterNetEvent('shop:general')
 AddEventHandler('shop:general', function()
-	TriggerEvent("wrp-ac:triggeredItemSpawn", "2", "Shop");	
+	TriggerEvent("prp-ac:triggeredItemSpawn", "2", "Shop");	
 end)
 
 RegisterNetEvent('shop:vending')
 AddEventHandler('shop:vending', function()
-	TriggerEvent("wrp-ac:triggeredItemSpawn", "82", "Shop");	
+	TriggerEvent("prp-ac:triggeredItemSpawn", "82", "Shop");	
 end)
 
 RegisterNetEvent('urp:make:slushy')
 AddEventHandler('urp:make:slushy', function()
-	local finished = exports["wrp-taskbar"]:taskBar(30000,"Making a god slushy...")
+	local finished = exports["prp-taskbar"]:taskBar(30000,"Making a god slushy...")
 	if (finished == 100) then
-	  TriggerEvent("wrp-ac:triggeredItemSpawn", "998", "Shop");
+	  TriggerEvent("prp-ac:triggeredItemSpawn", "998", "Shop");
 	  Wait(5000)
   end
 end)
 
 RegisterNetEvent('urp:access:jailfood')
 AddEventHandler('urp:access:jailfood', function()
-	TriggerEvent("wrp-ac:triggeredItemSpawn", "22", "Shop");
+	TriggerEvent("prp-ac:triggeredItemSpawn", "22", "Shop");
 end)
 
-RegisterNetEvent('wrp-weapon:shop')
-AddEventHandler('wrp-weapon:shop', function()
-	local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+RegisterNetEvent('prp-weapon:shop')
+AddEventHandler('prp-weapon:shop', function()
+	local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 	local Player = LocalPlayer:getCurrentCharacter()
 	local license = tonumber(Player.license)
 	if license == 1 then 
 		-- print(Player)
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "5", "Shop");
+		TriggerEvent("prp-ac:triggeredItemSpawn", "5", "Shop");
 		Wait(5000)
 	else
 		TriggerEvent('DoLongHudText', 'You do not have a weapons license!')
@@ -254,7 +254,7 @@ Citizen.CreateThread(function()
 	
 			if(Vdist( 977.81, -101.04, 74.85, pos.x, pos.y, pos.z) < 2.0)then
 				if IsControlJustPressed(1, 38) and exports["isPed"]:GroupRank("parts_shop") > 3 then
-					TriggerEvent("wrp-ac:triggeredItemSpawn", "16", "Craft");
+					TriggerEvent("prp-ac:triggeredItemSpawn", "16", "Craft");
 			    end
 			end
 		end
@@ -266,7 +266,7 @@ Citizen.CreateThread(function()
 				local job = exports["isPed"]:isPed("job")
 				DisplayHelpText("Press ~INPUT_CONTEXT~ to open the ~g~shop.")
 				if IsControlJustPressed(1, 38) and job == "Police" then
-					TriggerEvent("wrp-ac:triggeredItemSpawn", "10", "Shop");
+					TriggerEvent("prp-ac:triggeredItemSpawn", "10", "Shop");
 					Wait(5000)
 					--TriggerEvent("openSubMenu","shop")
 			    end
@@ -281,7 +281,7 @@ Citizen.CreateThread(function()
 		-- 		if IsControlJustPressed(1, 38) then
   		-- 			local pos = GetEntityCoords(PlayerPedId(), false)
   		-- 			if(Vdist(885.61,-3199.84,-98.19, pos.x, pos.y, pos.z) < 3.0) then
-		-- 				TriggerEvent("wrp-ac:triggeredItemSpawn", "6", "Craft");
+		-- 				TriggerEvent("prp-ac:triggeredItemSpawn", "6", "Craft");
 		-- 				Wait(5000)
 		-- 			end
 		-- 	    end
@@ -300,7 +300,7 @@ Citizen.CreateThread(function()
 		-- 		if(Vdist(v.x, v.y, v.z, pos.x, pos.y, pos.z) < 3.0)then
 		-- 			DisplayHelpText("Press ~INPUT_CONTEXT~ to open the ~g~shop.")
 		-- 			if IsControlJustPressed(1, 38) then	
-		-- 				TriggerEvent("wrp-ac:triggeredItemSpawn", "2", "Shop");	
+		-- 				TriggerEvent("prp-ac:triggeredItemSpawn", "2", "Shop");	
 		-- 				Wait(5000)
 		-- 				--TriggerEvent("openSubMenu","shop")
 		-- 		    end
@@ -314,7 +314,7 @@ Citizen.CreateThread(function()
 		-- 	if(Vdist(1783.16, 2557.02, 45.68, pos.x, pos.y, pos.z) < 2.0)then
 		-- 		DisplayHelpText("Press ~INPUT_CONTEXT~ to look at food")
 		-- 		if IsControlJustPressed(1, 38) then
-		-- 			TriggerEvent("wrp-ac:triggeredItemSpawn", "22", "Shop");
+		-- 			TriggerEvent("prp-ac:triggeredItemSpawn", "22", "Shop");
 		-- 			Wait(5000)
 		-- 			--TriggerEvent("openSubMenu","burgershot")
 		-- 	    end
@@ -326,9 +326,9 @@ Citizen.CreateThread(function()
 			if(Vdist(methlocation["x"],methlocation["y"],methlocation["z"], pos.x, pos.y, pos.z) < 5.0)then
 				DisplayHelpText("Press ~INPUT_CONTEXT~ what dis?")
 				if IsControlJustPressed(1, 38) then
-					local finished = exports["wrp-taskbar"]:taskBar(60000,"Searching...")
+					local finished = exports["prp-taskbar"]:taskBar(60000,"Searching...")
       				if (finished == 100) and Vdist(methlocation["x"],methlocation["y"],methlocation["z"], pos.x, pos.y, pos.z) < 2.0 then
-						TriggerEvent("wrp-ac:triggeredItemSpawn", "25", "Shop");
+						TriggerEvent("prp-ac:triggeredItemSpawn", "25", "Shop");
 						Wait(5000)
 					end
 					--TriggerEvent("openSubMenu","burgershot")
@@ -340,9 +340,9 @@ Citizen.CreateThread(function()
 			if(Vdist(1663.36, 2512.99, 46.87, pos.x, pos.y, pos.z) < 2.0)then
 				DisplayHelpText("Press ~INPUT_CONTEXT~ what dis?")
 				if IsControlJustPressed(1, 38) and (Vdist(1663.36, 2512.99, 46.87, pos.x, pos.y, pos.z) < 2.0) then
-					local finished = exports["wrp-taskbar"]:taskBar(60000,"Searching...")
+					local finished = exports["prp-taskbar"]:taskBar(60000,"Searching...")
       				if (finished == 100) then
-						TriggerEvent("wrp-ac:triggeredItemSpawn", "26", "Shop");
+						TriggerEvent("prp-ac:triggeredItemSpawn", "26", "Shop");
 						Wait(5000)
 					end
 					--TriggerEvent("openSubMenu","burgershot")
@@ -355,9 +355,9 @@ Citizen.CreateThread(function()
 		-- 	if(Vdist(1778.47, 2557.58, 45.68, pos.x, pos.y, pos.z) < 2.0)then
 		-- 		DisplayHelpText("Press ~INPUT_CONTEXT~ what dis?")
 		-- 		if IsControlJustPressed(1, 38) and (Vdist(1778.47, 2557.58, 45.68, pos.x, pos.y, pos.z) < 2.0) then
-		-- 			local finished = exports["wrp-taskbar"]:taskBar(30000,"Making a god slushy...")
+		-- 			local finished = exports["prp-taskbar"]:taskBar(30000,"Making a god slushy...")
       	-- 			if (finished == 100) then
-		-- 				TriggerEvent("wrp-ac:triggeredItemSpawn", "998", "Shop");
+		-- 				TriggerEvent("prp-ac:triggeredItemSpawn", "998", "Shop");
 		-- 				Wait(5000)
 		-- 			end
 		-- 			--TriggerEvent("openSubMenu","burgershot")
@@ -370,9 +370,9 @@ Citizen.CreateThread(function()
 			if(Vdist(1777.58, 2565.15, 45.68, pos.x, pos.y, pos.z) < 2.0)then
 				DisplayHelpText("Press ~INPUT_CONTEXT~ what dis?")
 				if IsControlJustPressed(1, 38) then
-					local finished = exports["wrp-taskbar"]:taskBar(60000,"Searching...")
+					local finished = exports["prp-taskbar"]:taskBar(60000,"Searching...")
       				if (finished == 100) and (Vdist(1777.58, 2565.15, 45.68, pos.x, pos.y, pos.z) < 2.0) then
-						TriggerEvent("wrp-ac:triggeredItemSpawn", "23", "Craft");
+						TriggerEvent("prp-ac:triggeredItemSpawn", "23", "Craft");
 						Wait(5000)
 					end
 					--TriggerEvent("openSubMenu","burgershot")
@@ -386,7 +386,7 @@ Citizen.CreateThread(function()
 			if(Vdist(-1193.26, -892.30, 99.99, pos.x, pos.y, pos.z) < 5.0)then
 				DisplayHelpText("Press ~INPUT_CONTEXT~ To Access Burgershot")
 				if IsControlJustPressed(1, 38) then
-					TriggerEvent("wrp-ac:triggeredItemSpawn", "12", "Shop");
+					TriggerEvent("prp-ac:triggeredItemSpawn", "12", "Shop");
 					Wait(5000)
 					--TriggerEvent("openSubMenu","burgershot")
 			    end
@@ -401,7 +401,7 @@ Citizen.CreateThread(function()
 				if IsControlJustPressed(1, 38) then
 					local rank = exports["isPed"]:GroupRank("CamelTowing")
 					if rank > 4 then
-						TriggerEvent("wrp-ac:triggeredItemSpawn", "714", "Craft");
+						TriggerEvent("prp-ac:triggeredItemSpawn", "714", "Craft");
 						Wait(5000)
 					end
 			    end
@@ -415,7 +415,7 @@ Citizen.CreateThread(function()
 				if(Vdist(v.x, v.y, v.z, pos.x, pos.y, pos.z) < 3.0)then
 					DisplayHelpText("Press ~INPUT_CONTEXT~ to open the ~g~tool shop.")
 					if IsControlJustPressed(1, 38) then
-						TriggerEvent("wrp-ac:triggeredItemSpawn", "4", "Shop");
+						TriggerEvent("prp-ac:triggeredItemSpawn", "4", "Shop");
 						Wait(5000)
 						--TriggerEvent("openSubMenu","tool")
 				    end

@@ -1190,17 +1190,17 @@ function findBed(fadein)
 			TriggerEvent("chatMessage","HOSPITAL",5,'It was a success with complications with your injury, you have been billed for your injuries in the amount of: $' .. amountofcash .. '.')
 		end
 
-		TriggerEvent("wrp-ac:passInfoBan",amountofcash)
-		TriggerServerEvent('wrp-business:givepass', 'EMS', amountofcash * 4)
+		TriggerEvent("prp-ac:passInfoBan",amountofcash)
+		TriggerServerEvent('prp-business:givepass', 'EMS', amountofcash * 4)
 		SetEntityHealth(PlayerPedId(),200)
 		Citizen.Wait(1000)
 		inbed = false
 		injurycount = 0
-		TriggerEvent('wrp-hospital:client:ResetLimbs')
-		TriggerEvent('wrp-hospital:client:RemoveBleed')
+		TriggerEvent('prp-hospital:client:ResetLimbs')
+		TriggerEvent('prp-hospital:client:RemoveBleed')
 		TriggerEvent('reviveFunction')
 		TriggerEvent("client:bed")
-		TriggerEvent('wrp-hospital:client:FinishNancy')
+		TriggerEvent('prp-hospital:client:FinishNancy')
         TriggerEvent( "DoShortHudText" , "Press [E] to leave the bed!" , 1)
 
 	end

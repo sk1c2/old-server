@@ -50,7 +50,7 @@ Citizen.CreateThread(function ()
 				if #(GetEntityCoords(PlayerPedId()) - vector3(garageCoords2[1], garageCoords2[2], garageCoords2[3])) < 5 then
 					DrawSpecialText("Press [~g~ENTER~s~] to clean your vehicle!")
 					if(IsControlJustPressed(1, Key)) then
-						TriggerEvent('wrp-base:getdata', 50)
+						TriggerEvent('prp-base:getdata', 50)
 						TriggerEvent("carwash:success")
 					end
 				end

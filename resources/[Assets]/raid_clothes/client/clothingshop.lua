@@ -31,10 +31,10 @@ clothingShops = {
 	{100.19,3615.833,40.9145,600}, -- Lost MC Club house
 }
 
-RegisterNetEvent('wrp-base:getdata')
-AddEventHandler('wrp-base:getdata', function(info, source)
+RegisterNetEvent('prp-base:getdata')
+AddEventHandler('prp-base:getdata', function(info, source)
     local src = source
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:removeCash(Player.id, info)
 end)

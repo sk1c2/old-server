@@ -1,5 +1,5 @@
 RegisterCommand('ooc', function(source, args)
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   local cid = exports['isPed']:isPed('cid')
   local firstname = Player.first_name
@@ -56,7 +56,7 @@ end)
 
 RegisterCommand('911', function(source, args)
   TriggerServerEvent('911', args, exports['isPed']:isPed('cid'))
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   local firstname = Player.first_name
   local lastname = Player.last_name
@@ -81,7 +81,7 @@ end)
 
 RegisterCommand('311', function(source, args)
   TriggerServerEvent('311', args, exports['isPed']:isPed('cid'))
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   local firstname = Player.first_name
   local lastname = Player.last_name
@@ -95,8 +95,8 @@ RegisterCommand('311', function(source, args)
   -- TriggerEvent('chatMessage', '311 | ' ..  firstname .. " | " .. lastname .. " # " .. phone_number, 3, tostring(message))
 end)
 
-RegisterNetEvent('wrp-911:display')
-AddEventHandler('wrp-911:display', function(firstname, lastname, phonenumber, message, src)
+RegisterNetEvent('prp-911:display')
+AddEventHandler('prp-911:display', function(firstname, lastname, phonenumber, message, src)
   if exports['isPed']:isPed('job') == 'Police' then
     TriggerEvent('chatMessage', '911 | ( '.. src .. ' ) ' .. firstname .. " | " .. lastname .. " #" .. phonenumber, 2, tostring(message))
     TriggerEvent("callsound")
@@ -108,8 +108,8 @@ AddEventHandler('wrp-911:display', function(firstname, lastname, phonenumber, me
   end
 end)
 
-RegisterNetEvent('wrp-311:display')
-AddEventHandler('wrp-311:display', function(firstname, lastname, phonenumber, message, src)
+RegisterNetEvent('prp-311:display')
+AddEventHandler('prp-311:display', function(firstname, lastname, phonenumber, message, src)
   if exports['isPed']:isPed('job') == 'Police' then
     TriggerEvent('chatMessage', '311 | ( '.. src .. ' ) ' .. firstname .. " | " .. lastname .. " #" .. phonenumber, 2, tostring(message))
   elseif exports['isPed']:isPed('job') == 'Police' then
@@ -117,8 +117,8 @@ AddEventHandler('wrp-311:display', function(firstname, lastname, phonenumber, me
   end
 end)
 
-RegisterNetEvent('wrp-911r:display')
-AddEventHandler('wrp-911r:display', function(target, firstname, lastname, phonenumber, message)
+RegisterNetEvent('prp-911r:display')
+AddEventHandler('prp-911r:display', function(target, firstname, lastname, phonenumber, message)
   if exports['isPed']:isPed('job') == 'Police' then
     TriggerEvent('chatMessage', '911r -> | ' .. target .. " | " .. firstname .. " | " .. lastname .. " # " .. phonenumber, 3, tostring(message))
   elseif exports['isPed']:isPed('job') == 'Police' then
@@ -126,8 +126,8 @@ AddEventHandler('wrp-911r:display', function(target, firstname, lastname, phonen
   end
 end)
 
-RegisterNetEvent('wrp-311r:display')
-AddEventHandler('wrp-311r:display', function(target, firstname, lastname, phonenumber, message)
+RegisterNetEvent('prp-311r:display')
+AddEventHandler('prp-311r:display', function(target, firstname, lastname, phonenumber, message)
   if exports['isPed']:isPed('job') == 'Police' then
     TriggerEvent('chatMessage', '311r -> | ' .. target .. " | " .. firstname .. " | " .. lastname .. " # " .. phonenumber, 3, tostring(message))
   elseif exports['isPed']:isPed('job') == 'Police' then
@@ -135,9 +135,9 @@ AddEventHandler('wrp-311r:display', function(target, firstname, lastname, phonen
   end
 end)
 
--- RegisterNetEvent('wrp-chat:911obtain')
--- AddEventHandler('wrp-chat:911obtain', function(message)
---   local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+-- RegisterNetEvent('prp-chat:911obtain')
+-- AddEventHandler('prp-chat:911obtain', function(message)
+--   local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 --   local Player = LocalPlayer:getCurrentCharacter()
 --   local name = Player.first_name .. ' ' .. Player.last_name
 --   local phone_number = Player.phone_number

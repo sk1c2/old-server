@@ -677,7 +677,7 @@ function CloseCreator(name, veh, price, financed)
 			local secondarycolor = colors[2]	
 			local pearlescentcolor = extra_colors[1]
 			local wheelcolor = extra_colors[2]
-			local VehicleProps = exports['wrp-base']:FetchVehProps(personalvehicle)
+			local VehicleProps = exports['prp-base']:FetchVehProps(personalvehicle)
 			local model = GetEntityModel(personalvehicle)
 			print(model)
 			TriggerServerEvent('garage:addKeys', plate)

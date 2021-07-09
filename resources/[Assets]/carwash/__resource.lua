@@ -1,2 +1,2 @@
 client_script 'carwash_client.lua'
-client_script "@wrp-errorlog/client/cl_errorlog.lua"
+client_script "@prp-errorlog/client/cl_errorlog.lua"

@@ -17,20 +17,20 @@ CopAmount = 0
 Citizen.CreateThread(function()
 	while LocalPlayer == nil do
 		Citizen.Wait(100)
-		LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+		LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
 		Player = LocalPlayer:getCurrentCharacter()
 	end
 end)
 
 function giveDutyRadio()
-	if (not exports['wrp-inventory']:hasEnoughOfItem('radio', 1, false)) then
+	if (not exports['prp-inventory']:hasEnoughOfItem('radio', 1, false)) then
 		-- print('dick')
-		TriggerEvent('wrp-banned:getID', 'radio', 1)
+		TriggerEvent('prp-banned:getID', 'radio', 1)
 	end
 end
 
 function removeDutyRadio()
-	if (exports['wrp-inventory']:hasEnoughOfItem('radio', 1, false)) then
+	if (exports['prp-inventory']:hasEnoughOfItem('radio', 1, false)) then
 		-- print('dick')
 		TriggerEvent("inventory:removeItem", 'radio', 1)
 	end
@@ -114,7 +114,7 @@ end
 -- RegisterNetEvent('police:set-job')
 -- AddEventHandler('police:set-job', function(src)
 -- 	local cid = exports['isPed']:isPed('cid')
--- 	LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+-- 	LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
 -- 	Player = LocalPlayer:getCurrentCharacter()
 -- 	LocalPlayer:setJob(cid, 'OffPolice')
 -- end)
@@ -125,57 +125,57 @@ AddEventHandler("police:in" , function(off)
     if(off == "true") then
         if job == 'OffPolice' then
 
-            LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+            LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
             Player = LocalPlayer:getCurrentCharacter()
             LocalPlayer:setJob(Player.id, 'Police')
             TriggerEvent('DoLongHudText', '10-41 and restocked.')
-			TriggerServerEvent('wrp-copsonlineincrease')
+			TriggerServerEvent('prp-copsonlineincrease')
 			giveDutyRadio()
 			TriggerServerEvent('attemptduty', 'Police', exports['isPed']:isPed('cid'), Player.first_name, Player.last_name, Player.callsign)
         end
     elseif(off == "false") then
         if job == 'Police' then
-            LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+            LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
             Player = LocalPlayer:getCurrentCharacter()
 			TriggerEvent("DoShortHudText","10-42, Thank you for your service.")
 			LocalPlayer:setJob(Player.id, 'OffPolice')
-			TriggerServerEvent('wrp-copsonlinedecrease')
+			TriggerServerEvent('prp-copsonlinedecrease')
 			TriggerServerEvent('attemptoffdutypd')
 			removeDutyRadio()
         end
     end
 end)
 
-RegisterNetEvent('wrp-police:duty')
-AddEventHandler('wrp-police:duty', function()
+RegisterNetEvent('prp-police:duty')
+AddEventHandler('prp-police:duty', function()
 	local job = exports['isPed']:isPed('job')
 	if job == 'Police' or job == 'OffPolice' then
-		exports['wrp-menudialog']:AddButton("Clock In" , "Clock On Duty" , "police:in" , true)
-		exports['wrp-menudialog']:AddButton("Clock Off" , "Clock Off Duty" , "police:in", false)
+		exports['prp-menudialog']:AddButton("Clock In" , "Clock On Duty" , "police:in" , true)
+		exports['prp-menudialog']:AddButton("Clock Off" , "Clock Off Duty" , "police:in", false)
 	end
 end)
 
 
 
-RegisterNetEvent('wrp-police:obtainAmountOfCops')
-AddEventHandler('wrp-police:obtainAmountOfCops', function(CurrentCopsAround)
+RegisterNetEvent('prp-police:obtainAmountOfCops')
+AddEventHandler('prp-police:obtainAmountOfCops', function(CurrentCopsAround)
 	CopAmount = CurrentCopsAround
 end)
 
 Citizen.CreateThread(function()
-	TriggerServerEvent('wrp-startCopCheckLoop')
+	TriggerServerEvent('prp-startCopCheckLoop')
 end)
 
 RegisterNetEvent('police:quitmate')
 AddEventHandler('police:quitmate', function()
-	TriggerServerEvent('wrp-copsonlinedecrease', exports['isPed']:isPed('cid'))
+	TriggerServerEvent('prp-copsonlinedecrease', exports['isPed']:isPed('cid'))
 end)
 
 RegisterCommand('offduty', function()
 	if exports['isPed']:isPed('job') == 'Police' then
-		TriggerServerEvent('wrp-copsonlinedecrease') 
+		TriggerServerEvent('prp-copsonlinedecrease') 
 	elseif exports['isPed']:isPed('job') == 'OffPolice' then
-		TriggerServerEvent('wrp-copsonlinedecrease')
+		TriggerServerEvent('prp-copsonlinedecrease')
 	end
 end)
 
@@ -184,7 +184,7 @@ RegisterNetEvent('police:openArmoury')
 AddEventHandler('police:openArmoury', function()
 	local job = exports['isPed']:isPed('job')
 	if job == 'Police' then
-		TriggerEvent('wrp-ac:triggeredItemSpawn', 10, "Shop")
+		TriggerEvent('prp-ac:triggeredItemSpawn', 10, "Shop")
 	end
 end)
 
@@ -192,7 +192,7 @@ RegisterNetEvent('ems:openCabinet')
 AddEventHandler('ems:openCabinet', function()
 	local job = exports['isPed']:isPed('job')
 	if job == 'EMS' then
-		TriggerEvent('wrp-ac:triggeredItemSpawn', 47, "Shop")
+		TriggerEvent('prp-ac:triggeredItemSpawn', 47, "Shop")
 	end
 end)
 
@@ -201,7 +201,7 @@ RegisterNetEvent('police:openTrash')
 AddEventHandler('police:openTrash', function()
 	local job = exports['isPed']:isPed('job')
 	if job == 'Police' then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "trash-1")
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "trash-1")
 	end
 end)
 
@@ -210,7 +210,7 @@ AddEventHandler('police:openPersonalLocker', function()
 	local job = exports['isPed']:isPed('job')
 	if job == 'Police' then
 		local cid = exports['isPed']:isPed('cid')
-		TriggerEvent('wrp-ac:triggeredItemSpawn', 1, "policeLocker-" .. cid)
+		TriggerEvent('prp-ac:triggeredItemSpawn', 1, "policeLocker-" .. cid)
 	end
 end)
 
@@ -219,7 +219,7 @@ AddEventHandler('ems:openPersonalLocker', function()
 	local job = exports['isPed']:isPed('job')
 	if job == 'EMS' then
 		local cid = exports['isPed']:isPed('cid')
-		TriggerEvent('wrp-ac:triggeredItemSpawn', 1, "emsLocker-" .. cid)
+		TriggerEvent('prp-ac:triggeredItemSpawn', 1, "emsLocker-" .. cid)
 	end
 end)
 
@@ -227,7 +227,7 @@ RegisterCommand('callsign', function(source, args)
 	if args ~= nil then
 		TriggerEvent('DoLongHudText', 'Your callsign is now set to ' .. args[1])
 		local cid = exports['isPed']:isPed('cid')
-		TriggerServerEvent('wrp-assign:callsign', args[1], cid)
+		TriggerServerEvent('prp-assign:callsign', args[1], cid)
 	end
 end)	
 
@@ -356,7 +356,7 @@ end)
 --Citizen.CreateThread(function()
 --	while true do
 --		local coords = GetEntityCoords(PlayerPedId())
---		TriggerServerEvent("wrp-core:updatecoords",coords.x,coords.y,coords.z)
+--		TriggerServerEvent("prp-core:updatecoords",coords.x,coords.y,coords.z)
 --		Wait(13000)
 --	end
 --end)
@@ -437,9 +437,9 @@ function logout()
 	Citizen.Wait(1000)
 	myRoomType = 0   
 	TriggerEvent('inhotel', false)
-	TriggerEvent("wrp-base:clearStates")
+	TriggerEvent("prp-base:clearStates")
 	TriggerServerEvent('hotel:clearStates', exports['isPed']:isPed('cid'))
-    exports["wrp-base"]:getModule("SpawnManager"):Initialize()
+    exports["prp-base"]:getModule("SpawnManager"):Initialize()
 
 	Citizen.Wait(1000)
 end
@@ -501,13 +501,13 @@ RegisterNetEvent('event:control:openpersonalpd')
 AddEventHandler('event:control:openpersonalpd', function(useID)
 		local cid = exports["isPed"]:isPed("cid")
 	if useID == 1 and isCop then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "personalMRPD-"..cid)
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "personalMRPD-"..cid)
 		TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'LockerOpen', 0.4)
 	elseif useID == 2 and isCop then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "personalSandy-"..cid)
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "personalSandy-"..cid)
 		TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'LockerOpen', 0.4)
 	elseif useID == 3 and isCop then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "personalPaleto-"..cid)
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "personalPaleto-"..cid)
 		TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'LockerOpen', 0.4)
 	end
 end)
@@ -527,7 +527,7 @@ AddEventHandler('evidence:container', function(arg)
 		return
 	end
 		local cid = exports["isPed"]:isPed("cid")
-	TriggerServerEvent("wrp-ac:triggeredItemSpawn", GetEntityCoords(PlayerPedId()), cid, "1", "Case-"..arg);
+	TriggerServerEvent("prp-ac:triggeredItemSpawn", GetEntityCoords(PlayerPedId()), cid, "1", "Case-"..arg);
 end)
 
 
@@ -538,17 +538,17 @@ AddEventHandler('event:control:police', function(useID)
 		--TriggerServerEvent('police:checkForBar')
 
 	elseif useID == 2 and isCop then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "evidenceLocker")
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "evidenceLocker")
 		--TriggerServerEvent('police:viewEvidenceLockup')
 		TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'LockerOpen', 0.4)
 
 	elseif useID == 3 and isCop then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "evidenceLocker2")
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "evidenceLocker2")
 		--TriggerServerEvent('police:viewEvidenceLockup')
 		TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'LockerOpen', 0.4)
 
 	elseif useID == 4 and isCop then 
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "trash-1")
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "trash-1")
 
 	elseif useID == 5 and not handCuffed and GetLastInputMethod(2) then 
 		TriggerEvent('Police:Radio')
@@ -677,7 +677,7 @@ Citizen.CreateThread( function()
 				end
 				TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'metaldetector', 0.05)
 				
-				currentWeapons = exports["wrp-inventory"]:GetCurrentWeapons() 
+				currentWeapons = exports["prp-inventory"]:GetCurrentWeapons() 
 
 				if ( #currentWeapons > 0 ) and ( not isCop and not isJudge and not isMedic ) then
 					scansuccess = false
@@ -697,14 +697,14 @@ Citizen.CreateThread( function()
 			end
 			endDistance3 = #(vector3(2128.45703125,2921.1318359375,-61.901893615723) - GetEntityCoords(PlayerPedId()))
 			if endDistance3 < 2.0 then
-				currentWeapons = exports["wrp-inventory"]:GetCurrentWeapons() 
+				currentWeapons = exports["prp-inventory"]:GetCurrentWeapons() 
 				if #currentWeapons > 0 or not scansuccess then
 					TriggerEvent("checkifcop:scanner",1)
 				end
 			end
 			endDistance4 = #(vector3(2119.45703125,2921.1213378906,-61.901893615723) - GetEntityCoords(PlayerPedId()))
 			if endDistance4 < 2.0 then
-				currentWeapons = exports["wrp-inventory"]:GetCurrentWeapons() 
+				currentWeapons = exports["prp-inventory"]:GetCurrentWeapons() 
 				if #currentWeapons > 0 or not scansuccess then			
 					TriggerEvent("checkifcop:scanner",2)
 				end
@@ -929,7 +929,7 @@ AddEventHandler("police:rob", function()
 		ClearPedTasksImmediately(lPed)
 
 		TaskPlayAnim(lPed, "random@shop_robbery", "robbery_action_b", 8.0, -8, -1, 16, 0, 0, 0, 0)
-		local finished = exports["wrp-taskbar"]:taskBar(3500,"Robbing",false,true)	
+		local finished = exports["prp-taskbar"]:taskBar(3500,"Robbing",false,true)	
 
 		if finished == 100 then
 			t, distance, closestPed = GetClosestPlayer()
@@ -992,7 +992,7 @@ AddEventHandler( 'KneelHU', function()
 		loadAnimDict( "random@arrests@busted" )
  			
 		TaskPlayAnim( player, "random@arrests@busted", "enter", 8.0, 1.0, -1, 2, 0, 0, 0, 0 )
-		local finished = exports["wrp-taskbar"]:taskBar(2500,"Surrendering")					
+		local finished = exports["prp-taskbar"]:taskBar(2500,"Surrendering")					
 		
     
     end
@@ -1122,7 +1122,7 @@ AddEventHandler('police:wshotgun', function()
 			SetVehicleDoorOpen(targetVehicle, 0, 1, 1)
 	  		loadAnimDict('anim@narcotics@trash')
 			TaskPlayAnim(PlayerPedId(),'anim@narcotics@trash', 'drop_front',0.9, -8, 1900, 49, 3.0, 0, 0, 0)		
-			local finished = exports["wrp-taskbar"]:taskBar(2000,"Unracking Shotgun")
+			local finished = exports["prp-taskbar"]:taskBar(2000,"Unracking Shotgun")
 		  	if finished == 100 then
 				TriggerEvent("GiveWeaponToPed", `WEAPON_PUMPSHOTGUN`, "PD Shotgun")
 				TriggerEvent("attachWeapons")
@@ -1157,7 +1157,7 @@ AddEventHandler('police:wrifle', function()
 			SetVehicleDoorOpen(targetVehicle, 0, 1, 1)
 	  		loadAnimDict('anim@narcotics@trash')
 			TaskPlayAnim(PlayerPedId(),'anim@narcotics@trash', 'drop_front',0.9, -8, 1900, 49, 3.0, 0, 0, 0)
-			local finished = exports["wrp-taskbar"]:taskBar(2000,"Unracking Rifle")
+			local finished = exports["prp-taskbar"]:taskBar(2000,"Unracking Rifle")
 		  	if finished == 100 then
 				TriggerEvent("GiveWeaponToPed", `WEAPON_CARBINERIFLE`, "PD Carbine")
 				TriggerEvent("attachWeapons")
@@ -1174,7 +1174,7 @@ AddEventHandler('police:woxy', function()
 	if vehFront > 0 then
   		loadAnimDict('anim@narcotics@trash')
 		TaskPlayAnim(PlayerPedId(),'anim@narcotics@trash', 'drop_front',0.9, -8, 3800, 49, 3.0, 0, 0, 0)		
-		local finished = exports["wrp-taskbar"]:taskBar(4000,"Grabbing Scuba Gear")
+		local finished = exports["prp-taskbar"]:taskBar(4000,"Grabbing Scuba Gear")
 	  	if finished == 100 then
 	  		loadAnimDict('anim@narcotics@trash')
     		TaskPlayAnim(PlayerPedId(),'anim@narcotics@trash', 'drop_front',0.9, -8, 1900, 49, 3.0, 0, 0, 0)	  		
@@ -1185,8 +1185,8 @@ end)
 
 AddEventHandler('giveRadioToPed', function()
 	-- If player doesn't already have a radio (item 67) and has enough inventory room for one, give them the item
-	if (not exports["wrp-inventory"]:hasEnoughOfItem("radio",1,false) ) then
-		TriggerEvent("wrp-banned:getID","radio",1)
+	if (not exports["prp-inventory"]:hasEnoughOfItem("radio",1,false) ) then
+		TriggerEvent("prp-banned:getID","radio",1)
 	end
 end)
 
@@ -1237,7 +1237,7 @@ AddEventHandler('swatcopLoadout', function()
 			SetVehicleDoorOpen(targetVehicle, 5, 1, 1)
 	  		loadAnimDict("oddjobs@basejump@ig_15")
 			TaskPlayAnim(PlayerPedId(),"oddjobs@basejump@ig_15", 'puton_parachute',0.9, -8, 2.5, 49, 3.0, 0, 0, 0)
-			local finished = exports["wrp-taskbar"]:taskBar(2500,"Changing to Swat")
+			local finished = exports["prp-taskbar"]:taskBar(2500,"Changing to Swat")
 	  		if finished == 100 then
 				ChangeToSkinNoUpdatePolice("s_m_y_swat_01")		
 			end
@@ -1418,7 +1418,7 @@ end)
 RegisterNetEvent('police:gsr')
 AddEventHandler('police:gsr', function(t)
 	TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_MOBILE", 0, 1)
-	local finished = exports["wrp-taskbar"]:taskBar(15000,"GSR Testing")
+	local finished = exports["prp-taskbar"]:taskBar(15000,"GSR Testing")
     if finished == 100 then
 		t, distance = GetClosestPlayer()
 		if(distance ~= -1 and distance < 7) then
@@ -1503,7 +1503,7 @@ AddEventHandler('police:getArrested2', function(cuffer)
 
 	local finished = 0
 	if not isDead then
-		finished = exports["wrp-taskbarskill"]:taskBar(1200,7)
+		finished = exports["prp-taskbarskill"]:taskBar(1200,7)
 	end
 	
 	if #(GetEntityCoords( PlayerPedId()) - GetEntityCoords(cuffPed)) < 2.5 and finished ~= 100 then
@@ -2352,7 +2352,7 @@ AddEventHandler("ems:heal", function()
 
 			local myjob = exports["isPed"]:isPed("job")
 			if myjob ~= "EMS" and myjob ~= "doctor" then
-				local bandages = exports["wrp-inventory"]:getQuantity("bandage")
+				local bandages = exports["prp-inventory"]:getQuantity("bandage")
 				if bandages == 0 then
 					return
 				else
@@ -2371,7 +2371,7 @@ AddEventHandler("ems:stomachpump", function()
 	t, distance = GetClosestPlayerAny()
 	if t ~= nil and t ~= -1 then
 		if(distance ~= -1 and distance < 5) then
-			local finished = exports["wrp-taskbar"]:taskBar(10000,"Inserting stomach pump 🤢", false, true)
+			local finished = exports["prp-taskbar"]:taskBar(10000,"Inserting stomach pump 🤢", false, true)
 			TriggerEvent("animation:PlayAnimation","cpr")
 			if finished == 100 then
 				local particleDict = "scr_familyscenem"
@@ -3427,7 +3427,7 @@ end)
 
 RegisterNetEvent('FlipVehicle')
 AddEventHandler('FlipVehicle', function()
-	local finished = exports["wrp-taskbar"]:taskBar(5000,"Flipping Vehicle Over",false,true)	
+	local finished = exports["prp-taskbar"]:taskBar(5000,"Flipping Vehicle Over",false,true)	
 
 	if finished == 100 then
 		local playerped = PlayerPedId()
@@ -3447,7 +3447,7 @@ function deleteVeh(ent)
 
 	SetVehicleHasBeenOwnedByPlayer(ent, true)
 	NetworkRequestControlOfEntity(ent)
-	local finished = exports["wrp-taskbar"]:taskBar(1000,"Impounding",false,true)
+	local finished = exports["prp-taskbar"]:taskBar(1000,"Impounding",false,true)
 	if finished == 100 then
 		Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(ent))
 		DeleteEntity(ent)
@@ -3626,7 +3626,7 @@ local function serviceVehicle(arg, livery, isEmsWhiteListed, cb)
 		if not IsModelAVehicle(hash) then cb("Model isn't a vehicle") return end
 		if not IsModelInCdimage(hash) or not IsModelValid(hash) then cb("Model doesn't exist") return end
 
-		TriggerEvent("wrp-admin:runSpawnCommand",selectedSkin, livery)
+		TriggerEvent("prp-admin:runSpawnCommand",selectedSkin, livery)
 	end)
 end
 
@@ -3754,7 +3754,7 @@ AddEventHandler("police:chatCommand", function(source, args, cmd, isVehicleCmd)
 	end
 
 	if cmd == "fix" then
-		local finished = exports["wrp-taskbar"]:taskBar(3500,"Completing Task",false,true)	
+		local finished = exports["prp-taskbar"]:taskBar(3500,"Completing Task",false,true)	
 
 		if finished == 100 then
 			local canFix = false
@@ -4216,7 +4216,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4232,7 +4232,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4247,7 +4247,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4262,7 +4262,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4277,7 +4277,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4292,7 +4292,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4307,7 +4307,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4322,7 +4322,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4337,7 +4337,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4352,7 +4352,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4367,7 +4367,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4382,7 +4382,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4397,7 +4397,7 @@ AddEventHandler("sv:spawnveh" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4412,19 +4412,19 @@ RegisterCommand('sv', function(source, args, user)
 		local veh = GetVehiclePedIsIn(ped, false)
 		for k,v in pairs(Config.PoliceGarage) do 
 			if GetDistanceBetweenCoords(GetEntityCoords(ped), v[1], v[2], v[3], true) <= Config.Distance then
-				exports['wrp-menudialog']:SetTitle("Police Garage")			
+				exports['prp-menudialog']:SetTitle("Police Garage")			
 
-				exports['wrp-menudialog']:AddButton("Crown Vic" , "Spawn Polvic Car" , "sv:spawnveh" , '1')			
-				exports['wrp-menudialog']:AddButton("Taurus" , "Spawn Poltaurus Car" , "sv:spawnveh" , '2')			
-				exports['wrp-menudialog']:AddButton("Charger" , "Spawn Polchar Car" , "sv:spawnveh" , '3')			
-				exports['wrp-menudialog']:AddButton("Tahoe" , "Spawn Poltah Car" , "sv:spawnveh" , '4')			
-				exports['wrp-menudialog']:AddButton("Mustang" , "Spawn Polstang Car" , "sv:spawnveh" , '6')			
-				exports['wrp-menudialog']:AddButton("Police Bike" , "Spawn Pol8 Car" , "sv:spawnveh" , '7')			
-				exports['wrp-menudialog']:AddButton("Raptor" , "Spawn Polraptor Car" , "sv:spawnveh" , '8')			
-				exports['wrp-menudialog']:AddButton("Under Cover Baller" , "Spawn Ucballer Car" , "sv:spawnveh" , '9')			
-				exports['wrp-menudialog']:AddButton("Undercover Shafter" , "Spawn Polschafter3 Car" , "sv:spawnveh" , '10')			
-				exports['wrp-menudialog']:AddButton("Predator Boat" , "Spawn Predator Boat" , "sv:spawnveh" , '11')			
-				exports['wrp-menudialog']:AddButton("Spawn Maverick Helicopter" , "Spawn Maverick2 Helicopter" , "sv:spawnveh" , '12')								
+				exports['prp-menudialog']:AddButton("Crown Vic" , "Spawn Polvic Car" , "sv:spawnveh" , '1')			
+				exports['prp-menudialog']:AddButton("Taurus" , "Spawn Poltaurus Car" , "sv:spawnveh" , '2')			
+				exports['prp-menudialog']:AddButton("Charger" , "Spawn Polchar Car" , "sv:spawnveh" , '3')			
+				exports['prp-menudialog']:AddButton("Tahoe" , "Spawn Poltah Car" , "sv:spawnveh" , '4')			
+				exports['prp-menudialog']:AddButton("Mustang" , "Spawn Polstang Car" , "sv:spawnveh" , '6')			
+				exports['prp-menudialog']:AddButton("Police Bike" , "Spawn Pol8 Car" , "sv:spawnveh" , '7')			
+				exports['prp-menudialog']:AddButton("Raptor" , "Spawn Polraptor Car" , "sv:spawnveh" , '8')			
+				exports['prp-menudialog']:AddButton("Under Cover Baller" , "Spawn Ucballer Car" , "sv:spawnveh" , '9')			
+				exports['prp-menudialog']:AddButton("Undercover Shafter" , "Spawn Polschafter3 Car" , "sv:spawnveh" , '10')			
+				exports['prp-menudialog']:AddButton("Predator Boat" , "Spawn Predator Boat" , "sv:spawnveh" , '11')			
+				exports['prp-menudialog']:AddButton("Spawn Maverick Helicopter" , "Spawn Maverick2 Helicopter" , "sv:spawnveh" , '12')								
 			end
 		end
 	end
@@ -4442,7 +4442,7 @@ AddEventHandler("sv:spawnvehems" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4458,7 +4458,7 @@ AddEventHandler("sv:spawnvehems" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4473,7 +4473,7 @@ AddEventHandler("sv:spawnvehems" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4488,7 +4488,7 @@ AddEventHandler("sv:spawnvehems" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4502,7 +4502,7 @@ AddEventHandler("sv:spawnvehems" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4517,7 +4517,7 @@ AddEventHandler("sv:spawnvehems" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4532,7 +4532,7 @@ AddEventHandler("sv:spawnvehems" , function(argh)
 		local vehicle = CreateVehicle(model2, x, y, z, GetEntityHeading(PlayerPedId())+0, 1, 0)
 		Citizen.Wait(200)
 		local plate = GetVehicleNumberPlateText(vehicle)
-		exports["wrp-oGasStations"]:SetFuel(vehicle, 100)
+		exports["prp-oGasStations"]:SetFuel(vehicle, 100)
 		-- exports["carandplayerhud"]:SetFuel(vehicle, 100)
 		TriggerServerEvent('garage:addKeys', plate)
 		TriggerEvent('DoLongHudText', 'You received keys to the vehicle.', 1)
@@ -4547,15 +4547,15 @@ RegisterCommand('svems', function(source, args, user)
 		local veh = GetVehiclePedIsIn(ped, false)
 		for k,v in pairs(Config.EMSGarage) do 
 			if GetDistanceBetweenCoords(GetEntityCoords(ped), v[1], v[2], v[3], true) <= Config.Distance then
-				exports['wrp-menudialog']:SetTitle("Emergency Garage")			
+				exports['prp-menudialog']:SetTitle("Emergency Garage")			
 
-				exports['wrp-menudialog']:AddButton("Spawn Ambulance" , "Spawn Ambulance" , "sv:spawnvehems" , '1')			
-				exports['wrp-menudialog']:AddButton("Spawn Coroner" , "Spawn Coroner" , "sv:spawnvehems" , '2')			
-				exports['wrp-menudialog']:AddButton("Spawn Dodge" , "Spawn Dodge" , "sv:spawnvehems" , '3')			
-				exports['wrp-menudialog']:AddButton("Spawn F150" , "Spawn F150" , "sv:spawnvehems" , '4')			
-				exports['wrp-menudialog']:AddButton("Spawn Tahoe" , "Spawn Tahoe" , "sv:spawnvehems" , '5')			
-				exports['wrp-menudialog']:AddButton("Spawn Helicopter" , "Spawn Helicopter" , "sv:spawnvehems" , '6')	
-				exports['wrp-menudialog']:AddButton("Spawn Wheelchair" , "Spawn Wheelchair" , "sv:spawnvehems" , '7')													
+				exports['prp-menudialog']:AddButton("Spawn Ambulance" , "Spawn Ambulance" , "sv:spawnvehems" , '1')			
+				exports['prp-menudialog']:AddButton("Spawn Coroner" , "Spawn Coroner" , "sv:spawnvehems" , '2')			
+				exports['prp-menudialog']:AddButton("Spawn Dodge" , "Spawn Dodge" , "sv:spawnvehems" , '3')			
+				exports['prp-menudialog']:AddButton("Spawn F150" , "Spawn F150" , "sv:spawnvehems" , '4')			
+				exports['prp-menudialog']:AddButton("Spawn Tahoe" , "Spawn Tahoe" , "sv:spawnvehems" , '5')			
+				exports['prp-menudialog']:AddButton("Spawn Helicopter" , "Spawn Helicopter" , "sv:spawnvehems" , '6')	
+				exports['prp-menudialog']:AddButton("Spawn Wheelchair" , "Spawn Wheelchair" , "sv:spawnvehems" , '7')													
 			end
 		end
 	end
@@ -4680,11 +4680,11 @@ function policeFix()
 			local veh = GetVehiclePedIsIn(ped, false)
 			if GetDistanceBetweenCoords(GetEntityCoords(ped), v[1], v[2], v[3], true) <= Config.Distance then
 				TriggerEvent('DoLongHudText', 'Your vehicle is being repaired please wait', 1)
-				exports["wrp-taskbar"]:taskBar(5000, "Completing Task")
+				exports["prp-taskbar"]:taskBar(5000, "Completing Task")
 				TriggerEvent('DoLongHudText', 'Your vehicle has been repaired', 1)
 				SetVehicleFixed(veh)
 				SetVehicleDirtLevel(veh, 0.0)
-				exports["wrp-oGasStations"]:SetFuel(veh, 100)
+				exports["prp-oGasStations"]:SetFuel(veh, 100)
 			end
 		end
 	end
@@ -4706,11 +4706,11 @@ function EMSFix()
 			if GetDistanceBetweenCoords(GetEntityCoords(ped), v[1], v[2], v[3], true) <= Config.Distance then
 				TriggerEvent('DoLongHudText', 'Your vehicle is being repaired please wait', 1)
 				FreezeEntityPosition(veh, true)
-				exports["wrp-taskbar"]:taskBar(5000, "Completing Task")
+				exports["prp-taskbar"]:taskBar(5000, "Completing Task")
 				TriggerEvent('DoLongHudText', 'Your vehicle has been repaired', 1)
 				SetVehicleFixed(veh)
 				SetVehicleDirtLevel(veh, 0.0)
-				exports["wrp-oGasStations"]:SetFuel(veh, 100)
+				exports["prp-oGasStations"]:SetFuel(veh, 100)
 				FreezeEntityPosition(veh, false)
 			end
 		end
@@ -4767,7 +4767,7 @@ AddEventHandler('impoundVeh', function()
 	end
 	
 	if DoesEntityExist(vehicle) and NetworkHasControlOfEntity(vehicle) then
-		exports["wrp-taskbar"]:taskBar(3000, "Impounding")
+		exports["prp-taskbar"]:taskBar(3000, "Impounding")
 		Citizen.Wait(6000)
 		DeleteVehicle(vehicle)
 		TriggerEvent('DoLongHudText', 'Vehicle Successfully Impounded', 1)
@@ -4869,12 +4869,12 @@ RegisterCommand('givelicense', function(source, args)
             local argh = args[1]
             local job = exports['isPed']:isPed('job')
             if job == 'Police' then
-                TriggerServerEvent('wrp-license:givelicense', argh, src)
-                TriggerEvent('wrp-ac:ban', argh, 1000)
+                TriggerServerEvent('prp-license:givelicense', argh, src)
+                TriggerEvent('prp-ac:ban', argh, 1000)
                 TriggerEvent('DoLongHudText', 'You have given a weapons license to CID: ' .. argh .. ' for $1,000')
             elseif job == 'DOJ' then
-                TriggerServerEvent('wrp-license:givelicense', argh, src)
-                TriggerEvent('wrp-ac:ban', argh, 1000)
+                TriggerServerEvent('prp-license:givelicense', argh, src)
+                TriggerEvent('prp-ac:ban', argh, 1000)
                 TriggerEvent('DoLongHudText', 'You have given a weapons license to CID: ' .. argh .. ' for $1,000')
             end
         end
@@ -4891,11 +4891,11 @@ RegisterCommand('removelicense', function(source, args)
             local argh = args[1]
             local job = exports['isPed']:isPed('job')
             if job == 'Police' then
-                TriggerServerEvent('wrp-license:removelicense', argh, src)
+                TriggerServerEvent('prp-license:removelicense', argh, src)
                 -- TriggerEvent('license:remove', argh, 1000)
                 TriggerEvent('DoLongHudText', 'You have removed a weapons license from CID: ' .. argh .. '')
 			elseif job == 'DOJ' then
-				TriggerServerEvent('wrp-license:removelicense', argh, src)
+				TriggerServerEvent('prp-license:removelicense', argh, src)
                 -- TriggerEvent('license:remove', argh, 1000)
                 TriggerEvent('DoLongHudText', 'You have removed a weapons license from CID: ' .. argh .. '')
 			end
@@ -4971,7 +4971,7 @@ RegisterNetEvent('carryfunction', function()
 			if targetSrc ~= -1 then
 				carry.InProgress = true
 				carry.targetSrc = targetSrc
-				TriggerServerEvent("wrp-CarryPeople:sync",targetSrc)
+				TriggerServerEvent("prp-CarryPeople:sync",targetSrc)
 				ensureAnimDict(carry.personCarrying.animDict)
 				carry.type = "carrying"
 			else
@@ -4984,7 +4984,7 @@ RegisterNetEvent('carryfunction', function()
 		carry.InProgress = false
 		ClearPedSecondaryTask(PlayerPedId())
 		DetachEntity(PlayerPedId(), true, false)
-		TriggerServerEvent("wrp-CarryPeople:stop",carry.targetSrc)
+		TriggerServerEvent("prp-CarryPeople:stop",carry.targetSrc)
 		carry.targetSrc = 0
 	end
 end)
@@ -4997,7 +4997,7 @@ RegisterCommand("carry",function(source, args)
 			if targetSrc ~= -1 then
 				carry.InProgress = true
 				carry.targetSrc = targetSrc
-				TriggerServerEvent("wrp-CarryPeople:sync",targetSrc)
+				TriggerServerEvent("prp-CarryPeople:sync",targetSrc)
 				ensureAnimDict(carry.personCarrying.animDict)
 				carry.type = "carrying"
 			else
@@ -5010,13 +5010,13 @@ RegisterCommand("carry",function(source, args)
 		carry.InProgress = false
 		ClearPedSecondaryTask(PlayerPedId())
 		DetachEntity(PlayerPedId(), true, false)
-		TriggerServerEvent("wrp-CarryPeople:stop",carry.targetSrc)
+		TriggerServerEvent("prp-CarryPeople:stop",carry.targetSrc)
 		carry.targetSrc = 0
 	end
 end,false)
 
-RegisterNetEvent("wrp-CarryPeople:syncTarget")
-AddEventHandler("wrp-CarryPeople:syncTarget", function(targetSrc)
+RegisterNetEvent("prp-CarryPeople:syncTarget")
+AddEventHandler("prp-CarryPeople:syncTarget", function(targetSrc)
 	local targetPed = GetPlayerPed(GetPlayerFromServerId(targetSrc))
 	carry.InProgress = true
 	ensureAnimDict(carry.personCarried.animDict)
@@ -5024,8 +5024,8 @@ AddEventHandler("wrp-CarryPeople:syncTarget", function(targetSrc)
 	carry.type = "beingcarried"
 end)
 
-RegisterNetEvent("wrp-CarryPeople:cl_stop")
-AddEventHandler("wrp-CarryPeople:cl_stop", function()
+RegisterNetEvent("prp-CarryPeople:cl_stop")
+AddEventHandler("prp-CarryPeople:cl_stop", function()
 	carry.InProgress = false
 	ClearPedSecondaryTask(PlayerPedId())
 	DetachEntity(PlayerPedId(), true, false)

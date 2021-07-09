@@ -863,7 +863,7 @@ function Save(save)
     TriggerEvent("ressurection:relationships:norevive")
     TriggerEvent("gangs:setDefaultRelations")
     TriggerEvent("facewear:update")
-    TriggerEvent('wrp-weapons:getAmmo')
+    TriggerEvent('prp-weapons:getAmmo')
     CustomCamera('torso')
     TriggerEvent("e-blips:updateAfterPedChange",exports["isPed"]:isPed("job"))
 end
@@ -982,7 +982,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
-AddEventHandler("wrp-base:initialSpawnModelLoaded", function()
+AddEventHandler("prp-base:initialSpawnModelLoaded", function()
     TriggerServerEvent("clothing:checkIfNew")
     TriggerEvent("reviveFunction")
 end)
@@ -1012,7 +1012,7 @@ AddEventHandler("raid_clothes:setclothes", function(data,alreadyExist)
     local function setDefault()
         Citizen.CreateThread(function()
             firstChar = true
-            local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+            local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
             local gender = LocalPlayer:getCurrentCharacter().gender
             Citizen.Wait(5000)
             if gender ~= 0 then
@@ -1028,11 +1028,11 @@ AddEventHandler("raid_clothes:setclothes", function(data,alreadyExist)
             DoScreenFadeIn(50)
             TriggerServerEvent("server-request-update",exports["isPed"]:isPed("cid"))
             Wait(5000)
-            if not exports["wrp-inventory"]:hasEnoughOfItem("idcard",1,false) then
-                TriggerEvent("wrp-banned:getID","idcard",1,true)
+            if not exports["prp-inventory"]:hasEnoughOfItem("idcard",1,false) then
+                TriggerEvent("prp-banned:getID","idcard",1,true)
             end
-            if not exports["wrp-inventory"]:hasEnoughOfItem("mobilephone",1,false)then
-                TriggerEvent("wrp-banned:getID","mobilephone",1)
+            if not exports["prp-inventory"]:hasEnoughOfItem("mobilephone",1,false)then
+                TriggerEvent("prp-banned:getID","mobilephone",1)
             end
             TriggerEvent("tokovoip:onPlayerLoggedIn", true)
             TriggerEvent('reviveFunction')
@@ -1085,7 +1085,7 @@ end)
 
 RegisterNetEvent("raid_clothes:defaultReset")
 AddEventHandler("raid_clothes:defaultReset", function()
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local gender = LocalPlayer:getCurrentCharacter().gender
     Citizen.Wait(1000)
     if gender ~= 0 then
@@ -1152,7 +1152,7 @@ end
 
 RegisterNetEvent('raid_clothes:outfits')
 AddEventHandler('raid_clothes:outfits', function(pAction, pId, pName)
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     if pAction == 1 then
         TriggerServerEvent("raid_clothes:set_outfit",pId, pName, GetCurrentPed(), Player.id)

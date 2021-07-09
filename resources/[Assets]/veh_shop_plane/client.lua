@@ -101,12 +101,12 @@ function disableControls()
     DisableControlAction(1, 75, true) --Key: F (veh_exit)
 end
 
-RegisterNetEvent('wrp-hawntedplaneshit-TAKEMONEY')
-AddEventHandler('wrp-hawntedplaneshit-TAKEMONEY',function()
+RegisterNetEvent('prp-hawntedplaneshit-TAKEMONEY')
+AddEventHandler('prp-hawntedplaneshit-TAKEMONEY',function()
     local player = PlayerPedId()
     local veh = GetVehiclePedIsIn(player, false)
     local health = GetVehicleBodyHealth(veh)
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:removeCash(Player.id, repairCost(veh, health))
     isPurchaseSuccessful = true
@@ -127,7 +127,7 @@ Citizen.CreateThread(function()
                 DrawText3D(repairDist[2].x, repairDist[2].y, repairDist[2].z, "[E] Repair Vehicle $"..repairCost(veh, health))
                 DrawMarker(27, repairDist[2].x, repairDist[2].y, repairDist[2].z - 1.0, 0, 0, 0, 0, 0, 0, 1.001, 1.0001, 1.0001, 0, 55, 240, 20, 0, 0, 0, 0)
                 if IsControlJustPressed(1, 38) then
-                    TriggerEvent("wrp-hawntedplaneshit-TAKEMONEY")
+                    TriggerEvent("prp-hawntedplaneshit-TAKEMONEY")
                     attemptingPurchase = true
                     while attemptingPurchase do
                         Citizen.Wait(1)
@@ -142,12 +142,12 @@ Citizen.CreateThread(function()
                                 disableControls()
                             end
                         end)
-                        local finished = exports["wrp-taskbarskill"]:taskBar(4000,math.random(5,9))
+                        local finished = exports["prp-taskbarskill"]:taskBar(4000,math.random(5,9))
                         if finished ~= 100 then
                             running = false
                         end
                         if finished == 100 then
-                            local finished2 = exports["wrp-taskbarskill"]:taskBar(2000,math.random(4,8))
+                            local finished2 = exports["prp-taskbarskill"]:taskBar(2000,math.random(4,8))
                             if finished2 ~= 100 then
                                 running = false
                             end
@@ -209,8 +209,8 @@ function setScenarioState(pToggle)
     end
 end
 
-RegisterNetEvent('wrp-hawntedplaneshit:tookmoney')
-AddEventHandler('wrp-hawntedplaneshit:tookmoney', function(taken)
+RegisterNetEvent('prp-hawntedplaneshit:tookmoney')
+AddEventHandler('prp-hawntedplaneshit:tookmoney', function(taken)
     isPurchaseSuccessful = taken
     attemptingPurchase = false
 end)

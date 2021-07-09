@@ -133,7 +133,7 @@ RegisterCommand('+radiotalk', function()
 	elseif IsPlayerDead(PlayerId()) then
 		return false
 	end
-	if not exports["wrp-deathmanager"]:GetDeath() then
+	if not exports["prp-deathmanager"]:GetDeath() then
 	if not voiceData.radioPressed and voiceData.radioEnabled then
 		if voiceData.radio > 0 then
 			StartRadioTask()

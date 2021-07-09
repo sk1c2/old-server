@@ -372,7 +372,7 @@ Citizen.CreateThread(function()
 						            end
 
 
-									local util = exports["wrp-base"]:getModule("Util")
+									local util = exports["prp-base"]:getModule("Util")
 	    
 									TriggerServerEvent("server:givepayJob", 200)
 

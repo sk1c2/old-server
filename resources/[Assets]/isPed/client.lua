@@ -71,8 +71,8 @@ function isPed(checkType)
 end
 
 function GroupRank(job)
-  local ranks = exports['wrp-base']:GetRanks()
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local ranks = exports['prp-base']:GetRanks()
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   for k, v in pairs(ranks) do
     if v.name == job then
@@ -272,5 +272,5 @@ AddEventHandler("job:policecount", function(activePolice)
 end)
 
 AddEventHandler('onClientGameTypeStart', function()
-  TriggerServerEvent('wrp-police:obtain-count')
+  TriggerServerEvent('prp-police:obtain-count')
 end)

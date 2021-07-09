@@ -421,7 +421,7 @@ AddEventHandler("AskForTrainConfirmed", function()
 
 	if metroDist < countryDist then
 		if metroDist < 25.0 then 
-			local finished = exports["wrp-taskbar"]:taskBar(60000,"Waiting for Train",false,true)	
+			local finished = exports["prp-taskbar"]:taskBar(60000,"Waiting for Train",false,true)	
 			if finished == 100 then
 				StartMetro(closestMetro)
 				TriggerEvent('chatMessage', 'THOMAS:', { 0, 0, 0 }, ' Choo Choo..')
@@ -431,7 +431,7 @@ AddEventHandler("AskForTrainConfirmed", function()
 		end
 	else
 		if countryDist < 25.0 then 
-			local finished = exports["wrp-taskbar"]:taskBar(60000,"Waiting for Train",false,true)	
+			local finished = exports["prp-taskbar"]:taskBar(60000,"Waiting for Train",false,true)	
 			if finished == 100 then			
 				StartCountry(closestCountry)
 				TriggerEvent('chatMessage', 'THOMAS:', { 0, 0, 0 }, ' Choo Choo..')

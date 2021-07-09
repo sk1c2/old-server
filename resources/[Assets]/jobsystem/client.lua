@@ -42,7 +42,7 @@ function menuJobs()
 end
 
 function changeJob(id)
-  LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+  LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
   Player = LocalPlayer:getCurrentCharacter()
   LocalPlayer:setJob(Player.id, id)
 end
@@ -151,7 +151,7 @@ end)
 
 RegisterNetEvent('jobssystem:current')
 AddEventHandler('jobssystem:current', function(cb)
-  LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   cb(LocalPlayer:getVar("job"))
 end)
 

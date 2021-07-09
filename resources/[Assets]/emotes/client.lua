@@ -2094,11 +2094,11 @@ anims = {
             ClearPedTasks(ped)
         else
             TriggerEvent("destroyPropPerm")
-            if exports["wrp-inventory"]:hasEnoughOfItem("umbrella", 1) then
+            if exports["prp-inventory"]:hasEnoughOfItem("umbrella", 1) then
 
                 TriggerEvent("actionbar:setEmptyHanded")
 
-                local finished = exports["wrp-taskbar"]:taskBar(2500,"Opening Umbrella")
+                local finished = exports["prp-taskbar"]:taskBar(2500,"Opening Umbrella")
                 if finished == 100 then
 
                     loadAnimDict("amb@code_human_wander_drinking@male@base")
@@ -3509,7 +3509,7 @@ anims = {
     end,
 
     ["smoke"] = function(ped)
-        if exports["wrp-inventory"]:hasEnoughOfItem("ciggy", 1) then
+        if exports["prp-inventory"]:hasEnoughOfItem("ciggy", 1) then
             ClearPedTasks(PlayerPedId())
             TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_SMOKING", 0, true)
             TriggerEvent("inventory:removeItem","ciggy", 1)
@@ -3518,7 +3518,7 @@ anims = {
     end,
 
     ["smokemale"] = function(ped)
-        if exports["wrp-inventory"]:hasEnoughOfItem("ciggy", 1) then
+        if exports["prp-inventory"]:hasEnoughOfItem("ciggy", 1) then
             local animDict = "amb@world_human_smoking@male@male_a@base"
             local animation = "base"
             if IsPedArmed(ped, 7) then
@@ -3540,7 +3540,7 @@ anims = {
     end,
 
     ["smokefemale"] = function(ped)
-        if exports["wrp-inventory"]:hasEnoughOfItem("ciggy", 1) then
+        if exports["prp-inventory"]:hasEnoughOfItem("ciggy", 1) then
             local animDict = "amb@world_human_smoking@female@idle_a"
             local animation = "idle_b"
             if IsPedArmed(ped, 7) then
@@ -3562,7 +3562,7 @@ anims = {
     end,
 
     ["cigarette"] = function(ped)
-        if exports["wrp-inventory"]:hasEnoughOfItem("ciggy", 1) then
+        if exports["prp-inventory"]:hasEnoughOfItem("ciggy", 1) then
             local animDict = "amb@world_human_smoking@male@male_a@enter"
             local animation = "enter"
             if IsPedArmed(ped, 7) then
@@ -3584,7 +3584,7 @@ anims = {
     end,
 
     ["cigar"] = function(ped)
-        if exports["wrp-inventory"]:hasEnoughOfItem("cigar", 1) then
+        if exports["prp-inventory"]:hasEnoughOfItem("cigar", 1) then
             local animDict = "amb@world_human_smoking@male@male_a@enter"
             local animation = "enter"
             if IsPedArmed(ped, 7) then
@@ -3606,7 +3606,7 @@ anims = {
     end,
 
     ["cigar2"] = function(ped)
-        if exports["wrp-inventory"]:hasEnoughOfItem("cigar", 1) then
+        if exports["prp-inventory"]:hasEnoughOfItem("cigar", 1) then
             local animDict = "amb@world_human_smoking@male@male_a@enter"
             local animation = "enter"
             if IsPedArmed(ped, 7) then
@@ -3628,7 +3628,7 @@ anims = {
     end,
 
     ["cigar3"] = function(ped)
-        if exports["wrp-inventory"]:hasEnoughOfItem("cigar", 1) then
+        if exports["prp-inventory"]:hasEnoughOfItem("cigar", 1) then
             local animDict = "amb@world_human_smoking@male@male_a@enter"
             local animation = "enter"
             if IsPedArmed(ped, 7) then
@@ -7660,7 +7660,7 @@ function StressTest(animName)
             #(GetEntityCoords(PlayerPedId()) - vector3(1777.21, 2495.7, 45.83)) <
             10.0) then
         local finished =
-            exports["wrp-taskbar"]:taskBar(15000, "Relieving Stress")
+            exports["prp-taskbar"]:taskBar(15000, "Relieving Stress")
         if finished == 100 then
             TriggerEvent("client:newStress", false, math.random(100, 550))
             playing_emote = false

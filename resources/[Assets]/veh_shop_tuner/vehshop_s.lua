@@ -59,7 +59,7 @@ AddEventHandler('CheckMoneyForVeh69', function(name, model,price,financed, cid, 
             local financedPrice = math.ceil(price / 1.5)
             if result[1].cash >= financedPrice then
                 print(financedPrice)
-                TriggerClientEvent('wrp-base:getdata', src, financedPrice)
+                TriggerClientEvent('prp-base:getdata', src, financedPrice)
                 TriggerClientEvent('FinishMoneyCheckForVeh69', src, name, model, price, financed)
             else
                 TriggerClientEvent('DoLongHudText', src, 'You dont have enough money on you!', 2)
@@ -67,7 +67,7 @@ AddEventHandler('CheckMoneyForVeh69', function(name, model,price,financed, cid, 
             end
         else
             if result[1].cash >= price then
-                TriggerClientEvent('wrp-base:getdata', src, price)
+                TriggerClientEvent('prp-base:getdata', src, price)
                 TriggerClientEvent('FinishMoneyCheckForVeh69', src, name, model, price, financed)
             else
                 TriggerClientEvent('DoLongHudText', src, 'You dont have enough money on you!', 2)
@@ -100,7 +100,7 @@ AddEventHandler('BuyForVeh69', function(plate, name, model, vehicle, price, pers
             ['@finance'] = price - downPay,
             ['@financetimer'] = repayTime,
         })
-        TriggerEvent('wrp-business:givepass', 'tuner_carshop', math.ceil(downPay / 1.2))
+        TriggerEvent('prp-business:givepass', 'tuner_carshop', math.ceil(downPay / 1.2))
     else
         MySQL.Async.execute('INSERT INTO __vehicles (cid, plate, model, vehicle, name, fullname) VALUES (@cid, @plate, @model, @vehicle, @name, @fullname)',{
             ['@cid']   =  cid,
@@ -111,7 +111,7 @@ AddEventHandler('BuyForVeh69', function(plate, name, model, vehicle, price, pers
             ['@buy_price'] = price,
             ['@fullname'] = fullname,
         })
-        TriggerEvent('wrp-business:givepass', 'tuner_carshop', math.ceil(price))
+        TriggerEvent('prp-business:givepass', 'tuner_carshop', math.ceil(price))
     end
 end)
 
@@ -155,7 +155,7 @@ AddEventHandler('RS7x:phonePayment', function(plate, cid)
                 if result[1].finance ~= tonumber(0) then
                     if result[1].can_pay == "true" then
                         if money[1].bank >= amountdue then
-                            -- TriggerClientEvent("wrp-ac:removeban", src, amountdue)
+                            -- TriggerClientEvent("prp-ac:removeban", src, amountdue)
                             exports.ghmattimysql:execute("UPDATE __vehicles SET `payments` = @payments, `finance` = @finance, `financetimer` = @financetimer, `can_pay` = @can_pay WHERE `plate` = @plate", {
                                 ['@plate'] = pPlate,
                                 ['@payments'] = result[1].payments - 1,

@@ -23,7 +23,7 @@ AddEventHandler('asser:tow', function()
 						if vehicle ~= targetVehicle then
 							towingProcess = true
 							TriggerEvent("animation:tow")
-							exports["wrp-taskbar"]:taskBar(10000,"Attaching Vehicle to flatbed")
+							exports["prp-taskbar"]:taskBar(10000,"Attaching Vehicle to flatbed")
 							AttachEntityToEntity(targetVehicle, vehicle, 20, -0.5, -5.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
 							currentlyTowedVehicle = targetVehicle
 							TriggerEvent("DoLongHudText", "Vehicle successfully attached to towtruck!")
@@ -38,7 +38,7 @@ AddEventHandler('asser:tow', function()
 			else
 				towingProcess = true
 				TriggerEvent("animation:tow")
-				exports["wrp-taskbar"]:taskBar(10000,"Detaching Vehicle from flatbed")
+				exports["prp-taskbar"]:taskBar(10000,"Detaching Vehicle from flatbed")
 				AttachEntityToEntity(currentlyTowedVehicle, vehicle, 20, -0.5, -12.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
 				DetachEntity(currentlyTowedVehicle, true, true)
 				currentlyTowedVehicle = nil
@@ -67,7 +67,7 @@ AddEventHandler('asser:tow', function()
 						if vehicle ~= targetVehicle then
 							towingProcess = true
 							TriggerEvent("animation:tow")
-							exports["wrp-taskbar"]:taskBar(10000,"Attaching Vehicle to flatbed")
+							exports["prp-taskbar"]:taskBar(10000,"Attaching Vehicle to flatbed")
 							AttachEntityToEntity(targetVehicle, vehicle, 20, -0.5, -5.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
 							currentlyTowedVehicle = targetVehicle
 							TriggerEvent("DoLongHudText", "Vehicle successfully attached to towtruck!")
@@ -82,7 +82,7 @@ AddEventHandler('asser:tow', function()
 			else
 				towingProcess = true
 				TriggerEvent("animation:tow")
-				exports["wrp-taskbar"]:taskBar(10000,"Detaching Vehicle from flatbed")
+				exports["prp-taskbar"]:taskBar(10000,"Detaching Vehicle from flatbed")
 				AttachEntityToEntity(currentlyTowedVehicle, vehicle, 20, -0.5, -12.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
 				DetachEntity(currentlyTowedVehicle, true, true)
 				currentlyTowedVehicle = nil

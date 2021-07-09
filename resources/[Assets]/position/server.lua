@@ -5,7 +5,7 @@ RegisterServerEvent("position:s:insert")
 AddEventHandler("position:s:insert", function(text)
   local source = source
 
-  local f,err = io.open('wrp-coords.txt','w')
+  local f,err = io.open('prp-coords.txt','w')
 
   if not f then 
     return print(err) 

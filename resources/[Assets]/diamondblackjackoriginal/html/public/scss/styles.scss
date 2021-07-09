@@ -36,7 +36,7 @@ p {
     opacity: 0;
 }
 
-.wrp-container {
+.prp-container {
     background-color: #2E465F;
     border: 1.5px solid black;
     color: white;
@@ -48,7 +48,7 @@ p {
 }
 
 #bet-menu {
-    @extend .wrp-container;
+    @extend .prp-container;
     left: 50%;
     top: 50%;
     margin-left: -200px;
@@ -61,7 +61,7 @@ p {
 }
 
 #blackjack-menu {
-    @extend .wrp-container;
+    @extend .prp-container;
     left: 50%;
     top: 100%;
     margin-left: -200px;
@@ -70,7 +70,7 @@ p {
 }
 
 #hit-button {
-    @extend .wrp-container;
+    @extend .prp-container;
     border-radius: 7px;
     left: 75%;
     top: 40%;
@@ -83,7 +83,7 @@ p {
   and (max-device-width: 1600px) 
   {
     #hit-button {
-        @extend .wrp-container;
+        @extend .prp-container;
         border-radius: 7px;
         left: 75%;
         top: 37%;
@@ -93,7 +93,7 @@ p {
 }
 
 #stand-button {
-    @extend .wrp-container;
+    @extend .prp-container;
     border-radius: 7px;
     left: 75%;
     top: 50%;
@@ -106,7 +106,7 @@ p {
 }
 
 #timer { 
-    @extend .wrp-container;
+    @extend .prp-container;
     border-radius: 15px;
     left: 80%;
     top: 80%;

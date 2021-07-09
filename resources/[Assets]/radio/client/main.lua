@@ -24,7 +24,7 @@ end)
 
 function openGui()
   local radio = hasRadio()
-  local LocalPlayer = exports['wrp-base']:getModule('LocalPlayer')
+  local LocalPlayer = exports['prp-base']:getModule('LocalPlayer')
   local job = LocalPlayer:getCurrentCharacter().job
   local Emergency = false
   if job == "Police" then
@@ -64,7 +64,7 @@ local radioVolume = 100.0
 
 
 function hasRadio()
-    if exports["wrp-inventory"]:hasEnoughOfItem("radio",1,false) then
+    if exports["prp-inventory"]:hasEnoughOfItem("radio",1,false) then
       return true
     else
       return false
@@ -79,7 +79,7 @@ RegisterNUICallback('volumeUp', function(data, cb)
   if radioVolume >= 100.0 then
     radioVolume = 100.0
   end
-  TriggerEvent('wrp-voice:updateRoutineAudio', radioVolume)
+  TriggerEvent('prp-voice:updateRoutineAudio', radioVolume)
   TriggerEvent('DoLongHudText', 'Radio Volume is now: ' ..radioVolume)
   -- exports["mumble-voip"]:SetMumbleProperty("radioVolume", radioVolume)
 end)
@@ -89,7 +89,7 @@ RegisterNUICallback('volumeDown', function(data, cb)
   if radioVolume < 10 then
     radioVolume = 10
   end
-  TriggerEvent('wrp-voice:updateRoutineAudio', radioVolume)
+  TriggerEvent('prp-voice:updateRoutineAudio', radioVolume)
   TriggerEvent('DoLongHudText', 'Radio Volume is now: ' ..radioVolume)
   -- exports["mumble-voip"]:SetMumbleProperty("radioVolume", radioVolume)
 end)
@@ -143,7 +143,7 @@ AddEventHandler('animation:radio', function(enable)
     Citizen.Wait(150)
     while inPhone do
 
-      local dead = exports["wrp-deathmanager"]:GetDeath()
+      local dead = exports["prp-deathmanager"]:GetDeath()
       if dead then
         closeGui()
         inPhone = false

@@ -1,17 +1,17 @@
 RegisterServerEvent('bank:givecashh')
 AddEventHandler('bank:givecashh', function(toPlayer, amount)
     if amount ~= nil then
-        TriggerClientEvent('wrp-ac:checkforkick', toPlayer, amount)
+        TriggerClientEvent('prp-ac:checkforkick', toPlayer, amount)
     end
 end)
 
-RegisterServerEvent('wrp-banking:pass')
-AddEventHandler('wrp-banking:pass', function(toPlayer, amount, cid)
+RegisterServerEvent('prp-banking:pass')
+AddEventHandler('prp-banking:pass', function(toPlayer, amount, cid)
   local src = source
-  -- local lmao = exports['wrp-base']:GetCurrentCharacterInfo(src)
+  -- local lmao = exports['prp-base']:GetCurrentCharacterInfo(src)
   exports.ghmattimysql:execute('SELECT * FROM __characters WHERE id = ?', {cid}, function(result)
     if result[1].cash >= tonumber(amount) then
-      TriggerClientEvent("wrp-base:getdata", src, amount)
+      TriggerClientEvent("prp-base:getdata", src, amount)
       TriggerEvent('bank:givecashh', toPlayer, amount)
     end
   end)
@@ -35,9 +35,9 @@ RegisterCommand('givecash', function(source, args)
     TriggerClientEvent("bank:givecash", source, reciever, amount)
 end)
 
-RegisterServerEvent("wrp-ac:kick")
-AddEventHandler("wrp-ac:kick", function(user, reason)
-local lmao = exports['wrp-base']:GetCurrentCharacterInfo(user)
+RegisterServerEvent("prp-ac:kick")
+AddEventHandler("prp-ac:kick", function(user, reason)
+local lmao = exports['prp-base']:GetCurrentCharacterInfo(user)
 amount = reason
 if amount > 0 then
   exports.ghmattimysql:execute('SELECT * FROM __characters WHERE id = ?', {lmao.id}, function(result)
@@ -58,10 +58,10 @@ if amount > 0 then
   end
 end)
 
-RegisterServerEvent("wrp-ac:ban")
-AddEventHandler("wrp-ac:ban", function(user, amount)
+RegisterServerEvent("prp-ac:ban")
+AddEventHandler("prp-ac:ban", function(user, amount)
   local src = source
-  local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+  local player = exports['prp-base']:GetCurrentCharacterInfo(src)
   id = player.id
   if amount > 0 then
     exports.ghmattimysql:execute("SELECT * FROM `__characters` WHERE `id` = '" .. player.id .. "'", function(result)
@@ -88,8 +88,8 @@ AddEventHandler('bank:transfer', function(to, amountt)
   local src = source 
   local _source = source
 	local balance = 0
-  local player2 = exports['wrp-base']:GetCurrentCharacterInfo(to)
-  local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+  local player2 = exports['prp-base']:GetCurrentCharacterInfo(to)
+  local player = exports['prp-base']:GetCurrentCharacterInfo(src)
   if amountt > 0 then
     id = player.id
     id2 = player2.id
@@ -105,13 +105,13 @@ AddEventHandler('bank:transfer', function(to, amountt)
           if balance <= 0 or balance < tonumber(amountt) or tonumber(amountt) <= 0 then
             TriggerClientEvent('DoLongHudText', _source, 'Invalid amount.', 2)
           else
-            TriggerClientEvent('wrp-ac:passInfoBan', _source, amountt)
+            TriggerClientEvent('prp-ac:passInfoBan', _source, amountt)
             TriggerClientEvent("banking:updateBalance", _source, amountt)
             TriggerClientEvent("banking:removeBalance", _source, amountt)
             -- TriggerClientEvent("banking:updateBalance", _source, amountt)
             TriggerClientEvent("banking:updateBalance", to, amountt)
             TriggerClientEvent("banking:addBalance", to, amountt)
-            TriggerClientEvent('wrp-ac:checkforban', to, amountt)
+            TriggerClientEvent('prp-ac:checkforban', to, amountt)
             TriggerClientEvent("DoLongHudText", _source, "You have transfered $".. amountt .. " to " .. to .. ".")
             TriggerClientEvent("DoLongHudText", to, "You have received $" .. amountt .. " from " .. _source .. ".")
           end

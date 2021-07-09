@@ -95,7 +95,7 @@ function DepositTruckDocks()
   local vehFront = VehicleInFront()
     if vehFront > 0 then
       if GetEntityModel(vehFront) == GetHashKey(trailer) then
-        local finished = exports["wrp-taskbar"]:taskBar(25000,"Storing Trailer Contents")
+        local finished = exports["prp-taskbar"]:taskBar(25000,"Storing Trailer Contents")
         if finished == 100 then
             TriggerServerEvent("inv:delete","Trunk-"..GetVehicleNumberPlateText(vehFront))
         end
@@ -119,7 +119,7 @@ AddEventHandler("docks:manage", function(arg,arg2)
         return
       end
       arg2 = arg2 .. "STORED"
-      TriggerEvent("wrp-ac:triggeredItemSpawn", "1", arg2)
+      TriggerEvent("prp-ac:triggeredItemSpawn", "1", arg2)
     end
   end
 end)
@@ -386,7 +386,7 @@ end)
 Citizen.CreateThread(function()
   while true do
     Wait(9000)
-    if job ~= 0 and exports["wrp-base"]:getModule("LocalPlayer"):getVar("job") == "trucker"  then
+    if job ~= 0 and exports["prp-base"]:getModule("LocalPlayer"):getVar("job") == "trucker"  then
       currentJobPos = returnJobPos(job)
       checkDestruction()
     end
@@ -410,7 +410,7 @@ AddEventHandler("trucker:confirmation", function()
         local t, distance = GetClosestPlayer()
         if(distance ~= -1 and distance < 5) then
             TriggerEvent("DoLongHudText","Requesting Acceptance from person.",1)
-            TriggerServerEvent("wrp-shops:checkOwner",GetPlayerServerId(t),currentJobs[currentJobPos].shopId)
+            TriggerServerEvent("prp-shops:checkOwner",GetPlayerServerId(t),currentJobs[currentJobPos].shopId)
         else
           TriggerEvent("DoLongHudText", "No player near you!",2)
         end   
@@ -642,8 +642,8 @@ end
 --------------------------------------
 --------------------------------------
 
-RegisterNetEvent("wrp-base:characterLoaded")
-AddEventHandler("wrp-base:characterLoaded", function()
+RegisterNetEvent("prp-base:characterLoaded")
+AddEventHandler("prp-base:characterLoaded", function()
     TriggerServerEvent("trucker:returnCurrentJobs")
 end)
 

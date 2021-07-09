@@ -933,11 +933,11 @@ function CloseCreator(name, veh, price, financed)
 			local secondarycolor = colors[2]	
 			local pearlescentcolor = extra_colors[1]
 			local wheelcolor = extra_colors[2]
-			local VehicleProps = exports['wrp-base']:FetchVehProps(personalvehicle)
+			local VehicleProps = exports['prp-base']:FetchVehProps(personalvehicle)
 			local model = GetEntityModel(personalvehicle)
 			print(model)
 			TriggerServerEvent('garage:addKeys', plate)
-			local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+			local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 			local Player = LocalPlayer:getCurrentCharacter()
 			local firstname = Player.first_name .. ' ' .. Player.last_name
 			TriggerServerEvent('BuyForVeh', plate, name, model, vehicle, price, VehicleProps, financed, firstname, exports['isPed']:isPed('cid'))

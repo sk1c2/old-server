@@ -8,7 +8,7 @@ RegisterNetEvent('ply_docks:FinishMoneyCheckForBoat')
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000)
-		TriggerServerEvent('wrp-boatshop:getcid', exports['isPed']:isPed('cid'))
+		TriggerServerEvent('prp-boatshop:getcid', exports['isPed']:isPed('cid'))
 	end
 end)
 
@@ -373,13 +373,13 @@ end
 RegisterNetEvent('ply_docks:CheckMoneyForBoat')
 AddEventHandler('ply_docks:CheckMoneyForBoat', function(name, boat, price)
 	local price = price
-	LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+	LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 	Player = LocalPlayer:getCurrentCharacter()
     if Player.cash >= tonumber(price) then
       local player = exports['isPed']:isPed('cid')
       local boat = boat
       local name = name
-      TriggerEvent('wrp-base:getdata', price)
+      TriggerEvent('prp-base:getdata', price)
       TriggerEvent('ply_docks:FinishMoneyCheckForBoat',source, name, boat, price)
       TriggerEvent('ply_docks:BuyTrue', source)
     else

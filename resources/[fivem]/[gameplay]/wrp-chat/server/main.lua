@@ -22,7 +22,7 @@ AddEventHandler('chatMessage', function(source, name, message)
   --[[TriggerEvent('es:addCommand', 'me', function(source, args, user)
     local name = getIdentity(source)
     table.remove(args, 2)
-    TriggerClientEvent('wrp-qalle-chat:me', -1, source, name.firstname, table.concat(args, " "))
+    TriggerClientEvent('prp-qalle-chat:me', -1, source, name.firstname, table.concat(args, " "))
 end)
 
 
@@ -106,7 +106,7 @@ AddEventHandler("911", function(args, cid)
 
 
         for k,v in pairs(GetPlayers()) do
-            TriggerClientEvent('wrp-911:display', k, firstname, lastname, phonenumber, tostring(message), src)
+            TriggerClientEvent('prp-911:display', k, firstname, lastname, phonenumber, tostring(message), src)
         end
     end)
 end)
@@ -134,7 +134,7 @@ AddEventHandler("311", function(args, cid)
 
 
         for k,v in pairs(GetPlayers()) do
-            TriggerClientEvent('wrp-311:display', k, firstname, lastname, phonenumber, tostring(message), src)
+            TriggerClientEvent('prp-311:display', k, firstname, lastname, phonenumber, tostring(message), src)
         end
     end)
 end)
@@ -167,7 +167,7 @@ AddEventHandler("911r", function(args, cid)
         TriggerClientEvent("animation:phonecall", src)
 
         for k,v in pairs(GetPlayers()) do
-            TriggerClientEvent('wrp-911r:display', k, target, firstname, lastname, phonenumber, tostring(message))
+            TriggerClientEvent('prp-911r:display', k, target, firstname, lastname, phonenumber, tostring(message))
         end
 
         TriggerClientEvent("chatMessage", target, "911r | (" .. tonumber(src) ..")", 3, tostring(message))
@@ -202,8 +202,8 @@ AddEventHandler("311r", function(args, cid)
         TriggerClientEvent("animation:phonecall", src)
 
         for k,v in pairs(GetPlayers()) do
-            local player = exports['wrp-base']:GetCurrentCharacterInfo(k)
-            TriggerClientEvent('wrp-311r:display', k, target, firstname, lastname, phonenumber, tostring(message))
+            local player = exports['prp-base']:GetCurrentCharacterInfo(k)
+            TriggerClientEvent('prp-311r:display', k, target, firstname, lastname, phonenumber, tostring(message))
         end
 
         TriggerClientEvent("chatMessage", target, "311r | (" .. tonumber(src) ..")", 3, tostring(message))

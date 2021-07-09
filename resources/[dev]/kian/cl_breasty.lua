@@ -39,23 +39,23 @@ Citizen.CreateThread(function()
 		if GetPedArmour(GetPlayerPed(-1)) > 60 then
 			SetPedArmour(PlayerPedId(-1), 60)
 			Citizen.Wait(1000)
-			TriggerServerEvent('wrp-ac:sort', source)
+			TriggerServerEvent('prp-ac:sort', source)
 			-- TriggerServerEvent('armourlog or something mortal pls')
 		end
 		ped = GetPlayerPed(-1)
 		hash=GetSelectedPedWeapon(ped)
 		if GetEntityHealth(GetPlayerPed(-1)) > 200 then
-			TriggerServerEvent('wrp-ac:sort', source)
+			TriggerServerEvent('prp-ac:sort', source)
 			-- TriggerServerEvent('health log over limit or something mortal pls')
 		end
 		if not IsEntityVisible(PlayerPedId()) then
 			SetEntityVisible(PlayerPedId(), true) 
-			-- TriggerServerEvent('wrp-ac:sort', source)
+			-- TriggerServerEvent('prp-ac:sort', source)
 			-- TriggerServerEvent('invis log or something mortal pls')
 		end
 		if GetPlayerInvincible(PlayerId()) then
 			SetPlayerInvincible(PlayerId(), false)
-			-- TriggerServerEvent('wrp-ac:sort', source)
+			-- TriggerServerEvent('prp-ac:sort', source)
 			-- TriggerServerEvent('godmode log or something mortal pls')
 		end
 		-- SetPedInfiniteAmmoClip(PlayerPedId(), false)
@@ -73,7 +73,7 @@ Citizen.CreateThread(function()
 		for _,theWeapon in ipairs(BlacklistedWeapons) do
 			Wait(1)
 			if HasPedGotWeapon(PlayerPedId(),GetHashKey(theWeapon),false) == 1 then
-					TriggerServerEvent('wrp-ac:sort', source)
+					TriggerServerEvent('prp-ac:sort', source)
 					-- blacklisted weapon log or something mortal pls
 					break
 			end

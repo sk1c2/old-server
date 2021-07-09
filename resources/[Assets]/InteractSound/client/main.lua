@@ -76,7 +76,7 @@ end)
 -- @TODO Change sound volume based on the distance the player is away from the playOnEntity.
 ------
 function DoesPlayerExist(pServerId)
-    return exports['wrp-infinity']:DoesPlayerExist(pServerId)
+    return exports['prp-infinity']:DoesPlayerExist(pServerId)
 end
 
 RegisterNetEvent('InteractSound_CL:PlayWithinDistance')

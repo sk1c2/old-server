@@ -35,9 +35,9 @@ end)
 RegisterServerEvent('server:givepayJob')
 AddEventHandler('server:givepayJob', function(money)
     local source = source
-    local LocalPlayer = exports['wrp-base']:getModule('LocalPlayer')
+    local LocalPlayer = exports['prp-base']:getModule('LocalPlayer')
     if money ~= nil then
-       TriggerClientEvent('wrp-ac:InfoPass', source, money)
+       TriggerClientEvent('prp-ac:InfoPass', source, money)
        TriggerClientEvent('DoLongHudText', source, 'You got $'.. money .. ' for 5 Loose Buds of Weed.', 1)
     end
 end)

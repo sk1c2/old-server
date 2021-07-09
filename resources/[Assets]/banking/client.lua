@@ -9,24 +9,24 @@ local enableBankingGui = true -- Enables the banking GUI (Default: true) // MAY 
 
 inBank = false
 
-RegisterNetEvent('wrp-base:loadPlayerData')
-AddEventHandler('wrp-base:loadPlayerData', function()
+RegisterNetEvent('prp-base:loadPlayerData')
+AddEventHandler('prp-base:loadPlayerData', function()
   local cid = exports['isPed']:isPed('cid')
   TriggerEvent('Evidence:ClearDamageStates')
   exports['pma-voice']:removePlayerFromRadio()
   exports["pma-voice"]:setVoiceProperty("radioEnabled", false)
-  TriggerEvent('wrp-obtainAmountP')
+  TriggerEvent('prp-obtainAmountP')
   TriggerEvent('Igotitbaby')
   TriggerEvent('urp:base:loadplayer')
   TriggerEvent('reviveFunction')
-  TriggerEvent('wrp-hospital:client:RemoveBleed')
-  TriggerServerEvent("wrp-scoreboard:AddPlayer")
-  TriggerServerEvent('wrp-admin:AddPlayer')
+  TriggerEvent('prp-hospital:client:RemoveBleed')
+  TriggerServerEvent("prp-scoreboard:AddPlayer")
+  TriggerServerEvent('prp-admin:AddPlayer')
   TriggerServerEvent('Server:GetHandle')
   TriggerServerEvent('getYP')
-  TriggerEvent('wrp-bennys:craft:active')
-  TriggerEvent('wrp-base:playerSpawned')
-  TriggerEvent('wrp-hospital:client:RemoveBleed')
+  TriggerEvent('prp-bennys:craft:active')
+  TriggerEvent('prp-base:playerSpawned')
+  TriggerEvent('prp-hospital:client:RemoveBleed')
   TriggerEvent('urp:base:loadplayer')
 end)
 
@@ -88,7 +88,7 @@ function IsNearATM()
       return true
     end
   end
-  if exports['wrp-inventory']:hasEnoughOfItem('portableatm', 1, false) then
+  if exports['prp-inventory']:hasEnoughOfItem('portableatm', 1, false) then
     return true
   end
 
@@ -160,7 +160,7 @@ function openGui(a)
       end
     end
   end
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   TriggerServerEvent("bank:getDetails")
   bankanimation()
@@ -176,7 +176,7 @@ function openGui(a)
   local s = GetStreetNameAtCoord(d.x , d.y , d.z)
   local a = GetStreetNameFromHashKey(s)
   SendNUIMessage({openBank = true , cash = Player.cash , atm = a , street = a})
-  TriggerEvent('banking:updateCash', exports['wrp-base']:getModule("LocalPlayer"):getCurrentCharacter().cash, true)
+  TriggerEvent('banking:updateCash', exports['prp-base']:getModule("LocalPlayer"):getCurrentCharacter().cash, true)
   TriggerEvent('banking:updateBalance')
   TriggerEvent("banking:viewCash")
   TriggerServerEvent("bank:active")
@@ -215,7 +215,7 @@ function bankanimation()
               ClearPedTasks(PlayerPedId())
               TaskPlayAnim( player, "amb@prop_human_atm@male@exit", "exit", 1.0, 1.0, -1, 49, 0, 0, 0, 0 )
               atmuse = false
-              local finished = exports["wrp-taskbar"]:taskBar(3000,"Retrieving Card")
+              local finished = exports["prp-taskbar"]:taskBar(3000,"Retrieving Card")
               ClearPedTasks(PlayerPedId())
           else
               atmuse = true
@@ -231,7 +231,7 @@ function bankanimation()
                 ClearPedTasks(PlayerPedId())
                 TaskPlayAnim( player, "mp_common", "givetake1_a", 1.0, 1.0, -1, 49, 0, 0, 0, 0 )
                 atmuse = false
-                local finished = exports["wrp-taskbar"]:taskBar(1000,"Retrieving Card")
+                local finished = exports["prp-taskbar"]:taskBar(1000,"Retrieving Card")
                 ClearPedTasks(PlayerPedId())
             else
                 atmuse = true
@@ -301,7 +301,7 @@ if enableBankingGui then
 
           local cdst = closestbank
           -- if cdst > 1.5 and cdst < 30 then
-          --   exports['wrp-interaction']:hideInteraction()
+          --   exports['prp-interaction']:hideInteraction()
           -- end
           while cdst < 1.5 do
             Citizen.Wait(1)
@@ -315,12 +315,12 @@ if enableBankingGui then
               else
                 if inBank == false then
                   DrawText3D(banks[scanid].x, banks[scanid].y, banks[scanid].z,"["..Controlkey["generalUse"][2].."] to use Bank.")
-                  -- exports['wrp-interaction']:showInteraction('[E] to use Bank.')
+                  -- exports['prp-interaction']:showInteraction('[E] to use Bank.')
                 -- if not IsInVehicle() then exports["np-base"]:getModule("Util"):MissionText("Press '~b~Context Action Key~w~' (Default: ~b~E~w~) to view your account", 500) else exports["np-base"]:getModule("Util"):MissionText("You ~r~cannot~w~~w~ use the bank in a vehicle", 500) end
                   atBank = true
                   if IsControlJustPressed(1, Controlkey["generalUse"][1])  then -- IF INPUT_PICKUP Is pressed
                       openGui()
-                      -- exports['wrp-interaction']:hideInteraction()
+                      -- exports['prp-interaction']:hideInteraction()
                       bankOpen = true
                   end
                   if bankOpen then
@@ -380,7 +380,7 @@ end)
 
 RegisterNetEvent("banmk;dsl:check")
 AddEventHandler("banmk;dsl:check" , function(amt)
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   LocalPlayer:addBank(Player.id, amt)
   TriggerEvent("banking:updateCash", Player.cash + amt)
@@ -393,7 +393,7 @@ RegisterNUICallback('depositBussinessSubmit', function(data, cb)
     TriggerEvent('DoLongHudText', 'You cannot afford this!', 2)
   else
     local cid = exports["isPed"]:isPed("cid")
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     if  Player.bank <  tonumber(data.amount) then return end
     local job = exports['isPed']:isPed('job')
@@ -442,7 +442,7 @@ RegisterNUICallback('withdrawBussinessSubmit', function(data, cb)
 end)
 
 RegisterNetEvent("withdraw:sks:ss" , function(am)
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   local job = exports['isPed']:isPed('job')
   for k,v in ipairs(jobs) do
@@ -521,9 +521,9 @@ end
 RegisterNetEvent('bank:deposit')
 AddEventHandler('bank:deposit', function(data)
     if (IsInVehicle()) then
-      exports["wrp-base"]:getModule("Util"):MissionText("You ~r~cannot~w~ use the ATM in a vehicle", 500)
+      exports["prp-base"]:getModule("Util"):MissionText("You ~r~cannot~w~ use the ATM in a vehicle", 500)
     else
-      local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+      local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
       local Player = LocalPlayer:getCurrentCharacter()
 
       wAmount = tonumber(data.amount)
@@ -547,10 +547,10 @@ RegisterNetEvent('bank:withdraw')
 AddEventHandler('bank:withdraw', function(data)
   if(IsNearATM() == true or IsNearBank() == true) then
     if (IsInVehicle()) then
-      exports["wrp-base"]:getModule("Util"):MissionText("You ~r~cannot~w~ use the bank in a vehicle", 500)
+      exports["prp-base"]:getModule("Util"):MissionText("You ~r~cannot~w~ use the bank in a vehicle", 500)
     else
 
-      local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+      local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
       local Player = LocalPlayer:getCurrentCharacter()
 
       wAmount = tonumber(data.amount)
@@ -619,7 +619,7 @@ AddEventHandler('bank:givecash', function(toPlayer, amount, source)
   local playing = IsPlayerPlaying(player2)
   
   if (playing ~= false) then
-    TriggerServerEvent('wrp-banking:pass', toPlayer, amount, exports['isPed']:isPed('cid'))
+    TriggerServerEvent('prp-banking:pass', toPlayer, amount, exports['isPed']:isPed('cid'))
     TriggerEvent("animation:PlayAnimation","id")
   else
     TriggerEvent("DoLongHudText", "This player is not online", 2)
@@ -644,7 +644,7 @@ end)
 RegisterNetEvent('banking:updateBalance')
 AddEventHandler('banking:updateBalance', function(balance, show)
   local id = PlayerId()
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer"):getCurrentCharacter()
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer"):getCurrentCharacter()
   local name = LocalPlayer.first_name .. " " .. LocalPlayer.last_name;
   if (name == false) then
     name = GetPlayerName(id)
@@ -710,14 +710,14 @@ AddEventHandler("banking:removeCash", function(amount)
 	})
 end)
 
-RegisterNetEvent("wrp-base:addedMoney")
-AddEventHandler("wrp-base:addedMoney", function(amt, total)
+RegisterNetEvent("prp-base:addedMoney")
+AddEventHandler("prp-base:addedMoney", function(amt, total)
     TriggerEvent("banking:updateCash", total)
     TriggerEvent("banking:addCash", amt)
 end)
 
-RegisterNetEvent("wrp-base:removedMoney")
-AddEventHandler("wrp-base:removedMoney", function(amt, total)
+RegisterNetEvent("prp-base:removedMoney")
+AddEventHandler("prp-base:removedMoney", function(amt, total)
     TriggerEvent("banking:updateCash", total)
     TriggerEvent("banking:removeCash", amt)
 end)
@@ -735,7 +735,7 @@ end)
 -- end)
 
 RegisterCommand('cash', function(source, args)
-  TriggerEvent('banking:updateCash', exports['wrp-base']:getModule("LocalPlayer"):getCurrentCharacter().cash, true)
+  TriggerEvent('banking:updateCash', exports['prp-base']:getModule("LocalPlayer"):getCurrentCharacter().cash, true)
   TriggerEvent('banking:viewCash')
 end)
 

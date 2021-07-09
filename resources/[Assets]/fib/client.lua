@@ -28,7 +28,7 @@ RegisterNetEvent('fib:armory')
 AddEventHandler('fib:armory', function()
 	local rank = exports["isPed"]:GroupRank("Police")
 	if rank > 9 then
-        TriggerEvent('wrp-ac:triggeredItemSpawn', 27, "Shop")
+        TriggerEvent('prp-ac:triggeredItemSpawn', 27, "Shop")
     end
 end)
 
@@ -37,6 +37,6 @@ RegisterNetEvent('fib:evidence')
 AddEventHandler('fib:evidence', function()
 	local rank = exports["isPed"]:GroupRank("Police")
 	if rank > 9 then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "trash-2")
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "trash-2")
 	end
 end)

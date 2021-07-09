@@ -193,7 +193,7 @@ function addKey(anim,keys)
             end
         end
     end
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     TriggerServerEvent("police:setEmoteData", currentKeys, Player.id)
 end
@@ -344,7 +344,7 @@ end)
 --     while true do
 --         Citizen.Wait(1)
 --         if IsControlJustReleased(0, 244) then
---             if exports['wrp-deathmanager']:GetDeath() then
+--             if exports['prp-deathmanager']:GetDeath() then
 --                 TriggerEvent('DoLongHudText', "You're dead...", 2)
 --             else
 --                 TriggerEvent('emotes:OpenMenu')

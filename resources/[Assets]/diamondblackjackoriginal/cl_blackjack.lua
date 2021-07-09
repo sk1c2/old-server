@@ -224,11 +224,11 @@ Citizen.CreateThread(function()
             if closestChair ~= nil and closestChairDist < 2 then
                 if not timeoutHowToBlackjack then
                     if blackjackTableData[closestChair] == false then 
-                        exports['wrp-interaction']:showInteraction("Press [E] to play the blackjack", 'info')
+                        exports['prp-interaction']:showInteraction("Press [E] to play the blackjack", 'info')
                     else 
-                        exports['wrp-interaction']:showInteraction("This seat is taken", 'danger')
+                        exports['prp-interaction']:showInteraction("This seat is taken", 'danger')
                         Citizen.Wait(3000)
-                        exports['wrp-interaction']:hideInteraction()
+                        exports['prp-interaction']:hideInteraction()
                     end
                     if not playedCasinoGuiSound then
                         playedCasinoGuiSound = true 
@@ -237,7 +237,7 @@ Citizen.CreateThread(function()
                     end
                 end
             elseif closestChairDist <= 200 then
-                exports['wrp-interaction']:hideInteraction()
+                exports['prp-interaction']:hideInteraction()
             end
         end            
         Wait(0)
@@ -432,7 +432,7 @@ Citizen.CreateThread(function()
             end
             if waitingForStandOrHitState and not hasSetHand then
                 drawCurrentHand = false
-                LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+                LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
                 Player = LocalPlayer:getCurrentCharacter()
                 SendNUIMessage({
                     type = 'setHand',
@@ -463,7 +463,7 @@ AddEventHandler("Blackjack:beginBetsBlackjack",function(gameID,tableId)
     globalGameId = gameID
     ClearHelp(true)
     SetNuiFocus(true, true)
-    LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     Player = LocalPlayer:getCurrentCharacter()
     SendNUIMessage({
       type = "bet",
@@ -494,9 +494,9 @@ AddEventHandler("Blackjack:beginBetsBlackjack",function(gameID,tableId)
         timeLeft = 20
         drawTimerBar = false
         if not bettedThisRound then
-            exports['wrp-interaction']:showInteraction("No bet placed, round skipped", 'info')
+            exports['prp-interaction']:showInteraction("No bet placed, round skipped", 'info')
             Citizen.Wait(3000)
-            exports['wrp-interaction']:hideInteraction()
+            exports['prp-interaction']:hideInteraction()
         end
     end)
 end)
@@ -505,7 +505,7 @@ RegisterNetEvent("Blackjack:beginCardGiveOut")
 AddEventHandler("Blackjack:beginCardGiveOut",function(gameId,cardData,chairId,cardIndex,gotCurrentHand,tableId)
     if closeToCasino then
         blackjackGameInProgress = true
-        LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+        LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
         Player = LocalPlayer:getCurrentCharacter()
         SendNUIMessage({
             status = 'Waiting for Dealer...',
@@ -592,9 +592,9 @@ AddEventHandler("Blackjack:standOrHit",function(gameId,chairId,nextCardCount,tab
                     hasSetHand = false
                     TriggerServerEvent("Blackjack:standBlackjack",globalGameId,globalNextCardCount)
                     declineCard()
-                    exports['wrp-interaction']:showInteraction("Failed to stand/hit in time, standing.", 'info')
+                    exports['prp-interaction']:showInteraction("Failed to stand/hit in time, standing.", 'info')
                     Citizen.Wait(3000)
-                    exports['wrp-interaction']:hideInteraction()
+                    exports['prp-interaction']:hideInteraction()
                 end
             end)
         else 
@@ -608,7 +608,7 @@ RegisterNUICallback('setbet', function(data, cb)
     currentBetAmount = data.betAmount
     betSubmitted = true
 
-    LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     Player = LocalPlayer:getCurrentCharacter()
     SendNUIMessage({
         type = 'closeBet',
@@ -616,7 +616,7 @@ RegisterNUICallback('setbet', function(data, cb)
         cash = Player.cash
     })
     SetNuiFocus(false, false)
-    TriggerEvent("wrp-casino:generalScreen")
+    TriggerEvent("prp-casino:generalScreen")
     cb({res = 'true'})
 end)
 
@@ -682,7 +682,7 @@ function goToBlackjackSeat(blackjackSeatID)
     dealersHand = 0
     closestDealerPed, closestDealerPedDistance = getClosestDealer()
     PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_GREET","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1)
-    LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     Player = LocalPlayer:getCurrentCharacter()
     print('player cash:' .. Player.cash)
     SendNUIMessage({
@@ -690,7 +690,7 @@ function goToBlackjackSeat(blackjackSeatID)
       status = 'Waiting for next game to start...',
       cash = Player.cash
     })
-    exports['wrp-interaction']:hideInteraction()
+    exports['prp-interaction']:hideInteraction()
     blackjackAnimsToLoad = {
       "anim_casino_b@amb@casino@games@blackjack@dealer",
       "anim_casino_b@amb@casino@games@shared@dealer@",
@@ -1070,11 +1070,11 @@ AddEventHandler("Blackjack:blackjackLose",function(tableId)
         TaskPlayAnim(dealerPed, "anim_casino_b@amb@casino@games@blackjack@dealer", "reaction_bad", 3.0, 1.0, -1, 2, 0, 0, 0, 0 )
         angryILost()
         canExitBlackjack = true
-        exports['wrp-interaction']:showInteraction("You lose!", 'danger')
+        exports['prp-interaction']:showInteraction("You lose!", 'danger')
         drawCurrentHand = false
         currentHand = 0
         dealersHand = 0
-        LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+        LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
         Player = LocalPlayer:getCurrentCharacter()
         SendNUIMessage({
             ingame = false,
@@ -1083,7 +1083,7 @@ AddEventHandler("Blackjack:blackjackLose",function(tableId)
             cash = Player.cash
         })
         Citizen.Wait(3000)
-        exports['wrp-interaction']:hideInteraction()
+        exports['prp-interaction']:hideInteraction()
     end
 end)
 
@@ -1095,11 +1095,11 @@ AddEventHandler("Blackjack:blackjackPush",function(tableId)
         TaskPlayAnim(dealerPed, "anim_casino_b@amb@casino@games@blackjack@dealer", "reaction_impartial", 3.0, 1.0, -1, 2, 0, 0, 0, 0 )
         annoyedIPushed()
         canExitBlackjack = true
-        exports['wrp-interaction']:showInteraction("You pushed!", 'info')
+        exports['prp-interaction']:showInteraction("You pushed!", 'info')
         drawCurrentHand = false
         currentHand = 0
         dealersHand = 0
-        LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+        LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
         Player = LocalPlayer:getCurrentCharacter()
         SendNUIMessage({
             ingame = false,
@@ -1118,12 +1118,12 @@ AddEventHandler("Blackjack:blackjackWin",function(tableId)
         TaskPlayAnim(dealerPed, "anim_casino_b@amb@casino@games@blackjack@dealer", "reaction_good", 3.0, 1.0, -1, 2, 0, 0, 0, 0 )
         happyIWon()
         canExitBlackjack = true
-        exports['wrp-interaction']:showInteraction("You win!", 'success')
-        TriggerEvent("wrp-casino:winScreen")
+        exports['prp-interaction']:showInteraction("You win!", 'success')
+        TriggerEvent("prp-casino:winScreen")
         drawCurrentHand = false
         currentHand = 0
         dealersHand = 0
-        LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+        LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
         Player = LocalPlayer:getCurrentCharacter()
         SendNUIMessage({
             ingame = false,
@@ -1132,7 +1132,7 @@ AddEventHandler("Blackjack:blackjackWin",function(tableId)
             cash = Player.cash
         })
         Citizen.Wait(3000)
-        exports['wrp-interaction']:hideInteraction()
+        exports['prp-interaction']:hideInteraction()
     end
 end)
 

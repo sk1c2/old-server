@@ -17,9 +17,9 @@ AddEventHandler('urp:reference', function(cid)
 	end)
 end)
 
-RegisterServerEvent('wrp-assign:callsign')
-AddEventHandler('wrp-assign:callsign', function(callsign, cid)
-	-- local player = exports['wrp-base']:GetCurrentCharacterInfo(source)
+RegisterServerEvent('prp-assign:callsign')
+AddEventHandler('prp-assign:callsign', function(callsign, cid)
+	-- local player = exports['prp-base']:GetCurrentCharacterInfo(source)
 	exports.ghmattimysql:execute("UPDATE __characters SET callsign = @callsign WHERE id = @id", { 
 		['@id'] = cid,
 		['@callsign'] = callsign
@@ -29,7 +29,7 @@ end)
 -- AddEventHandler('playerDropped', function()
 -- 	local src = source
 -- 	if src ~= nil then
--- 		local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+-- 		local player = exports['prp-base']:GetCurrentCharacterInfo(src)
 -- 		local job = player.job
 -- 		if job == 'Police' then
 -- 			Citizen.Wait(5000)
@@ -41,11 +41,11 @@ end)
 -- RegisterServerEvent('police:spawned')
 -- AddEventHandler('police:spawned', function()
 --     local src = source
---     local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+--     local player = exports['prp-base']:GetCurrentCharacterInfo(src)
 --     local job = player.job
 -- 	if job == 'Police' then
 -- 		Citizen.Wait(5000)
--- 		TriggerClientEvent("wrp-base:passjob", src, "true")
+-- 		TriggerClientEvent("prp-base:passjob", src, "true")
 -- 	end
 -- end)
 RegisterServerEvent('server:takephone')
@@ -83,9 +83,9 @@ end)
 RegisterServerEvent('police:updateLicenses')
 AddEventHandler('police:updateLicenses', function(targetlicense, status, license)
     if status == 1 then
-        TriggerEvent('wrp-license:addLicense', targetlicense, license)
+        TriggerEvent('prp-license:addLicense', targetlicense, license)
     else
-        TriggerEvent('wrp-license:removeLicense', targetlicense, license)
+        TriggerEvent('prp-license:removeLicense', targetlicense, license)
     end
 end)
 
@@ -109,16 +109,16 @@ end)
 RegisterServerEvent('police:SeizeCash')
 AddEventHandler('police:SeizeCash', function(target)
 	local src = source
-	local xPlayer = exports['wrp-base']:GetCurrentCharacterInfo(src)
-	local zPlayer = exports['wrp-base']:GetCurrentCharacterInfo(target)
+	local xPlayer = exports['prp-base']:GetCurrentCharacterInfo(src)
+	local zPlayer = exports['prp-base']:GetCurrentCharacterInfo(target)
 	if not xPlayer.job.name == 'police' then
 		print('steam:'..identifier..' User attempted sieze cash')
 		return
 	end
     exports.ghmattimysql:execute("SELECT `cash` FROM `__characters` WHERE `id` = '" .. zPlayer.id .. "'", function(result)
 		local cash = result[1].cash
-		TriggerClientEvent('wrp-ac:removeban', target, cash)
-		TriggerClientEvent('wrp-ac:InfoPass', src, cash)
+		TriggerClientEvent('prp-ac:removeban', target, cash)
+		TriggerClientEvent('prp-ac:InfoPass', src, cash)
 		TriggerClientEvent('DoLongHudText', target, 'Your Cash and Marked Bills was seized',1)
 		TriggerClientEvent('DoLongHudText', src, 'Seized persons cash: $'..cash, 1)
 	end)
@@ -135,7 +135,7 @@ end)
 
 RegisterServerEvent('police:escortAsk')
 AddEventHandler('police:escortAsk', function(target)
-	local LocalPlayer = exports['wrp-base']:getModule('LocalPlayer')
+	local LocalPlayer = exports['prp-base']:getModule('LocalPlayer')
 	TriggerClientEvent('dr:escort', target,source)
 end)
 
@@ -153,7 +153,7 @@ end)
 
 RegisterServerEvent('police:forceEnterAsk')
 AddEventHandler('police:forceEnterAsk', function(target,netid)
-	local LocalPlayer = exports['wrp-base']:getModule('LocalPlayer')
+	local LocalPlayer = exports['prp-base']:getModule('LocalPlayer')
 	TriggerClientEvent('police:forcedEnteringVeh', target, netid)
 	TriggerClientEvent('DoLongHudText', source, 'Seating Player', 1)
 end)
@@ -182,9 +182,9 @@ end)
 RegisterServerEvent('government:bill')
 AddEventHandler('government:bill', function(money)
     local source = source
-    local LocalPlayer = exports['wrp-base']:getModule('LocalPlayer')
+    local LocalPlayer = exports['prp-base']:getModule('LocalPlayer')
     if money ~= nil then
-       TriggerClientEvent('wrp-ac:InfoPass', source, money)
+       TriggerClientEvent('prp-ac:InfoPass', source, money)
        TriggerClientEvent('DoLongHudText', source, 'You got $'.. money .. ' for 5 Loose Buds of Weed.', 1)
     end
 end)
@@ -217,9 +217,9 @@ end)
 
 RegisterServerEvent('bank:givecash')
 AddEventHandler('bank:givecash', function(toPlayer, amount)
-    local LocalPlayer = exports['wrp-base']:getModule('LocalPlayer')
+    local LocalPlayer = exports['prp-base']:getModule('LocalPlayer')
     if amount ~= nil then
-        TriggerClientEvent('wrp-ac:InfoPass', toPlayer, amount)
+        TriggerClientEvent('prp-ac:InfoPass', toPlayer, amount)
     end
 end)
 
@@ -305,7 +305,7 @@ end
 RegisterServerEvent("police:checkbank")
 AddEventHandler("police:checkbank", function(target)
 	local src = source
-	local searcher = exports['wrp-base']:GetCurrentCharacterInfo(target)
+	local searcher = exports['prp-base']:GetCurrentCharacterInfo(target)
 	exports.ghmattimysql:execute('SELECT `bank` FROM __characters WHERE id = ?', {searcher.id}, function(result)
 		if result[1] ~= nil then
 			TriggerClientEvent("DoLongHudText", src, "Target's Bank: " .. result[1].bank)
@@ -335,7 +335,7 @@ end)
 AddEventHandler('playerDropped', function()
 	local src = source
 	if src ~= nil then
-		local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+		local player = exports['prp-base']:GetCurrentCharacterInfo(src)
 		exports.ghmattimysql:execute('SELECT `job` FROM __characters WHERE id = ?', {player.id}, function(result)
 			if result[1].job == 'Police' then
 				exports.ghmattimysql:execute("UPDATE __characters SET job = @job WHERE id = @id", { 
@@ -345,14 +345,14 @@ AddEventHandler('playerDropped', function()
 				currentCops = currentCops - 1
 				TriggerClientEvent("job:policecount", -1, currentCops)
 				print('Dropped, New Cop Count: ' ..currentCops)
-				TriggerEvent('wrp-eblips:server:removePlayerBlipGroup', src, 'Police')
+				TriggerEvent('prp-eblips:server:removePlayerBlipGroup', src, 'Police')
 			end
 		end)
 	end
 end)
 
-RegisterServerEvent('wrp-police:obtain-count')
-AddEventHandler('wrp-police:obtain-count', function()
+RegisterServerEvent('prp-police:obtain-count')
+AddEventHandler('prp-police:obtain-count', function()
 	local src = source
 	TriggerClientEvent('job:policecount', src, currentCops)
 end)
@@ -365,8 +365,8 @@ AddEventHandler('attemptduty', function(pJobType, cid, first_name, last_name, ca
 	TriggerClientEvent('police:officerOnDuty', src)
 	currentCops = currentCops + 1
 	TriggerClientEvent("job:policecount", -1, currentCops)
-	TriggerEvent('wrp-eblips:server:registerPlayerBlipGroup', src, 'Police')
-	TriggerEvent('wrp-eblips:server:registerSourceName', src, callsign .." | ".. first_name .." ".. last_name)
+	TriggerEvent('prp-eblips:server:registerPlayerBlipGroup', src, 'Police')
+	TriggerEvent('prp-eblips:server:registerSourceName', src, callsign .." | ".. first_name .." ".. last_name)
 	print(currentCops)
 end)
 
@@ -378,7 +378,7 @@ AddEventHandler('attemptoffdutypd', function()
 		currentCops = 0
 	end
 	TriggerClientEvent("job:policecount", -1, currentCops)
-	TriggerEvent('wrp-eblips:server:removePlayerBlipGroup', source, 'Police')
+	TriggerEvent('prp-eblips:server:removePlayerBlipGroup', source, 'Police')
 	print(currentCops)
 end)
 
@@ -389,13 +389,13 @@ AddEventHandler('attemptdutyems', function(pJobType, cid, first_name, last_name,
 	local job = pJobType and pJobType or 'EMS'
 	TriggerClientEvent('police:officerOnDuty', src)
 	TriggerClientEvent("job:policecount", -1, currentCops)
-	TriggerEvent('wrp-eblips:server:registerPlayerBlipGroup', src, 'EMS')
-	TriggerEvent('wrp-eblips:server:registerSourceName', src, callsign .." | ".. first_name .." ".. last_name)
+	TriggerEvent('prp-eblips:server:registerPlayerBlipGroup', src, 'EMS')
+	TriggerEvent('prp-eblips:server:registerSourceName', src, callsign .." | ".. first_name .." ".. last_name)
 end)
 
 RegisterServerEvent('attemptoffdutyems')
 AddEventHandler('attemptoffdutyems', function()
-	TriggerEvent('wrp-eblips:server:removePlayerBlipGroup', source, 'EMS')
+	TriggerEvent('prp-eblips:server:removePlayerBlipGroup', source, 'EMS')
 end)
 
 
@@ -404,30 +404,30 @@ local carrying = {}
 local carried = {}
 --carried[targetSource] = source, targetSource is being carried by source
 
-RegisterServerEvent("wrp-CarryPeople:sync")
-AddEventHandler("wrp-CarryPeople:sync", function(targetSrc)
+RegisterServerEvent("prp-CarryPeople:sync")
+AddEventHandler("prp-CarryPeople:sync", function(targetSrc)
 	local source = source
 	local sourcePed = GetPlayerPed(source)
    	local sourceCoords = GetEntityCoords(sourcePed)
 	local targetPed = GetPlayerPed(targetSrc)
         local targetCoords = GetEntityCoords(targetPed)
 	if #(sourceCoords - targetCoords) <= 1.0 then 
-		TriggerClientEvent("wrp-CarryPeople:syncTarget", targetSrc, source)
+		TriggerClientEvent("prp-CarryPeople:syncTarget", targetSrc, source)
 		carrying[source] = targetSrc
 		carried[targetSrc] = source
 	end
 end)
 
-RegisterServerEvent("wrp-CarryPeople:stop")
-AddEventHandler("wrp-CarryPeople:stop", function(targetSrc)
+RegisterServerEvent("prp-CarryPeople:stop")
+AddEventHandler("prp-CarryPeople:stop", function(targetSrc)
 	local source = source
 
 	if carrying[source] then
-		TriggerClientEvent("wrp-CarryPeople:cl_stop", targetSrc)
+		TriggerClientEvent("prp-CarryPeople:cl_stop", targetSrc)
 		carrying[source] = nil
 		carried[targetSrc] = nil
 	elseif carried[source] then
-		TriggerClientEvent("wrp-CarryPeople:cl_stop", carried[source])			
+		TriggerClientEvent("prp-CarryPeople:cl_stop", carried[source])			
 		carrying[carried[source]] = nil
 		carried[source] = nil
 	end
@@ -437,13 +437,13 @@ AddEventHandler('playerDropped', function(reason)
 	local source = source
 	
 	if carrying[source] then
-		TriggerClientEvent("wrp-CarryPeople:cl_stop", carrying[source])
+		TriggerClientEvent("prp-CarryPeople:cl_stop", carrying[source])
 		carried[carrying[source]] = nil
 		carrying[source] = nil
 	end
 
 	if carried[source] then
-		TriggerClientEvent("wrp-CarryPeople:cl_stop", carried[source])
+		TriggerClientEvent("prp-CarryPeople:cl_stop", carried[source])
 		carrying[carried[source]] = nil
 		carried[source] = nil
 	end

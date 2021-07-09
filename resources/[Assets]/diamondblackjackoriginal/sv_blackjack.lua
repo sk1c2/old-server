@@ -12,15 +12,15 @@ local blackjackGameData = {}
 -- Custom data
 
 function tryTakeChips(source,amount, chairId, cash)
-    Player = exports["wrp-base"]:GetCurrentCharacterInfo(source)
+    Player = exports["prp-base"]:GetCurrentCharacterInfo(source)
     if (chairId == 8 or chairId == 9 or chairId == 10 or chairId == 11 or chairId == 12 or chairId == 13 or chairId == 14) then
         if amount <= 20000 then
             if amount > cash then
                 TriggerClientEvent('DoLongHudText', source, 'Unable to place bet. Amount is bigger than cash', 2)
                 return false
             else
-                TriggerClientEvent('wrp-ac:removeban', source, math.floor(amount))
-                TriggerEvent('wrp-business:givepass', source, 'DiamondCasino', math.floor(amount))
+                TriggerClientEvent('prp-ac:removeban', source, math.floor(amount))
+                TriggerEvent('prp-business:givepass', source, 'DiamondCasino', math.floor(amount))
                 TriggerClientEvent('DoLongHudText', source,  'Succesfully Placed bet')
                 return true
             end
@@ -34,8 +34,8 @@ function tryTakeChips(source,amount, chairId, cash)
                 TriggerClientEvent('DoLongHudText', source, 'Unable to place bet. Amount is bigger than cash', 2)
                 return false
             else
-                TriggerClientEvent('wrp-ac:removeban', source, math.floor(amount))
-                TriggerEvent('wrp-business:givepass', source, 'DiamondCasino', math.floor(amount))
+                TriggerClientEvent('prp-ac:removeban', source, math.floor(amount))
+                TriggerEvent('prp-business:givepass', source, 'DiamondCasino', math.floor(amount))
                 TriggerClientEvent('DoLongHudText', source,  'Succesfully Placed bet')
                 return true
             end
@@ -48,7 +48,7 @@ end
 
 function giveChips(source,amount)
     --gives amount in chips to source
-    TriggerClientEvent('wrp-ac:InfoPass', source, amount)
+    TriggerClientEvent('prp-ac:InfoPass', source, amount)
 end
 
 AddEventHandler('playerDropped', function (reason)

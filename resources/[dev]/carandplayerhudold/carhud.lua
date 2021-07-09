@@ -102,7 +102,7 @@ AddEventHandler('client:anchor', function()
         if vehModel ~= nil and vehModel ~= 0 then
             if DoesEntityExist(currVeh) then
                 if IsThisModelABoat(vehModel) or IsThisModelAJetski(vehModel) or IsThisModelAnAmphibiousCar(vehModel) or IsThisModelAnAmphibiousQuadbike(vehModel) then
-                	local finished = exports["wrp-taskbar"]:taskBar(2000,"Toggling Anchor")
+                	local finished = exports["prp-taskbar"]:taskBar(2000,"Toggling Anchor")
 					if (finished ~= 100) then
 					    return
 					end
@@ -1655,7 +1655,7 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(20000)
-		isDead = exports["wrp-deathmanager"]:GetDeath()
+		isDead = exports["prp-deathmanager"]:GetDeath()
 		if currentValues["hunger"] <= 0 then
 			if not isDead then
 				local newhealth = GetEntityHealth(PlayerPedId()) - math.random(5,10)
@@ -2403,8 +2403,8 @@ AddEventHandler('hud:saveCurrentMeta', function()
 	TriggerServerEvent("player:setServerMeta",currentValues["thirst"],currentValues["hunger"])
 end)
 
-RegisterNetEvent('wrp-login:loadCharData')
-AddEventHandler('wrp-login:loadCharData', function(food, water, armor, stressvalue)
+RegisterNetEvent('prp-login:loadCharData')
+AddEventHandler('prp-login:loadCharData', function(food, water, armor, stressvalue)
 	currentValues["hunger"] = tonumber(food)
 	currentValues["thirst"] = tonumber(water)
 	SetPlayerMaxArmour(PlayerId(), 1000)
@@ -2449,7 +2449,7 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000)
-		isDead = exports["wrp-deathmanager"]:GetDeath()
+		isDead = exports["prp-deathmanager"]:GetDeath()
 		if currentValues["hunger"] > 0 then
 			if not isDead then
 				currentValues["hunger"] = currentValues["hunger"] - math.random(2)
@@ -2468,7 +2468,7 @@ Citizen.CreateThread(function()
 		TriggerServerEvent("player:setServerMeta",currentValues["thirst"],currentValues["hunger"])
 
 		if currentValues["thirst"] < 20 or currentValues["hunger"] < 20 then
-			isDead = exports["wrp-deathmanager"]:GetDeath()
+			isDead = exports["prp-deathmanager"]:GetDeath()
 			if not isDead then
 
 
@@ -2555,7 +2555,7 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000)
-		isDead = exports["wrp-deathmanager"]:GetDeath()
+		isDead = exports["prp-deathmanager"]:GetDeath()
 		if not isDead then
 			currentValues["hunger"] = currentValues["hunger"] - math.random(2)
 			currentValues["thirst"] = currentValues["thirst"] - 1
@@ -2681,7 +2681,7 @@ function toggleAnchor()
             }
         end
 
-        local fin = exports['wrp-taskbar']:taskBar(1000, ('%s the anchor!'):format(not boatArray[vehPlate].vehAnchored and 'Dropping' or 'Raising'))
+        local fin = exports['prp-taskbar']:taskBar(1000, ('%s the anchor!'):format(not boatArray[vehPlate].vehAnchored and 'Dropping' or 'Raising'))
         if fin == 100 then 
             if CanAnchorBoatHere(playerVeh) then
                 SetBoatAnchor(playerVeh, not boatArray[vehPlate].vehAnchored)

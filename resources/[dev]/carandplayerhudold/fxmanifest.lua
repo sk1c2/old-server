@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 games { 'gta5' }
 
-client_script "@wrp-errorlog/client/cl_errorlog.lua"
+client_script "@prp-errorlog/client/cl_errorlog.lua"
 client_script 'carhud.lua'
 server_script 'carhud_server.lua'
 client_script 'cl_autoKick.lua'

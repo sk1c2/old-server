@@ -2,8 +2,8 @@
 -- Spawn Spikestrip Command --
 ---------------------------------------------------------------------------
 
-RegisterServerEvent('wrp-spikes:placeSpike')
-AddEventHandler('wrp-spikes:placeSpike', function(src, amount)
+RegisterServerEvent('prp-spikes:placeSpike')
+AddEventHandler('prp-spikes:placeSpike', function(src, amount)
     local src = source
     local amount = 1
     SpawnSpikestrips(src, amount)

@@ -2,8 +2,8 @@
 
 -- require "resources/mysql-async/lib/MySQL"
 user = 0
-RegisterServerEvent('wrp-boatshop:getcid')
-AddEventHandler('wrp-boatshop:getcid', function(cid)
+RegisterServerEvent('prp-boatshop:getcid')
+AddEventHandler('prp-boatshop:getcid', function(cid)
   -- [[ user = cid]]
   user = cid
 end)
@@ -115,7 +115,7 @@ AddEventHandler('ply_docks:CheckForSelBoat', function(plate)
   local boat_price = boatPrice(plate)
   if boat_plate == plate then 
     local boat_price = boat_price / 2
-    TriggerClientEvent('wrp-ac:InfoPass', source, boat_price)
+    TriggerClientEvent('prp-ac:InfoPass', source, boat_price)
     -- user:addMoney((boat_price))
     -- end
     MySQL.Sync.execute("DELETE from user_boat WHERE identifier=@identifier AND boat_plate=@plate", {['@identifier'] = user, ['@plate'] = plate})

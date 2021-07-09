@@ -193,36 +193,33 @@ selectedPage = 0
 --[[Functions]]--
 
 function HouseMenuGarage()
-
 	playerCoords = GetEntityCoords(LocalPed())
 	impLocation =  vector3(549.48272705078,-55.188056945801,71.063934326172)
     ped = PlayerPedId();
+    --MenuTitle = "Garagessssss"
 	ClearMenu()
 	selectedPage = 0
-	exports['prp-menudialog']:SetTitle("Public Garage")		
-	exports['prp-menudialog']:AddButton("Store Vehicle" , "Store Vehicle" , "RentrerVehicule")	
-	exports['prp-menudialog']:AddButton("Vehicle List" , "Vehicle List" , "ListeVehicule", 0)	
-	exports['prp-menudialog']:AddButton("Close Menu" , "Close Menu" , "CloseMenu", 0)	
+    Menu.addButton("Store Vehicle","RentrerVehicule",nil)
+    Menu.addButton("Vehicle List","ListeVehicule",0)
+	Menu.addButton("Close Menu","CloseMenu",nil)  
 end
 
 function MenuGarage()
-
 	enableHgarage = false
 	playerCoords = GetEntityCoords(LocalPed())
 	impLocation =  vector3(549.48272705078,-55.188056945801,71.063934326172)
     ped = PlayerPedId();
+    --MenuTitle = "Garagessssss"
 	ClearMenu()
 	selectedPage = 0
+	--current_used_garage = garages[selectedGarage].garage
 	if current_used_garage == "Impound Lot" then
 		Menu.addButton("Vehicle List","ListeVehicule",0)
     Menu.addButton("Close Menu","CloseMenu",nil) 
 	else
-		exports['prp-menudialog']:SetTitle("Public Garage")		
-		exports['prp-menudialog']:AddButton("Store Vehicle" , "Store Vehicle" , "RentrerVehicule")	
-		exports['prp-menudialog']:AddButton("Vehicle List" , "Vehicle List" , "ListeVehicule", 0)	
-		exports['prp-menudialog']:AddButton("Close Menu" , "Close Menu" , "CloseMenu", 0)	
-    -- Menu.addButton("Vehicle List","ListeVehicule",0)
-	-- Menu.addButton("Close Menu","CloseMenu",nil) 
+    Menu.addButton("Store Vehicle","RentrerVehicule",nil)
+    Menu.addButton("Vehicle List","ListeVehicule",0)
+	Menu.addButton("Close Menu","CloseMenu",nil) 
 	end
 end
 

@@ -1,0 +1,358 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    display: none;
+}
+
+.container {
+    position: absolute;
+    width: 75.5vh;
+    height: 35vh;
+    background-color: rgba(5, 5, 5, 0.9);
+    border-radius: 20px;
+    border: 4px solid rgb(19, 19, 19);
+    margin-left: 55vh;
+    bottom: 1vh;
+}
+
+.veh-img {
+    margin-left: 19vh;
+}
+
+.lh {
+    line-height: 3.6vh;
+}
+
+.progbar {
+    display: inline-block;
+    width: 60%;
+    border-radius: 10px;
+    background: #000000;
+    height: 9px;
+    margin-left: 13px;
+    margin-top: 13px;
+}
+
+.progbar-inner {
+    background: #1e42df8a;
+    height: 100%;
+    width: 40%;
+    border-radius: 10px;
+} 
+
+.power-btn {
+    height: 4.5vh;
+    width: 4.5vh;
+    text-align: center;
+    background-color: #1e42df8a;
+    border-radius: 50%;
+    font-size: 25px;
+    position: absolute;
+    color: white;
+    border: 2px solid #222222;
+    text-align: center;
+    margin-left: 9.6vh;
+    margin-top: 2.6vh;
+}
+
+.fa-power-off {
+    margin-top: 1.3vh
+}
+
+.light-btn {
+    height: 4.5vh;
+    width: 4.5vh;
+    text-align: center;
+    background-color: #1e42df8a;
+    border-radius: 50%;
+    font-size: 25px;
+    position: absolute;
+    color: white;
+    border: 2px solid #222222;
+    text-align: center;
+    margin-left: 9.6vh;
+    margin-top: 2.6vh;
+}
+
+.fa-light-off {
+    margin-top: 1.3vh
+}
+
+.icon {
+    margin-top: .5vh;
+    font-size: 19px;
+}
+
+.close {
+    border-radius: 50%;
+    background-color: #222222de;
+    border: 2px solid #222222de;
+    width: 3.5vh;
+    height: 3.5vh;
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(155, 49, 49);
+    margin-top: -29vh;
+    margin-left: 1vh;
+}
+
+.close:hover {
+    background-color: #0d0808;
+    border: 2px solid rgb(155, 49, 49);
+}
+
+.fa-times {
+    margin-top: 0.55vh;
+}
+
+.power-btn:hover {
+    background-color: #0d0808;
+    border: 2px solid #1e41df;
+}
+
+.light-btn:hover {
+    background-color: #0d0808;
+    border: 2px solid #1e41df;
+}
+
+.veh-option {
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    color: white;
+    height: auto;
+    width: 17vh;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 10px;
+    background-color: #222222de;
+    border: 2px solid #222222de;
+}
+
+.veh-option:hover {
+    background-color: #0d0808;
+    border: 2px solid #1e41df;
+    color: #1e41df;
+}
+
+.window-option {
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    color: white;
+    height: 15px;
+    width: 15px;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 1.5vh;
+    border-radius: 50%;
+    background-color: #222222de;
+    border: 2px solid #222222de;
+}
+
+.window-option:hover {
+    background-color: #0d0808;
+    border: 2px solid #1e41df;
+    color: #1e41df;
+}
+
+.seat-option {
+    position: absolute;
+    color: white;
+    height: 15px;
+    width: 15px;
+    padding: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+    border-radius: 20%;
+    background-color: #222222de;
+    border: 2px solid #222222de;
+}
+
+.seat1 {
+    top: 16vh;
+    left: 22vh;
+}
+
+.seat2 {
+    top: 16vh;
+    left: 26vh;
+}
+
+.seat3 {
+    top: 21vh;
+    left: 22vh;
+}
+
+.seat4 {
+    top: 21vh;
+    left: 26vh;
+}
+
+.seat-option:hover {
+    background-color: #0d0808;
+    border: 2px solid #1e41df;
+    color: #1e41df;
+}
+
+.hood {
+    width: 90px; 
+    top: 24px;
+    left: 20.6vh;
+}
+
+.driver-door {
+    width: 110px; 
+    top: 16vh;
+    left: 7.8vh;
+}
+
+.f-passenger {
+    width: 140px; 
+    top: 16vh;
+    left: 31.5vh;
+}
+
+.l-passenger {
+    width: 140px; 
+    top: 21vh;
+    left: 5vh;
+}
+
+.r-passenger {
+    width: 140px; 
+    top: 21vh;
+    left: 31.5vh;
+}
+
+.trunk {
+    width: 90px; 
+    left: 20.5vh;
+    top: 30vh;
+}
+
+.window1 {
+    top: 16vh;
+    left: 4vh;
+}
+
+.window2 {
+    top: 16vh;
+    left: 46.8vh;
+}
+
+.window3 {
+    top: 21vh;
+    left: 1.2vh;
+}
+
+.window4 {
+    top: 21vh;
+    left: 46.8vh;
+}
+
+img {
+    margin-top: 4.5vh;
+    width: 13vh;
+}
+
+.secondary-vehicle-controls {
+    position: absolute;
+    margin-left: 140vh;
+}
+
+.third-vehicle-controls {
+    position: absolute;
+    margin-left: 147vh;
+}
+
+.vehicle-stats {
+    position: absolute;
+    margin-left: 105.6vh;
+    top: 64.5vh;
+}
+
+.power-controls {
+    width: 20vw;
+    position: absolute;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    left: -33.7vh;
+    top: 87.5vh;
+}
+
+.light-controls {
+    width: 20vw;
+    position: absolute;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    left: -33.7vh;
+    top: 87.5vh;
+}
+
+.power-ctrl-btn {
+    width: 6.25vw;
+    background: #222222b9;
+    height: 4vh;
+    margin: 3px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    line-height: 45px;
+    text-align: center  ;
+    border: 2px solid #222222b9;
+}
+
+.power-ctrl-btn:hover {
+    background-color: #0d0808;
+    border: 2px solid #1e41df;
+    color: #1e41df;
+}
+
+.light-ctrl-btn {
+    width: 6.25vw;
+    background: #222222b9;
+    height: 4vh;
+    margin: 3px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    line-height: 45px;
+    text-align: center  ;
+    border: 2px solid #222222b9;
+}
+
+.light-ctrl-btn:hover {
+    background-color: #2279dd;
+    border: 2px solid #1e41df;
+    color: #1e41df;
+}
+
+.sec-section {
+    background-color: #222222b9;
+    border-radius: 5px;
+    padding: 10px;
+    width: 21.8vh;
+    height: 3vh;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    margin: 0.88vh;
+}

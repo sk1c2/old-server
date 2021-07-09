@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+  outline: none;
+  user-select: none;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+.flex-container {
+  margin: auto;
+  margin-top: 10%;
+  width: 40rem;
+  height: 38rem;
+  border-radius: 5px;
+  background-color: #343a40;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  background-color: #6b747c;
+  width: 100%;
+  height: 11.5%;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 2.5px solid #2675c4;
+}
+
+.header-text {
+  font-size: 20px;
+  margin-top: 3%;
+  font-weight: bolder;
+}
+
+.line {
+  width: 95%;
+  height: 2.5px;
+  background-color: #2675c4;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.description {
+  width: 85.5%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.subsection {
+  color: #c2c2c2;
+  margin-top: 10px;
+  margin-left: 17px;
+  font-size: 15px;
+}
+
+input {
+  background-color: rgba(32, 35, 39, 0.5);
+  border: none;
+  color: white;
+  font-size: 15px;
+  width: 95%;
+  margin-top: 5px;
+}
+
+#title {
+  min-width: 96.5%;
+  max-width: 96.5%;
+  min-height: 45px;
+  max-height: 45px;
+}
+
+#description {
+  min-width: 96.5%;
+  max-width: 96.5%;
+  min-height: 75px;
+  max-height: 75px;
+}
+
+#clips {
+  min-width: 96.5%;
+  max-width: 96.5%;
+  min-height: 152.5px;
+  max-height: 152.5px;
+}
+
+textarea {
+  background-color: rgba(32, 35, 39, 0.5);
+  margin-top: 5px;
+  border-radius: 2.5px;
+  overflow: auto;
+  resize: none;
+  font-size: 15px;
+  border: none;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  margin-left: 18px;
+  margin-top: 5px;
+}
+
+.cancel {
+  border-radius: 2.5px;
+  width: 120px;
+  background-color: #c53535;
+  margin-right: 15px;
+  text-align: center;
+  padding: 10px;
+}
+
+.cancel:hover {
+  background-color: #d62d2d;
+}
+
+.submit {
+  border-radius: 2.5px;
+  width: 120px;
+  background-color: #218838;
+  text-align: center;
+  padding: 10px;
+}
+
+.submit:hover {
+  background-color: #28a745;
+}
+

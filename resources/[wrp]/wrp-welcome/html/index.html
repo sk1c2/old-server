@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <script>
+        window.addEventListener('message', function (event) {
+            if (event.data.type == "open") {
+
+                $('#container').fadeIn(300);
+            }
+        })
+        $(document).ready(function () {
+            $("#keybinds").click(function () {
+
+                $("#cotnainerguide").fadeIn('slow')
+                $("#saba").html('F1: Interactions Menu&#10;&#13;Alt: Eye (Look at Objects) &#10;&#13;P: Opens Phone K: Opens Invenotry&#10;&#13;X: Crouch&#10;&#13;N: (Default) Push to Talk&#10;&#13;Z: Cycles Voice Proximity&#10;&#13;Delete: Player Menu&#10;&#13;R: Punching&#10;&#13;B: Point&#10;&#13;F2-F10: (Click key to assign)&#10;&#13;/em: Opens Emote Menu&#10;&#13;/pnum: Gives number&#10;&#13;/e c: Cancels Emote&#10;&#13;/311: EMS Contact&#10;&#13;/311r: EMS Response&#10;&#13;/911: Police Contact&#10;&#13;/911r: Police Response&#10;&#13;/ooc: Out of character message (Do not spam)&#10;&#13;/hud View HUD')
+
+
+
+            });
+            $("#close").click(function () {
+                $('#container').fadeOut(300);
+                    setTimeout(() => {
+                        $("#saba").html('')
+
+                        $.post(`http://${GetParentResourceName()}/exit`, JSON.stringify({}));
+
+                    }, 300);
+                })
+
+            
+        });
+        $(document).ready(function () {
+            $(document).keydown(function (event) {
+                if (event.which == "27") {
+                    $('#container').fadeOut(300);
+                    setTimeout(() => {
+                        $("#saba").html('')
+
+                        $.post(`http://${GetParentResourceName()}/exit`, JSON.stringify({}));
+
+                    }, 300);
+
+                }
+            });
+
+            $("#items").click(function () {
+                $("#cotnainerguide").fadeIn('slow')
+
+                $("#saba").html('Sandwich: Buy from shop and replenishes food&#10;&#13;Water: Buy from shop and replenishes water.&#10;&#13;Bandage: Stops bleeding and heals player.&#10;&#13;Lockpick: Steal a vehicle (if parked). Can also unlock vehicle.&#10;&#13;Repairkit: Repairs vehicle slightly, still smoking&#10;&#13;engine but will function.&#10;&#13;Armour: Adds Armour&#10;&#13;Joint: Replenishes armour the more you smoke and removes stress.&#10;&#13;Pistol: Obtained at weapon shop (go to pd fo a weapons license).&#10;&#13;Cigarette: Removes Stress&#10;&#13;IFAK: Heals and removes bleeding&#10;&#13;Radio: Speak to players the otherside of the map by pressing caps.')
+            });
+        }
+        );
+    </script>
+</head>
+
+<body style="background: transparent;overflow: hidden;display: none;" id="container">
+    <div id="main" class="position-absolute top-50 start-50 translate-middle d-flex flex-column" style="display: none;">
+        <div class="card" style="width: 800px;min-height: 400px;;border-radius: 15px;">
+
+            <div class="card-body" style="background-color: rgb(44, 44, 44);border-radius: 15px;">
+                <div class="container-fluid rounded mt-3" style="background:rgba(4, 76, 184, 0.116);">
+
+                    <div class="row text-center">
+                        <blockquote class="blockquote" style="color: white;font-size: 14px;">
+                            <img src='https://media.discordapp.net/attachments/812747934272978975/812943031271030784/v1_59.png?width=676&height=676'
+                                style="height: auto;width: 150px;">
+                            <p style="font-weight: bold;font-size: 30px;">WonderRP Guide</p>
+
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="container-fluid rounded mt-3" style="background:rgba(4, 76, 184, 0.116);color:white;">
+                    <div class="row" style="color:white;">
+                        <button type="submit" class="btn btn-outline-secondary" id="items" style="color:white;">Items
+                            Guide</button>
+
+                        <button class="btn btn-outline-secondary" id="keybinds"
+                            style="color:white;margin-top: 10px;">Keybinds
+                            Guide</button>
+                            <button class="btn btn-outline-secondary" id="close"
+                            style="color:white;margin-top: 10px;">
+                            Close</button>
+                    </div>
+                </div>
+
+                <div class="container-fluid rounded mt-3" id="cotnainerguide"
+                    style="background:rgba(4, 76, 184, 0.116);color:white;display: none;">
+                    <div class="row " style="color:white;overflow-x: hidden;">
+                        <span id="saba" style="white-space: pre;float: left;font-weight: bold;"></span>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>

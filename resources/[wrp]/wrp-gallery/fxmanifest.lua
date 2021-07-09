@@ -1,0 +1,9 @@
+fx_version 'bodacious'
+games { 'rdr3', 'gta5' }
+
+author 'Sterious'
+description 'Wonder Gallery'
+version '1.0.0'
+
+server_script "server.lua"
+client_script "client.lua"

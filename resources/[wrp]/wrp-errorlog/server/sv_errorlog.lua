@@ -1,0 +1,7 @@
+RegisterServerEvent('URP:LogClientError')
+AddEventHandler('URP:LogClientError', function(resource, ...)
+    local resource = GetCurrentResourceName()
+    print("------------------ ERROR IN RESOURCE: " .. resource)
+    print(...)
+    print("------------------ END OF ERROR")
+end)

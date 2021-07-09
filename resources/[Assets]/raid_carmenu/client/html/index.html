@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/4555cd517c.js" crossorigin="anonymous"></script>
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <title>Second UI</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="veh-img"><img src="vehicle.png"></div>
+            <div class="close"><i class="fas fa-times "></i></div>
+            <div id="hood" class="hood veh-option door" value="4">Hood</div>
+            <div id="door0" class="driver-door veh-option door" value="0"><span class="iconify" data-icon="mdi-car-door"
+                    data-inline="true"></span> Driver Door</div>
+            <div id="door1" class="f-passenger veh-option door" value="1"><span class="iconify" data-icon="mdi-car-door"
+                    data-inline="true"></span> F Passenger Door</div>
+            <div id="door2" class="l-passenger veh-option door" value="2"><span class="iconify" data-icon="mdi-car-door"
+                    data-inline="true"></span> L Passenger Door</div>
+            <div id="door3" class="r-passenger veh-option door" value="3"><span class="iconify" data-icon="mdi-car-door"
+                    data-inline="true"></span> R Passenger Door</div>
+            <div id="trunk" class="trunk veh-option door" value="5">Rear Trunk</div>
+            <div id="windowl1" class="window1 window-option window" value="0">W</div>
+            <div id="windowr1" class="window2 window-option window" value="1">W</div>
+            <div id="windowl2" class="window3 window-option window" value="2">W</div>
+            <div id="windowr2" class="window4 window-option window" value="3">W</div>
+            <div id="seatL1" class="seat seat-option seat1" value="-1">S</div>
+            <div id="seatR1" class="seat seat-option seat2" value="0">S</div>
+            <div id="seatL2" class="seat seat-option seat3" value="1">S</div>
+            <div id="seatR2" class="seat seat-option seat4" value="2">S</div>
+        </div>
+
+        <div class="secondary-vehicle-controls">
+            <div class="power-controls">
+                <div id="engine" class="power-btn engine" value="-1"><i class="fas fa-power-off"></i></div>
+            </div>
+        </div> 
+        
+        <div class="third-vehicle-controls">
+            <div class="light-controls">
+                <div id="light" class="light-btn light" value="-1"><i class="fas fa-power-off"></i></div>            
+            </div>
+        </div>  
+
+        <div class="vehicle-stats">
+            <div class="sec-section"><span class="lh veh-name">Audi RS6 2019</span></div>
+            <div class="sec-section"><span class="lh veh-plate">Plate: Keiron</span></div>
+            <div class="sec-section">
+                <span><i class="fas fa-gas-pump"></i> Fuel</span>
+                <div class="progbar">
+                    <div id="fuelLevel" class="progbar-inner fuel-bar"></div>
+                </div>
+            </div>
+            <div class="sec-section">
+                <span><i class="fas fa-car-crash"></i> Health</span>
+                <div class="progbar">
+                    <div id="damageLevel" class="progbar-inner fuel-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js" type="text/javascript"></script>
+</body>
+
+</html>

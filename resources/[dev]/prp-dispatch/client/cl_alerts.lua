@@ -121,8 +121,8 @@ Citizen.CreateThread( function()
     end
 end)
 
-RegisterNetEvent('wrp-outlawalert:gunshotInProgress')
-AddEventHandler('wrp-outlawalert:gunshotInProgress', function(plyPos)
+RegisterNetEvent('prp-outlawalert:gunshotInProgress')
+AddEventHandler('prp-outlawalert:gunshotInProgress', function(plyPos)
 	if exports['isPed']:isPed('job') == 'Police' then
 		if 1 + 1 == 2 then
 			local alpha = 250
@@ -174,8 +174,8 @@ Citizen.CreateThread( function()
     end
 end)
 
-RegisterNetEvent('wrp-outlawalert:combatInProgress')
-AddEventHandler('wrp-outlawalert:combatInProgress', function(playerPos)
+RegisterNetEvent('prp-outlawalert:combatInProgress')
+AddEventHandler('prp-outlawalert:combatInProgress', function(playerPos)
 	if exports['isPed']:isPed('job') == 'Police' then	
 		if Config.gunAlert then
 			local alpha = 250
@@ -214,7 +214,7 @@ end)
 RegisterNetEvent('police:tenThirteenA')
 AddEventHandler('police:tenThirteenA', function()
 		local pos = GetEntityCoords(PlayerPedId(),  true)
-		local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+		local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 		local Player = LocalPlayer:getCurrentCharacter()
 		TriggerServerEvent("dispatch:svNotify", {
 			dispatchCode = "10-13A",
@@ -229,11 +229,11 @@ AddEventHandler('police:tenThirteenA', function()
 				z = pos.z
 			  }
 		})
-		TriggerServerEvent('wrp-blips:officerdownA', pos)
+		TriggerServerEvent('prp-blips:officerdownA', pos)
 end)
 
-RegisterNetEvent('wrp-alerts:policealertA')
-AddEventHandler('wrp-alerts:policealertA', function(plyPos)
+RegisterNetEvent('prp-alerts:policealertA')
+AddEventHandler('prp-alerts:policealertA', function(plyPos)
   if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') == 'EMS' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -265,7 +265,7 @@ RegisterNetEvent('police:tenThirteenB')
 AddEventHandler('police:tenThirteenB', function()
 	if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') == 'EMS' then	
 		local pos = GetEntityCoords(PlayerPedId(),  true)
-		local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+		local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 		local Player = LocalPlayer:getCurrentCharacter()
 		TriggerServerEvent("dispatch:svNotify", {
 			dispatchCode = "10-13B",
@@ -280,12 +280,12 @@ AddEventHandler('police:tenThirteenB', function()
 				z = pos.z
 			}
 		})
-		TriggerServerEvent('wrp-blips:officerdownB', pos)
+		TriggerServerEvent('prp-blips:officerdownB', pos)
 	end
 end)
 
-RegisterNetEvent('wrp-alerts:policealertB')
-AddEventHandler('wrp-alerts:policealertB', function(plyCoords)
+RegisterNetEvent('prp-alerts:policealertB')
+AddEventHandler('prp-alerts:policealertB', function(plyCoords)
 if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') == 'EMS' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -320,7 +320,7 @@ end)
 RegisterNetEvent('police:panic')
 AddEventHandler('police:panic', function()
 		local pos = GetEntityCoords(PlayerPedId(),  true)
-		local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+		local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 		local Player = LocalPlayer:getCurrentCharacter()
 		TriggerServerEvent("dispatch:svNotify", {
 			dispatchCode = "10-78",
@@ -335,12 +335,12 @@ AddEventHandler('police:panic', function()
 				z = pos.z
 			}
 		})
-		TriggerServerEvent('wrp-alerts:panic', pos)
+		TriggerServerEvent('prp-alerts:panic', pos)
 		TriggerEvent("animation:phonecall")
 end)
 
-RegisterNetEvent('wrp-alerts:panic')
-AddEventHandler('wrp-alerts:panic', function(plyCoords)
+RegisterNetEvent('prp-alerts:panic')
+AddEventHandler('prp-alerts:panic', function(plyCoords)
 if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') == 'EMS' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -374,7 +374,7 @@ end)
 RegisterNetEvent("police:tenForteenA")
 AddEventHandler("police:tenForteenA", function()	
 if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') == 'EMS' then	
-	local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+	local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 	local Player = LocalPlayer:getCurrentCharacter()
 	local pos = GetEntityCoords(PlayerPedId(),  true)
 	TriggerServerEvent("dispatch:svNotify", {
@@ -390,12 +390,12 @@ if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') ==
 			z = pos.z
 		}
 	})
-		TriggerServerEvent('wrp-blips:medicDownA', pos)
+		TriggerServerEvent('prp-blips:medicDownA', pos)
 	end
 end)
 
-RegisterNetEvent('wrp-alerts:tenForteenA')
-AddEventHandler('wrp-alerts:tenForteenA', function(plyCoords)
+RegisterNetEvent('prp-alerts:tenForteenA')
+AddEventHandler('prp-alerts:tenForteenA', function(plyCoords)
   if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') == 'EMS' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -426,7 +426,7 @@ end)
 RegisterNetEvent("police:tenForteenB")
 AddEventHandler("police:tenForteenB", function()
 if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') == 'EMS' then	
-	local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+	local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 	local Player = LocalPlayer:getCurrentCharacter()
 	local pos = GetEntityCoords(PlayerPedId(),  true)
 	TriggerServerEvent("dispatch:svNotify", {
@@ -442,12 +442,12 @@ if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') ==
 			z = pos.z
 		}
 	})
-		TriggerServerEvent('wrp-blips:medicDownB', pos)
+		TriggerServerEvent('prp-blips:medicDownB', pos)
 	end
 end)
 
-RegisterNetEvent('wrp-alerts:tenForteenB')
-AddEventHandler('wrp-alerts:tenForteenB', function(plyCoords)
+RegisterNetEvent('prp-alerts:tenForteenB')
+AddEventHandler('prp-alerts:tenForteenB', function(plyCoords)
 if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') == 'EMS' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -477,8 +477,8 @@ end)
 
 ---- Down Person ----
 
-RegisterNetEvent('wrp-alerts:downalert')
-AddEventHandler('wrp-alerts:downalert', function(targetCoords)
+RegisterNetEvent('prp-alerts:downalert')
+AddEventHandler('prp-alerts:downalert', function(targetCoords)
 if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') == 'EMS' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -507,8 +507,8 @@ if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') ==
 end)
 
 ---- Car Crash ----
-RegisterNetEvent('wrp-alerts:vehiclecrash')
-AddEventHandler('wrp-alerts:vehiclecrash', function(plyPos)
+RegisterNetEvent('prp-alerts:vehiclecrash')
+AddEventHandler('prp-alerts:vehiclecrash', function(plyPos)
 if exports['isPed']:isPed('job') == 'Police' or exports['isPed']:isPed('job') == 'EMS' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -538,8 +538,8 @@ end)
 
 ---- Vehicle Theft ----
 
-RegisterNetEvent('wrp-alerts:vehiclesteal')
-AddEventHandler('wrp-alerts:vehiclesteal', function(plyPos)
+RegisterNetEvent('prp-alerts:vehiclesteal')
+AddEventHandler('prp-alerts:vehiclesteal', function(plyPos)
 if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -569,8 +569,8 @@ end)
 
 -- Downed person --
 
-RegisterNetEvent('wrp-alerts:downedperson')
-AddEventHandler('wrp-alerts:downedperson', function(plyPos)
+RegisterNetEvent('prp-alerts:downedperson')
+AddEventHandler('prp-alerts:downedperson', function(plyPos)
 	if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -625,8 +625,8 @@ end)
 
 -- Drug selling --
 
-RegisterNetEvent('wrp-alerts:drugjob')
-AddEventHandler('wrp-alerts:drugjob', function(plyPos)
+RegisterNetEvent('prp-alerts:drugjob')
+AddEventHandler('prp-alerts:drugjob', function(plyPos)
 if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -654,8 +654,8 @@ if exports['isPed']:isPed('job') == 'Police' then
   end
 end)
 
-RegisterNetEvent('wrp-alerts:vehiclesuspicion')
-AddEventHandler('wrp-alerts:vehiclesuspicion', function(plyPos)
+RegisterNetEvent('prp-alerts:vehiclesuspicion')
+AddEventHandler('prp-alerts:vehiclesuspicion', function(plyPos)
 if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -685,8 +685,8 @@ end)
 
 ---- Store Robbery ----
 
-RegisterNetEvent('wrp-alerts:storerobbery')
-AddEventHandler('wrp-alerts:storerobbery', function(plyPos)
+RegisterNetEvent('prp-alerts:storerobbery')
+AddEventHandler('prp-alerts:storerobbery', function(plyPos)
 if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -715,8 +715,8 @@ if exports['isPed']:isPed('job') == 'Police' then
   end
 end)
 
-RegisterNetEvent('wrp-alerts:fleecarobbery')
-AddEventHandler('wrp-alerts:fleecarobbery', function(plyPos)
+RegisterNetEvent('prp-alerts:fleecarobbery')
+AddEventHandler('prp-alerts:fleecarobbery', function(plyPos)
 	if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -746,8 +746,8 @@ end)
 
 ---- Big Bank Robbery ----
 
-RegisterNetEvent('wrp-alerts:bigbankrobbery')
-AddEventHandler('wrp-alerts:bigbankrobbery', function(plyPos)
+RegisterNetEvent('prp-alerts:bigbankrobbery')
+AddEventHandler('prp-alerts:bigbankrobbery', function(plyPos)
 	if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -777,8 +777,8 @@ end)
 
 ---- Power Plant ----
 
-RegisterNetEvent('wrp-alerts:powerplant')
-AddEventHandler('wrp-alerts:powerplant', function(plyPos)
+RegisterNetEvent('prp-alerts:powerplant')
+AddEventHandler('prp-alerts:powerplant', function(plyPos)
 	if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -808,8 +808,8 @@ end)
 
 ---- House Robbery ----
 
-RegisterNetEvent('wrp-alerts:houserobbery')
-AddEventHandler('wrp-alerts:houserobbery', function(plyPos)
+RegisterNetEvent('prp-alerts:houserobbery')
+AddEventHandler('prp-alerts:houserobbery', function(plyPos)
 if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -840,8 +840,8 @@ end)
 
 ---- Bank Truck ----
 
-RegisterNetEvent('wrp-alerts:banktruck')
-AddEventHandler('wrp-alerts:banktruck', function(plyPos)
+RegisterNetEvent('prp-alerts:banktruck')
+AddEventHandler('prp-alerts:banktruck', function(plyPos)
 	if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -871,8 +871,8 @@ end)
 
 ---- Jewerly Store ----
 
-RegisterNetEvent('wrp-alerts:jewelrobbey')
-AddEventHandler('wrp-alerts:jewelrobbey', function()
+RegisterNetEvent('prp-alerts:jewelrobbey')
+AddEventHandler('prp-alerts:jewelrobbey', function()
 	if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -902,8 +902,8 @@ end)
 
 ---- Jail Break ----
 
-RegisterNetEvent('wrp-alerts:jailbreak')
-AddEventHandler('wrp-alerts:jailbreak', function(plyPos)
+RegisterNetEvent('prp-alerts:jailbreak')
+AddEventHandler('prp-alerts:jailbreak', function(plyPos)
 	if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)

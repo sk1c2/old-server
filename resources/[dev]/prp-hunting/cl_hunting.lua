@@ -12,8 +12,8 @@ local Blips = {
   }
 }
 
-RegisterNetEvent('wrp-hunting:obtainLicense')
-AddEventHandler('wrp-hunting:obtainLicense', function()
+RegisterNetEvent('prp-hunting:obtainLicense')
+AddEventHandler('prp-hunting:obtainLicense', function()
     TempLicense = 1
 end)
 
@@ -142,7 +142,7 @@ CreateThread(function()
           DrawText3Ds(vector3(-675.4431, 5836.979, 17.34016), '[~b~E~w~] Hunting Clock-In')
           if officeDist < 1 then
             if IsControlJustReleased(0, 38) then
-              TriggerServerEvent('wrp-hunting:hasLicense', exports['isPed']:isPed('cid'))
+              TriggerServerEvent('prp-hunting:hasLicense', exports['isPed']:isPed('cid'))
               Wait(1000)
             end
           end
@@ -155,7 +155,7 @@ CreateThread(function()
           DrawText3Ds(vector3(-675.4431, 5836.979, 17.34016), '[~g~E~w~] Hunting License')
           if officeDist < 1 then
             if IsControlJustReleased(0, 38) then
-              TriggerEvent('wrp-hunting:PurchaseHuntingLicense', exports['isPed']:isPed('cid'))
+              TriggerEvent('prp-hunting:PurchaseHuntingLicense', exports['isPed']:isPed('cid'))
               TriggerEvent('DoShortHudText', 'Signing up to a hunting license. Please wait.')
               Wait(5000)
             end
@@ -165,7 +165,7 @@ CreateThread(function()
           if officeDist < 1 then
             if IsControlJustReleased(0, 38) then
               currentHuntingStatus = 0
-              TriggerServerEvent('wrp-hunting:removeloadout')
+              TriggerServerEvent('prp-hunting:removeloadout')
               Wait(100)
               SetPedInfiniteAmmo(PlayerPedId(), false)
               RemoveWeaponFromPed(PlayerPedId(), GetHashKey('WEAPON_SNIPERRIFLE'))
@@ -185,7 +185,7 @@ CreateThread(function()
                   if WarMenu.CurrentMenu() and showMenu then
                     for i=1, #items do
                       if WarMenu.Button(items[i]['name']) then 
-                        TriggerServerEvent('wrp-hunting:sellItem', items[i]['id'], exports['wrp-inventory']:getQuantity(items[i]['id']))
+                        TriggerServerEvent('prp-hunting:sellItem', items[i]['id'], exports['prp-inventory']:getQuantity(items[i]['id']))
                         Wait(5000)
                       end
                     end
@@ -240,7 +240,7 @@ CreateThread(function()
                     if #(plyCoords - animalCoords) < 1.3 then
                       if HuntingKnives[GetSelectedPedWeapon(plyPed)]  then
                         huntingBusy = true
-                        TriggerServerEvent('wrp-hunting:cacheAnimal', NetworkGetNetworkIdFromEntity(otherped))
+                        TriggerServerEvent('prp-hunting:cacheAnimal', NetworkGetNetworkIdFromEntity(otherped))
                         local animOn = true
                         CreateThread(function()
                           TaskTurnPedToFaceEntity(plyPed, otherped, -1)
@@ -299,7 +299,7 @@ CreateThread(function()
                           return
                         end)
                         
-                        local finished = exports["wrp-taskbar"]:taskBar(huntingAnimals[GetEntityModel(otherped)]['time'],"Skinning Animal", true, true, true)
+                        local finished = exports["prp-taskbar"]:taskBar(huntingAnimals[GetEntityModel(otherped)]['time'],"Skinning Animal", true, true, true)
                         if (finished == 100) then
                           animOn = false
 
@@ -309,7 +309,7 @@ CreateThread(function()
                           TaskPlayAnim(PlayerPedId(), "amb@medic@standing@tendtodead@exit", "exit", 8.0, -8, -1, 2, 0, 0, 0, 0)
                           Wait(GetAnimDuration("amb@medic@standing@tendtodead@exit", "exit") * 1000 + 200)
                           ClearPedTasks(plyPed)
-                          TriggerServerEvent('wrp-hunting:getReward', GetEntityModel(otherped), huntingAnimals[GetEntityModel(otherped)])
+                          TriggerServerEvent('prp-hunting:getReward', GetEntityModel(otherped), huntingAnimals[GetEntityModel(otherped)])
                           NetworkFadeOutEntity(otherped, false, true)
                           Citizen.Wait(800)
                           DeleteEntity(otherped)
@@ -354,14 +354,14 @@ Citizen.CreateThread(function()
   end
 end)
 
-RegisterNetEvent("wrp-hunting:hasLicense")
-AddEventHandler("wrp-hunting:hasLicense", function(hasLicense)
+RegisterNetEvent("prp-hunting:hasLicense")
+AddEventHandler("prp-hunting:hasLicense", function(hasLicense)
   if tonumber(hasLicense) == 1 then
     currentHuntingStatus = 1
     TriggerEvent('DoLongHudText', 'You have a hunting license in our system, feel free to go legally hunting, go find animals', 1)
     local blipInfo = Blips['hunting']['blips'][2]
-    TriggerServerEvent('wrp-GiveLoadOutForHunting')
-    -- TriggerEvent('wrp-banned:getID', source, '100416529', 1)
+    TriggerServerEvent('prp-GiveLoadOutForHunting')
+    -- TriggerEvent('prp-banned:getID', source, '100416529', 1)
     GiveWeaponToPed(PlayerPedId(), GetHashKey('WEAPON_SNIPERRIFLE'), 0, 0, 1)
     SetCurrentPedWeapon(PlayerPedId(), GetHashKey('WEAPON_SNIPERRIFLE'), 1)
     SetAmmoInClip(PlayerPedId(), 'WEAPON_SNIPERRIFLE', 10)
@@ -391,20 +391,20 @@ function GetPedInFront()
 	return ped
 end
 
-RegisterNetEvent('wrp-hunting:sellItems')
-AddEventHandler('wrp-hunting:sellItems', function(amount)
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+RegisterNetEvent('prp-hunting:sellItems')
+AddEventHandler('prp-hunting:sellItems', function(amount)
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:addCash(Player.id, amount)
 end)
 
-RegisterNetEvent('wrp-hunting:PurchaseHuntingLicense')
-AddEventHandler('wrp-hunting:PurchaseHuntingLicense', function()
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+RegisterNetEvent('prp-hunting:PurchaseHuntingLicense')
+AddEventHandler('prp-hunting:PurchaseHuntingLicense', function()
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     if Player.cash >= 1500 then
         LocalPlayer:removeCash(Player.id, 1500)
-        TriggerServerEvent('wrp-hunting:obtainLicense', exports['isPed']:isPed('cid'))
+        TriggerServerEvent('prp-hunting:obtainLicense', exports['isPed']:isPed('cid'))
     else
         TriggerEvent('DoLongHudText', 'You do not have enough money to purchase a hunting license.')
     end
@@ -424,8 +424,8 @@ RegisterCommand('checkhunting', function(source, args)
     end
 end)
 
-RegisterNetEvent('wrp-hunting:license:check')
-AddEventHandler('wrp-hunting:license:check', function(license, cid)
+RegisterNetEvent('prp-hunting:license:check')
+AddEventHandler('prp-hunting:license:check', function(license, cid)
     if license == (1 or '1') then
         license = 'True'
     else
@@ -472,7 +472,7 @@ Citizen.CreateThread(function()
     SetAmmoInClip(PlayerPedId(), 'WEAPON_SNIPERRIFLE', 10)
     SetPedInfiniteAmmo(PlayerPedId(), true, GetHashKey('WEAPON_SNIPERRIFLE'))
     if timer > 180000 then 
-      TriggerServerEvent('wrp-hunting:removeloadout')
+      TriggerServerEvent('prp-hunting:removeloadout')
       TriggerEvent('DoLongHudText', 'Uh oh! you ran out of time, yoink!', 2)
       timer = 0
       OnGoingHuntSession = false

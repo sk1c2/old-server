@@ -858,6 +858,21 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         end
     end
 
+    if (itemid == "fireworkfountain") then
+        TriggerEvent('firework:fountain')
+        remove = true
+    end
+
+    if (itemid == "fireworkrocket") then
+        TriggerEvent('firework:rocket')
+        remove = true
+    end
+
+    if (itemid == "fireworkshotburst") then
+        TriggerEvent('firework:shotburst')
+        remove = true
+    end
+
     if (itemid == "vodka" or itemid == "beer" or itemid == "whiskey") then
         AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,6000,"Drink","changethirst",true,itemid,playerVeh)
         TriggerEvent("Evidence:StateSet", 8, 600)

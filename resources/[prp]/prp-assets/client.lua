@@ -594,129 +594,129 @@ Citizen.CreateThread(function()
 
 ----------Fire Work Ting--------
 
--- local box = nil
--- local animlib = 'anim@mp_fireworks'
+local box = nil
+local animlib = 'anim@mp_fireworks'
 
 
--- RegisterNetEvent('firework:rocket')
--- AddEventHandler('firework:rocket', function()
+RegisterNetEvent('firework:rocket')
+AddEventHandler('firework:rocket', function()
 
--- 	RequestAnimDict(animlib)
+	RequestAnimDict(animlib)
 
--- 	while not HasAnimDictLoaded(animlib) do
--- 		   Citizen.Wait(10)
---     end
+	while not HasAnimDictLoaded(animlib) do
+		   Citizen.Wait(10)
+    end
         
--- 	if not HasNamedPtfxAssetLoaded("scr_indep_fireworks") then
--- 		RequestNamedPtfxAsset("scr_indep_fireworks")
--- 		while not HasNamedPtfxAssetLoaded("scr_indep_fireworks") do
--- 		   Wait(10)
--- 		end
--- 	end
+	if not HasNamedPtfxAssetLoaded("scr_indep_fireworks") then
+		RequestNamedPtfxAsset("scr_indep_fireworks")
+		while not HasNamedPtfxAssetLoaded("scr_indep_fireworks") do
+		   Wait(10)
+		end
+	end
 
--- 	local pedcoords = GetEntityCoords(GetPlayerPed(-1))
--- 	local ped = GetPlayerPed(-1)
--- 	local times = 20
+	local pedcoords = GetEntityCoords(GetPlayerPed(-1))
+	local ped = GetPlayerPed(-1)
+	local times = 20
 
--- 	TaskPlayAnim(ped, animlib, 'place_firework_3_box', -1, -8.0, 3000, 0, 0, false, false, false)
--- 	Citizen.Wait(4000)
--- 	ClearPedTasks(ped)
+	TaskPlayAnim(ped, animlib, 'place_firework_3_box', -1, -8.0, 3000, 0, 0, false, false, false)
+	Citizen.Wait(4000)
+	ClearPedTasks(ped)
 		   
--- 	box = CreateObject(GetHashKey('ind_prop_firework_01'), pedcoords, true, false, false)
--- 	PlaceObjectOnGroundProperly(box)
--- 	FreezeEntityPosition(box, true)
--- 	local firecoords = GetEntityCoords(box)
+	box = CreateObject(GetHashKey('ind_prop_firework_01'), pedcoords, true, false, false)
+	PlaceObjectOnGroundProperly(box)
+	FreezeEntityPosition(box, true)
+	local firecoords = GetEntityCoords(box)
 
--- 	Citizen.Wait(10000)
--- 	repeat
--- 	UseParticleFxAssetNextCall("scr_indep_fireworks")
--- 	local part1 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst", firecoords, 0.0, 0.0, 0.0, 2.0, false, false, false, false)
--- 	times = times - 1
--- 	Citizen.Wait(2000)
--- 	until(times == 0)
--- 	DeleteEntity(box)
--- 	box = nil
--- end)
+	Citizen.Wait(10000)
+	repeat
+	UseParticleFxAssetNextCall("scr_indep_fireworks")
+	local part1 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_starburst", firecoords, 0.0, 0.0, 0.0, 2.0, false, false, false, false)
+	times = times - 1
+	Citizen.Wait(2000)
+	until(times == 0)
+	DeleteEntity(box)
+	box = nil
+end)
 
--- RegisterNetEvent('firework:fountain')
--- AddEventHandler('firework:fountain', function()
+RegisterNetEvent('firework:fountain')
+AddEventHandler('firework:fountain', function()
 
--- 	RequestAnimDict(animlib)
+	RequestAnimDict(animlib)
 
--- 	while not HasAnimDictLoaded(animlib) do
--- 		   Citizen.Wait(10)
---     end
+	while not HasAnimDictLoaded(animlib) do
+		   Citizen.Wait(10)
+    end
         
--- 	if not HasNamedPtfxAssetLoaded("scr_indep_fireworks") then
--- 		RequestNamedPtfxAsset("scr_indep_fireworks")
--- 		while not HasNamedPtfxAssetLoaded("scr_indep_fireworks") do
--- 		   Wait(10)
--- 		end
--- 	end
+	if not HasNamedPtfxAssetLoaded("scr_indep_fireworks") then
+		RequestNamedPtfxAsset("scr_indep_fireworks")
+		while not HasNamedPtfxAssetLoaded("scr_indep_fireworks") do
+		   Wait(10)
+		end
+	end
 
--- 	local pedcoords = GetEntityCoords(GetPlayerPed(-1))
--- 	local ped = GetPlayerPed(-1)
--- 	local times = 20
+	local pedcoords = GetEntityCoords(GetPlayerPed(-1))
+	local ped = GetPlayerPed(-1)
+	local times = 20
 
--- 	TaskPlayAnim(ped, animlib, 'place_firework_3_box', -1, -8.0, 3000, 0, 0, false, false, false)
--- 	Citizen.Wait(4000)
--- 	ClearPedTasks(ped)
+	TaskPlayAnim(ped, animlib, 'place_firework_3_box', -1, -8.0, 3000, 0, 0, false, false, false)
+	Citizen.Wait(4000)
+	ClearPedTasks(ped)
 		   
--- 	box = CreateObject(GetHashKey('ind_prop_firework_04'), pedcoords, true, false, false)
--- 	PlaceObjectOnGroundProperly(box)
--- 	FreezeEntityPosition(box, true)
--- 	local firecoords = GetEntityCoords(box)
+	box = CreateObject(GetHashKey('ind_prop_firework_04'), pedcoords, true, false, false)
+	PlaceObjectOnGroundProperly(box)
+	FreezeEntityPosition(box, true)
+	local firecoords = GetEntityCoords(box)
 
--- 	Citizen.Wait(10000)
--- 	repeat
--- 	UseParticleFxAssetNextCall("scr_indep_fireworks")
--- 	local part1 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_fountain", firecoords, 0.0, 0.0, 0.0, 2.0, false, false, false, false)
--- 	times = times - 1
--- 	Citizen.Wait(2000)
--- 	until(times == 0)
--- 	DeleteEntity(box)
--- 	box = nil
--- end)
+	Citizen.Wait(10000)
+	repeat
+	UseParticleFxAssetNextCall("scr_indep_fireworks")
+	local part1 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_fountain", firecoords, 0.0, 0.0, 0.0, 2.0, false, false, false, false)
+	times = times - 1
+	Citizen.Wait(2000)
+	until(times == 0)
+	DeleteEntity(box)
+	box = nil
+end)
 
--- RegisterNetEvent('firework:shotburst')
--- AddEventHandler('firework:shotburst', function()
+RegisterNetEvent('firework:shotburst')
+AddEventHandler('firework:shotburst', function()
 
--- 	RequestAnimDict(animlib)
+	RequestAnimDict(animlib)
 
--- 	while not HasAnimDictLoaded(animlib) do
--- 		   Citizen.Wait(10)
---     end
+	while not HasAnimDictLoaded(animlib) do
+		   Citizen.Wait(10)
+    end
         
--- 	if not HasNamedPtfxAssetLoaded("scr_indep_fireworks") then
--- 		RequestNamedPtfxAsset("scr_indep_fireworks")
--- 		while not HasNamedPtfxAssetLoaded("scr_indep_fireworks") do
--- 		   Wait(10)
--- 		end
--- 	end
+	if not HasNamedPtfxAssetLoaded("scr_indep_fireworks") then
+		RequestNamedPtfxAsset("scr_indep_fireworks")
+		while not HasNamedPtfxAssetLoaded("scr_indep_fireworks") do
+		   Wait(10)
+		end
+	end
 
--- 	local pedcoords = GetEntityCoords(GetPlayerPed(-1))
--- 	local ped = GetPlayerPed(-1)
--- 	local times = 20
+	local pedcoords = GetEntityCoords(GetPlayerPed(-1))
+	local ped = GetPlayerPed(-1)
+	local times = 20
 
--- 	TaskPlayAnim(ped, animlib, 'place_firework_3_box', -1, -8.0, 3000, 0, 0, false, false, false)
--- 	Citizen.Wait(4000)
--- 	ClearPedTasks(ped)
+	TaskPlayAnim(ped, animlib, 'place_firework_3_box', -1, -8.0, 3000, 0, 0, false, false, false)
+	Citizen.Wait(4000)
+	ClearPedTasks(ped)
 		   
--- 	box = CreateObject(GetHashKey('ind_prop_firework_03'), pedcoords, true, false, false)
--- 	PlaceObjectOnGroundProperly(box)
--- 	FreezeEntityPosition(box, true)
--- 	local firecoords = GetEntityCoords(box)
+	box = CreateObject(GetHashKey('ind_prop_firework_03'), pedcoords, true, false, false)
+	PlaceObjectOnGroundProperly(box)
+	FreezeEntityPosition(box, true)
+	local firecoords = GetEntityCoords(box)
 
--- 	Citizen.Wait(10000)
--- 	repeat
--- 	UseParticleFxAssetNextCall("scr_indep_fireworks")
--- 	local part1 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_shotburst", firecoords, 0.0, 0.0, 0.0, 2.0, false, false, false, false)
--- 	times = times - 1
--- 	Citizen.Wait(2000)
--- 	until(times == 0)
--- 	DeleteEntity(box)
--- 	box = nil
--- end)
+	Citizen.Wait(10000)
+	repeat
+	UseParticleFxAssetNextCall("scr_indep_fireworks")
+	local part1 = StartNetworkedParticleFxNonLoopedAtCoord("scr_indep_firework_shotburst", firecoords, 0.0, 0.0, 0.0, 2.0, false, false, false, false)
+	times = times - 1
+	Citizen.Wait(2000)
+	until(times == 0)
+	DeleteEntity(box)
+	box = nil
+end)
 
 -- Map Zoom Sens
 Citizen.CreateThread(function()

@@ -183,6 +183,18 @@ AddEventHandler('event:control:taskBar', function(useID)
 end)
  
 
--- RegisterCommand("hey" , function(rawCommand)
---     exports['wrp-taskbar']:taskBar(1500 , 'Hey')
--- end)
+RegisterCommand("hey" , function(rawCommand)
+    exports['wrp-taskbar']:taskBar(5000 , 'Hey')
+end)
+
+Citizen.CreateThread(function()
+    while true do
+    Citizen.Wait(0)
+        if guiEnabled then
+            DisableControlAction(0, 311, true) 
+            if IsDisabledControlJustReleased(0, 322) then
+                closeGuiFail()
+            end
+        end
+    end
+end)

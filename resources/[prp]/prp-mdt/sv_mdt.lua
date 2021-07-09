@@ -1,7 +1,7 @@
 local call_index = 0
 
-RegisterServerEvent("wrp-mdt:Open")
-AddEventHandler("wrp-mdt:Open", function(cid)
+RegisterServerEvent("prp-mdt:Open")
+AddEventHandler("prp-mdt:Open", function(cid)
 	local usource = source
 	exports.ghmattimysql:execute('SELECT * FROM __characters WHERE id = ?', {cid}, function(result)
 		local job = result[1].job
@@ -16,7 +16,7 @@ AddEventHandler("wrp-mdt:Open", function(cid)
     				end
 
     				local officer = GetCharacterName(usource)
-					TriggerClientEvent('wrp-mdt:toggleVisibilty', usource, reports, warrants, officer, job)
+					TriggerClientEvent('prp-mdt:toggleVisibilty', usource, reports, warrants, officer, job)
     			end)
     		end)
 		elseif job == 'DOJ' then
@@ -30,7 +30,7 @@ AddEventHandler("wrp-mdt:Open", function(cid)
     				end
 
     				local officer = GetCharacterName(usource)
-					TriggerClientEvent('wrp-mdt:toggleVisibilty', usource, reports, warrants, officer, job)
+					TriggerClientEvent('prp-mdt:toggleVisibilty', usource, reports, warrants, officer, job)
     			end)
     		end)
 		elseif job == 'FIB' then
@@ -44,15 +44,15 @@ AddEventHandler("wrp-mdt:Open", function(cid)
     				end
 
     				local officer = GetCharacterName(usource)
-					TriggerClientEvent('wrp-mdt:toggleVisibilty', usource, reports, warrants, officer, job)
+					TriggerClientEvent('prp-mdt:toggleVisibilty', usource, reports, warrants, officer, job)
     			end)
     		end)
 		end
 	end)
 end)
 
-RegisterServerEvent("wrp-mdt:getOffensesAndOfficer")
-AddEventHandler("wrp-mdt:getOffensesAndOfficer", function()
+RegisterServerEvent("prp-mdt:getOffensesAndOfficer")
+AddEventHandler("prp-mdt:getOffensesAndOfficer", function()
 	local usource = source
 	local charges = {}
 	MySQL.Async.fetchAll('SELECT * FROM fine_types', {
@@ -65,19 +65,19 @@ AddEventHandler("wrp-mdt:getOffensesAndOfficer", function()
 
 		local officer = GetCharacterName(usource)
 
-		TriggerClientEvent("wrp-mdt:returnOffensesAndOfficer", usource, charges, officer)
+		TriggerClientEvent("prp-mdt:returnOffensesAndOfficer", usource, charges, officer)
 	end)
 end)
 
-RegisterServerEvent("wrp-mdt:checkloginsql")
-AddEventHandler("wrp-mdt:checkloginsql", function(username , password , cid)
+RegisterServerEvent("prp-mdt:checkloginsql")
+AddEventHandler("prp-mdt:checkloginsql", function(username , password , cid)
 	local usource = source
 	local mdtusers = MySQL.Sync.fetchAll('SELECT * FROM `__mdtusers` WHERE `uid` = @cid ', {
 		['@cid'] = cid
 	})
 	if(mdtusers[1]) then
 		if(mdtusers[1].username == username and mdtusers[1].password == password) then
-		TriggerClientEvent("wrp-mdt:openmdt" , usource)
+		TriggerClientEvent("prp-mdt:openmdt" , usource)
 		else
 			TriggerClientEvent('DoLongHudText', usource, 'Invailed Username / Password!', 2)
 		end
@@ -86,8 +86,8 @@ AddEventHandler("wrp-mdt:checkloginsql", function(username , password , cid)
 	
 end)
 
-RegisterServerEvent('wrp-mdt:register')
-AddEventHandler('wrp-mdt:register', function(username , password , cid)
+RegisterServerEvent('prp-mdt:register')
+AddEventHandler('prp-mdt:register', function(username , password , cid)
 	local usource = source
 	local checkmdtusers = MySQL.Sync.fetchAll('SELECT * FROM `__mdtusers` WHERE `uid` = @cid ', {
 		['@cid'] = cid
@@ -102,15 +102,15 @@ AddEventHandler('wrp-mdt:register', function(username , password , cid)
 		['@password'] = password,
 	})
 	 TriggerClientEvent('DoLongHudText', usource, 'Your account has been created!', 3)
-TriggerClientEvent("wrp-mdt:movepagetologin" , usource)
+TriggerClientEvent("prp-mdt:movepagetologin" , usource)
 
 	
 	
 end)
 
 
-RegisterServerEvent('wrp-mdt:updatepass')
-AddEventHandler('wrp-mdt:updatepass', function(password , cid)
+RegisterServerEvent('prp-mdt:updatepass')
+AddEventHandler('prp-mdt:updatepass', function(password , cid)
 	local usource = source
 	print(password)
 
@@ -123,14 +123,14 @@ AddEventHandler('wrp-mdt:updatepass', function(password , cid)
 			['@password'] = password
 		})
 	end
-TriggerClientEvent("wrp-mdt:movepagetologin" , usource)
+TriggerClientEvent("prp-mdt:movepagetologin" , usource)
 end)
 
 
 
 
-RegisterServerEvent("wrp-mdt:performOffenderSearch")
-AddEventHandler("wrp-mdt:performOffenderSearch", function(query)
+RegisterServerEvent("prp-mdt:performOffenderSearch")
+AddEventHandler("prp-mdt:performOffenderSearch", function(query)
 	local usource = source
 	local matches = {}
 	MySQL.Async.fetchAll("SELECT * FROM `__characters` WHERE LOWER(`first_name`) LIKE @query OR LOWER(`last_name`) LIKE @query OR CONCAT(LOWER(`first_name`), ' ', LOWER(`last_name`)) LIKE @query", {
@@ -141,12 +141,12 @@ AddEventHandler("wrp-mdt:performOffenderSearch", function(query)
 			table.insert(matches, data)
 		end
 
-		TriggerClientEvent("wrp-mdt:returnOffenderSearchResults", usource, matches)
+		TriggerClientEvent("prp-mdt:returnOffenderSearchResults", usource, matches)
 	end)
 end)
 
-RegisterServerEvent("wrp-mdt:getOffenderDetails")
-AddEventHandler("wrp-mdt:getOffenderDetails", function(offender)
+RegisterServerEvent("prp-mdt:getOffenderDetails")
+AddEventHandler("prp-mdt:getOffenderDetails", function(offender)
 	local usource = source
 
 	local result = MySQL.Sync.fetchAll('SELECT * FROM `user_mdt` WHERE `char_id` = @id', {
@@ -206,11 +206,11 @@ AddEventHandler("wrp-mdt:getOffenderDetails", function(offender)
 	end
 	offender.vehicles = vehicles
 
-	TriggerClientEvent("wrp-mdt:returnOffenderDetails", usource, offender)
+	TriggerClientEvent("prp-mdt:returnOffenderDetails", usource, offender)
 end)
 
-RegisterServerEvent("wrp-mdt:getOffenderDetailsById")
-AddEventHandler("wrp-mdt:getOffenderDetailsById", function(char_id)
+RegisterServerEvent("prp-mdt:getOffenderDetailsById")
+AddEventHandler("prp-mdt:getOffenderDetailsById", function(char_id)
 	local usource = source
 
 	local result = MySQL.Sync.fetchAll('SELECT * FROM `__characters` WHERE `id` = @id', {
@@ -219,8 +219,8 @@ AddEventHandler("wrp-mdt:getOffenderDetailsById", function(char_id)
 	local offender = result[1]
 
 	if not offender then
-		TriggerClientEvent("wrp-mdt:closeModal", usource)
-		TriggerClientEvent("wrp-mdt:sendNotification", usource, "This person no longer exists.")
+		TriggerClientEvent("prp-mdt:closeModal", usource)
+		TriggerClientEvent("prp-mdt:sendNotification", usource, "This person no longer exists.")
 		return
 	end
 
@@ -281,11 +281,11 @@ AddEventHandler("wrp-mdt:getOffenderDetailsById", function(char_id)
 	end
 	offender.vehicles = vehicles
 
-	TriggerClientEvent("wrp-mdt:returnOffenderDetails", usource, offender)
+	TriggerClientEvent("prp-mdt:returnOffenderDetails", usource, offender)
 end)
 
-RegisterServerEvent("wrp-mdt:saveOffenderChanges")
-AddEventHandler("wrp-mdt:saveOffenderChanges", function(id, changes, identifier)
+RegisterServerEvent("prp-mdt:saveOffenderChanges")
+AddEventHandler("prp-mdt:saveOffenderChanges", function(id, changes, identifier)
 	local usource = source
 	MySQL.Async.fetchAll('SELECT * FROM `user_mdt` WHERE `char_id` = @id', {
 		['@id']  = id
@@ -323,30 +323,30 @@ AddEventHandler("wrp-mdt:saveOffenderChanges", function(id, changes, identifier)
 			})
 		end
 
-		TriggerClientEvent("wrp-mdt:sendNotification", usource, "Offender changes have been saved.")
+		TriggerClientEvent("prp-mdt:sendNotification", usource, "Offender changes have been saved.")
 	end)
 end)
 
-RegisterServerEvent("wrp-mdt:saveReportChanges")
-AddEventHandler("wrp-mdt:saveReportChanges", function(data)
+RegisterServerEvent("prp-mdt:saveReportChanges")
+AddEventHandler("prp-mdt:saveReportChanges", function(data)
 	MySQL.Async.execute('UPDATE `mdt_reports` SET `title` = @title, `incident` = @incident WHERE `id` = @id', {
 		['@id'] = data.id,
 		['@title'] = data.title,
 		['@incident'] = data.incident
 	})
-	TriggerClientEvent("wrp-mdt:sendNotification", source, "Report changes have been saved.")
+	TriggerClientEvent("prp-mdt:sendNotification", source, "Report changes have been saved.")
 end)
 
-RegisterServerEvent("wrp-mdt:deleteReport")
-AddEventHandler("wrp-mdt:deleteReport", function(id)
+RegisterServerEvent("prp-mdt:deleteReport")
+AddEventHandler("prp-mdt:deleteReport", function(id)
 	MySQL.Async.execute('DELETE FROM `mdt_reports` WHERE `id` = @id', {
 		['@id']  = id
 	})
-	TriggerClientEvent("wrp-mdt:sendNotification", source, "Report has been successfully deleted.")
+	TriggerClientEvent("prp-mdt:sendNotification", source, "Report has been successfully deleted.")
 end)
 
-RegisterServerEvent("wrp-mdt:submitNewReport")
-AddEventHandler("wrp-mdt:submitNewReport", function(data)
+RegisterServerEvent("prp-mdt:submitNewReport")
+AddEventHandler("prp-mdt:submitNewReport", function(data)
 	local usource = source
 	local author = GetCharacterName(source)
 	if tonumber(data.sentence) and tonumber(data.sentence) > 0 then
@@ -366,8 +366,8 @@ AddEventHandler("wrp-mdt:submitNewReport", function(data)
 		['@date'] = data.date,
 		['@sentence'] = data.sentence
 	}, function(id)
-		TriggerEvent("wrp-mdt:getReportDetailsById", id, usource)
-		TriggerClientEvent("wrp-mdt:sendNotification", usource, "A new report has been submitted.")
+		TriggerEvent("prp-mdt:getReportDetailsById", id, usource)
+		TriggerClientEvent("prp-mdt:sendNotification", usource, "A new report has been submitted.")
 	end)
 
 	for offense, count in pairs(data.charges) do
@@ -392,8 +392,8 @@ AddEventHandler("wrp-mdt:submitNewReport", function(data)
 	end
 end)
 
-RegisterServerEvent("wrp-mdt:performReportSearch")
-AddEventHandler("wrp-mdt:performReportSearch", function(query)
+RegisterServerEvent("prp-mdt:performReportSearch")
+AddEventHandler("prp-mdt:performReportSearch", function(query)
 	local usource = source
 	local matches = {}
 	MySQL.Async.fetchAll("SELECT * FROM `mdt_reports` WHERE `id` LIKE @query OR LOWER(`title`) LIKE @query OR LOWER(`name`) LIKE @query OR LOWER(`author`) LIKE @query or LOWER(`charges`) LIKE @query", {
@@ -405,12 +405,12 @@ AddEventHandler("wrp-mdt:performReportSearch", function(query)
 			table.insert(matches, data)
 		end
 
-		TriggerClientEvent("wrp-mdt:returnReportSearchResults", usource, matches)
+		TriggerClientEvent("prp-mdt:returnReportSearchResults", usource, matches)
 	end)
 end)
 
-RegisterServerEvent("wrp-mdt:performVehicleSearch")
-AddEventHandler("wrp-mdt:performVehicleSearch", function(query)
+RegisterServerEvent("prp-mdt:performVehicleSearch")
+AddEventHandler("prp-mdt:performVehicleSearch", function(query)
 	local usource = source
 	local matches = {}
 	MySQL.Async.fetchAll("SELECT * FROM `__vehicles` WHERE LOWER(`plate`) LIKE @query", {
@@ -429,14 +429,14 @@ AddEventHandler("wrp-mdt:performVehicleSearch", function(query)
 			table.insert(matches, data)
 		end
 
-		TriggerClientEvent("wrp-mdt:returnVehicleSearchResults", usource, matches)
+		TriggerClientEvent("prp-mdt:returnVehicleSearchResults", usource, matches)
 	end)
 end)
 
-RegisterServerEvent("wrp-mdt:performVehicleSearchInFront")
-AddEventHandler("wrp-mdt:performVehicleSearchInFront", function(query)
+RegisterServerEvent("prp-mdt:performVehicleSearchInFront")
+AddEventHandler("prp-mdt:performVehicleSearchInFront", function(query)
 	local usource = source
-	local player = exports['wrp-base']:GetCurrentCharacterInfo(usource)
+	local player = exports['prp-base']:GetCurrentCharacterInfo(usource)
     local job = player.job
     if job == 'Police' then
     	MySQL.Async.fetchAll("SELECT * FROM (SELECT * FROM `mdt_reports` ORDER BY `id` DESC LIMIT 3) sub ORDER BY `id` DESC", {}, function(reports)
@@ -451,8 +451,8 @@ AddEventHandler("wrp-mdt:performVehicleSearchInFront", function(query)
 					['@query'] = query
 				}, function(result)
 					local officer = GetCharacterName(usource)
-    				TriggerClientEvent('wrp-mdt:toggleVisibilty', usource, reports, warrants, officer, xPlayer.job.name)
-					TriggerClientEvent("wrp-mdt:returnVehicleSearchInFront", usource, result, query)
+    				TriggerClientEvent('prp-mdt:toggleVisibilty', usource, reports, warrants, officer, xPlayer.job.name)
+					TriggerClientEvent("prp-mdt:returnVehicleSearchInFront", usource, result, query)
 				end)
     		end)
     	end)
@@ -469,8 +469,8 @@ AddEventHandler("wrp-mdt:performVehicleSearchInFront", function(query)
 					['@query'] = query
 				}, function(result)
 					local officer = GetCharacterName(usource)
-    				TriggerClientEvent('wrp-mdt:toggleVisibilty', usource, reports, warrants, officer, xPlayer.job.name)
-					TriggerClientEvent("wrp-mdt:returnVehicleSearchInFront", usource, result, query)
+    				TriggerClientEvent('prp-mdt:toggleVisibilty', usource, reports, warrants, officer, xPlayer.job.name)
+					TriggerClientEvent("prp-mdt:returnVehicleSearchInFront", usource, result, query)
 				end)
     		end)
     	end)
@@ -487,16 +487,16 @@ AddEventHandler("wrp-mdt:performVehicleSearchInFront", function(query)
 					['@query'] = query
 				}, function(result)
 					local officer = GetCharacterName(usource)
-    				TriggerClientEvent('wrp-mdt:toggleVisibilty', usource, reports, warrants, officer, xPlayer.job.name)
-					TriggerClientEvent("wrp-mdt:returnVehicleSearchInFront", usource, result, query)
+    				TriggerClientEvent('prp-mdt:toggleVisibilty', usource, reports, warrants, officer, xPlayer.job.name)
+					TriggerClientEvent("prp-mdt:returnVehicleSearchInFront", usource, result, query)
 				end)
     		end)
     	end)
 	end
 end)
 
-RegisterServerEvent("wrp-mdt:getVehicle")
-AddEventHandler("wrp-mdt:getVehicle", function(vehicle)
+RegisterServerEvent("prp-mdt:getVehicle")
+AddEventHandler("prp-mdt:getVehicle", function(vehicle)
 	local usource = source
 	local result = MySQL.Sync.fetchAll("SELECT * FROM `__characters` WHERE `id` = @query", {
 		['@query'] = vehicle.cid
@@ -530,23 +530,23 @@ AddEventHandler("wrp-mdt:getVehicle", function(vehicle)
 	if bail and bail[1] and bail[1].bail == 1 then vehicle.bail = true else vehicle.bail = false end
 
 	vehicle.type = types[vehicle.type]
-	TriggerClientEvent("wrp-mdt:returnVehicleDetails", usource, vehicle)
+	TriggerClientEvent("prp-mdt:returnVehicleDetails", usource, vehicle)
 end)
 
-RegisterServerEvent("wrp-mdt:getWarrants")
-AddEventHandler("wrp-mdt:getWarrants", function()
+RegisterServerEvent("prp-mdt:getWarrants")
+AddEventHandler("prp-mdt:getWarrants", function()
 	local usource = source
 	MySQL.Async.fetchAll("SELECT * FROM `mdt_warrants`", {}, function(warrants)
 		for i = 1, #warrants do
 			warrants[i].expire_time = ""
 			warrants[i].charges = json.decode(warrants[i].charges)
 		end
-		TriggerClientEvent("wrp-mdt:returnWarrants", usource, warrants)
+		TriggerClientEvent("prp-mdt:returnWarrants", usource, warrants)
 	end)
 end)
 
-RegisterServerEvent("wrp-mdt:submitNewWarrant")
-AddEventHandler("wrp-mdt:submitNewWarrant", function(data)
+RegisterServerEvent("prp-mdt:submitNewWarrant")
+AddEventHandler("prp-mdt:submitNewWarrant", function(data)
 	local usource = source
 	data.charges = json.encode(data.charges)
 	data.author = GetCharacterName(source)
@@ -562,24 +562,24 @@ AddEventHandler("wrp-mdt:submitNewWarrant", function(data)
 		['@notes'] = data.notes,
 		['@author'] = data.author
 	}, function()
-		TriggerClientEvent("wrp-mdt:completedWarrantAction", usource)
-		TriggerClientEvent("wrp-mdt:sendNotification", usource, "A new warrant has been created.")
+		TriggerClientEvent("prp-mdt:completedWarrantAction", usource)
+		TriggerClientEvent("prp-mdt:sendNotification", usource, "A new warrant has been created.")
 	end)
 end)
 
-RegisterServerEvent("wrp-mdt:deleteWarrant")
-AddEventHandler("wrp-mdt:deleteWarrant", function(id)
+RegisterServerEvent("prp-mdt:deleteWarrant")
+AddEventHandler("prp-mdt:deleteWarrant", function(id)
 	local usource = source
 	MySQL.Async.execute('DELETE FROM `mdt_warrants` WHERE `id` = @id', {
 		['@id']  = id
 	}, function()
-		TriggerClientEvent("wrp-mdt:completedWarrantAction", usource)
+		TriggerClientEvent("prp-mdt:completedWarrantAction", usource)
 	end)
-	TriggerClientEvent("wrp-mdt:sendNotification", usource, "Warrant has been successfully deleted.")
+	TriggerClientEvent("prp-mdt:sendNotification", usource, "Warrant has been successfully deleted.")
 end)
 
-RegisterServerEvent("wrp-mdt:getReportDetailsById")
-AddEventHandler("wrp-mdt:getReportDetailsById", function(query, _source)
+RegisterServerEvent("prp-mdt:getReportDetailsById")
+AddEventHandler("prp-mdt:getReportDetailsById", function(query, _source)
 	if _source then source = _source end
 	local usource = source
 	MySQL.Async.fetchAll("SELECT * FROM `mdt_reports` WHERE `id` = @query", {
@@ -587,16 +587,16 @@ AddEventHandler("wrp-mdt:getReportDetailsById", function(query, _source)
 	}, function(result)
 		if result and result[1] then
 			result[1].charges = json.decode(result[1].charges)
-			TriggerClientEvent("wrp-mdt:returnReportDetails", usource, result[1])
+			TriggerClientEvent("prp-mdt:returnReportDetails", usource, result[1])
 		else
-			TriggerClientEvent("wrp-mdt:closeModal", usource)
-			TriggerClientEvent("wrp-mdt:sendNotification", usource, "This report cannot be found.")
+			TriggerClientEvent("prp-mdt:closeModal", usource)
+			TriggerClientEvent("prp-mdt:sendNotification", usource, "This report cannot be found.")
 		end
 	end)
 end)
 
-RegisterServerEvent("wrp-mdt:saveVehicleChanges")
-AddEventHandler("wrp-mdt:saveVehicleChanges", function(data)
+RegisterServerEvent("prp-mdt:saveVehicleChanges")
+AddEventHandler("prp-mdt:saveVehicleChanges", function(data)
 	if data.stolen then data.stolen = 1 else data.stolen = 0 end
 	local usource = source
 	MySQL.Async.fetchAll('SELECT * FROM `vehicle_mdt` WHERE `plate` = @plate', {
@@ -616,12 +616,12 @@ AddEventHandler("wrp-mdt:saveVehicleChanges", function(data)
 			})
 		end
 		
-		TriggerClientEvent("wrp-mdt:sendNotification", usource, "Vehicle changes have been saved.")
+		TriggerClientEvent("prp-mdt:sendNotification", usource, "Vehicle changes have been saved.")
 	end)
 end)
 
 function GetCharacterName(source)
-	local player = exports['wrp-base']:GetCurrentCharacterInfo(source)
+	local player = exports['prp-base']:GetCurrentCharacterInfo(source)
 	local result = MySQL.Sync.fetchAll('SELECT first_name, last_name FROM __characters WHERE id = @id', {
 		['@id'] = player.id
 	})

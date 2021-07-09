@@ -417,7 +417,7 @@ Citizen.CreateThread(function()
 				DrawText3Ds( storagecoords["x"],storagecoords["y"],storagecoords["z"] , 'Press ~g~E~s~ to open your stash.')
 				if IsControlJustReleased(2, 38) then
 					--TriggerServerEvent('hotel:GetInteract',1500,row["house_name"])
-					TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "house-"..myhouseid)
+					TriggerEvent("prp-ac:triggeredItemSpawn", "1", "house-"..myhouseid)
 
 				end
 			end
@@ -429,7 +429,7 @@ RegisterNetEvent('housing:outfit')
 AddEventHandler('housing:outfit', function(id, args,sentType)
 
 	if nearClothing then
-		local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+		local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     	local Player = LocalPlayer:getCurrentCharacter()
 		if sentType == 1 then
 			local id = id
@@ -492,12 +492,12 @@ AddEventHandler('housing:findsalecid', function(checkcid,price,house_id,house_mo
 
 	if buy then
 		TriggerEvent("DoLongHudText","Attempting purchase - please wait.",91)
-		local Player = exports['wrp-base']:getModule('LocalPlayer'):getCurrentCharacter()
+		local Player = exports['prp-base']:getModule('LocalPlayer'):getCurrentCharacter()
 		if tonumber(Player.cash) >= tonumber(upfront) then
-			TriggerEvent('wrp-ac:removeban', tonumber(upfront))
+			TriggerEvent('prp-ac:removeban', tonumber(upfront))
 			TriggerServerEvent("house:purchasehouse",tonumber(checkcid),house_id,house_model,upfront,housename,storage,clothing,garages,false)
 		elseif tonumber(Player.bank) >= tonumber(upfront) then
-			TriggerEvent('wrp-ac:passInfoBan', tonumber(upfront))
+			TriggerEvent('prp-ac:passInfoBan', tonumber(upfront))
 			TriggerServerEvent("house:purchasehouse",tonumber(checkcid),house_id,house_model,upfront,housename,storage,clothing,garages,false)
 		else
 			TriggerEvent("DoLongHudText","You do not have enough money for this purchase.",2)
@@ -692,7 +692,7 @@ AddEventHandler("house:entersuccess", function(house_id,house_model,furniture, s
 	end
 
 	TriggerEvent("inhouse",true)
-	TriggerEvent('wrp-weed:inhouse', true)
+	TriggerEvent('prp-weed:inhouse', true)
 	TriggerEvent("placefurniture",furniture)
 
 	Citizen.Wait(1000)
@@ -1019,7 +1019,7 @@ Citizen.CreateThread(function()
 
 							DrawText3Ds( curHouseCoords["x"]-1.4,curHouseCoords["y"]-1.47,curHouseCoords["z"]-32.2, '~g~'..Controlkey["housingMain"][2]..'~s~ to Browse' )
 							if IsControlJustReleased(1, Controlkey["housingMain"][1]) then
-								TriggerEvent("wrp-ac:triggeredItemSpawn", "1", PlayerStoreIdentifier)
+								TriggerEvent("prp-ac:triggeredItemSpawn", "1", PlayerStoreIdentifier)
 								Citizen.Wait(5000)
 							end
 							DrawText3Ds( curHouseCoords["x"]-1.4,curHouseCoords["y"]-1.47,curHouseCoords["z"]-32.8, '~g~F~s~ to see reputation' )
@@ -1059,7 +1059,7 @@ Citizen.CreateThread(function()
 
 							DrawText3Ds( curHouseCoords["x"]-1.4,curHouseCoords["y"]-1.47,curHouseCoords["z"]-32.2, '~g~'..Controlkey["housingMain"][2]..'~s~ to Browse' )
 							if IsControlJustReleased(1, Controlkey["housingMain"][1]) then
-								TriggerEvent("wrp-ac:triggeredItemSpawn", "1", PlayerStoreIdentifier)
+								TriggerEvent("prp-ac:triggeredItemSpawn", "1", PlayerStoreIdentifier)
 								Citizen.Wait(5000)
 							end
 
@@ -1163,7 +1163,7 @@ function logout()
     CleanUpArea()
 	Citizen.Wait(1000)
 	TriggerEvent("inhouse",false)
-	TriggerEvent('wrp-weed:inhouse', false)
+	TriggerEvent('prp-weed:inhouse', false)
 	TriggerEvent("robbing",false)
 	myhouseid = 0
 	myhousetype = 0
@@ -1171,8 +1171,8 @@ function logout()
 	clothingcoords = {x = 0, y = 0, z = 0, h = 0}
 	storagecoords = {x = 0, y = 0, z = 0, h = 0} 
 	garagescoords = {x = 0, y = 0, z = 0, h = 0} 
-	TriggerEvent("wrp-base:clearStates")
-    exports["wrp-base"]:getModule("SpawnManager"):Initialize()
+	TriggerEvent("prp-base:clearStates")
+    exports["prp-base"]:getModule("SpawnManager"):Initialize()
 
 	Citizen.Wait(1000)
 end
@@ -1686,7 +1686,7 @@ function ExitHouse()
 	Citizen.Wait(100)
 	SetEntityCoords(PlayerPedId(),curHouseCoords["x"],curHouseCoords["y"],curHouseCoords["z"])
 	TriggerEvent("inhouse",false)
-	TriggerEvent('wrp-weed:inhouse', false)
+	TriggerEvent('prp-weed:inhouse', false)
 	TriggerEvent("robbing",false)
 	myhouseid = 0
 	myhousetype = 0

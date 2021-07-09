@@ -102,7 +102,7 @@ function DrawPart2()
 		if distance < 2 then
 			DrawText3Ds(x,y,z, '[E] To Book The Driving Lesson. Costs $250.')
 			if IsControlJustReleased(0, 38) then
-				TriggerEvent('wrp-ac:removeban', 250)
+				TriggerEvent('prp-ac:removeban', 250)
 				loadAnimDict('friends@laf@ig_5')
 				TaskPlayAnim(dmv, 'friends@laf@ig_5', 'nephew', 5.0, 1.0, 5.0, 48, 0.0, 0, 0, 0)
 				Citizen.Wait(1000)
@@ -125,7 +125,7 @@ function DrawPart2()
 					Citizen.Wait(15)
 					local rpm = GetVehicleCurrentRpm(vehicle)
 					if rpm >= 0.55 then
-						TriggerEvent('wrp-driving-instructor:phase2')
+						TriggerEvent('prp-driving-instructor:phase2')
 						break
 					end
 				end
@@ -134,8 +134,8 @@ function DrawPart2()
 	end
 end
 
-RegisterNetEvent('wrp-driving-instructor:phase2')
-AddEventHandler('wrp-driving-instructor:phase2', function()
+RegisterNetEvent('prp-driving-instructor:phase2')
+AddEventHandler('prp-driving-instructor:phase2', function()
 	Citizen.Wait(5000)
 	SetNewWaypoint(-193.8802, -1979.213)
 	TriggerEvent('DoLongHudText', 'Okay, I think you\'re ready. Drive to the marker on your GPS.')
@@ -152,20 +152,20 @@ AddEventHandler('wrp-driving-instructor:phase2', function()
 			Citizen.Wait(3000)
 			TriggerEvent('DoLongHudText', 'The Speed Limit is 45MPH')
 			if strike >= 5 then
-				TriggerEvent('wrp-drivinginstructor:fail')
+				TriggerEvent('prp-drivinginstructor:fail')
 				break
 			end
 			Citizen.Wait(5000)
 		end
 		if distance3 < 10 then
-			TriggerEvent('wrp-driving-instructor:stage3')
+			TriggerEvent('prp-driving-instructor:stage3')
 			Citizen.Wait(10000000000000000)
 		end
 	end 
 end)
 
-RegisterNetEvent('wrp-driving-instructor:stage3')
-AddEventHandler('wrp-driving-instructor:stage3', function()
+RegisterNetEvent('prp-driving-instructor:stage3')
+AddEventHandler('prp-driving-instructor:stage3', function()
 	local whatnext = math.random(1,4)
 	if whatnext == 1 then
 		whatshallidonexttime = 'go a little more easy on the brakes'
@@ -197,7 +197,7 @@ AddEventHandler('wrp-driving-instructor:stage3', function()
 			Citizen.Wait(2000)
 			DeleteVehicle(vehicle)
 			local cid = exports['isPed']:isPed('cid')
-			TriggerServerEvent('wrp-driving-instructor:check', cid)
+			TriggerServerEvent('prp-driving-instructor:check', cid)
 			TriggerEvent('DoLongHudText', 'Congrats, you have obtained a Provisional License.')
            Citizen.Wait(100000000000000000000000)
 		end
@@ -209,8 +209,8 @@ AddEventHandler('Update-Strike', function()
 	strike = strike+1
 end)
 
-RegisterNetEvent('wrp-drivinginstructor:fail')
-AddEventHandler('wrp-drivinginstructor:fail', function()
+RegisterNetEvent('prp-drivinginstructor:fail')
+AddEventHandler('prp-drivinginstructor:fail', function()
 	TriggerEvent('DoLongHudText', 'You have failed the driving test for Speeding. Head Back to the DMV or the Police Will be called.')
 	SetNewWaypoint(-814.5725, -1347.639)
 	TaskVehicleDriveToCoord(PlayerPedId(-1), vehicle, -817.8578, -1331.007, 5.00037, 500.0, 0.0, 'sultan', 1074528293, 15)

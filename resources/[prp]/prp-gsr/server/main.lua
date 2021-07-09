@@ -14,7 +14,7 @@ RegisterCommand('gsr', function(source, args, user)
         end)
     
         local uid = Citizen.Await(userData)
-        local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+        local player = exports['prp-base']:GetCurrentCharacterInfo(src)
 		if player.job == 'Police' then
         	CancelEvent()
         	local identifier = GetPlayerIdentifiers(number)[1]

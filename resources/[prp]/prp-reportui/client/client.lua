@@ -16,7 +16,7 @@ RegisterNUICallback('submit', function(data, cb)
 	local title = data.title
 	local description = data.description
 	local clips = data.clips
-	TriggerServerEvent("wrp-reportui:sendReport", title, description, clips)
+	TriggerServerEvent("prp-reportui:sendReport", title, description, clips)
 	TriggerEvent('DoLongHudText', 'Report sent!', 1)
   	cb('ok')
 end)

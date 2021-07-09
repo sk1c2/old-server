@@ -174,7 +174,7 @@ AddEventHandler("RefuelCarServerReturn",function()
     local timer = (100 - curFuel) * 400
     refillVehicle()
     local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-    local finished = exports["wrp-taskbar"]:taskBar(timer,"Refueling",false,false,playerVeh)
+    local finished = exports["prp-taskbar"]:taskBar(timer,"Refueling",false,false,playerVeh)
     if (finished == 100) then
         local veh = TargetVehicle()
 
@@ -431,8 +431,8 @@ AddEventHandler("noshud", function(_nos, _nosEnabled)
 end)
 
 
-RegisterNetEvent("wrp-jobmanager:playerBecameJob")
-AddEventHandler("wrp-jobmanager:playerBecameJob", function(job, name)
+RegisterNetEvent("prp-jobmanager:playerBecameJob")
+AddEventHandler("prp-jobmanager:playerBecameJob", function(job, name)
     if job ~= "police" then isCop = false else isCop = true end
 end)
 
@@ -552,7 +552,7 @@ end)
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10000)
-        if exports['wrp-inventory']:hasEnoughOfItem('watch', 1, false) then
+        if exports['prp-inventory']:hasEnoughOfItem('watch', 1, false) then
             compass_on = true
         else
             compass_on = false
@@ -788,7 +788,7 @@ Citizen.CreateThread(function()
                 DrawMarker(2,crd["x"],crd["y"],crd["z"]+1.5, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 1.0, 100, 15, 15, 130, 0, 0, 0, 0)
                 DisplayHelpText(info)
                 if IsControlJustPressed(1, 38) then
-                    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+                    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
                     local Player = LocalPlayer:getCurrentCharacter()
                     costs = math.ceil(costs)
                     if curFuel >= 100 then

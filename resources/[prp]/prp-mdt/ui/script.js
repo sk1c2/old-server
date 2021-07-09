@@ -141,14 +141,14 @@ const mdtApp = new Vue({
             } else if (page == "Search Vehicles") {
                 $("#search-vehicles").addClass("nav-active");
             } else if (page == "Warrants") {
-                $.post('http://wrp-mdt/getWarrants');
+                $.post('http://prp-mdt/getWarrants');
                 $("#warrants").addClass("nav-active");
             } else if (page == "Submit Report") {
                 $("#submit-report").addClass("nav-active");
             }
         },
         closeMDT() {
-            $.post('http://wrp-mdt/close', JSON.stringify({}));
+            $.post('http://prp-mdt/close', JSON.stringify({}));
         },
         logout() {
             $("#mdtcontainer").hide()
@@ -163,7 +163,7 @@ const mdtApp = new Vue({
             if (this.offender_search) {
 
                 this.offender_results.query = this.offender_search;
-                $.post('http://wrp-mdt/performOffenderSearch', JSON.stringify({
+                $.post('http://prp-mdt/performOffenderSearch', JSON.stringify({
                     query: this.offender_search
                 }));
 
@@ -175,7 +175,7 @@ const mdtApp = new Vue({
             for (var key in this.offender_results.results) {
                 if (id == this.offender_results.results[key].id) {
 
-                    $.post('http://wrp-mdt/viewOffender', JSON.stringify({
+                    $.post('http://prp-mdt/viewOffender', JSON.stringify({
                         offender: this.offender_results.results[key]
                     }));
 
@@ -186,7 +186,7 @@ const mdtApp = new Vue({
             }
         },
         SaveOffenderChanges() {
-            $.post('http://wrp-mdt/saveOffenderChanges', JSON.stringify({
+            $.post('http://prp-mdt/saveOffenderChanges', JSON.stringify({
                 changes: this.offender_changes,
                 id: this.offender_selected.id,
                 identifier: this.offender_selected.id
@@ -203,7 +203,7 @@ const mdtApp = new Vue({
 
                 this.report_results.query = this.report_search
                 this.warrant_new.report_search = this.report_search
-                $.post('http://wrp-mdt/performReportSearch', JSON.stringify({
+                $.post('http://prp-mdt/performReportSearch', JSON.stringify({
                     query: this.report_search
                 }));
 
@@ -264,7 +264,7 @@ const mdtApp = new Vue({
         },
         SubmitNewReport() {
             if (this.report_new.title && this.report_new.char_id && (Object.keys(this.report_new.charges).length > 0) && this.report_new.incident) {
-                $.post('http://wrp-mdt/submitNewReport', JSON.stringify({
+                $.post('http://prp-mdt/submitNewReport', JSON.stringify({
                     title: this.report_new.title,
                     char_id: this.report_new.char_id,
                     name: this.report_new.name,
@@ -291,7 +291,7 @@ const mdtApp = new Vue({
             }
         },
         OpenOffenderDetailsById(id) {
-            $.post('http://wrp-mdt/getOffender', JSON.stringify({
+            $.post('http://prp-mdt/getOffender', JSON.stringify({
                 char_id: id
             }));
 
@@ -299,7 +299,7 @@ const mdtApp = new Vue({
             return;
         },
         evFile(currentid) {
-			$.post('http://wrp-mdt/evFile', JSON.stringify({
+			$.post('http://prp-mdt/evFile', JSON.stringify({
             id: currentid,
             }));
 		},
@@ -315,7 +315,7 @@ const mdtApp = new Vue({
             return;
         },
         DeleteSelectedReport() {
-            $.post('http://wrp-mdt/deleteReport', JSON.stringify({
+            $.post('http://prp-mdt/deleteReport', JSON.stringify({
                 id: this.report_selected.id,
             }));
             this.changePage("Search Reports");
@@ -336,7 +336,7 @@ const mdtApp = new Vue({
             return;
         },
         SaveReportEditChanges() {
-            $.post('http://wrp-mdt/saveReportChanges', JSON.stringify({
+            $.post('http://prp-mdt/saveReportChanges', JSON.stringify({
                 id: this.report_selected.id,
                 title: this.report_edit.data.title,
                 incident: this.report_edit.data.incident
@@ -351,7 +351,7 @@ const mdtApp = new Vue({
             if (this.vehicle_search) {
 
                 this.vehicle_results.query = this.vehicle_search;
-                $.post('http://wrp-mdt/vehicleSearch', JSON.stringify({
+                $.post('http://prp-mdt/vehicleSearch', JSON.stringify({
                     plate: this.vehicle_search
                 }));
 
@@ -360,7 +360,7 @@ const mdtApp = new Vue({
             }
         },
         OpenVehicleDetails(result) {
-            $.post('http://wrp-mdt/getVehicle', JSON.stringify({
+            $.post('http://prp-mdt/getVehicle', JSON.stringify({
                 vehicle: result
             }));
 
@@ -371,7 +371,7 @@ const mdtApp = new Vue({
             if (this.warrant_new.report_search) {
 
                 this.report_results.query = this.report_search
-                $.post('http://wrp-mdt/performReportSearch', JSON.stringify({
+                $.post('http://prp-mdt/performReportSearch', JSON.stringify({
                     query: this.report_search
                 }));
 
@@ -391,7 +391,7 @@ const mdtApp = new Vue({
         SubmitNewWarrant() {
             var date = new Date();
             date.setDate(date.getDate() + 7);
-            $.post('http://wrp-mdt/submitNewWarrant', JSON.stringify({
+            $.post('http://prp-mdt/submitNewWarrant', JSON.stringify({
                 name: this.warrant_new.name,
                 char_id: this.warrant_new.char_id,
                 report_id: this.warrant_new.report_id,
@@ -414,7 +414,7 @@ const mdtApp = new Vue({
             return;
         },
         DeleteSelectedWarrant() {
-            $.post('http://wrp-mdt/deleteWarrant', JSON.stringify({
+            $.post('http://prp-mdt/deleteWarrant', JSON.stringify({
                 id: this.warrant_selected.id,
             }));
             this.warrant_selected = {
@@ -431,7 +431,7 @@ const mdtApp = new Vue({
             return;
         },
         OpenReportById(id) {
-            $.post('http://wrp-mdt/getReport', JSON.stringify({
+            $.post('http://prp-mdt/getReport', JSON.stringify({
                 id: id
             }));
             this.modal = 'loading';
@@ -458,7 +458,7 @@ const mdtApp = new Vue({
             return;
         },
         SaveVehicleEditChanges() {
-            $.post('http://wrp-mdt/saveVehicleChanges', JSON.stringify({
+            $.post('http://prp-mdt/saveVehicleChanges', JSON.stringify({
                 plate: this.vehicle_selected.plate,
                 stolen: this.edit_vehicle.stolen,
                 notes: this.edit_vehicle.notes
@@ -601,7 +601,7 @@ document.onreadystatechange = () => {
 
 document.onkeydown = function (data) {
     if (data.which == 27 || data.which == 112) { // ESC or F1
-        $.post('http://wrp-mdt/close', JSON.stringify({}));
+        $.post('http://prp-mdt/close', JSON.stringify({}));
     } else if (data.which == 13) { // enter
         /* stop enter key from crashing MDT in an input?  */
         var textarea = document.getElementsByTagName('textarea');
@@ -623,7 +623,7 @@ function ClearActiveNavItems() {
 $('#loginsend').click(function(){
     var username = $("#username").val();
     var password = $("#password").val();
-    $.post('http://wrp-mdt/checklogin', JSON.stringify({
+    $.post('http://prp-mdt/checklogin', JSON.stringify({
         username: username , 
         password: password
     }));
@@ -638,7 +638,7 @@ $('#registerbutton').click(function(){
 
 
     }
-    $.post('http://wrp-mdt/register', JSON.stringify({
+    $.post('http://prp-mdt/register', JSON.stringify({
         username: username ,
         password: password
     }));
@@ -648,7 +648,7 @@ $('#registerbutton').click(function(){
 
 $('#updatepass').click(function(){
     var pass = $("#forgotpassa").val();
-    $.post('http://wrp-mdt/updatepass', JSON.stringify({
+    $.post('http://prp-mdt/updatepass', JSON.stringify({
         password: pass
     }));
 })
@@ -686,7 +686,7 @@ function WarrantTimer() {
                 warrant.expire_time = days + 'd ' + hours + 'h ' + mins + 'm ' + secs + 's';
             } else {
                 warrant.expire_time = 'EXPIRED';
-                $.post('http://wrp-mdt/deleteWarrant', JSON.stringify({
+                $.post('http://prp-mdt/deleteWarrant', JSON.stringify({
                     id: warrant.id
                 }));
                 Vue.delete(mdtApp.warrants, key)

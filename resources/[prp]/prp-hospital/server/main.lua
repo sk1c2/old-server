@@ -18,13 +18,13 @@ AddEventHandler('playerDropped', function()
     end
 end)
 
-RegisterServerEvent('wrp-hospital:server:RequestBed')
-AddEventHandler('wrp-hospital:server:RequestBed', function()
+RegisterServerEvent('prp-hospital:server:RequestBed')
+AddEventHandler('prp-hospital:server:RequestBed', function()
     for k, v in pairs(beds) do
         if not v.taken then
             v.taken = true
             bedsTaken[source] = k
-            TriggerClientEvent('wrp-hospital:client:SendToBed', source, k, v)
+            TriggerClientEvent('prp-hospital:client:SendToBed', source, k, v)
             return
         end
     end
@@ -32,8 +32,8 @@ AddEventHandler('wrp-hospital:server:RequestBed', function()
     TriggerClientEvent('DoLongHudText', source, 'No Beds Available', 2)
 end)
 
-RegisterServerEvent('wrp-hospital:server:RPRequestBed')
-AddEventHandler('wrp-hospital:server:RPRequestBed', function(plyCoords)
+RegisterServerEvent('prp-hospital:server:RPRequestBed')
+AddEventHandler('prp-hospital:server:RPRequestBed', function(plyCoords)
     local foundbed = false
     for k, v in pairs(beds) do
         local distance = #(vector3(v.x, v.y, v.z) - plyCoords)
@@ -41,7 +41,7 @@ AddEventHandler('wrp-hospital:server:RPRequestBed', function(plyCoords)
             if not v.taken then
                 v.taken = true
                 foundbed = true
-                TriggerClientEvent('wrp-hospital:client:RPSendToBed', source, k, v)
+                TriggerClientEvent('prp-hospital:client:RPSendToBed', source, k, v)
                 return
             else
                 TriggerEvent('chat:addMessage', source, 'That Bed Is Taken')
@@ -54,8 +54,8 @@ AddEventHandler('wrp-hospital:server:RPRequestBed', function(plyCoords)
     end
 end)
 
-RegisterServerEvent('wrp-hospital:server:EnteredBed')
-AddEventHandler('wrp-hospital:server:EnteredBed', function()
+RegisterServerEvent('prp-hospital:server:EnteredBed')
+AddEventHandler('prp-hospital:server:EnteredBed', function()
     local src = source
     local injuries = GetCharsInjuries(src)
 
@@ -72,10 +72,10 @@ AddEventHandler('wrp-hospital:server:EnteredBed', function()
             totalBill = totalBill + (injuryBasePrice * injuries.isBleeding)
         end
     end
-    TriggerClientEvent('wrp-hospital:client:FinishServices', src)
+    TriggerClientEvent('prp-hospital:client:FinishServices', src)
 end)
 
-RegisterServerEvent('wrp-hospital:server:LeaveBed')
-AddEventHandler('wrp-hospital:server:LeaveBed', function(id)
+RegisterServerEvent('prp-hospital:server:LeaveBed')
+AddEventHandler('prp-hospital:server:LeaveBed', function(id)
     beds[id].taken = false
 end)

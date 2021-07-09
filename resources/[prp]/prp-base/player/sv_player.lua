@@ -68,7 +68,7 @@ function GetCurrentCharacterInfo(source)
         local userData = promise:new()
         userData:resolve(result)
         local uid = Citizen.Await(userData)
-        local user = exports['wrp-base']:getModule("Player")
+        local user = exports['prp-base']:getModule("Player")
         char = user:getCurrentCharacter(uid[1].uid)
         exports.ghmattimysql:execute('SELECT * FROM character_current WHERE cid = ?', {char.id}, function(result)
             if result[1] == nil then
@@ -79,24 +79,24 @@ function GetCurrentCharacterInfo(source)
                     exports.ghmattimysql:execute('SELECT `id` FROM __characters WHERE uid = ?', {playeruid}, function(player)
                         if result[1] ~= nil then
                             char = user:getCurrentCharacter(player.id)
-                            print('wrp-BASE::GetCurrentCharacterInfo: Grabbed character ' .. json.encode(char))
+                            print('prp-BASE::GetCurrentCharacterInfo: Grabbed character ' .. json.encode(char))
                             return char
                         end
                     end)
                 end)
             else
-                print('wrp-BASE::GetCurrentCharacterInfo: Grabbed character ' .. json.encode(char))
+                print('prp-BASE::GetCurrentCharacterInfo: Grabbed character ' .. json.encode(char))
                 return char
             end
         end)
-        print('wrp-BASE::GetCurrentCharacterInfo: Grabbed character ' .. json.encode(char))
+        print('prp-BASE::GetCurrentCharacterInfo: Grabbed character ' .. json.encode(char))
         return char
     end
     return nil
 end
 
-RegisterNetEvent('wrp-base:updateJobLogs')
-AddEventHandler('wrp-base:updateJobLogs', function(tSource, nRank, jId)
+RegisterNetEvent('prp-base:updateJobLogs')
+AddEventHandler('prp-base:updateJobLogs', function(tSource, nRank, jId)
     -- print('dick')
     local tSource = tSource
 
@@ -112,15 +112,15 @@ AddEventHandler('wrp-base:updateJobLogs', function(tSource, nRank, jId)
 
 end)
 
-RegisterNetEvent('wrp-base:updateCharacterBank')
-AddEventHandler('wrp-base:updateCharacterBank', function(nBank, uCid, tStatus, cAmount)
+RegisterNetEvent('prp-base:updateCharacterBank')
+AddEventHandler('prp-base:updateCharacterBank', function(nBank, uCid, tStatus, cAmount)
     local tCharacter, tCharacterIndex = URP.Player:getCharacterFromCid(tonumber(uCid))
 
     if not tCharacter then return end
 
     local cSource = tCharacter.playerSrc
 
-    TriggerClientEvent('wrp-phone:groupManageUpdateBank', cSource, uCid, nBank)
+    TriggerClientEvent('prp-phone:groupManageUpdateBank', cSource, uCid, nBank)
     if tStatus then
         TriggerClientEvent('banking:addBalance', cSource, cAmount)
     else
@@ -129,8 +129,8 @@ AddEventHandler('wrp-base:updateCharacterBank', function(nBank, uCid, tStatus, c
 
 end)
 
-RegisterNetEvent('wrp-base:setServerCharacter')
-AddEventHandler('wrp-base:setServerCharacter', function(data)
+RegisterNetEvent('prp-base:setServerCharacter')
+AddEventHandler('prp-base:setServerCharacter', function(data)
 
     local source = source
     data['playerSrc'] = source
@@ -169,7 +169,7 @@ AddEventHandler('player:setServerMeta', function(armor, thirst, hunger)
 end)
 
 AddEventHandler("onResourceStart", function(resourceName)
-	if ("wrp-base" == resourceName) then
+	if ("prp-base" == resourceName) then
         URP.Player.Characters = {}
     end
 end)
@@ -177,7 +177,7 @@ end)
 AddEventHandler('playerDropped', function (reason)
     local source = source
     local steam = GetPlayerIdentifiers(source)[1]
-    print('\27[32m[wrp-base]\27[0m: Saved ' .. GetPlayerName(source) .. ' |  Disconnected (Reason: ' .. reason .. ')')
+    print('\27[32m[prp-base]\27[0m: Saved ' .. GetPlayerName(source) .. ' |  Disconnected (Reason: ' .. reason .. ')')
 
     local userData = promise:new()
 

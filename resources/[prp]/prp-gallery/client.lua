@@ -29,18 +29,18 @@ RegisterNetEvent('gallery:stash')
 AddEventHandler('gallery:stash', function()
 	local rank = exports["isPed"]:GroupRank("Gallery")
 	if rank > 3 then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "storage-Gallery")	
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "storage-Gallery")	
 	end
 end)
 
 RegisterNetEvent('gallery:table')
 AddEventHandler('gallery:table', function()
-	TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "gem_counter")
+	TriggerEvent("prp-ac:triggeredItemSpawn", "1", "gem_counter")
 end)
 
 RegisterNetEvent('gallery:table2')
 AddEventHandler('gallery:table2', function()
-	TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "gem_counter2")
+	TriggerEvent("prp-ac:triggeredItemSpawn", "1", "gem_counter2")
 end)
 
 Citizen.CreateThread(function()
@@ -52,39 +52,39 @@ Citizen.CreateThread(function()
             if IsControlJustReleased(0, 38) then
               local rank = exports["isPed"]:GroupRank("Gallery")
               if rank > 4 then
-                if exports["wrp-inventory"]:hasEnoughOfItem("gemstoneamethyst",10,false) then 
+                if exports["prp-inventory"]:hasEnoughOfItem("gemstoneamethyst",10,false) then 
                     TriggerEvent("inventory:removeItem", "gemstoneamethyst", 10)
-                    local finished = exports["wrp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
+                    local finished = exports["prp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
                     if finished == 100 then
                         SellGems(math.random(6000,7000))
                     end
-                elseif exports['wrp-inventory']:hasEnoughOfItem('gemstoneruby',10, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('gemstoneruby',10, false) then
                     TriggerEvent("inventory:removeItem", "gemstoneruby", 10)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
                     local ItemSell = math.random(7000,8500)
                     SellGems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold ten Ruby for $' .. ItemSell .. '!')
-                elseif exports['wrp-inventory']:hasEnoughOfItem('gemstoneemerald',10, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('gemstoneemerald',10, false) then
                     TriggerEvent("inventory:removeItem", "gemstoneemerald", 10)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
                     local ItemSell = math.random(11000,13500)
                     SellGems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold ten Emerald for $' .. ItemSell .. '!')
-                elseif exports['wrp-inventory']:hasEnoughOfItem('gemstonesapphire',10, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('gemstonesapphire',10, false) then
                     TriggerEvent("inventory:removeItem", "gemstonesapphire", 10)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
                     local ItemSell = math.random(19000,22000)
                     SellGems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold ten Sapphire for $' .. ItemSell .. '!')
-                elseif exports['wrp-inventory']:hasEnoughOfItem('gemstoneaqua',10, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('gemstoneaqua',10, false) then
                     TriggerEvent("inventory:removeItem", "gemstoneaqua", 10)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
                     local ItemSell = math.random(24000,28000)
                     SellGems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold ten AquaMarine for $' .. ItemSell .. '!')
-                elseif exports['wrp-inventory']:hasEnoughOfItem('gemstonediamond',10, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('gemstonediamond',10, false) then
                     TriggerEvent("inventory:removeItem", "gemstonediamond", 10)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Gems",true,false,playerVeh)
                     local ItemSell = math.random(42000,47000)
                     SellGems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold ten Diamonds for $' .. ItemSell .. '!')
@@ -116,6 +116,6 @@ end
 function SellGems(sellgems)
   TriggerServerEvent('gems:returnDepo', sellgems)
   if sellgems > 50000 then
-      TriggerServerEvent('wrp-ac:sort')
+      TriggerServerEvent('prp-ac:sort')
   end
 end

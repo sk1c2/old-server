@@ -2,20 +2,20 @@ $(document).ready(() => {
     $(".cancel").on("click", "", function () {
         $(".flex-container").slideUp(350);
         $(".flex-container").fadeOut(350);
-        $.post('http://wrp-reportui/close  ', JSON.stringify({}));
+        $.post('http://prp-reportui/close  ', JSON.stringify({}));
     })
     $(".submit").on("click", "", function () {
         let title = $('#title').val();
         let description = $('#description').val();
         let clips = $('#clips').val();
         if (title && description != "") {
-            $.post('http://wrp-reportui/submit  ', JSON.stringify({
+            $.post('http://prp-reportui/submit  ', JSON.stringify({
                 title: title,
                 description: description,
                 clips: clips
             }));
         }
-        $.post('http://wrp-reportui/close  ', JSON.stringify({}));
+        $.post('http://prp-reportui/close  ', JSON.stringify({}));
         $(".flex-container").slideUp(350);
         $(".flex-container").fadeOut(350);
     }) 

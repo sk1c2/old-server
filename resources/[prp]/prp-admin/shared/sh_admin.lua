@@ -23,7 +23,7 @@ function URP.Admin.Log(self, log, user)
 
         -- print(log)
 
-        exports["wrp-log"]:AddLog("Admin", user and user or false, log, false)
+        exports["prp-log"]:AddLog("Admin", user and user or false, log, false)
 
         return
     end
@@ -339,16 +339,16 @@ function URP.Admin.SetStatus(self, status, src)
         if not player then else URP._Admin.Players[src].status = status end
 
         for k,v in pairs(URP._Admin.CurAdmins) do
-            TriggerClientEvent("wrp-admin:setStatus", k, src, status)
+            TriggerClientEvent("prp-admin:setStatus", k, src, status)
         end
 
         return
     end
 
-    TriggerServerEvent("wrp-admin:setStatus", status)
+    TriggerServerEvent("prp-admin:setStatus", status)
 end
 
-AddEventHandler("wrp-base:exportsReady", function()
-    exports["wrp-base"]:addModule("Admin", URP.Admin)
-    exports["wrp-base"]:addModule("_Admin", URP._Admin)
+AddEventHandler("prp-base:exportsReady", function()
+    exports["prp-base"]:addModule("Admin", URP.Admin)
+    exports["prp-base"]:addModule("_Admin", URP._Admin)
 end)

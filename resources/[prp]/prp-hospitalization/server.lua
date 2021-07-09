@@ -1,5 +1,5 @@
 AddEventHandler('playerDropped', function()
-    TriggerClientEvent('wrp-hospitalization:removems', source)
+    TriggerClientEvent('prp-hospitalization:removems', source)
 end)
 
 RegisterServerEvent('stress:illnesslevel')

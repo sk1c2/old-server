@@ -24,7 +24,7 @@ $(function()
 })
 
 function sendNuiMessage(data){
-    $.post("http://wrp-login/nuiMessage", JSON.stringify(data));
+    $.post("http://prp-login/nuiMessage", JSON.stringify(data));
 }
 
 function receivedNuiMessage(event){

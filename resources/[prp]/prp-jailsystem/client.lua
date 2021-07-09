@@ -339,13 +339,13 @@ function runEscape()
           DrawMarkerRad(27,1643.5603027344,2585.4670410156,44.764853668213, 0, 0, 0, 0, 0, 0, 1.01, 1.01, 0.3, 255, 255, 0, 60, 0, 0, 2, 0, 0, 0, 0)
           DrawMarkerRad(27,1636.2059326172,2565.4235839844,44.76485748291, 0, 0, 0, 0, 0, 0, 1.01, 1.01, 0.3, 255, 255, 0, 60, 0, 0, 2, 0, 0, 0, 0)
           if #(vector3(1643.5603027344,2585.4670410156,45.564853668213) - GetEntityCoords(PlayerPedId())) < 1 then
-            exports["wrp-base"]:getModule("Util"):MissionText("Enter Court Yard", 500)
+            exports["prp-base"]:getModule("Util"):MissionText("Enter Court Yard", 500)
             if not teleported then
               teleported = true
               SetEntityCoords(PlayerPedId(),1636.2059326172,2565.4235839844,45.56485748291)
             end
           elseif #(vector3(1636.2059326172,2565.4235839844,45.56485748291) - GetEntityCoords(PlayerPedId())) < 1 then
-            exports["wrp-base"]:getModule("Util"):MissionText("Exit Court Yard", 500)
+            exports["prp-base"]:getModule("Util"):MissionText("Exit Court Yard", 500)
             if not teleported then
               teleported = true
               SetEntityCoords(PlayerPedId(),1643.5603027344,2585.4670410156,45.564853668213)
@@ -546,26 +546,26 @@ function RoleplayStats()
 
     local totalroleplay = 0
 
-    if exports["wrp-inventory"]:hasEnoughOfItem("shitlockpick",1,false) then
+    if exports["prp-inventory"]:hasEnoughOfItem("shitlockpick",1,false) then
         totalroleplay = totalroleplay + 10
     end
 
-    if exports["wrp-inventory"]:hasEnoughOfItem("jailfood",1,false) then
+    if exports["prp-inventory"]:hasEnoughOfItem("jailfood",1,false) then
         totalroleplay = totalroleplay + 10
     end
 
-    if exports["wrp-inventory"]:hasEnoughOfItem("methbag",1,false) then
+    if exports["prp-inventory"]:hasEnoughOfItem("methbag",1,false) then
         totalroleplay = totalroleplay + 15
     end
 
-    if exports["wrp-inventory"]:hasEnoughOfItem("assphone",1,false) then
+    if exports["prp-inventory"]:hasEnoughOfItem("assphone",1,false) then
         totalroleplay = totalroleplay + 15
         if math.random(10) < 3 then
              TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'pager', 0.4)
         end
     end
 
-    if exports["wrp-inventory"]:hasEnoughOfItem("slushy",1,false) then
+    if exports["prp-inventory"]:hasEnoughOfItem("slushy",1,false) then
         totalroleplay = totalroleplay + 10
     end
 
@@ -580,15 +580,15 @@ function RoleplayStats()
 end
 
 function InmateHasAll()
-    if exports["wrp-inventory"]:hasEnoughOfItem("slushy",1,false)
+    if exports["prp-inventory"]:hasEnoughOfItem("slushy",1,false)
         and
-        exports["wrp-inventory"]:hasEnoughOfItem("-1810795771",1,false)
+        exports["prp-inventory"]:hasEnoughOfItem("-1810795771",1,false)
         and
-        exports["wrp-inventory"]:hasEnoughOfItem("methbag",1,false)
+        exports["prp-inventory"]:hasEnoughOfItem("methbag",1,false)
         and
-        exports["wrp-inventory"]:hasEnoughOfItem("assphone",1,false)
+        exports["prp-inventory"]:hasEnoughOfItem("assphone",1,false)
         and
-        exports["wrp-inventory"]:hasEnoughOfItem("slushy",1,false)
+        exports["prp-inventory"]:hasEnoughOfItem("slushy",1,false)
     then
         return true
     else
@@ -694,7 +694,7 @@ AddEventHandler('beginJail', function(time,name,cid, skipintake)
             if (#(GetEntityCoords(playerPed, 0) - vector3(1642.08, 2522.16, 45.57)) < 1.0) then
                 drawTxt(0.90, 1.40, 1.0,1.0,0.25, "Inmates looking like he wants something..?", 255, 255, 255, 255)
                 if IsControlJustPressed(1, Controlkey["generalUse"][1]) then
-                    TriggerEvent("wrp-ac:triggeredItemSpawn", "997", "Shop");                    
+                    TriggerEvent("prp-ac:triggeredItemSpawn", "997", "Shop");                    
                     Citizen.Wait(5000)
                 end
             end
@@ -782,8 +782,8 @@ AddEventHandler('swappingCharsLoop', function()
         TransitionToBlurred(500)
         DoScreenFadeOut(500)
         Citizen.Wait(1000)
-        TriggerEvent("wrp-base:clearStates")
-        exports["wrp-base"]:getModule("SpawnManager"):Initialize()
+        TriggerEvent("prp-base:clearStates")
+        exports["prp-base"]:getModule("SpawnManager"):Initialize()
         relogging = true
         imjailed = false
 
@@ -930,15 +930,15 @@ function DrawText3D(x,y,z, text) -- some useful function, use it if you want!
 end
 
 RegisterCommand('jail', function(source, args)
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter(args[1])
     local name = Player.first_name .. ' ' .. Player.last_name 
     local cid = Player.id
     if exports['isPed']:isPed('job') == 'Police' then
         if args[1] then
             if args[2] then
-                TriggerServerEvent('wrp-jailhehe', args[1], args[2], name, cid)
-                TriggerServerEvent('wrp-business:givepass', 'Police', math.random(800, 1000))
+                TriggerServerEvent('prp-jailhehe', args[1], args[2], name, cid)
+                TriggerServerEvent('prp-business:givepass', 'Police', math.random(800, 1000))
             else
                 TriggerEvent("DoLongHudText", 'Invaild jail time. wtf?', 2)
             end

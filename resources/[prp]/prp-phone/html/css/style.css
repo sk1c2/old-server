@@ -176,7 +176,7 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 20px;
-    background-image: url('nui://wrp-phone/html/images/phone-background.jpg');
+    background-image: url('nui://prp-phone/html/images/phone-background.jpg');
 }
 
 .status-bar {
@@ -1153,7 +1153,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    background-image: url('nui://wrp-phone/html/images/gurgle.png');
+    background-image: url('nui://prp-phone/html/images/gurgle.png');
 }
 
 .gurgle-entries-wrapper {

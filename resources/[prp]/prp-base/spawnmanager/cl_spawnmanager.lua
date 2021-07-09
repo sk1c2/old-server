@@ -22,8 +22,8 @@ function URP.SpawnManager.Initialize(self)
 
         SetEntityVisible(ped, false)
 
-        TriggerEvent("wrp-base:spawnInitialized")
-        TriggerServerEvent("wrp-base:spawnInitialized")
+        TriggerEvent("prp-base:spawnInitialized")
+        TriggerServerEvent("prp-base:spawnInitialized")
 
         DoScreenFadeIn(500)
 
@@ -63,8 +63,8 @@ function URP.SpawnManager.InitializeSwapChar(self)
     end)
 end
 
-RegisterNetEvent('wrp-base:SwapChar')
-AddEventHandler('wrp-base:SwapChar', function()
+RegisterNetEvent('prp-base:SwapChar')
+AddEventHandler('prp-base:SwapChar', function()
     URP.SpawnManager:InitializeSwapChar()
 end)
 
@@ -106,7 +106,7 @@ function URP.SpawnManager.InitialSpawn(self)
             SetPedDefaultComponentVariation(PlayerPedId())
         end
 
-        --TriggerEvent("wrp-base:initialSpawnModelLoaded")
+        --TriggerEvent("prp-base:initialSpawnModelLoaded")
 
         RequestCollisionAtCoord(spawn.x, spawn.y, spawn.z)
 
@@ -131,7 +131,7 @@ function URP.SpawnManager.InitialSpawn(self)
         end
 
         Citizen.Wait(500)
-        local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+        local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
         local Player = LocalPlayer:getCurrentCharacter()
         TriggerServerEvent('hotel:createRoom', Player.id)
         
@@ -142,8 +142,8 @@ function URP.SpawnManager.InitialSpawn(self)
         TransitionFromBlurred(500)
         EnableAllControlActions(0)
 
-        --if new then TriggerEvent("wrp-base:newCharacterSpawned") end
-        TriggerEvent("wrp-base:playerSpawned")
+        --if new then TriggerEvent("prp-base:newCharacterSpawned") end
+        TriggerEvent("prp-base:playerSpawned")
         --TriggerEvent("playerSpawned")
     end)
 end
@@ -206,7 +206,7 @@ function confirmSpawning(isClothesSpawn)
     end
 end
 
-AddEventHandler("wrp-base:firstSpawn", function()
+AddEventHandler("prp-base:firstSpawn", function()
     URP.SpawnManager:InitialSpawn()
 
     Citizen.CreateThread(function()
@@ -217,8 +217,8 @@ AddEventHandler("wrp-base:firstSpawn", function()
     end)
 end)
 
-RegisterNetEvent('wrp-base:clearStates')
-AddEventHandler('wrp-base:clearStates', function()
+RegisterNetEvent('prp-base:clearStates')
+AddEventHandler('prp-base:clearStates', function()
  	TriggerEvent("isJudgeOff")
     TriggerEvent("nowCopSpawnOff")
     TriggerEvent("nowEMSDeathOff")

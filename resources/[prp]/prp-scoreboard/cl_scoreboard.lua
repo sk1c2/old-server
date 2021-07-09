@@ -65,8 +65,8 @@ function ST.Scoreboard.GetPlayerCount(self)
 end
 
 local playerOnline
-RegisterNetEvent("wrp-scoreboard:playerscount")
-AddEventHandler("wrp-scoreboard:playerscount", function(a)
+RegisterNetEvent("prp-scoreboard:playerscount")
+AddEventHandler("prp-scoreboard:playerscount", function(a)
     playerOnline = a
 end)
 
@@ -194,23 +194,23 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent("wrp-scoreboard:RemovePlayer")
-AddEventHandler("wrp-scoreboard:RemovePlayer", function(data)
+RegisterNetEvent("prp-scoreboard:RemovePlayer")
+AddEventHandler("prp-scoreboard:RemovePlayer", function(data)
     ST.Scoreboard:RemovePlayer(data)
 end)
 
-RegisterNetEvent("wrp-scoreboard:AddPlayer")
-AddEventHandler("wrp-scoreboard:AddPlayer", function(data)
+RegisterNetEvent("prp-scoreboard:AddPlayer")
+AddEventHandler("prp-scoreboard:AddPlayer", function(data)
     ST.Scoreboard:AddPlayer(data)
 end)
 
-RegisterNetEvent("wrp-scoreboard:RemoveRecent")
-AddEventHandler("wrp-scoreboard:RemoveRecent", function(src)
+RegisterNetEvent("prp-scoreboard:RemoveRecent")
+AddEventHandler("prp-scoreboard:RemoveRecent", function(src)
     ST.Scoreboard:RemoveRecent(src)
 end)
 
-RegisterNetEvent("wrp-scoreboard:AddAllPlayers")
-AddEventHandler("wrp-scoreboard:AddAllPlayers", function(data)
+RegisterNetEvent("prp-scoreboard:AddAllPlayers")
+AddEventHandler("prp-scoreboard:AddAllPlayers", function(data)
     ST.Scoreboard:AddAllPlayers(data)
 end)
 

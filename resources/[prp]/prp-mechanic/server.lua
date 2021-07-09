@@ -111,8 +111,8 @@ end
 
 -- chopshop
 
-RegisterServerEvent('wrp-chopshop:addCash')
-AddEventHandler('wrp-chopshop:addCash', function()
+RegisterServerEvent('prp-chopshop:addCash')
+AddEventHandler('prp-chopshop:addCash', function()
 	local _source = source
 	local randomChance = math.random(0, 2)
 	local money = math.random(200, 350)
@@ -120,17 +120,17 @@ AddEventHandler('wrp-chopshop:addCash', function()
 	if source ~= nil then	
 		if randomChance == 0 then
 			Citizen.Wait(5)
-			TriggerClientEvent('wrp-banned:getID', _source,'scrapmetal', payout)
-			TriggerClientEvent('wrp-banned:getID', _source, 'rubber', payout)
+			TriggerClientEvent('prp-banned:getID', _source,'scrapmetal', payout)
+			TriggerClientEvent('prp-banned:getID', _source, 'rubber', payout)
 		elseif randomChance == 1 then
 			Citizen.Wait(5)
-			TriggerClientEvent('wrp-banned:getID', _source, 'glass', payout)
-			TriggerClientEvent('wrp-banned:getID', _source, 'steel', payout)
-			TriggerClientEvent('wrp-banned:getID', _source, 'plastic', payout)
+			TriggerClientEvent('prp-banned:getID', _source, 'glass', payout)
+			TriggerClientEvent('prp-banned:getID', _source, 'steel', payout)
+			TriggerClientEvent('prp-banned:getID', _source, 'plastic', payout)
 		elseif randomChance == 2 then
-			TriggerClientEvent('wrp-banned:getID', _source, 'electronics', payout)
-			TriggerClientEvent('wrp-banned:getID', _source, 'aluminium', payout)
-			TriggerClientEvent('wrp-banned:getID', _source, 'copper', payout)
+			TriggerClientEvent('prp-banned:getID', _source, 'electronics', payout)
+			TriggerClientEvent('prp-banned:getID', _source, 'aluminium', payout)
+			TriggerClientEvent('prp-banned:getID', _source, 'copper', payout)
 		end
 	end
 end)
@@ -154,7 +154,7 @@ function SaveInfoToDatabase(plate, ownername, choppedcarname, choppername, chopp
 	end)
 end
 
--- irpCore.RegisterServerCallback('wrp-chopshop:isdead', function(source, cb)
+-- irpCore.RegisterServerCallback('prp-chopshop:isdead', function(source, cb)
 -- 	local identifier = GetPlayerIdentifiers(source)[1]
 
 -- 	MySQL.Async.fetchScalar('SELECT '..Config.SQLPlayerIsDeadColoumn..' FROM '..Config.SQLPlayerInfoTable..' WHERE '..Config.SQLPlayerIdentifierColoumn..' = @'..Config.SQLPlayerIdentifierColoumn, {
@@ -164,7 +164,7 @@ end
 -- 	end)
 -- end)
 
--- irpCore.RegisterServerCallback('wrp-chopshop:getVehInfos', function(source, cb, plate)
+-- irpCore.RegisterServerCallback('prp-chopshop:getVehInfos', function(source, cb, plate)
 -- 	MySQL.Async.fetchAll('SELECT '..Config.SQLVehicleOwnerColoumn..' FROM '..Config.SQLOwnedVehicleTable..' WHERE '..Config.SQLVehiclePlateColoumn..' = @'..Config.SQLVehiclePlateColoumn, {
 -- 		['@'..Config.SQLVehiclePlateColoumn] = plate
 -- 	}, function(result)

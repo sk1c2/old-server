@@ -13,6 +13,6 @@ files({
 server_script "server/sv_login.lua"
 server_script "server/sv_main.lua"
 
-client_script "@wrp-errorlog/client/cl_errorlog.lua"
+client_script "@prp-errorlog/client/cl_errorlog.lua"
 client_script "client/cl_login.lua"
 client_script "client/cl_cswitch.lua"

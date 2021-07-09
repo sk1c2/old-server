@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 
   $(".btnDrop").click(function(){
-      $.post('http://wrp-notepad/drop', JSON.stringify({ noteText: escapeHtml($("#notepadInfof").val()) }));
+      $.post('http://prp-notepad/drop', JSON.stringify({ noteText: escapeHtml($("#notepadInfof").val()) }));
   });
 
   // Listen for NUI Events
@@ -71,7 +71,7 @@ $(document).ready(function(){
   // On 'Esc' call close method
   document.onkeyup = function (data) {
     if ( data.which == 27 ) {
-      $.post('http://wrp-notepad/close', JSON.stringify({}));
+      $.post('http://prp-notepad/close', JSON.stringify({}));
     }
   };
 });

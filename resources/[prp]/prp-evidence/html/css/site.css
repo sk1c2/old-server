@@ -78,7 +78,7 @@ body {
     left: 0;
     right: 0;
     z-index: -1;
-    background-image: url("nui://wrp-evidence/html/images/bag_texture.png");
+    background-image: url("nui://prp-evidence/html/images/bag_texture.png");
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 0.25em;

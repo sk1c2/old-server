@@ -21,7 +21,7 @@ RegisterServerEvent('drugdelivery:server')
 AddEventHandler('drugdelivery:server', function(cash)
     local source = source
     if cash >= 100 then
-        TriggerClientEvent('wrp-ac:removeban', source, 100)
+        TriggerClientEvent('prp-ac:removeban', source, 100)
         -- print("cash")
         TriggerClientEvent('drugdelivery:startDealing', source)
         TriggerClientEvent('drugdelivery:client', source)
@@ -33,7 +33,7 @@ end)
 RegisterServerEvent('rolexdelivery:server')
 AddEventHandler('rolexdelivery:server', function(money)
     local source = source
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     if cash >= money then
         TriggerClientEvent("banking:removeCash", money)
@@ -48,7 +48,7 @@ RegisterServerEvent('delmission:completed')
 AddEventHandler('delmission:completed', function(money)
     local source = source
     if money ~= nil then
-        TriggerClientEvent('wrp-ac:InfoPass', money)
+        TriggerClientEvent('prp-ac:InfoPass', money)
     end
 end)
 
@@ -63,7 +63,7 @@ AddEventHandler('delivery:status', function(status)
     TriggerClientEvent('delivery:deliverables', -1, counter, math.random(1,14))
 end)
 
-RegisterServerEvent('wrp-drugdeliveries:amount')
-AddEventHandler('wrp-drugdeliveries:amount', function(amountofcash)
+RegisterServerEvent('prp-drugdeliveries:amount')
+AddEventHandler('prp-drugdeliveries:amount', function(amountofcash)
     cash = amountofcash
 end)

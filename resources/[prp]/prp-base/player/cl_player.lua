@@ -45,7 +45,7 @@ function URP.LocalPlayer.setJob(self, cid, data)
     GetUser()["character"]["job"] = data
     Citizen.Wait(250)
     TriggerEvent('isPed:updateJob', data)
-    TriggerServerEvent('wrp-policejob:spawned')
+    TriggerServerEvent('prp-policejob:spawned')
     TriggerServerEvent('player:setJob', cid, GetUser()["character"]["job"])
 end
 
@@ -55,7 +55,7 @@ function URP.LocalPlayer.addCash(self, cid, data)
     TriggerEvent("banking:addCash", data)
     TriggerEvent('isPed:setCash', GetUser()["character"]["cash"])
     TriggerServerEvent('player:addCash', cid, GetUser()["character"]["cash"])
-    TriggerServerEvent('wrp-inventory:logCash', data)
+    TriggerServerEvent('prp-inventory:logCash', data)
 end
 
 function URP.LocalPlayer.removeCash(self, cid, data)
@@ -98,8 +98,8 @@ function URP.LocalPlayer.setBank(self, cid, data)
     TriggerServerEvent('player:setBank', cid, data)
 end
 
-RegisterNetEvent('wrp-phone:groupManageUpdateBank')
-AddEventHandler('wrp-phone:groupManageUpdateBank', function(cid, data)
+RegisterNetEvent('prp-phone:groupManageUpdateBank')
+AddEventHandler('prp-phone:groupManageUpdateBank', function(cid, data)
     GetUser()["character"]["bank"] = data
     Citizen.Wait(250)
     TriggerEvent('isPed:setBank', GetUser()["character"]["bank"])
@@ -133,13 +133,13 @@ function URP.LocalPlayer.setCharacterValue(self, var, data)
     GetUser():getVar("character")[var] = data
 end
 
-RegisterNetEvent("wrp-base:networkVar")
-AddEventHandler("wrp-base:networkVar", function(var, val)
+RegisterNetEvent("prp-base:networkVar")
+AddEventHandler("prp-base:networkVar", function(var, val)
     URP.LocalPlayer:setVar(var, val)
 end)
 
-RegisterNetEvent('wrp-base:setCash')
-AddEventHandler('wrp-base:setCash', function(cid, data)
+RegisterNetEvent('prp-base:setCash')
+AddEventHandler('prp-base:setCash', function(cid, data)
     GetUser()["character"]["cash"] = data
     Citizen.Wait(250)
     TriggerEvent("banking:addCash", data)
@@ -147,13 +147,13 @@ AddEventHandler('wrp-base:setCash', function(cid, data)
     TriggerServerEvent('player:setCash', cid, data)
 end)
 
-RegisterNetEvent('wrp-base:addCash')
-AddEventHandler('wrp-base:addCash', function(cid, data)
+RegisterNetEvent('prp-base:addCash')
+AddEventHandler('prp-base:addCash', function(cid, data)
     GetUser():addCash(cid, data)
 end)
 
-RegisterNetEvent('wrp-base:removeCash')
-AddEventHandler('wrp-base:removeCash', function(cid, data)
+RegisterNetEvent('prp-base:removeCash')
+AddEventHandler('prp-base:removeCash', function(cid, data)
     GetUser():removeCash(cid, data)
 end)
 
@@ -169,22 +169,22 @@ AddEventHandler('client:GroupPayment', function(job, amount)
     end
 end)
 
-RegisterNetEvent('wrp-base:updateJob')
-AddEventHandler('wrp-base:updateJob', function(name, rank)
+RegisterNetEvent('prp-base:updateJob')
+AddEventHandler('prp-base:updateJob', function(name, rank)
     GetUser()["character"]["job"] = name
     TriggerEvent('isPed:updateJob', name)
-    TriggerServerEvent('wrp-policejob:spawned')
+    TriggerServerEvent('prp-policejob:spawned')
     TriggerServerEvent('player:setJob', exports['isPed']:isPed('cid'), GetUser()["character"]["job"])
     GetUser()["character"]["rank"] = rank
     TriggerEvent('isPed:updateRank', rank)
     TriggerServerEvent('player:setRank', exports['isPed']:isPed('cid'), GetUser()["character"]["rank"])
 end)
 
-RegisterNetEvent('wrp-base:updateBank')
-AddEventHandler('wrp-base:updateBank', function(bank, rank)
+RegisterNetEvent('prp-base:updateBank')
+AddEventHandler('prp-base:updateBank', function(bank, rank)
     GetUser()["character"]["bank"] = bank
     TriggerEvent('isPed:updateJob', name)
-    TriggerServerEvent('wrp-policejob:spawned')
+    TriggerServerEvent('prp-policejob:spawned')
     TriggerServerEvent('player:setJob', exports['isPed']:isPed('cid'), GetUser()["character"]["job"])
     GetUser()["character"]["rank"] = rank
     TriggerEvent('isPed:updateRank', rank)

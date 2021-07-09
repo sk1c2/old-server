@@ -10,13 +10,13 @@ local banks = {
 local rAllowed = true
 local oDoors = {}
 
-RegisterNetEvent('wrp-robbery:restartSoon')
-AddEventHandler('wrp-robbery:restartSoon', function()
+RegisterNetEvent('prp-robbery:restartSoon')
+AddEventHandler('prp-robbery:restartSoon', function()
     rAllowed = false
 end)
 
-RegisterNetEvent('wrp-robbery:openSmallBankDoor')
-AddEventHandler('wrp-robbery:openSmallBankDoor', function(vType)
+RegisterNetEvent('prp-robbery:openSmallBankDoor')
+AddEventHandler('prp-robbery:openSmallBankDoor', function(vType)
     --print('Opening Door.?')
     local pCoords = GetEntityCoords(PlayerPedId())
     local vDoor = GetClosestObjectOfType(pCoords["x"], pCoords["y"], pCoords["z"], 15.0, vType, 0, 0, 0)
@@ -30,9 +30,9 @@ AddEventHandler('wrp-robbery:openSmallBankDoor', function(vType)
     if oDoors[vDoor] == nil then
         if vType == -131754413 then
             oFactor = 90
-            TriggerEvent("wrp-robbery:smallVaultDrawBoxes" ,vDoor, true)
+            TriggerEvent("prp-robbery:smallVaultDrawBoxes" ,vDoor, true)
         else
-            TriggerEvent("wrp-robbery:smallVaultDrawBoxes" ,vDoor, false)
+            TriggerEvent("prp-robbery:smallVaultDrawBoxes" ,vDoor, false)
         end
         oDoors[vDoor] = true
 
@@ -42,10 +42,10 @@ AddEventHandler('wrp-robbery:openSmallBankDoor', function(vType)
         end
     elseif oDoors[vDoor] ~= nil then
         if vType == -131754413 and not drawingBoxes then
-            TriggerEvent("wrp-robbery:smallVaultDrawBoxes",vDoor,true)
+            TriggerEvent("prp-robbery:smallVaultDrawBoxes",vDoor,true)
         else
             if vType ~= -131754413 and not drawingBoxesV then
-                TriggerEvent("wrp-robbery:smallVaultDrawBoxes",vDoor,false)
+                TriggerEvent("prp-robbery:smallVaultDrawBoxes",vDoor,false)
             end
         end
     end
@@ -57,8 +57,8 @@ end)
 local drawingBoxes = false
 local drawingBoxesV = false
 
-RegisterNetEvent('wrp-robbery:smallVaultDrawBoxes')
-AddEventHandler('wrp-robbery:smallVaultDrawBoxes', function(vDoor, vToggle)
+RegisterNetEvent('prp-robbery:smallVaultDrawBoxes')
+AddEventHandler('prp-robbery:smallVaultDrawBoxes', function(vDoor, vToggle)
     local dCoords = GetEntityCoords(vDoor)
 
     local x5,y5,z5 = table.unpack(GetOffsetFromEntityInWorldCoords(vDoor, 0.19, 1.2 + 0.0, 0.0))
@@ -112,11 +112,11 @@ function DrawSmallBankBoxes(x, y, z, inputType)
 
             --print(inputType)
 
-            local finished = exports['wrp-taskbar']:taskBar(60000, 'Searching')
+            local finished = exports['prp-taskbar']:taskBar(60000, 'Searching')
 
             if finished == 100 then
                 FreezeEntityPosition(PlayerPedId(), false)
-                TriggerServerEvent('wrp-robbery:sBankBox', cBankId, inputType)
+                TriggerServerEvent('prp-robbery:sBankBox', cBankId, inputType)
             end
 
             Citizen.Wait(1000)
@@ -139,19 +139,19 @@ end
 
 local vaultCard = false
 
-RegisterNetEvent('wrp-robbery:sBankLoot')
-AddEventHandler('wrp-robbery:sBankLoot', function()
+RegisterNetEvent('prp-robbery:sBankLoot')
+AddEventHandler('prp-robbery:sBankLoot', function()
 
     
     if math.random(100) > 95 then
         if vaultCard then 
             --print('penis')
         else
-            TriggerEvent('wrp-banned:getID', 'Gruppe6Card22', 1)
+            TriggerEvent('prp-banned:getID', 'Gruppe6Card22', 1)
             vaultCard = true
         end
     else
-        local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+        local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
         local Player = LocalPlayer:getCurrentCharacter()
         LocalPlayer:addCash(Player.id, math.random(1500, 4500))
     end
@@ -159,19 +159,19 @@ AddEventHandler('wrp-robbery:sBankLoot', function()
     if math.random(100) > 45 then
         local pick = math.random(4)
         if pick == 1 then
-            TriggerEvent("wrp-banned:getID", "goldbar", math.random(10, 50))
+            TriggerEvent("prp-banned:getID", "goldbar", math.random(10, 50))
         elseif pick == 2 then
-            TriggerEvent("wrp-banned:getID", "gemstonesapphire", math.random(1, 3))
+            TriggerEvent("prp-banned:getID", "gemstonesapphire", math.random(1, 3))
         elseif pick == 3 then
-            TriggerEvent("wrp-banned:getID", "rolexwatch", math.random(100, 200))
+            TriggerEvent("prp-banned:getID", "rolexwatch", math.random(100, 200))
         elseif pick == 4 then
-            TriggerEvent("wrp-banned:getID", "gemstoneaqua", math.random(3, 7))
+            TriggerEvent("prp-banned:getID", "gemstoneaqua", math.random(3, 7))
         end
     end
 end)
 
-RegisterNetEvent('wrp-robbery:securityBlueUsed')
-AddEventHandler('wrp-robbery:securityBlueUsed', function()
+RegisterNetEvent('prp-robbery:securityBlueUsed')
+AddEventHandler('prp-robbery:securityBlueUsed', function()
     if 0 >= 0 then
         local bId = GetBankId()
 
@@ -196,8 +196,8 @@ AddEventHandler('wrp-robbery:securityBlueUsed', function()
 
         local vDoor = GetClosestObjectOfType(pCoords["x"], pCoords["y"], pCoords["z"], 3.0, 2121050683, 0, 0, 0)
         if vDoor ~= 0 then
-            if exports['wrp-inventory']:hasEnoughOfItem('securityblue', 1) then
-                local finished = exports['wrp-thermite']:startGame(20,1,8,425)
+            if exports['prp-inventory']:hasEnoughOfItem('securityblue', 1) then
+                local finished = exports['prp-thermite']:startGame(20,1,8,425)
                 TriggerEvent('urp:alert:fleeca')
                 FreezeEntityPosition(PlayerPedId(), true)
                 TriggerEvent('inventory:removeItem', 'thermite', 1)
@@ -206,11 +206,11 @@ AddEventHandler('wrp-robbery:securityBlueUsed', function()
                     TriggerEvent('DoLongHudText', 'Better luck next time!', 2)
                     local coords = GetEntityCoords(PlayerPedId())
                     FreezeEntityPosition(PlayerPedId(), false)
-                    exports['wrp-thermite']:startFireAtLocation(coords.x, coords.y, coords.z - 1, 10000)
+                    exports['prp-thermite']:startFireAtLocation(coords.x, coords.y, coords.z - 1, 10000)
                     return
                 end
                 FreezeEntityPosition(PlayerPedId(), false)
-                TriggerServerEvent('wrp-robbery:smallBankAttempt', bId)
+                TriggerServerEvent('prp-robbery:smallBankAttempt', bId)
             else
                 TriggerEvent('DoLongHudText', 'You\'re missing an item!', 2)
             end
@@ -218,18 +218,18 @@ AddEventHandler('wrp-robbery:securityBlueUsed', function()
 
         local vDoor = GetClosestObjectOfType(pCoords["x"], pCoords["y"], pCoords["z"], 3.0, -63539571, 0, 0, 0)
         if vDoor ~= 0 then
-            local finished = exports['wrp-thermite']:startGame(20,1,8,425)
+            local finished = exports['prp-thermite']:startGame(20,1,8,425)
             FreezeEntityPosition(PlayerPedId(), true)
             TriggerEvent('inventory:removeItem', 'thermite', 1)
             if finished ~= true then
                 TriggerEvent('DoLongHudText', 'Better luck next time!', 2)
                 local coords = GetEntityCoords(PlayerPedId())
                 FreezeEntityPosition(PlayerPedId(), false)
-                exports['wrp-thermite']:startFireAtLocation(coords.x, coords.y, coords.z - 1, 10000)
+                exports['prp-thermite']:startFireAtLocation(coords.x, coords.y, coords.z - 1, 10000)
                 return
             end
             FreezeEntityPosition(PlayerPedId(), false)
-            TriggerServerEvent('wrp-robbery:smallBankAttempt', bId)
+            TriggerServerEvent('prp-robbery:smallBankAttempt', bId)
         end
     else
         TriggerEvent('DoLongHudText', 'Not enough cops around', 2)
@@ -237,8 +237,8 @@ AddEventHandler('wrp-robbery:securityBlueUsed', function()
 
 end)
 
-RegisterNetEvent('wrp-robbery:updateBankData')
-AddEventHandler('wrp-robbery:updateBankData', function(bData)
+RegisterNetEvent('prp-robbery:updateBankData')
+AddEventHandler('prp-robbery:updateBankData', function(bData)
     if bData ~= nil or bData ~= {} then
         banks = bData
         --print(json.encode(banks))
@@ -248,10 +248,10 @@ end)
 
 function OpenVaultDoor(vType)
     if vType then
-        TriggerEvent('wrp-robbery:openSmallBankDoor', 2121050683)
-        TriggerEvent('wrp-robbery:openSmallBankDoor', -63539571)
+        TriggerEvent('prp-robbery:openSmallBankDoor', 2121050683)
+        TriggerEvent('prp-robbery:openSmallBankDoor', -63539571)
     else
-        TriggerEvent('wrp-robbery:openSmallBankDoor', -131754413)
+        TriggerEvent('prp-robbery:openSmallBankDoor', -131754413)
     end
 end
 

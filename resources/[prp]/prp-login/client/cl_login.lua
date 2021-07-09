@@ -7,14 +7,14 @@ userId = 0
 
 local isnew = false
 
-RegisterNetEvent('wrp-login:updateUId')
-AddEventHandler('wrp-login:updateUId', function(uid)
+RegisterNetEvent('prp-login:updateUId')
+AddEventHandler('prp-login:updateUId', function(uid)
     uId = uid
     userId = uid[1].uid
 end)
 
-RegisterNetEvent('wrp-login:updateChars')
-AddEventHandler('wrp-login:updateChars', function(chardata)
+RegisterNetEvent('prp-login:updateChars')
+AddEventHandler('prp-login:updateChars', function(chardata)
     characters = chardata
 end)
 
@@ -53,7 +53,7 @@ local function closeMenu()
 end
 
 local function disconnect()
-    TriggerServerEvent("wrp-login:disconnectPlayer")
+    TriggerServerEvent("prp-login:disconnectPlayer")
 end
 
 local function nuiCallBack(data)
@@ -73,7 +73,7 @@ local function nuiCallBack(data)
     if data.newchar then
         if not data.chardata then return end
         isnew = data.newchar
-        TriggerServerEvent('wrp-login:createCharacter', data.chardata, userId, getPhoneRandomNumber())
+        TriggerServerEvent('prp-login:createCharacter', data.chardata, userId, getPhoneRandomNumber())
         TriggerEvent('character:isNew', true)
         TriggerEvent('chatMessage', "Hey", 2, "^1Welcome to Wonder! If you would like to get started press T and type /help! All information is held there.")
         Citizen.Wait(1000)
@@ -82,7 +82,7 @@ local function nuiCallBack(data)
 
     if data.fetchcharacters then
 
-        TriggerServerEvent('wrp-login:updateCharacters', userId)
+        TriggerServerEvent('prp-login:updateCharacters', userId)
 
         Citizen.Wait(2000)
         sendMessage({playercharacters = characters})
@@ -91,15 +91,15 @@ local function nuiCallBack(data)
     if data.deletecharacter then
         if not data.deletecharacter then return end
 
-        TriggerServerEvent('wrp-login:deleteCharacter', data.deletecharacter)
+        TriggerServerEvent('prp-login:deleteCharacter', data.deletecharacter)
         sendMessage({reload = true})
     end
 
     if data.selectcharacter then
         local char = getCharacter(data.selectcharacter)
-        TriggerServerEvent('wrp-base:setServerCharacter', char)
+        TriggerServerEvent('prp-base:setServerCharacter', char)
 
-        local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+        local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
         LocalPlayer:setCurrentCharacter(char)
         local Player = LocalPlayer:getCurrentCharacter()
 
@@ -112,28 +112,28 @@ local function nuiCallBack(data)
         sendMessage({close = true})
         SetPlayerInvincible(PlayerPedId(), true)
 
-        TriggerEvent("wrp-base:firstSpawn")
+        TriggerEvent("prp-base:firstSpawn")
         closeMenu()
         Citizen.Wait(5000)
         SetPlayerInvincible(PlayerPedId(), false)
-        TriggerEvent('wrp-login:loadCharData', Player.food, Player.water, Player.armor, Player.stress)
+        TriggerEvent('prp-login:loadCharData', Player.food, Player.water, Player.armor, Player.stress)
         TriggerEvent('isPed:setAllData', Player.id, Player.job, Player.first_name, Player.last_name, Player.cash, Player.bank)
         if Player.jail ~= nil and Player.jail > 5 then
-            TriggerServerEvent('wrp-jailhehe', source, Player.jail, Player.first_name .. ' ' .. Player.last_name, Player.id)
+            TriggerServerEvent('prp-jailhehe', source, Player.jail, Player.first_name .. ' ' .. Player.last_name, Player.id)
         end
         TriggerEvent('stocks:retrieve', Player.id)
         local _source = source
-        TriggerServerEvent('wrp-weapons:updateAmmo', Player.id, true)
+        TriggerServerEvent('prp-weapons:updateAmmo', Player.id, true)
         --add players to scoreboard
         SetNuiFocus(false, false)
-        TriggerEvent('wrp-base:loadPlayerData')
+        TriggerEvent('prp-base:loadPlayerData')
     end
 end
 
 RegisterNUICallback("nuiMessage", nuiCallBack)
 
-AddEventHandler("wrp-base:spawnInitialized", function()
-    TriggerServerEvent('wrp-login:getUserId', source)
+AddEventHandler("prp-base:spawnInitialized", function()
+    TriggerServerEvent('prp-login:getUserId', source)
     Citizen.Wait(500)
     openMenu()
 end)

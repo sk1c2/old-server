@@ -10,8 +10,8 @@ function URP.Core.ConsoleLog(self, msg, mod)
     -- print(pMsg)
 end
 
-RegisterNetEvent("wrp-base:consoleLog")
-AddEventHandler("wrp-base:consoleLog", function(msg, mod)
+RegisterNetEvent("prp-base:consoleLog")
+AddEventHandler("prp-base:consoleLog", function(msg, mod)
     URP.Core:ConsoleLog(msg, mod)
 end)
 
@@ -31,8 +31,8 @@ function URP.Core.WaitForExports(self)
     Citizen.CreateThread(function()
         while true do
             Citizen.Wait(3)
-            if exports and exports["wrp-base"] then
-                TriggerEvent("wrp-base:exportsReady")
+            if exports and exports["prp-base"] then
+                TriggerEvent("prp-base:exportsReady")
                 URP.Core.ExportsReady = true
                 return
             end

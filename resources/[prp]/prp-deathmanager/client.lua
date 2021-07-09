@@ -494,7 +494,7 @@ AddEventHandler('trycpr', function()
         local penis = 0
         while penis < 10 do
             penis = penis + 1
-            local finished = exports["wrp-taskbarskill"]:taskBar(math.random(2000,10000),math.random(5,20))
+            local finished = exports["prp-taskbarskill"]:taskBar(math.random(2000,10000),math.random(5,20))
             if finished ~= 100 then
                 return
             end
@@ -582,8 +582,8 @@ function attemptRevive()
         ClearPedBloodDamage(PlayerPedId())        
         local plyPos = GetEntityCoords(PlayerPedId(),  true)
         TriggerEvent("Heal")
-        TriggerEvent('wrp-hospital:client:RemoveBleed') 
-        TriggerEvent('wrp-hospital:client:ResetLimbs')
+        TriggerEvent('prp-hospital:client:RemoveBleed') 
+        TriggerEvent('prp-hospital:client:ResetLimbs')
         SetEntityInvincible(GetPlayerPed(-1), false)
         ClearPedBloodDamage(GetPlayerPed(-1))       
         TriggerEvent("resurrect:relationships")

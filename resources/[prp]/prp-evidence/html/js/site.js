@@ -37,7 +37,7 @@ $(document).ready(function () {
     document.onkeyup = function (data) {
         // If Key == ESC -> Close Phone
         if (data.which == 27) {
-            $.post('http://wrp-evidence/close', JSON.stringify({}));
+            $.post('http://prp-evidence/close', JSON.stringify({}));
         }
     }
 

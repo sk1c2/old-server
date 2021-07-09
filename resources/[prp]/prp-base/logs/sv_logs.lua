@@ -1,5 +1,5 @@
 local DISCORD_WEBHOOK = "https://discord.com/api/webhooks/861201788673064961/PgBaALPQXRQeI0Iu6nQDiXE69Da9kkljSt1maBf6px7oECxRTGLy2u8XGLcewx6xFWra"
-local DISCORD_NAME = "wrp-log"
+local DISCORD_NAME = "prp-log"
 local STEAM_KEY = "5B5D15BFD11992B9A61A9CF87E64493A"
 local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png" -- default is FiveM logo
 
@@ -56,7 +56,7 @@ AddEventHandler('playerDied',function(message)
 end)  
 
 
----------------------wrp-JOBS------------------------------------------------- 
+---------------------prp-JOBS------------------------------------------------- 
 RegisterServerEvent('cunt:pay')
 AddEventHandler('cunt:pay',function(message)
 	for k, v in ipairs(GetPlayerIdentifiers(source)) do
@@ -77,8 +77,8 @@ AddEventHandler('mission:completed',function(message)
     sendToDiscord("Weed Sell", "**" .. GetPlayerName(source) .. "** . \n Sold 5 weed for :$ " .. message .. " \n\nDiscord ID : **" .. identifierDiscord .. "**", color)
 end)
 
-RegisterServerEvent('wrp-uber:pay')
-AddEventHandler('wrp-uber:pay',function(message)
+RegisterServerEvent('prp-uber:pay')
+AddEventHandler('prp-uber:pay',function(message)
 	for k, v in ipairs(GetPlayerIdentifiers(source)) do
         if string.sub(v, 1, string.len("discord:")) == "discord:" then
             identifierDiscord = v

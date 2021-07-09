@@ -12,14 +12,14 @@ AddEventHandler('onResourceStart', function(resourceName)
     end
 end)
 
-RegisterNetEvent('wrp-eblips:server:registerSourceName')
-AddEventHandler('wrp-eblips:server:registerSourceName', function(source, name)
+RegisterNetEvent('prp-eblips:server:registerSourceName')
+AddEventHandler('prp-eblips:server:registerSourceName', function(source, name)
     if not source_cache[source] then source_cache[source] = { } end
     source_cache[source].name = name
 end)
 
-RegisterNetEvent('wrp-eblips:server:registerPlayerBlipGroup')
-AddEventHandler('wrp-eblips:server:registerPlayerBlipGroup', function(source, group)
+RegisterNetEvent('prp-eblips:server:registerPlayerBlipGroup')
+AddEventHandler('prp-eblips:server:registerPlayerBlipGroup', function(source, group)
 
     -- Config sanity checks and new group creation
     if not blips[group] then
@@ -30,19 +30,19 @@ AddEventHandler('wrp-eblips:server:registerPlayerBlipGroup', function(source, gr
     blips[group].members[source] = { is_member = true, }
 end)
 
-RegisterNetEvent('wrp-eblips:server:removePlayerBlipGroup')
-AddEventHandler('wrp-eblips:server:removePlayerBlipGroup', function(source, group)
+RegisterNetEvent('prp-eblips:server:removePlayerBlipGroup')
+AddEventHandler('prp-eblips:server:removePlayerBlipGroup', function(source, group)
     if blips[group].members[source] then
         doDebug('Unregistering player blip group for source', source)
         blips[group].members[source] = nil
     end
 end)
 
-RegisterNetEvent('wrp-eblips:server:registerPlayerTempBlipGroup')
-AddEventHandler('wrp-eblips:server:registerPlayerTempBlipGroup', function(source, group, time)
-    TriggerEvent('wrp-eblips:server:registerPlayerBlipGroup', source, 'police')
+RegisterNetEvent('prp-eblips:server:registerPlayerTempBlipGroup')
+AddEventHandler('prp-eblips:server:registerPlayerTempBlipGroup', function(source, group, time)
+    TriggerEvent('prp-eblips:server:registerPlayerBlipGroup', source, 'police')
     SetTimeout(time, function()
-        TriggerEvent('wrp-eblips:server:removePlayerBlipGroup', source, 'police')
+        TriggerEvent('prp-eblips:server:removePlayerBlipGroup', source, 'police')
     end)
 end)
 
@@ -107,7 +107,7 @@ Citizen.CreateThread(function()
             Citizen.CreateThread(function()
                 for source, is_valid_member in pairs(blip.members) do
                     if is_valid_member then -- more sanity checking
-                        TriggerClientEvent('wrp-eblips:client:syncMyBlips', source, blips_data)
+                        TriggerClientEvent('prp-eblips:client:syncMyBlips', source, blips_data)
                         Citizen.Wait(100)
                     end
                 end

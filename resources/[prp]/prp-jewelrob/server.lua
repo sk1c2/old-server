@@ -4,13 +4,13 @@ local policeclosed = false
 local currentStreetHash, intersectStreetHash
 job = nil
 
-RegisterServerEvent('wrp-jewelrob:getjob')
-AddEventHandler('wrp-jewelrob:getjob', function(job)
+RegisterServerEvent('prp-jewelrob:getjob')
+AddEventHandler('prp-jewelrob:getjob', function(job)
     job = job
 end)
 
-RegisterServerEvent('wrp-jewelrobbery:closestore')
-AddEventHandler('wrp-jewelrobbery:closestore', function()
+RegisterServerEvent('prp-jewelrobbery:closestore')
+AddEventHandler('prp-jewelrobbery:closestore', function()
     local _source = source
     local ispolice = false
 	for i, v in pairs(Config.PoliceJobs) do
@@ -20,7 +20,7 @@ AddEventHandler('wrp-jewelrobbery:closestore', function()
 		end
 	end
     if ispolice and resettime ~= nil then
-        TriggerClientEvent('wrp-jewelrobbery:policeclosure', -1)
+        TriggerClientEvent('prp-jewelrobbery:policeclosure', -1)
         policeclosed = true
     elseif ispolice and resettime == nil then
         TriggerClientEvent('DoLongHudText', _source, 'Store does not appear to be damaged - unable to force closed!', 2)          
@@ -29,80 +29,80 @@ AddEventHandler('wrp-jewelrobbery:closestore', function()
     end
 end)
 
-RegisterServerEvent('wrp-jewelrobbery:playsound')
-AddEventHandler('wrp-jewelrobbery:playsound', function(x,y,z, soundtype)
-    TriggerClientEvent('wrp-jewelrobbery:playsound', -1, x, y, z, soundtype)
+RegisterServerEvent('prp-jewelrobbery:playsound')
+AddEventHandler('prp-jewelrobbery:playsound', function(x,y,z, soundtype)
+    TriggerClientEvent('prp-jewelrobbery:playsound', -1, x, y, z, soundtype)
 end)
 
-RegisterServerEvent('wrp-jewelrobbery:setcase')
-AddEventHandler('wrp-jewelrobbery:setcase', function(casenumber, switch)
+RegisterServerEvent('prp-jewelrobbery:setcase')
+AddEventHandler('prp-jewelrobbery:setcase', function(casenumber, switch)
     _source = source
     if not Config.CaseLocations[casenumber].Broken then
         Config.CaseLocations[casenumber].Broken  = true
-        TriggerEvent('wrp-jewelrobbery:RestTimer')
-        TriggerClientEvent('wrp-jewelrobbery:setcase', -1, casenumber, true)
-        TriggerEvent('wrp-jewelrobbery:AwardItems', _source)
+        TriggerEvent('prp-jewelrobbery:RestTimer')
+        TriggerClientEvent('prp-jewelrobbery:setcase', -1, casenumber, true)
+        TriggerEvent('prp-jewelrobbery:AwardItems', _source)
     end
 end)
 
-RegisterServerEvent('wrp-jewelrobbery:policenotify')
-AddEventHandler('wrp-jewelrobbery:policenotify', function()
-    TriggerClientEvent('wrp-dispatch:jewelrobbery')
+RegisterServerEvent('prp-jewelrobbery:policenotify')
+AddEventHandler('prp-jewelrobbery:policenotify', function()
+    TriggerClientEvent('prp-dispatch:jewelrobbery')
 	return
 end)
 
 
-RegisterServerEvent('wrp-jewelrobbery:loadconfig')
-AddEventHandler('wrp-jewelrobbery:loadconfig', function()
+RegisterServerEvent('prp-jewelrobbery:loadconfig')
+AddEventHandler('prp-jewelrobbery:loadconfig', function()
     local _source = source
     local buildlist = {
         id = _source,
         job = job,
     }
     table.insert(joblist, buildlist)
-    TriggerClientEvent('wrp-jewelrobbery:loadconfig', _source, Config.CaseLocations)
+    TriggerClientEvent('prp-jewelrobbery:loadconfig', _source, Config.CaseLocations)
     if policeclosed then
-        TriggerClientEvent('wrp-jewelrobbery:policeclosure', _source)
+        TriggerClientEvent('prp-jewelrobbery:policeclosure', _source)
     end
 
 end)
 
-AddEventHandler('wrp-jewelrobbery:AwardItems', function(source)
+AddEventHandler('prp-jewelrobbery:AwardItems', function(source)
     local _source = source
 	if math.random(25) == 20 then
         local myluck = math.random(5)
 
         if myluck == 1 then
-            TriggerClientEvent("wrp-banned:getID", _source, "securityblue",1)
+            TriggerClientEvent("prp-banned:getID", _source, "securityblue",1)
         elseif myluck == 2 then
-            TriggerClientEvent("wrp-banned:getID", _source, "cb",1)
+            TriggerClientEvent("prp-banned:getID", _source, "cb",1)
         end
 	end
 
-	TriggerClientEvent("wrp-banned:getID", _source, "rolexwatch",math.random(2,6))
+	TriggerClientEvent("prp-banned:getID", _source, "rolexwatch",math.random(2,6))
     if math.random(1,5) == 5 then
-        TriggerClientEvent('wrp-banned:getID', _source, 'band', math.random(2,8))
+        TriggerClientEvent('prp-banned:getID', _source, 'band', math.random(2,8))
     end
 	if math.random(5) == 1 then
-		TriggerClientEvent("wrp-banned:getID", _source, "goldbar",math.random(1,3))
+		TriggerClientEvent("prp-banned:getID", _source, "goldbar",math.random(1,3))
 	end
 
     if math.random(1, 4) == 4 then
-        TriggerClientEvent('wrp-banned:getID', _source, 'securitygreen', 1)
+        TriggerClientEvent('prp-banned:getID', _source, 'securitygreen', 1)
     end
 
     if math.random(1, 8) == 8 then
-        TriggerClientEvent('wrp-banned:getID', _source, 'electronickit', 1)
+        TriggerClientEvent('prp-banned:getID', _source, 'electronickit', 1)
     end
 
 	if math.random(69) == 69 then
-		TriggerClientEvent("wrp-banned:getID", _source, "valuablegoods",math.random(3))
+		TriggerClientEvent("prp-banned:getID", _source, "valuablegoods",math.random(3))
     end
-    TriggerClientEvent("wrp-banned:getID", _source, "goldbar",1)
+    TriggerClientEvent("prp-banned:getID", _source, "goldbar",1)
 end)
 
 
-AddEventHandler('wrp-jewelrobbery:RestTimer', function()
+AddEventHandler('prp-jewelrobbery:RestTimer', function()
     if resettime == nil then
         totaltime = Config.ResetTime * 60
         resettime = os.time() + totaltime
@@ -114,14 +114,14 @@ AddEventHandler('wrp-jewelrobbery:RestTimer', function()
         for i, v in pairs(Config.CaseLocations) do
             v.Broken = false
         end
-        TriggerClientEvent('wrp-jewelrobbery:resetcases', -1, Config.CaseLocations)
+        TriggerClientEvent('prp-jewelrobbery:resetcases', -1, Config.CaseLocations)
         resettime = nil
         policeclosed = false
     end
 end)
 
 
--- AddEventHandler('wrp-jewelrobbery:AwardItems', function(serverid)
+-- AddEventHandler('prp-jewelrobbery:AwardItems', function(serverid)
 --     local xPlayer = urpCore.GetPlayerFromId(serverid)
 
 --     local randomitem = math.random(1,100)

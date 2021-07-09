@@ -190,7 +190,7 @@ end
 
 RegisterNetEvent('sell:check')
 AddEventHandler('sell:check', function()
-	local methqty = exports['wrp-inventory']:getQuantity('vanmeth')
+	local methqty = exports['prp-inventory']:getQuantity('vanmeth')
 	if methqty > 0 then
 		TriggerEvent('notify')
 	end
@@ -219,7 +219,7 @@ Citizen.CreateThread(function()
 									if pedType ~= 28 and not IsPedAPlayer(ped) then
 										currentped = pos
 										if distance <= 1.5 and ped ~= playerPed and ped ~= oldped then
-											if exports['wrp-inventory']:getQuantity('vanmeth') > 0 then
+											if exports['prp-inventory']:getQuantity('vanmeth') > 0 then
 												TriggerEvent('sell:check')
 												DrawText3Ds(pos.x, pos.y, pos.z, 'Press [H] to sell drugs')
 												if has then
@@ -442,14 +442,14 @@ Citizen.CreateThread(function()
 
 		if blah then
 			local Methpayment = math.random(100, 200)
-			local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+			local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 			local Player = LocalPlayer:getCurrentCharacter()  
-			local methqty = exports['wrp-inventory']:getQuantity('vanmeth')
+			local methqty = exports['prp-inventory']:getQuantity('vanmeth')
 			if methqty >= 4 then
 				local x = 4
 				TriggerEvent('currentlySelling')
 				local methPay = Methpayment * x
-				TriggerEvent('wrp-banned:getID', 'band', math.random(2, 5))
+				TriggerEvent('prp-banned:getID', 'band', math.random(2, 5))
 				TriggerEvent('inventory:removeItem', 'vanmeth', x)
 				TriggerEvent('done')
 				TriggerEvent('cancel')
@@ -457,7 +457,7 @@ Citizen.CreateThread(function()
 				local x = 3
 				TriggerEvent('currentlySelling')
 				local methPay = Methpayment * x
-				TriggerEvent('wrp-banned:getID', 'rollcash', math.random(6, 18))
+				TriggerEvent('prp-banned:getID', 'rollcash', math.random(6, 18))
 				TriggerEvent('inventory:removeItem', 'vanmeth', x)
 				TriggerEvent('done')
 				TriggerEvent('cancel')
@@ -465,7 +465,7 @@ Citizen.CreateThread(function()
 				local x = 2
 				TriggerEvent('currentlySelling')
 				local methPay = Methpayment * x
-				TriggerEvent('wrp-banned:getID', 'rollcash', math.random(4, 12))
+				TriggerEvent('prp-banned:getID', 'rollcash', math.random(4, 12))
 				TriggerEvent('inventory:removeItem', 'vanmeth', x)
 				TriggerEvent('done')
 				TriggerEvent('cancel')
@@ -473,7 +473,7 @@ Citizen.CreateThread(function()
 				local x = 1
 				TriggerEvent('currentlySelling')
 				local methPay = Methpayment * x
-				TriggerEvent('wrp-banned:getID', 'rollcash', math.random(2, 6))
+				TriggerEvent('prp-banned:getID', 'rollcash', math.random(2, 6))
 				TriggerEvent('inventory:removeItem', 'vanmeth', x)
 				TriggerEvent('done')
 				TriggerEvent('cancel')

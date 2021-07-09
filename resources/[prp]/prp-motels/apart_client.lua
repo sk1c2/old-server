@@ -554,7 +554,7 @@ Citizen.CreateThread(function()
 				DrawText3Ds( storage["x"],storage["y"],storage["z"] , 'Press ~g~E~s~ to open your stash.')
 				if IsControlJustReleased(2, 38) then
 					--TriggerServerEvent('hotel:GetInteract',1500,row["house_name"])
-					TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "housing-"..house_poi["info"])
+					TriggerEvent("prp-ac:triggeredItemSpawn", "1", "housing-"..house_poi["info"])
 
 				end
 			end
@@ -613,13 +613,13 @@ AddEventHandler('housing:findsalecid', function(checkcid,price,house_id,house_mo
 
 	if buy then
 		TriggerEvent("DoLongHudText","Attempting purchase - please wait.",91)
-		local Player = exports['wrp-base']:getModule('LocalPlayer'):getCurrentCharacter()
+		local Player = exports['prp-base']:getModule('LocalPlayer'):getCurrentCharacter()
 		if tonumber(Player.cash) >= tonumber(upfront) then
 			TriggerServerEvent("house:purchasehouse",tonumber(checkcid),house_id,house_model,upfront,price,housename,storage,clothing,garages,false)
-			TriggerEvent('wrp-ac:removeban', upfront)
+			TriggerEvent('prp-ac:removeban', upfront)
 		elseif tonumber(Player.bank) >= tonumber(upfront) then
 			TriggerServerEvent("house:purchasehouse",tonumber(checkcid),house_id,house_model,upfront,price,housename,storage,clothing,garages,false)
-			TriggerEvent('wrp-ac:passInfoBan', upfront)
+			TriggerEvent('prp-ac:passInfoBan', upfront)
 		else
 			TriggerEvent("DoLongHudText","You do not have enough money for this purchase.",2)
 		end
@@ -651,7 +651,7 @@ if house_model == 3 then
 	house_name = rentedOffices[tonumber(house_id)]["name"]
 end
 
-local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 local Player = LocalPlayer:getCurrentCharacter()
 local playerCash = Player.cash
 
@@ -1016,7 +1016,7 @@ Citizen.CreateThread(function()
 									TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 5.0, 'robberydraw', 0.5)
 								end
 								
-								local finished = exports["wrp-taskbar"]:taskBar(15000,"Browsing " ..roblist[i]["name"])
+								local finished = exports["prp-taskbar"]:taskBar(15000,"Browsing " ..roblist[i]["name"])
 								if finished == 100 then
 									TriggerEvent("client:newStress",true,math.random(200))
 									TriggerServerEvent("houserobberies:rob",myhouseid,i,mansion)
@@ -1184,7 +1184,7 @@ Citizen.CreateThread(function()
 
 							DrawText3Ds( curHouseCoords["x"]-1.4,curHouseCoords["y"]-1.47,curHouseCoords["z"]-32.2, '~g~'..Controlkey["housingMain"][2]..'~s~ to Browse' )
 							if IsControlJustReleased(1, Controlkey["housingMain"][1]) then
-								TriggerEvent("wrp-ac:triggeredItemSpawn", "1", PlayerStoreIdentifier)
+								TriggerEvent("prp-ac:triggeredItemSpawn", "1", PlayerStoreIdentifier)
 								Citizen.Wait(5000)
 							end
 							DrawText3Ds( curHouseCoords["x"]-1.4,curHouseCoords["y"]-1.47,curHouseCoords["z"]-32.8, '~g~F~s~ to see reputation' )
@@ -1199,7 +1199,7 @@ Citizen.CreateThread(function()
 							if (rentedOffices[myhouseid]["owner"] ~= mycid) then
 								DrawText3Ds( curHouseCoords["x"]-1.4,curHouseCoords["y"]-1.47,curHouseCoords["z"]-32.5, '~g~'..Controlkey["generalUse"][2]..'~s~ Take Over ($5000)' )
 								if IsControlJustReleased(1, Controlkey["generalUse"][1]) then
-									local finished = exports["wrp-taskbar"]:taskBar(300000,"Doing Takeover")
+									local finished = exports["prp-taskbar"]:taskBar(300000,"Doing Takeover")
 									if finished == 100 then
 										TriggerServerEvent("traps:take",myhouseid,mycid)
 									end
@@ -1208,7 +1208,7 @@ Citizen.CreateThread(function()
 							else
 								DrawText3Ds( curHouseCoords["x"]-1.4,curHouseCoords["y"]-1.47,curHouseCoords["z"]-32.5, '~g~'..Controlkey["generalUse"][2]..'~s~ Take Cash' )
 								if IsControlJustReleased(1, Controlkey["generalUse"][1]) then
-									local finished = exports["wrp-taskbar"]:taskBar(10000,"Taking Cash")
+									local finished = exports["prp-taskbar"]:taskBar(10000,"Taking Cash")
 									if finished == 100 then
 										TriggerServerEvent("traps:cashout",myhouseid)
 									end
@@ -1224,7 +1224,7 @@ Citizen.CreateThread(function()
 
 							DrawText3Ds( curHouseCoords["x"]-1.4,curHouseCoords["y"]-1.47,curHouseCoords["z"]-32.2, '~g~'..Controlkey["housingMain"][2]..'~s~ to Browse' )
 							if IsControlJustReleased(1, Controlkey["housingMain"][1]) then
-								TriggerEvent("wrp-ac:triggeredItemSpawn", "1", PlayerStoreIdentifier)
+								TriggerEvent("prp-ac:triggeredItemSpawn", "1", PlayerStoreIdentifier)
 								Citizen.Wait(5000)
 							end
 
@@ -1329,7 +1329,7 @@ function logout()
 	storagecoords = {x = 0, y = 0, z = 0, h = 0} 
 	garagescoords = {x = 0, y = 0, z = 0, h = 0} 
 	TriggerServerEvent('hotel:clearStates', exports['isPed']:isPed('cid'))
-    exports["wrp-base"]:getModule("SpawnManager"):Initialize()
+    exports["prp-base"]:getModule("SpawnManager"):Initialize()
 
 	Citizen.Wait(1000)
 end
@@ -1443,7 +1443,7 @@ AddEventHandler('houses:GiveKey', function()
 
 	t, distance = GetClosestPlayer()
 	if(distance ~= -1 and distance < 5) then
-		local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+		local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 		local Player = LocalPlayer:getCurrentCharacter()
 		TriggerServerEvent("house:givekey",house_id,house_model,house_name, Player.id, Player.first_name, Player.last_name, GetPlayerServerId(t))
 		TriggerEvent("DoLongHudText","Attempting to give key to house " .. house_name,1)
@@ -1939,8 +1939,8 @@ end)
 
 
 
-RegisterNetEvent('wrp-weapons:stashitem')
-AddEventHandler('wrp-weapons:stashitem', function(itemnumber,amount,meta)
+RegisterNetEvent('prp-weapons:stashitem')
+AddEventHandler('prp-weapons:stashitem', function(itemnumber,amount,meta)
 
 
         thename1 = "none"
@@ -1948,7 +1948,7 @@ AddEventHandler('wrp-weapons:stashitem', function(itemnumber,amount,meta)
 
         if thename1 ~= "none" then
 
-            TriggerServerEvent("wrp-weapons:stashweapon", thename1, itemnumber, amount, 1,1,meta)
+            TriggerServerEvent("prp-weapons:stashweapon", thename1, itemnumber, amount, 1,1,meta)
 
 
         else
@@ -2106,8 +2106,8 @@ function D2N(info)
     return info
 end
 
-RegisterNetEvent('wrp-weapons:giveweaponfromproperty')
-AddEventHandler('wrp-weapons:giveweaponfromproperty', function(result)
+RegisterNetEvent('prp-weapons:giveweaponfromproperty')
+AddEventHandler('prp-weapons:giveweaponfromproperty', function(result)
     local ped = PlayerPedId()
     GiveWeaponToPed(ped, tonumber(result), 150, 0, false)
     TriggerEvent("attachWeapons")
@@ -2118,8 +2118,8 @@ end)
 
 
 
-RegisterNetEvent('wrp-weapons:checkinventory')
-AddEventHandler('wrp-weapons:checkinventory', function()
+RegisterNetEvent('prp-weapons:checkinventory')
+AddEventHandler('prp-weapons:checkinventory', function()
 
     if not IsPedInAnyVehicle(PlayerPedId(),true) then
         thename1 = "none"
@@ -2127,7 +2127,7 @@ AddEventHandler('wrp-weapons:checkinventory', function()
 
         if thename1 ~= "none" then
 
-            TriggerServerEvent("wrp-weapons:checkinventory", thename1)
+            TriggerServerEvent("prp-weapons:checkinventory", thename1)
 
         else
             TriggerEvent("DoLongHudText", "Error finding property.",2)
@@ -2141,19 +2141,19 @@ end)
 
 
 
-RegisterNetEvent('wrp-weapons:takefromstash')
-AddEventHandler('wrp-weapons:takefromstash', function(itemname, quantity, itemtype, item, askedAmount,meta)
+RegisterNetEvent('prp-weapons:takefromstash')
+AddEventHandler('prp-weapons:takefromstash', function(itemname, quantity, itemtype, item, askedAmount,meta)
     thename1 = GrabApartment(2)
     if thename1 ~= "none" then
-        TriggerServerEvent("wrp-weapons:takefromstash",itemname, quantity, itemtype, item, askedAmount,thename1,meta)
+        TriggerServerEvent("prp-weapons:takefromstash",itemname, quantity, itemtype, item, askedAmount,thename1,meta)
     else
         TriggerEvent("DoLongHudText", "Error finding property.",2)
     end
 end)
 
 
-RegisterNetEvent('wrp-weapons:stashweapon')
-AddEventHandler('wrp-weapons:stashweapon', function()
+RegisterNetEvent('prp-weapons:stashweapon')
+AddEventHandler('prp-weapons:stashweapon', function()
 
     if not IsPedInAnyVehicle(PlayerPedId(),true) then
         thename1 = "none"
@@ -2174,7 +2174,7 @@ AddEventHandler('wrp-weapons:stashweapon', function()
             --SetPedDropsWeapon(PlayerPedId())                 
             GiveWeaponToPed(PlayerPedId(), 0xA2719263, 0, 0, 1)
             TriggerEvent("attachWeapons")
-            TriggerServerEvent("wrp-weapons:stashweapon", thename1, weaponname, 1, 0,ammo)
+            TriggerServerEvent("prp-weapons:stashweapon", thename1, weaponname, 1, 0,ammo)
             TriggerServerEvent("weaponshop:removeSingleWeapon",weaponname)
         else
             TriggerEvent("DoLongHudText", "Error finding property.",2)
@@ -2620,7 +2620,7 @@ end
 local storetype = 0
 RegisterNetEvent('AppRobberies:currentlyrobbing')
 AddEventHandler('AppRobberies:currentlyrobbing', function()
-    if exports["wrp-inventory"]:hasEnoughOfItem("lockpick",1) then
+    if exports["prp-inventory"]:hasEnoughOfItem("lockpick",1) then
         checkRobbedStore()
         Citizen.Wait(1500)
         TriggerServerEvent("AppRobberies:rob",store,currentlyrobbing.xe, currentlyrobbing.ye, currentlyrobbing.ze,storetype)

@@ -410,8 +410,8 @@ AddEventHandler( 'URP:Door:alterState', function(alterNum,num)
 	URP.DoorCoords[alterNum]["lock"] = num
 end)
 
-RegisterNetEvent("wrp-doors:alterlockstateclient")
-AddEventHandler("wrp-doors:alterlockstateclient", function(doorCoords)
+RegisterNetEvent("prp-doors:alterlockstateclient")
+AddEventHandler("prp-doors:alterlockstateclient", function(doorCoords)
     URP.DoorCoords = doorCoords
 end)
 

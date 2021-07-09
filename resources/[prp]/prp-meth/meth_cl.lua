@@ -12,7 +12,7 @@ Citizen.CreateThread(function()
 		local Playermate = PlayerPedId()
 		local plyCoords = GetEntityCoords(Playermate)
 		local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z,706.5895, -964.419, 30.40825,false)
-		local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+		local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 		local Player = LocalPlayer:getCurrentCharacter()  
 		if distance < 2.5 then
 			if hint == false or Player.methint == false then
@@ -21,9 +21,9 @@ Citizen.CreateThread(function()
 					if Player.cash >= 15000 then
 						TriggerEvent("phone:addnotification", "Toby Walter","<b>Toby Walter</b> <br>You find these throughout your home</br> There are several on a car <br> When one is slightly open </br> It is said that it is ajar!</br><b> What am I?</b> <br>Head to the beach and look around!</br>") -- ADD HINT HERE PLEASE ALFIE
 						TriggerServerEvent('urp_meth:methHint', exports['isPed']:isPed('cid'), true)
-						TriggerEvent('wrp-ac:removeban', 15000)
-						TriggerEvent('wrp-banned:getID', 'methkey', 1)
-						TriggerServerEvent('wrp-meth:hintObtain', exports['isPed']:isPed('cid'))
+						TriggerEvent('prp-ac:removeban', 15000)
+						TriggerEvent('prp-banned:getID', 'methkey', 1)
+						TriggerServerEvent('prp-meth:hintObtain', exports['isPed']:isPed('cid'))
 						hint = true
 					else
 						TriggerEvent('DoShortHudText', 'You do not have enough cash on you', 2)
@@ -107,11 +107,11 @@ function destroyMethDrug()
 		ClearPedTasks(PlayerPedId())
 		Citizen.Wait(1000)
 		TriggerEvent('DoLongHudText', 'Throwing pseudoephedrine into the garbage.')
-		local amount = exports['wrp-inventory']:getQuantity('pseudoephedrine')
+		local amount = exports['prp-inventory']:getQuantity('pseudoephedrine')
 		TriggerEvent('inventory:removeItem', 'pseudoephedrine', amount)
-		TriggerServerEvent('wrp-meth:pseudo', amount)
+		TriggerServerEvent('prp-meth:pseudo', amount)
 		local price = amount * 50
-		local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+		local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 		local Player = LocalPlayer:getCurrentCharacter()  
 		LocalPlayer:addCash(Player.id, price)
 		isPlayingAnim = false
@@ -149,7 +149,7 @@ Citizen.CreateThread(function()
 				DrawText3Ds(coords.x, coords.y, coords.z, 'Press ~g~[E]~s~ to ~y~Throw pseudoephedrine~s~')
 
 				if IsControlJustReleased(0, 38) and not isDestroying then
-					if exports['wrp-inventory']:hasEnoughOfItem('pseudoephedrine', 1) then
+					if exports['prp-inventory']:hasEnoughOfItem('pseudoephedrine', 1) then
 						destroyMethDrug()
 					else
 						TriggerEvent('DoLongHudText', 'You do not have any pseudoephedrine.')
@@ -179,17 +179,17 @@ Citizen.CreateThread(function()
 				local hintLocation = Config.HintLocation
 
 				if IsControlJustPressed(0, 38) then
-					local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+					local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 					local Player = LocalPlayer:getCurrentCharacter()			  
 					if hint == true or tonumber(Player.methint) == 1 then
 						local count = exports['police']:CopsOnline()
 						if exports['police']:CopsOnline() then
 							if count >= Config.MinPoliceCount then
-								if exports['wrp-inventory']:hasEnoughOfItem('methkey', 1) then
+								if exports['prp-inventory']:hasEnoughOfItem('methkey', 1) then
 									response = true
 									if response then
 										if not cooldownEnabled then
-											TriggerServerEvent('wrp-meth:pass')
+											TriggerServerEvent('prp-meth:pass')
 											TriggerServerEvent('urp_meth:cooldown')
 											TaskGoStraightToCoord(hintLocation, 10.0, 10, Config.HintHeading, 0.5)
 											Citizen.Wait(3000)
@@ -259,7 +259,7 @@ Citizen.CreateThread(function()
 					local coords = MissionStarted.TruckLoc
 					veh = CreateVehicle(hash, coords, MissionStarted.Heading, true, true)
 					SetVehicleMod(veh, 18, 2)
-                    exports["wrp-oGasStations"]:SetFuel(veh, 100)
+                    exports["prp-oGasStations"]:SetFuel(veh, 100)
 					local plate = GetVehicleNumberPlateText(veh)
 					TriggerServerEvent('garage:addKeys', plate)
 					SetVehicleDoorsLockedForAllPlayers(veh, false)
@@ -436,24 +436,24 @@ function BeginCooking(driver)
 		end
 	end)
 
-	exports["wrp-taskbar"]:taskBar(math.floor(Config.CookTimerA * 60 * 1000), "Preparing Ingredients.")
+	exports["prp-taskbar"]:taskBar(math.floor(Config.CookTimerA * 60 * 1000), "Preparing Ingredients.")
 	Citizen.Wait(10)
 	if doCount then
-		exports["wrp-taskbar"]:taskBar(math.floor(Config.CookTimerB * 60 * 1000), "Cooking Meth.")
+		exports["prp-taskbar"]:taskBar(math.floor(Config.CookTimerB * 60 * 1000), "Cooking Meth.")
 		Citizen.Wait(10)
 	else
 		return
 	end
 
 	if doCount then
-		exports["wrp-taskbar"]:taskBar(math.floor(Config.CookTimerC * 60 * 1000), "Allowing Meth to Set.")
+		exports["prp-taskbar"]:taskBar(math.floor(Config.CookTimerC * 60 * 1000), "Allowing Meth to Set.")
 		Citizen.Wait(10)
 	else
 		return
 	end
 
 	if doCount then
-		exports["wrp-taskbar"]:taskBar(math.floor(Config.CookTimerD * 60 * 1000), "Packaging Meth.")
+		exports["prp-taskbar"]:taskBar(math.floor(Config.CookTimerD * 60 * 1000), "Packaging Meth.")
 		Citizen.Wait(10)
 	else
 		return

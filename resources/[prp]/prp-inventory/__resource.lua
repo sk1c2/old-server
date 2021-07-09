@@ -5,7 +5,7 @@ dependencies {
     "PolyZone"
 }
 
-client_script "@wrp-errorlog/client/cl_errorlog.lua"
+client_script "@prp-errorlog/client/cl_errorlog.lua"
 client_script "@PolyZone/client.lua"
 
 ui_page 'nui/ui.html'

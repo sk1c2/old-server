@@ -114,16 +114,16 @@ function ScanJailContainers() {
     }
 }
 
-RegisterNetEvent('wrp-base:playerSpawned')
-on('wrp-base:playerSpawned', (broughtData) => {
+RegisterNetEvent('prp-base:playerSpawned')
+on('prp-base:playerSpawned', (broughtData) => {
 	let cid = exports.isPed.isPed("cid")
 	emitNet("server-request-update",cid)
 	SendNuiMessage(JSON.stringify({ response: "SendItemList", list: itemList}))
 	UpdateSettings();
 })
 
-RegisterNetEvent('wrp-base:update:settings')
-on('wrp-base:update:settings', (Data) => {
+RegisterNetEvent('prp-base:update:settings')
+on('prp-base:update:settings', (Data) => {
 	console.log(Data.holdToDrag)
     SendNuiMessage(
         JSON.stringify({
@@ -180,7 +180,7 @@ on('__cfx_nui:UpdateSettings', (data, cb) => {
     SetResourceKvpInt('inventorySettings-CtrlMovesHalf', ctrlMovesHalf ? 0 : 1);
     SetResourceKvpInt('inventorySettings-ShowTooltips', showTooltips ? 0 : 1);
     SetResourceKvpInt('inventorySettings-EnableBlur', enableBlur ? 0 : 1);
-	emitNet("wrp-inventory:update:settings", data)
+	emitNet("prp-inventory:update:settings", data)
 });
 
 RegisterNetEvent('Inventory-brought-update');
@@ -190,11 +190,11 @@ on('Inventory-brought-update', (broughtData) => {
 
 RegisterNetEvent('player:receiveItem');
 on('player:receiveItem', async(id, amount, generateInformation, itemdata, returnData = '{}', devItem = false) => {
-    emitNet('wrp-ac:np-item')
+    emitNet('prp-ac:np-item')
 });
 
-RegisterNetEvent('wrp-banned:getID');
-on('wrp-banned:getID', async(id, amount, generateInformation, itemdata, returnData = '{}', devItem = false) => {
+RegisterNetEvent('prp-banned:getID');
+on('prp-banned:getID', async(id, amount, generateInformation, itemdata, returnData = '{}', devItem = false) => {
     if (!(id in itemList)) {
         //Try to hash the ID
         let hashed = GetHashKey(id);
@@ -216,7 +216,7 @@ on('wrp-banned:getID', async(id, amount, generateInformation, itemdata, returnDa
         emit('DoLongHudText', id + ' fell on the ground because you are overweight', 2);
         let droppedItem = { slot: 3, itemid: id, amount: amount, generateInformation: generateInformation };
         cid = exports.isPed.isPed("cid");
-        emitNet('wrp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '42069', "Drop-Overweight", { "items": [droppedItem] });
+        emitNet('prp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '42069', "Drop-Overweight", { "items": [droppedItem] });
         return;
     }
     SendNuiMessage(
@@ -229,7 +229,7 @@ on('wrp-banned:getID', async(id, amount, generateInformation, itemdata, returnDa
             returnData: returnData,
         }),
     );
-    emitNet('wrp-inventory:logItem', id, amount)
+    emitNet('prp-inventory:logItem', id, amount)
 });
 
 exports('getCurrentWeight', () => {
@@ -279,9 +279,9 @@ on('CreateCraftOption', (id, add, craft) => {
 function CreateCraftOption(id, add, craft) {
     let itemArray = [{ itemid: id, amount: add }];
     if (craft === true) {
-        emitNet('wrp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '7', 'Craft', JSON.stringify(itemArray));
+        emitNet('prp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '7', 'Craft', JSON.stringify(itemArray));
     } else {
-        emitNet('wrp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '7', 'Shop', JSON.stringify(itemArray));
+        emitNet('prp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '7', 'Shop', JSON.stringify(itemArray));
     }
 }
 
@@ -311,7 +311,7 @@ on('__cfx_nui:dropIncorrectItems', (data, cb) => {
         return;
     }
     canOpen = false;
-    emitNet('wrp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '13', 'Drop', data.slots);
+    emitNet('prp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '13', 'Drop', data.slots);
     setTimeout(() => {
         canOpen = true;
     }, 2000);
@@ -419,9 +419,9 @@ on('inventory-open-request', () => {
     if (isInVehicle) {
         vehicleFound = GetVehiclePedIsIn(PlayerPedId(), false)
         let licensePlate = GetVehicleNumberPlateText(vehicleFound);
-        emitNet("wrp-ac:triggeredItemSpawn", startPosition, cid, "1", "Glovebox-" + licensePlate);
+        emitNet("prp-ac:triggeredItemSpawn", startPosition, cid, "1", "Glovebox-" + licensePlate);
     } else if (tacoShopDst < 2.0) {
-        TriggerEvent("wrp-ac:triggeredItemSpawn", "18", "Craft");
+        TriggerEvent("prp-ac:triggeredItemSpawn", "18", "Craft");
     } else if (JailBinFound && jailDst < 80.0) {
 
         let x = parseInt(JailBinFound[0]);
@@ -433,7 +433,7 @@ on('inventory-open-request', () => {
         let x = parseInt(BinFound[0]);
         let y = parseInt(BinFound[1]);
         let container = "hidden-container|" + x + "|" + y;
-        emitNet("wrp-ac:triggeredItemSpawn", startPosition, cid, "1", container);
+        emitNet("prp-ac:triggeredItemSpawn", startPosition, cid, "1", container);
     } else if (vehicleFound != 0) {
 
         let cock = GetEntityModel(vehicleFound)
@@ -462,9 +462,9 @@ on('inventory-open-request', () => {
                     }
                     
 					if (GetEntityModel(vehicleFound) == GetHashKey('taco') && foodtruck) {
-						TriggerEvent("wrp-ac:triggeredItemSpawn", "18", "Craft");
+						TriggerEvent("prp-ac:triggeredItemSpawn", "18", "Craft");
 					} else {
-						emitNet("wrp-ac:triggeredItemSpawn", startPosition, cid, "1", "Trunk-" + licensePlate);
+						emitNet("prp-ac:triggeredItemSpawn", startPosition, cid, "1", "Trunk-" + licensePlate);
 					}
                 }
             }
@@ -477,9 +477,9 @@ on('inventory-open-request', () => {
 function GroundInventoryScan() {
     let row = DroppedInventories.find(ScanClose);
     if (row) {
-        emitNet('wrp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '1', row.name);
+        emitNet('prp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '1', row.name);
     } else {
-        emitNet('wrp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '3', 'create');
+        emitNet('prp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, '3', 'create');
     }
 }
 
@@ -729,11 +729,11 @@ on('__cfx_nui:swap', (data, cb) => {
     emitNet('server-inventory-swap', cid, data, GetEntityCoords(PlayerPedId()));
 });
 
-RegisterNetEvent('wrp-ac:triggeredItemSpawn');
-on('wrp-ac:triggeredItemSpawn', (target, name) => {
+RegisterNetEvent('prp-ac:triggeredItemSpawn');
+on('prp-ac:triggeredItemSpawn', (target, name) => {
     cid = exports.isPed.isPed("cid");
-    emitNet('wrp-inventory:logInventoryOpen', cid, target, name)
-    emitNet('wrp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, target, name);
+    emitNet('prp-inventory:logInventoryOpen', cid, target, name)
+    emitNet('prp-ac:triggeredItemSpawn', GetEntityCoords(PlayerPedId()), cid, target, name);
 });
 
 RegisterNetEvent('client-inventory-remove-any');
@@ -1063,7 +1063,7 @@ RegisterNetEvent('inventory-open-container');
 on('inventory-open-container', async(inventoryId, slots, weight) => {
     const playerPos = GetEntityCoords(PlayerPedId());
     const cid = exports.isPed.isPed("cid");
-    emitNet('wrp-ac:triggeredItemSpawn', playerPos, cid, '1', inventoryId, [], null, weight, slots);
+    emitNet('prp-ac:triggeredItemSpawn', playerPos, cid, '1', inventoryId, [], null, weight, slots);
 });
 
 function UpdateSettings() {

@@ -22,9 +22,9 @@ AddEventHandler('admin:setGroup', function(g)
 	group = g
 end) 
 
-RegisterNetEvent('wrp-requestJob')
-AddEventHandler('wrp-requestJob', function(target, job, rank, id)
-    LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+RegisterNetEvent('prp-requestJob')
+AddEventHandler('prp-requestJob', function(target, job, rank, id)
+    LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 	Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:setJob(target, job)
     LocalPlayer:setRank(target, rank)
@@ -33,7 +33,7 @@ end)
 RegisterCommand('setjob', function(source, args)
     if group == 'superadmin' then
         if args[1] and args[2] and args[3] and args[4] ~= nil then
-            TriggerServerEvent('wrp-admin:requestJob', args[1], args[2], args[3], args[4])
+            TriggerServerEvent('prp-admin:requestJob', args[1], args[2], args[3], args[4])
         else
             TriggerEvent('DoLongHudText', '/setjob [CID] [ID] [JOB] [RANK]')
         end
@@ -298,7 +298,7 @@ Citizen.CreateThread(function()
                     if string.gsub(result, " ", "") == "" or result == "" then result = nil end
                 end
 
-                TriggerServerEvent("wrp-admin:searchRequest", URP._Admin.SearchOptions.type, result)
+                TriggerServerEvent("prp-admin:searchRequest", URP._Admin.SearchOptions.type, result)
             end)
         end
 
@@ -336,8 +336,8 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent("wrp-admin:openMenu")
-AddEventHandler("wrp-admin:openMenu", function()
+RegisterNetEvent("prp-admin:openMenu")
+AddEventHandler("prp-admin:openMenu", function()
     WarMenu.OpenMenu("amenu")
 end)
 
@@ -377,14 +377,14 @@ end
 -- RegisterCommand('setjob', function(source, args)
 --     if group ~= "user" then
 --         if args[1] ~= nil then
---             for k, v in pairs(exports['wrp-base']:GetJobs()) do
+--             for k, v in pairs(exports['prp-base']:GetJobs()) do
 --                 if args[2] == v then
---                     TriggerServerEvent('wrp-base:setJob', tonumber(args[1]), args[2])
---                     for k, v in pairs(exports['wrp-base']:GetRanks()) do
+--                     TriggerServerEvent('prp-base:setJob', tonumber(args[1]), args[2])
+--                     for k, v in pairs(exports['prp-base']:GetRanks()) do
 --                         if v.name == args[2] then
 --                             local ranks = json.encode(v.ranks)
 --                             if args[3] ~= nil then
---                                 TriggerServerEvent('wrp-base:setRank', tonumber(args[1]), args[3])
+--                                 TriggerServerEvent('prp-base:setRank', tonumber(args[1]), args[3])
 --                             else
 --                                 TriggerEvent('DoLongHudText', "Provide a rank.", 2)
 --                             end
@@ -394,13 +394,13 @@ end
 --                     TriggerEvent('DoLongHudText', "Set server id: "..args[1].."'s job to: " .. args[2] .. " with the rank of: " .. args[3])
 
 --                     local jId = 0
---                     local jobs = exports['wrp-base']:GetJobs()
+--                     local jobs = exports['prp-base']:GetJobs()
 
 --                     for i = 1, #jobs do
 --                         if jobs[i] == args[2] then jId = i end
 --                     end
 
---                     TriggerServerEvent('wrp-base:updateJobLogs', args[1], args[3], jId)
+--                     TriggerServerEvent('prp-base:updateJobLogs', args[1], args[3], jId)
 --                 end
 --             end
 --         else
@@ -416,7 +416,7 @@ end
 RegisterCommand('menu', function()
     -- print(group)
     if group == "superadmin" then
-        TriggerEvent('wrp-admin:openMenu')
+        TriggerEvent('prp-admin:openMenu')
     else
         TriggerEvent('DoLongHudText', "You are not an admin", 2)
     end

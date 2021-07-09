@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
                 loadAnimDict(animDict)
                 local animLength = GetAnimDuration(animDict, animation)
                 TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0,animLength, 48, 0, 0, 0, 0)
-                local finished = exports["wrp-taskbar"]:taskBar(30000,"Cleaning off GSR")
+                local finished = exports["prp-taskbar"]:taskBar(30000,"Cleaning off GSR")
                 if IsEntityInWater(ped) then
                     hasShot = false
                     TriggerServerEvent('GSR:Remove')

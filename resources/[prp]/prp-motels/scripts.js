@@ -17,7 +17,7 @@ $(document).ready(function(){
     var element = $('<a href="#" class="button2 sans btnHome">Spawn Now</a> <br><br>');  
        
     element.click(function(){  
-      $.post('http://wrp-motels/confirmspawn', JSON.stringify({ }));  
+      $.post('http://prp-motels/confirmspawn', JSON.stringify({ }));  
     });  
 
     $(element).fadeIn(100);
@@ -34,7 +34,7 @@ $(document).ready(function(){
     var element = $('<div class="button">' + address + '</div> ');  
        
     element.click(function(){  
-      $.post('http://wrp-motels/selectedspawn', JSON.stringify({ tableidentifier: selectedspawn }));  
+      $.post('http://prp-motels/selectedspawn', JSON.stringify({ tableidentifier: selectedspawn }));  
     });  
 
     $(element).fadeIn(100);

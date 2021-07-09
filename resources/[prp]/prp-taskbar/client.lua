@@ -184,7 +184,7 @@ end)
  
 
 RegisterCommand("hey" , function(rawCommand)
-    exports['wrp-taskbar']:taskBar(5000 , 'Hey')
+    exports['prp-taskbar']:taskBar(5000 , 'Hey')
 end)
 
 Citizen.CreateThread(function()

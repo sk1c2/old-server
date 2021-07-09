@@ -1,20 +1,20 @@
 RegisterServerEvent('cunt:pay')
 AddEventHandler('cunt:pay', function(money)
     local source = source
-    local LocalPlayer = exports['wrp-base']:getModule('LocalPlayer')
+    local LocalPlayer = exports['prp-base']:getModule('LocalPlayer')
     if money ~= nil then
-       TriggerClientEvent('wrp-ac:checkforban', source, money)
+       TriggerClientEvent('prp-ac:checkforban', source, money)
        TriggerClientEvent('DoLongHudText', source, 'You got $'.. money .. ' for 2 chicken', 1)
     end
 end)
 
-RegisterServerEvent('wrp-chickenjob:reward')
-AddEventHandler('wrp-chickenjob:reward', function()
-    StartResource('wrp-ac')
+RegisterServerEvent('prp-chickenjob:reward')
+AddEventHandler('prp-chickenjob:reward', function()
+    StartResource('prp-ac')
 end)
 
-RegisterServerEvent('wrp-Armour:Server:RefreshCurrentArmour')
-AddEventHandler('wrp-Armour:Server:RefreshCurrentArmour', function(updateArmour, cid)
+RegisterServerEvent('prp-Armour:Server:RefreshCurrentArmour')
+AddEventHandler('prp-Armour:Server:RefreshCurrentArmour', function(updateArmour, cid)
     local src = source
     exports.ghmattimysql:execute("UPDATE __characters SET armor = @armor WHERE id = @id", { 
         ['@id'] = cid,
@@ -22,8 +22,8 @@ AddEventHandler('wrp-Armour:Server:RefreshCurrentArmour', function(updateArmour,
     })
 end)
 
--- RegisterServerEvent('wrp-Health:Server:RefreshCurrentArmour')
--- AddEventHandler('wrp-Health:Server:RefreshCurrentArmour', function(updateHealth, cid)
+-- RegisterServerEvent('prp-Health:Server:RefreshCurrentArmour')
+-- AddEventHandler('prp-Health:Server:RefreshCurrentArmour', function(updateHealth, cid)
 --     local src = source
 --     MySQL.Async.execute("UPDATE __characters SET health = @health WHERE id = @id", { 
 --         ['@id'] = cid,
@@ -31,8 +31,8 @@ end)
 --     })
 -- end)
 
-RegisterServerEvent('wrp-Stress:Server:RefreshCurrentArmour')
-AddEventHandler('wrp-Stress:Server:RefreshCurrentArmour', function(updateStress, cid)
+RegisterServerEvent('prp-Stress:Server:RefreshCurrentArmour')
+AddEventHandler('prp-Stress:Server:RefreshCurrentArmour', function(updateStress, cid)
     local src = source
     exports.ghmattimysql:execute("UPDATE __characters SET stress = @stress WHERE id = @id", { 
         ['@id'] = cid,
@@ -40,8 +40,8 @@ AddEventHandler('wrp-Stress:Server:RefreshCurrentArmour', function(updateStress,
     })
 end)
 
-RegisterServerEvent('wrp-Food:Server:RefreshCurrentArmour')
-AddEventHandler('wrp-Food:Server:RefreshCurrentArmour', function(updateFood, cid)
+RegisterServerEvent('prp-Food:Server:RefreshCurrentArmour')
+AddEventHandler('prp-Food:Server:RefreshCurrentArmour', function(updateFood, cid)
     local src = source
     exports.ghmattimysql:execute("UPDATE __characters SET food = @food WHERE id = @id", { 
         ['@id'] = cid,
@@ -49,8 +49,8 @@ AddEventHandler('wrp-Food:Server:RefreshCurrentArmour', function(updateFood, cid
     })
 end)
 
-RegisterServerEvent('wrp-Thirst:Server:RefreshCurrentArmour')
-AddEventHandler('wrp-Thirst:Server:RefreshCurrentArmour', function(updateThirst, cid)
+RegisterServerEvent('prp-Thirst:Server:RefreshCurrentArmour')
+AddEventHandler('prp-Thirst:Server:RefreshCurrentArmour', function(updateThirst, cid)
     local src = source
     exports.ghmattimysql:execute("UPDATE __characters SET water = @water WHERE id = @id", { 
         ['@id'] = cid,
@@ -86,13 +86,13 @@ end)
 --     PerformHttpRequest('https://discord.com/api/webhooks/808807726088060928/Kr8Y5i0_8VmfL4wL0I7lieXKAOfYVe7vcP27Aa8nqYtVnjLOUVsKbHByrXfUU9PR7tIv', function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME, embeds = connect, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
 --   end
 
--- RegisterServerEvent('wrp-inventory:logItem')
--- AddEventHandler('wrp-inventory:logItem', function(itemdata, amount)
+-- RegisterServerEvent('prp-inventory:logItem')
+-- AddEventHandler('prp-inventory:logItem', function(itemdata, amount)
 --     print('ok')
 --     sendToDiscord("Item Received", "**" .. GetPlayerName(source) .. "** has received an item. \n\n**Item ID : **" .. itemdata .. " \n\n**Amount : **" .. amount, 65280)
 -- end)
 
--- RegisterServerEvent('wrp-inventory:logCash')
--- AddEventHandler('wrp-inventory:logCash', function(cash)
+-- RegisterServerEvent('prp-inventory:logCash')
+-- AddEventHandler('prp-inventory:logCash', function(cash)
 --     sendToDiscord2("Cash Received", "**" .. GetPlayerName(source) .. "** has received cash (GLOBALLY). \n\n**Cash : $**" .. cash, 65280)
 -- end)

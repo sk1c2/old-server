@@ -62,7 +62,7 @@ function playSound(file,volume)
 }
 
 function pinFailure() {
-  $.post('http://wrp-stash/failure', JSON.stringify({pinResult: false}));
+  $.post('http://prp-stash/failure', JSON.stringify({pinResult: false}));
   gameOver = true;
   $('#modal').fadeIn();
   ++failedAttempts;
@@ -73,7 +73,7 @@ function pinFailure() {
 }
 
 function pinSuccess(pElevated) {
-  $.post('http://wrp-stash/complete', JSON.stringify({pinResult: true, owner: pElevated}));
+  $.post('http://prp-stash/complete', JSON.stringify({pinResult: true, owner: pElevated}));
   playSound("lockUnlocked",0.6)
   gameOver = true;
   $('#modal').fadeIn();
@@ -135,7 +135,7 @@ function resetFails() {
 
 document.onkeyup = function (data) {
   if (data.which == 27 ) {
-    $.post('http://wrp-stash/close', JSON.stringify({pinResult: false}));
+    $.post('http://prp-stash/close', JSON.stringify({pinResult: false}));
   }
 };
 

@@ -210,7 +210,7 @@ Citizen.CreateThread(function()
 end)
 
 function packingchicken(position)
-if exports["wrp-inventory"]:getQuantity("slaughtered_chicken") >= 2 then
+if exports["prp-inventory"]:getQuantity("slaughtered_chicken") >= 2 then
 	SetEntityHeading(GetPlayerPed(-1), 40.0)
 	local PedCoords = GetEntityCoords(GetPlayerPed(-1))
 	meat = CreateObject(GetHashKey('prop_cs_steak'),PedCoords.x, PedCoords.y,PedCoords.z, true, true, true)
@@ -222,8 +222,8 @@ if exports["wrp-inventory"]:getQuantity("slaughtered_chicken") >= 2 then
 	TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@grab_cash_heels", "grab", 8.0, -8.0, -1, 1, 0, false, false, false)
 	FreezeEntityPosition(GetPlayerPed(-1), true)
 	TriggerEvent('inventory:removeItem', "slaughtered_chicken", 2)
-	exports['wrp-taskbar']:taskBar(7500, 'Putting the chicken in the box')
-	TriggerEvent('wrp-banned:getID', "packaged_chicken", 1)
+	exports['prp-taskbar']:taskBar(7500, 'Putting the chicken in the box')
+	TriggerEvent('prp-banned:getID', "packaged_chicken", 1)
 	ClearPedTasks(GetPlayerPed(-1))
 	DeleteEntity(carton)
 	DeleteEntity(meat)
@@ -246,7 +246,7 @@ function StopPacking(position)
 end
 
 function Portionthechicken(position)
-if exports["wrp-inventory"]:getQuantity("alive_chicken") >= 1 then
+if exports["prp-inventory"]:getQuantity("alive_chicken") >= 1 then
 local dict = 'anim@amb@business@coc@coc_unpack_cut_left@'
 	LoadDict(dict)
 	FreezeEntityPosition(GetPlayerPed(-1),true)
@@ -259,14 +259,14 @@ local dict = 'anim@amb@business@coc@coc_unpack_cut_left@'
 	chicken = CreateObject(GetHashKey('prop_int_cf_chick_01'),-94.87, 6207.008, 30.08, true, true, true)
 	SetEntityRotation(chicken,90.0, 0.0, 45.0, 1,true)
 	TriggerEvent('inventory:removeItem', "alive_chicken", 1)
-	exports['wrp-taskbar']:taskBar(10000, 'Cutting the Rooster')
+	exports['prp-taskbar']:taskBar(10000, 'Cutting the Rooster')
 end
 	TriggerEvent('DoLongHudText', 'You slaughtered a chicken!', 1)
 	FreezeEntityPosition(GetPlayerPed(-1),false)
 	DeleteEntity(chicken)
 	DeleteEntity(prop)
 	ClearPedTasks(GetPlayerPed(-1))
-	TriggerEvent('wrp-banned:getID', "slaughtered_chicken", 2)
+	TriggerEvent('prp-banned:getID', "slaughtered_chicken", 2)
 else
 	TriggerEvent('DoLongHudText', 'You dont have any chickens!', 2)
 	end
@@ -358,7 +358,7 @@ function Hewascaught()
 	local szansaZlapania = math.random(1,100)
 	if szansaZlapania <= 60 then
 			TriggerEvent('DoLongHudText', 'You managed to catch 1 chicken!', 1)
-			TriggerEvent('wrp-banned:getID', "alive_chicken", 1)
+			TriggerEvent('prp-banned:getID', "alive_chicken", 1)
 			if Zlapany1 == 1 then
 				DeleteEntity(chicken1)
 				Zlapany1 = 0
@@ -382,8 +382,8 @@ Citizen.CreateThread(function()
 	Citizen.Wait(500)
 		if ragdoll then
 			SetEntityHealth(PlayerPedId(), 200)
-			TriggerEvent('wrp-hospital:client:ResetLimbs')
-            TriggerEvent('wrp-hospital:client:RemoveBleed')
+			TriggerEvent('prp-hospital:client:ResetLimbs')
+            TriggerEvent('prp-hospital:client:RemoveBleed')
 			ragdoll = false
 		end
 	end
@@ -413,18 +413,18 @@ while true do
 end)
 
 AddEventHandler('onResourceStop', function(resourceName)
-	TriggerServerEvent('wrp-chickenjob:reward', money)
+	TriggerServerEvent('prp-chickenjob:reward', money)
 end)
 
 function Sellchicken()
-if exports["wrp-inventory"]:getQuantity("packaged_chicken") >= 2 then
+if exports["prp-inventory"]:getQuantity("packaged_chicken") >= 2 then
 local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.9, -0.98))
 	prop = CreateObject(GetHashKey('hei_prop_heist_box'), x, y, z,  true,  true, true)
 	SetEntityHeading(prop, GetEntityHeading(GetPlayerPed(-1)))
 	LoadDict('amb@medic@standing@tendtodead@idle_a')
 	TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@idle_a', 'idle_a', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
 	TriggerEvent('inventory:removeItem', "packaged_chicken", 2)
-	exports['wrp-taskbar']:taskBar(5000, 'Selling the chicken!')
+	exports['prp-taskbar']:taskBar(5000, 'Selling the chicken!')
 	LoadDict('amb@medic@standing@tendtodead@exit')
 	TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@exit', 'exit', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
 	ClearPedTasks(GetPlayerPed(-1))
@@ -442,10 +442,10 @@ Citizen.CreateThread(function()
         stress = exports['carandplayerhud']:GetStress(stress)
         food = exports['carandplayerhud']:GetFood(food)
         thirst = exports['carandplayerhud']:GetThirst(thirst2)
-        TriggerServerEvent('wrp-Food:Server:RefreshCurrentArmour', food, cid)
-        TriggerServerEvent('wrp-Thirst:Server:RefreshCurrentArmour', thirst, cid)
-        TriggerServerEvent('wrp-Stress:Server:RefreshCurrentArmour', stress, cid)
-        TriggerServerEvent('wrp-Armour:Server:RefreshCurrentArmour', GetPedArmour(PlayerPedId()), cid)
-        TriggerServerEvent('wrp-Health:Server:RefreshCurrentArmour', GetEntityHealth(PlayerPedId()), cid)
+        TriggerServerEvent('prp-Food:Server:RefreshCurrentArmour', food, cid)
+        TriggerServerEvent('prp-Thirst:Server:RefreshCurrentArmour', thirst, cid)
+        TriggerServerEvent('prp-Stress:Server:RefreshCurrentArmour', stress, cid)
+        TriggerServerEvent('prp-Armour:Server:RefreshCurrentArmour', GetPedArmour(PlayerPedId()), cid)
+        TriggerServerEvent('prp-Health:Server:RefreshCurrentArmour', GetEntityHealth(PlayerPedId()), cid)
     end
 end)

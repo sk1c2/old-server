@@ -6,11 +6,11 @@ local Success5 = false
 
 RegisterNetEvent("jailbreak:start")
 AddEventHandler("jailbreak:start", function(args)
-    local hasitems = exports["wrp-inventory"]:hasEnoughOfItem("thermite",1,false) and exports["wrp-inventory"]:hasEnoughOfItem("electronickit",1,false) 
+    local hasitems = exports["prp-inventory"]:hasEnoughOfItem("thermite",1,false) and exports["prp-inventory"]:hasEnoughOfItem("electronickit",1,false) 
     if hasitems then
         if args == "First" then
             -- print('ananiste')
-            local outcome = exports["wrp-thermite"]:startGame(10,1,10,500)
+            local outcome = exports["prp-thermite"]:startGame(10,1,10,500)
             -- print('XD')
             if outcome then
                 TriggerEvent('inventory:removeItem',"thermite", 1)
@@ -32,16 +32,16 @@ AddEventHandler("jailbreak:start", function(args)
                 Success1 = true
             else
                 local coords = GetEntityCoords(PlayerPedId())
-                exports["wrp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000)                    
+                exports["prp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000)                    
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 Success1 = false
                 FreezeEntityPosition(PlayerPedId(), false)
             end
     
-            TriggerEvent("wrp-states:stateSet",16,2200)
+            TriggerEvent("prp-states:stateSet",16,2200)
         
         elseif args == "Second" then
-            local outcome = exports["wrp-thermite"]:startGame(15,1,10,500)
+            local outcome = exports["prp-thermite"]:startGame(15,1,10,500)
             if outcome then
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 FreezeEntityPosition(PlayerPedId(), true)
@@ -63,16 +63,16 @@ AddEventHandler("jailbreak:start", function(args)
                 Success2 = true
             else
                 local coords = GetEntityCoords(PlayerPedId())
-                exports["wrp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000) 
+                exports["prp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000) 
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 Success2 = false
                 FreezeEntityPosition(PlayerPedId(), false)
             end
     
-            TriggerEvent("wrp-states:stateSet",16,2200)
+            TriggerEvent("prp-states:stateSet",16,2200)
 
         elseif args == "Third" then
-            local outcome = exports["wrp-thermite"]:startGame(15,1,10,500)
+            local outcome = exports["prp-thermite"]:startGame(15,1,10,500)
             if outcome then
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 FreezeEntityPosition(PlayerPedId(), true)
@@ -94,15 +94,15 @@ AddEventHandler("jailbreak:start", function(args)
                 Success3 = true
             else
                 local coords = GetEntityCoords(PlayerPedId())
-                exports["wrp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000) 
+                exports["prp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000) 
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 Success3 = false
                 FreezeEntityPosition(PlayerPedId(), false)
             end
     
-            TriggerEvent("wrp-states:stateSet",16,2200)
+            TriggerEvent("prp-states:stateSet",16,2200)
         elseif args == "Third" then
-            local outcome = exports["wrp-thermite"]:startGame(15,1,10,500)
+            local outcome = exports["prp-thermite"]:startGame(15,1,10,500)
             if outcome then
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 FreezeEntityPosition(PlayerPedId(), true)
@@ -124,16 +124,16 @@ AddEventHandler("jailbreak:start", function(args)
                 Success3 = true
             else
                 local coords = GetEntityCoords(PlayerPedId())
-                exports["wrp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000) 
+                exports["prp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000) 
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 Success3 = false
                 FreezeEntityPosition(PlayerPedId(), false)
             end
     
-            TriggerEvent("wrp-states:stateSet",16,2200)
+            TriggerEvent("prp-states:stateSet",16,2200)
         
         elseif args == "Four" then
-            local outcome = exports["wrp-thermite"]:startGame(15,1,10,500)
+            local outcome = exports["prp-thermite"]:startGame(15,1,10,500)
             if outcome then
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 FreezeEntityPosition(PlayerPedId(), true)
@@ -156,15 +156,15 @@ AddEventHandler("jailbreak:start", function(args)
                 Success4 = true
             else
                 local coords = GetEntityCoords(PlayerPedId())
-                exports["wrp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000) 
+                exports["prp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000) 
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 Success4 = false
                 FreezeEntityPosition(PlayerPedId(), false)
             end
     
-            TriggerEvent("wrp-states:stateSet",16,2200)
+            TriggerEvent("prp-states:stateSet",16,2200)
         elseif args == "Five" then
-            local outcome = exports["wrp-thermite"]:startGame(15,1,10,500)
+            local outcome = exports["prp-thermite"]:startGame(15,1,10,500)
             if outcome then
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 FreezeEntityPosition(PlayerPedId(), true)
@@ -187,13 +187,13 @@ AddEventHandler("jailbreak:start", function(args)
                 Success5 = true
             else
                 local coords = GetEntityCoords(PlayerPedId())
-                exports["wrp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000) 
+                exports["prp-thermite"]:startFireAtLocation(coords.x, coords.y, coords.z, 10000) 
                 TriggerEvent('inventory:removeItem',"thermite", 1)
                 Success5 = false
                 FreezeEntityPosition(PlayerPedId(), false)
             end
     
-            TriggerEvent("wrp-states:stateSet",16,2200)
+            TriggerEvent("prp-states:stateSet",16,2200)
         end
     else
         TriggerEvent("DoShortHudText", "Your missing stuff!")

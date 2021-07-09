@@ -4,10 +4,10 @@ URP._Admin = URP._Admin or {}
 URP._Admin.Players = {}
 URP._Admin.DiscPlayers = {}
 
-RegisterNetEvent('wrp-admin:requestJob')
-AddEventHandler('wrp-admin:requestJob', function(cid, id, job, jobrank)
-    -- local lmao = exports['wrp-base']:GetCurrentCharacterInfo(target)
-    TriggerClientEvent('wrp-requestJob', source, cid, job, jobrank, id)
+RegisterNetEvent('prp-admin:requestJob')
+AddEventHandler('prp-admin:requestJob', function(cid, id, job, jobrank)
+    -- local lmao = exports['prp-base']:GetCurrentCharacterInfo(target)
+    TriggerClientEvent('prp-requestJob', source, cid, job, jobrank, id)
     TriggerClientEvent('DoLongHudText', id, 'Your job has been set to ' .. job .. ' With the rank of ' .. jobrank .. '.')
 end)
 
@@ -39,9 +39,9 @@ AddEventHandler('admin:getGroup', function()
     end)
 end)
 
-RegisterServerEvent('wrp-admin:Cloak')
-AddEventHandler('wrp-admin:Cloak', function(src, toggle)
-    TriggerClientEvent("wrp-admin:Cloak", -1, src, toggle)
+RegisterServerEvent('prp-admin:Cloak')
+AddEventHandler('prp-admin:Cloak', function(src, toggle)
+    TriggerClientEvent("prp-admin:Cloak", -1, src, toggle)
 end)
 
 RegisterServerEvent('admin:addChatMessage')
@@ -52,14 +52,14 @@ AddEventHandler('admin:addChatMessage', function(message)
 	})
 end)
 
-RegisterServerEvent('wrp-admin:RaveMode')
-AddEventHandler('wrp-admin:RaveMode', function(toggle)
+RegisterServerEvent('prp-admin:RaveMode')
+AddEventHandler('prp-admin:RaveMode', function(toggle)
     local source = source
-    TriggerClientEvent('wrp-admin:toggleRave', -1, toggle)
+    TriggerClientEvent('prp-admin:toggleRave', -1, toggle)
 end)
 
-RegisterServerEvent('wrp-admin:AddPlayer')
-AddEventHandler("wrp-admin:AddPlayer", function()
+RegisterServerEvent('prp-admin:AddPlayer')
+AddEventHandler("prp-admin:AddPlayer", function()
     local licenses
     local identifiers, steamIdentifier = GetPlayerIdentifiers(source)
     for _, v in pairs(identifiers) do
@@ -83,7 +83,7 @@ AddEventHandler("wrp-admin:AddPlayer", function()
     local ping = GetPlayerPing(source)
     local data = { src = source, steamid = stid, comid = scomid, name = ply, ip = ip, license = licenseid, ping = ping}
 
-    TriggerClientEvent("wrp-admin:AddPlayer", -1, data )
+    TriggerClientEvent("prp-admin:AddPlayer", -1, data )
     URP.Admin.AddAllPlayers()
 end)
 
@@ -91,7 +91,7 @@ RegisterServerEvent('admin:bringPlayer')
 AddEventHandler('admin:bringPlayer', function(target)
     local source = source
     local coords = GetEntityCoords(GetPlayerPed(source))
-    TriggerClientEvent('wrp-admin:teleportUser', target, coords.x, coords.y, coords.z)
+    TriggerClientEvent('prp-admin:teleportUser', target, coords.x, coords.y, coords.z)
     TriggerClientEvent('DoLongHudText', source, 'You brought this player.')
 end)
 
@@ -122,7 +122,7 @@ function URP.Admin.AddAllPlayers(self)
         local scomid = steamIdentifier:gsub("steam:", "")
         local data = { src = tonumber(playerId), steamid = stid, comid = scomid, name = ply, ip = ip, license = licenseid, ping = ping }
 
-        TriggerClientEvent("wrp-admin:AddAllPlayers", source, data)
+        TriggerClientEvent("prp-admin:AddAllPlayers", source, data)
 
     end
 end
@@ -155,9 +155,9 @@ AddEventHandler("playerDropped", function()
     local ping = GetPlayerPing(source)
     local data = { src = source, steamid = stid, comid = scomid, name = ply, ip = ip, license = licenseid, ping = ping}
 
-    TriggerClientEvent("wrp-admin:RemovePlayer", -1, data )
+    TriggerClientEvent("prp-admin:RemovePlayer", -1, data )
     Wait(600000)
-    TriggerClientEvent("wrp-admin:RemoveRecent", -1, data)
+    TriggerClientEvent("prp-admin:RemoveRecent", -1, data)
 end)
 
 --[[ function ST.Scoreboard.RemovePlayerS(self, data)

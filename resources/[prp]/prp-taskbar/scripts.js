@@ -34,7 +34,7 @@ $(document).ready(function(){
 
     if(item.closeFail === true) {
       closeMain()
-      $.post('http://wrp-taskbar/taskCancel', JSON.stringify({tasknum: curTask}));
+      $.post('http://prp-taskbar/taskCancel', JSON.stringify({tasknum: curTask}));
     }
 
     if(item.closeProgress === true) {

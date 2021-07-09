@@ -11,8 +11,8 @@ Citizen.CreateThread(function()
         local sexinthetube = GetEntityCoords(source)
 
         TriggerClientEvent('urp:infinity:player:coords', -1, sexinthetube)
-        TriggerEvent("wrp-core:updatecoords", sexinthetube.x, sexinthetube.y, sexinthetube.z)
-       -- print("[^2wrp-infinity^0]^3 Sync Successful.^0")
+        TriggerEvent("prp-core:updatecoords", sexinthetube.x, sexinthetube.y, sexinthetube.z)
+       -- print("[^2prp-infinity^0]^3 Sync Successful.^0")
     end
 end)
 

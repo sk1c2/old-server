@@ -1,7 +1,7 @@
 local playersHealing = {}
 
-RegisterServerEvent('wrp-ambulancejob:revive')
-AddEventHandler('wrp-ambulancejob:revive', function(data, target)
+RegisterServerEvent('prp-ambulancejob:revive')
+AddEventHandler('prp-ambulancejob:revive', function(data, target)
 
 	if Player.job == 'EMS' then
 		xPlayer.addMoney(Config.ReviveReward)
@@ -10,8 +10,8 @@ AddEventHandler('wrp-ambulancejob:revive', function(data, target)
 	end
 end)
 
-RegisterServerEvent('wrp-ambulancejob:revivePD')
-AddEventHandler('wrp-ambulancejob:revivePD', function(data, target)
+RegisterServerEvent('prp-ambulancejob:revivePD')
+AddEventHandler('prp-ambulancejob:revivePD', function(data, target)
 	local Player = data
 
 	if Player.job == 'Police' then
@@ -24,8 +24,8 @@ RegisterServerEvent('admin:revivePlayer')
 AddEventHandler('admin:revivePlayer', function(target)
 	if target ~= nil then
 		TriggerClientEvent('admin:revivePlayerClient', target)
-		TriggerClientEvent('wrp-hospital:client:RemoveBleed', target) 
-        TriggerClientEvent('wrp-hospital:client:ResetLimbs', target)
+		TriggerClientEvent('prp-hospital:client:RemoveBleed', target) 
+        TriggerClientEvent('prp-hospital:client:ResetLimbs', target)
 	end
 end)
 
@@ -36,49 +36,49 @@ AddEventHandler('admin:healPlayer', function(target)
 	end
 end)
 
-RegisterServerEvent('wrp-ambulancejob:heal')
-AddEventHandler('wrp-ambulancejob:heal', function(target, type)
+RegisterServerEvent('prp-ambulancejob:heal')
+AddEventHandler('prp-ambulancejob:heal', function(target, type)
 
-	TriggerClientEvent('wrp-ambulancejob:heal', target, type)
+	TriggerClientEvent('prp-ambulancejob:heal', target, type)
 
-	TriggerClientEvent('wrp-hospital:client:RemoveBleed', target) 	
-	TriggerClientEvent('wrp-ambulancejob:heal', target, type)
+	TriggerClientEvent('prp-hospital:client:RemoveBleed', target) 	
+	TriggerClientEvent('prp-ambulancejob:heal', target, type)
 	--TriggerClientEvent('MF_SkeletalSystem:HealBones', target, "all")
-	TriggerClientEvent('wrp-hospital:client:RemoveBleed', target) 
-	TriggerClientEvent('wrp-hospital:client:ResetLimbs', target)
+	TriggerClientEvent('prp-hospital:client:RemoveBleed', target) 
+	TriggerClientEvent('prp-hospital:client:ResetLimbs', target)
 end)
 
-RegisterServerEvent('wrp-ambulancejob:putInVehicle')
-AddEventHandler('wrp-ambulancejob:putInVehicle', function(data, target)
+RegisterServerEvent('prp-ambulancejob:putInVehicle')
+AddEventHandler('prp-ambulancejob:putInVehicle', function(data, target)
 
 	if Player.job == 'EMS' then
-		TriggerClientEvent('wrp-ambulancejob:putInVehicle', target)
+		TriggerClientEvent('prp-ambulancejob:putInVehicle', target)
 	else
 	end
 end)
 
-RegisterServerEvent('wrp-ambulancejob:pullOutVehicle')
-AddEventHandler('wrp-ambulancejob:pullOutVehicle', function(data, target)
+RegisterServerEvent('prp-ambulancejob:pullOutVehicle')
+AddEventHandler('prp-ambulancejob:pullOutVehicle', function(data, target)
 
 	if Player.job == 'EMS' then
-		TriggerClientEvent('wrp-ambulancejob:pullOutVehicle', target)
+		TriggerClientEvent('prp-ambulancejob:pullOutVehicle', target)
 	end
 end)
 
-RegisterServerEvent('wrp-ambulancejob:drag')
-AddEventHandler('wrp-ambulancejob:drag', function(data, target)
+RegisterServerEvent('prp-ambulancejob:drag')
+AddEventHandler('prp-ambulancejob:drag', function(data, target)
 	_source = source
 	if Player.job == 'EMS' then
-		TriggerClientEvent('wrp-ambulancejob:drag', target, _source)
+		TriggerClientEvent('prp-ambulancejob:drag', target, _source)
 	else
 	end
 end)
 
-RegisterServerEvent('wrp-ambulancejob:undrag')
-AddEventHandler('wrp-ambulancejob:undrag', function(data, target)
+RegisterServerEvent('prp-ambulancejob:undrag')
+AddEventHandler('prp-ambulancejob:undrag', function(data, target)
 	_source = source
 	if Player.job == 'EMS' then
-		TriggerClientEvent('wrp-ambulancejob:un_drag', target, _source)
+		TriggerClientEvent('prp-ambulancejob:un_drag', target, _source)
 	else
 	end
 end)
@@ -105,9 +105,9 @@ function getPriceFromHash(hashKey, jobGrade, type)
 	return 0
 end
 
-RegisterServerEvent('wrp-ambulancejob:drag')
-AddEventHandler('wrp-ambulancejob:drag', function(target)
-	TriggerClientEvent('wrp-ambulancejob:drag', target, source)
+RegisterServerEvent('prp-ambulancejob:drag')
+AddEventHandler('prp-ambulancejob:drag', function(target)
+	TriggerClientEvent('prp-ambulancejob:drag', target, source)
 end)
 
 

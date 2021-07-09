@@ -91,7 +91,7 @@ end
 
 local gamePlayStarted = false
 
-AddEventHandler("wrp-base:playerSessionStarted", function()
+AddEventHandler("prp-base:playerSessionStarted", function()
     if gamePlayStarted then return end
     gamePlayStarted = true
     SetGamePlayVars()

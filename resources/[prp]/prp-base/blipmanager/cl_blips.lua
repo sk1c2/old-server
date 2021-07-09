@@ -71,7 +71,7 @@ local blips = {
 
 }
 
-AddEventHandler("wrp-base:playerSessionStarted", function()
+AddEventHandler("prp-base:playerSessionStarted", function()
     Citizen.CreateThread(function()
         for k,v in ipairs(blips) do
             URP.BlipManager:CreateBlip(v.id, v)

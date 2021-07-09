@@ -260,8 +260,8 @@ onNet("server-inventory-refresh", async (player, sauce) => {
     })
 })
 
-RegisterServerEvent("wrp-ac:triggeredItemSpawn")
-onNet("wrp-ac:triggeredItemSpawn", async (coords, player, secondInventory, targetName, itemToDropArray, sauce) => {
+RegisterServerEvent("prp-ac:triggeredItemSpawn")
+onNet("prp-ac:triggeredItemSpawn", async (coords, player, secondInventory, targetName, itemToDropArray, sauce) => {
 
     let src = source
 
@@ -579,7 +579,7 @@ onNet("server-jail-item", async (player, isSentToJail) => {
 });
 
 function removecash(src,amount) {
-    emitNet('wrp-base:getdata', src, amount)
+    emitNet('prp-base:getdata', src, amount)
 }
 
 
@@ -855,5 +855,5 @@ RegisterServerEvent("inv:playerSpawned")
 onNet("inv:playerSpawned", () => {
     db(`DELETE FROM user_inventory2 WHERE name like '%Drop%' OR name like '%Hidden%' OR name like '%trash-1%'`)
     db(`DELETE FROM user_inventory2 WHERE quality like '0'`)
-    console.log("[wrp-inventory] Drops & broken items were deleted.")
+    console.log("[prp-inventory] Drops & broken items were deleted.")
 });

@@ -60,7 +60,7 @@ AddEventHandler("ems:in" , function(off)
     if(off == "true") then
         if job == 'OffEMS' then
 
-            LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+            LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
             Player = LocalPlayer:getCurrentCharacter()
             LocalPlayer:setJob(Player.id, 'EMS')
             TriggerEvent('DoLongHudText', 'You\'re now on duty!')
@@ -69,7 +69,7 @@ AddEventHandler("ems:in" , function(off)
         end
     elseif(off == "false") then
         if job == 'EMS' then
-            LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+            LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
             Player = LocalPlayer:getCurrentCharacter()
             LocalPlayer:setJob(Player.id, 'OffEMS')
             TriggerEvent('DoLongHudText', 'You\'re now off duty!')
@@ -94,8 +94,8 @@ Citizen.CreateThread(function()
             if job == 'EMS' or job == 'OffEMS' then
                 DrawText3DDs(x,y,z, drawtext) 
                 if IsControlJustReleased(0, 38) then
-                    exports['wrp-menudialog']:AddButton("Clock In" , "Clock On Duty" , "ems:in" , true)
-                    exports['wrp-menudialog']:AddButton("Clock Off" , "Clock Off Duty" , "ems:in", false)
+                    exports['prp-menudialog']:AddButton("Clock In" , "Clock On Duty" , "ems:in" , true)
+                    exports['prp-menudialog']:AddButton("Clock Off" , "Clock Off Duty" , "ems:in", false)
                 end
             end
         end
@@ -133,9 +133,9 @@ end
 
 function OnPlayerDeath()
 	IsDead = true
-	TriggerServerEvent('wrp-ambulancejob:setDeathStatus', true)
-    TriggerEvent('wrp-hospital:client:ResetLimbs')
-    TriggerEvent('wrp-hospital:client:RemoveBleed')
+	TriggerServerEvent('prp-ambulancejob:setDeathStatus', true)
+    TriggerEvent('prp-hospital:client:ResetLimbs')
+    TriggerEvent('prp-hospital:client:RemoveBleed')
 	deathTimer()
 
 end
@@ -422,19 +422,19 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RegisterNetEvent('wrp-ambulancejob:useItem')
-AddEventHandler('wrp-ambulancejob:useItem', function(itemName)
+RegisterNetEvent('prp-ambulancejob:useItem')
+AddEventHandler('prp-ambulancejob:useItem', function(itemName)
 
 	if itemName == 'medkit' then
 		local playerPed = PlayerPedId()
 		loadAnimDict('amb@world_human_clipboard@male@idle_a')
 		TaskPlayAnim( playerPed, "amb@world_human_clipboard@male@idle_a", 'idle_c', 8.0, 1.0, -1, 49, 0, 0, 0, 0 )
  --       exports["urp_taskbar"]:StartDelayedFunction('Healing', 10000, function()
-            local finished = exports["wrp-taskbar"]:taskBar(10000,"Hacking")
+            local finished = exports["prp-taskbar"]:taskBar(10000,"Hacking")
 			if finished == 100 then
-			TriggerEvent('wrp-ambulancejob:heal', 'big', true)
-			TriggerEvent('wrp-hospital:client:RemoveBleed')
-			TriggerEvent('wrp-hospital:client:ResetLimbs')
+			TriggerEvent('prp-ambulancejob:heal', 'big', true)
+			TriggerEvent('prp-hospital:client:RemoveBleed')
+			TriggerEvent('prp-hospital:client:ResetLimbs')
 			ClearPedTasks(playerPed)
 		end
 	elseif itemName == 'bandage' then
@@ -442,10 +442,10 @@ AddEventHandler('wrp-ambulancejob:useItem', function(itemName)
 		loadAnimDict('amb@world_human_clipboard@male@idle_a')
 		TaskPlayAnim( playerPed, "amb@world_human_clipboard@male@idle_a", 'idle_c', 8.0, 1.0, -1, 49, 0, 0, 0, 0 )
 --        exports["urp_taskbar"]:StartDelayedFunction('Healing', 10000, function()
-            local finished = exports["wrp-taskbar"]:taskBar(10000,"Healing")
+            local finished = exports["prp-taskbar"]:taskBar(10000,"Healing")
 			if finished == 100 then
-			TriggerEvent('wrp-ambulancejob:heal', 'small', true)
-			TriggerEvent('wrp-hospital:client:RemoveBleed')
+			TriggerEvent('prp-ambulancejob:heal', 'small', true)
+			TriggerEvent('prp-hospital:client:RemoveBleed')
 			ClearPedTasks(playerPed)
 		end
 	end
@@ -458,8 +458,8 @@ function RespawnPed(ped, coords, heading)
 	TriggerEvent('playerSpawned', coords.x, coords.y, coords.z)
 	ClearPedBloodDamage(ped)
 
-	TriggerEvent('wrp-hospital:client:RemoveBleed', ped) 
-	TriggerEvent('wrp-hospital:client:ResetLimbs', ped)
+	TriggerEvent('prp-hospital:client:RemoveBleed', ped) 
+	TriggerEvent('prp-hospital:client:ResetLimbs', ped)
 
 end
 
@@ -470,8 +470,8 @@ function attemptRevive()
         isDead = false
         thecount = 240
         TriggerEvent("Heal")
-        TriggerEvent('wrp-hospital:client:RemoveBleed') 
-        TriggerEvent('wrp-hospital:client:ResetLimbs')
+        TriggerEvent('prp-hospital:client:RemoveBleed') 
+        TriggerEvent('prp-hospital:client:ResetLimbs')
         SetEntityInvincible(GetPlayerPed(-1), false)
         ClearPedBloodDamage(GetPlayerPed(-1))        
         local plyPos = GetEntityCoords(GetPlayerPed(-1),  true)

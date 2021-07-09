@@ -146,7 +146,7 @@ end)
 RegisterServerEvent('house:givekey')
 AddEventHandler('house:givekey', function(house_id,house_model,house_name,cid, firstname, lastname, target)
     local src = source
-    local player = exports['wrp-base']:GetCurrentCharacterInfo(target)
+    local player = exports['prp-base']:GetCurrentCharacterInfo(target)
     exports.ghmattimysql:execute('SELECT `house_id` FROM __housekeys WHERE `cid`= ?', {cid}, function(data)
         local penis = json.encode(data)
         if penis == "[]" then
@@ -310,7 +310,7 @@ AddEventHandler("house:dopayment", function(house_id, house_model, cash)
                 if result[1].can_pay ~= "false" then
                     if result[1].due ~= tonumber(0) then
                         if cash >= amountdue then
-                            TriggerClientEvent("wrp-ac:removeban", src, amountdue)
+                            TriggerClientEvent("prp-ac:removeban", src, amountdue)
                             exports.ghmattimysql:execute("UPDATE __housedata SET `payments` = @payments, `due` = @due, `days` = @days, `can_pay` = @can_pay WHERE `house_id` = @house_id AND `house_model` = @house_model", {
                                 ['@payments'] = result[1].payments - 1,
                                 ['@due'] = result[1].due - amountdue,

@@ -5,8 +5,8 @@ local insideRooster = false
 local rank = 0
 
 function logout()
-    TriggerEvent("wrp-base:clearStates")
-	exports["wrp-base"]:getModule("SpawnManager"):Initialize()
+    TriggerEvent("prp-base:clearStates")
+	exports["prp-base"]:getModule("SpawnManager"):Initialize()
 end
 
 function IsNearLocation(list)
@@ -82,7 +82,7 @@ Citizen.CreateThread(function()
                     local loc = stash[2]
                     DrawText3D(loc.x, loc.y, loc.z, '~g~E~s~ to open stash.')
                     if IsControlJustPressed(1, 38) then
-                        TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "Crimeschool-"..tostring(stash[3]));
+                        TriggerEvent("prp-ac:triggeredItemSpawn", "1", "Crimeschool-"..tostring(stash[3]));
                         Wait(1000)
                     end
                 elseif change[1] < 1.0 then
@@ -160,7 +160,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-AddEventHandler("wrp-base:exportsReady", function()
+AddEventHandler("prp-base:exportsReady", function()
     Wait(1)
     isExportReady = true
 end)

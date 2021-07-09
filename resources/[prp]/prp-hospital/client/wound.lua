@@ -275,7 +275,7 @@ function CheckDamage(ped, bone, weapon)
                 severity = BodyParts[Config.Bones[bone]].severity
             })
 
-            TriggerServerEvent('wrp-hospital:server:SyncInjuries', {
+            TriggerServerEvent('prp-hospital:server:SyncInjuries', {
                 limbs = BodyParts,
                 isBleeding = tonumber(isBleeding)
             })
@@ -329,7 +329,7 @@ function CheckDamage(ped, bone, weapon)
 
             if BodyParts[Config.Bones[bone]].severity < 4 then
                 BodyParts[Config.Bones[bone]].severity = BodyParts[Config.Bones[bone]].severity + 1
-                TriggerServerEvent('wrp-hospital:server:SyncInjuries', {
+                TriggerServerEvent('prp-hospital:server:SyncInjuries', {
                     limbs = BodyParts,
                     isBleeding = tonumber(isBleeding)
                 })
@@ -396,14 +396,14 @@ function DoBleedAlert()
     end
 end
 
-RegisterNetEvent('wrp-hospital:client:SyncBleed')
-AddEventHandler('wrp-hospital:client:SyncBleed', function(bleedStatus)
+RegisterNetEvent('prp-hospital:client:SyncBleed')
+AddEventHandler('prp-hospital:client:SyncBleed', function(bleedStatus)
     isBleeding = tonumber(bleedStatus)
     DoBleedAlert()
 end)
 
-RegisterNetEvent('wrp-hospital:client:FieldTreatLimbs')
-AddEventHandler('wrp-hospital:client:FieldTreatLimbs', function()
+RegisterNetEvent('prp-hospital:client:FieldTreatLimbs')
+AddEventHandler('prp-hospital:client:FieldTreatLimbs', function()
     for k, v in pairs(BodyParts) do
         v.isDamaged = false
         v.severity = 1
@@ -415,7 +415,7 @@ AddEventHandler('wrp-hospital:client:FieldTreatLimbs', function()
         end
     end
     
-    TriggerServerEvent('wrp-hospital:server:SyncInjuries', {
+    TriggerServerEvent('prp-hospital:server:SyncInjuries', {
         limbs = BodyParts,
         isBleeding = tonumber(isBleeding)
     })
@@ -423,12 +423,12 @@ AddEventHandler('wrp-hospital:client:FieldTreatLimbs', function()
     ProcessRunStuff(PlayerPedId())
     DoLimbAlert()
 end)
-RegisterNetEvent('wrp-hospital:client:FieldTreatBleed')
-AddEventHandler('wrp-hospital:client:FieldTreatBleed', function()
+RegisterNetEvent('prp-hospital:client:FieldTreatBleed')
+AddEventHandler('prp-hospital:client:FieldTreatBleed', function()
     if isBleeding > 1 then
         isBleeding = tonumber(isBleeding) - 1
     
-        TriggerServerEvent('wrp-hospital:server:SyncInjuries', {
+        TriggerServerEvent('prp-hospital:server:SyncInjuries', {
             limbs = BodyParts,
             isBleeding = tonumber(isBleeding)
         })
@@ -438,12 +438,12 @@ AddEventHandler('wrp-hospital:client:FieldTreatBleed', function()
     end
 end)
 
-RegisterNetEvent('wrp-hospital:client:ReduceBleed')
-AddEventHandler('wrp-hospital:client:ReduceBleed', function()
+RegisterNetEvent('prp-hospital:client:ReduceBleed')
+AddEventHandler('prp-hospital:client:ReduceBleed', function()
     if isBleeding > 0 then
         isBleeding = tonumber(isBleeding) - 1
     
-        TriggerServerEvent('wrp-hospital:server:SyncInjuries', {
+        TriggerServerEvent('prp-hospital:server:SyncInjuries', {
             limbs = BodyParts,
             isBleeding = tonumber(isBleeding)
         })
@@ -454,15 +454,15 @@ AddEventHandler('wrp-hospital:client:ReduceBleed', function()
 end)
 
 
-RegisterNetEvent('wrp-hospital:client:ResetLimbs')
-AddEventHandler('wrp-hospital:client:ResetLimbs', function()
+RegisterNetEvent('prp-hospital:client:ResetLimbs')
+AddEventHandler('prp-hospital:client:ResetLimbs', function()
     for k, v in pairs(BodyParts) do
         v.isDamaged = false
         v.severity = 0
     end
     injured = {}
     
-    TriggerServerEvent('wrp-hospital:server:SyncInjuries', {
+    TriggerServerEvent('prp-hospital:server:SyncInjuries', {
         limbs = BodyParts,
         isBleeding = tonumber(isBleeding)
     })
@@ -471,15 +471,15 @@ AddEventHandler('wrp-hospital:client:ResetLimbs', function()
     DoLimbAlert()
 end)
 
-RegisterNetEvent('wrp-hospital:client:RemoveBleed')
-AddEventHandler('wrp-hospital:client:RemoveBleed', function()
+RegisterNetEvent('prp-hospital:client:RemoveBleed')
+AddEventHandler('prp-hospital:client:RemoveBleed', function()
     for k, v in pairs(BodyParts) do
         v.isDamaged = false
         v.severity = 0
     end
     isBleeding = 0
     
-    TriggerServerEvent('wrp-hospital:server:SyncInjuries', {
+    TriggerServerEvent('prp-hospital:server:SyncInjuries', {
         limbs = BodyParts,
         isBleeding = tonumber(isBleeding)
     })
@@ -488,8 +488,8 @@ AddEventHandler('wrp-hospital:client:RemoveBleed', function()
     DoBleedAlert()
 end)
 
-RegisterNetEvent('wrp-hospital:client:UsePainKiller')
-AddEventHandler('wrp-hospital:client:UsePainKiller', function(tier)
+RegisterNetEvent('prp-hospital:client:UsePainKiller')
+AddEventHandler('prp-hospital:client:UsePainKiller', function(tier)
     if tier < 4 then
         onPainKiller = 90 * tier
     end
@@ -498,8 +498,8 @@ AddEventHandler('wrp-hospital:client:UsePainKiller', function(tier)
     ProcessRunStuff(PlayerPedId())
 end)
 
-RegisterNetEvent('wrp-hospital:client:UseAdrenaline')
-AddEventHandler('wrp-hospital:client:UseAdrenaline', function(tier)
+RegisterNetEvent('prp-hospital:client:UseAdrenaline')
+AddEventHandler('prp-hospital:client:UseAdrenaline', function(tier)
     if tier < 4 then
         onDrugs = 180 * tier
     end
@@ -651,14 +651,14 @@ end)
 
 RegisterNetEvent('baseevents:onPlayerKilled')
 AddEventHandler('baseevents:onPlayerKilled', function(killedBy, data)
-    TriggerEvent('wrp-hospital:client:ResetLimbs')
-    TriggerEvent('wrp-hospital:client:RemoveBleed')
+    TriggerEvent('prp-hospital:client:ResetLimbs')
+    TriggerEvent('prp-hospital:client:RemoveBleed')
 end)
 
 RegisterNetEvent('baseevents:onPlayerDied')
 AddEventHandler('baseevents:onPlayerDied', function(killedBy, pos)
-    TriggerEvent('wrp-hospital:client:ResetLimbs')
-    TriggerEvent('wrp-hospital:client:RemoveBleed')
+    TriggerEvent('prp-hospital:client:ResetLimbs')
+    TriggerEvent('prp-hospital:client:RemoveBleed')
 end)
 
 Citizen.CreateThread(function()

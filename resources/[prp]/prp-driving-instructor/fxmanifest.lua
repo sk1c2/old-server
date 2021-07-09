@@ -10,7 +10,7 @@ server_scripts {
 
 client_scripts {
 	'client/main.lua',
-	"@wrp-errorlog/client/cl_errorlog.lua"
+	"@prp-errorlog/client/cl_errorlog.lua"
 }
 
 ui_page 'html/ui.html'

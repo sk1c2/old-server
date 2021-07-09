@@ -10,11 +10,11 @@ Citizen.CreateThread(function()
         local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z,x,y,z,false)
         if distance <= 1.2 then
             Citizen.Wait(100)
-            if exports['wrp-inventory']:hasEnoughOfItem('coke50g', 1) then
+            if exports['prp-inventory']:hasEnoughOfItem('coke50g', 1) then
                 Citizen.Wait(10)
-                exports['wrp-interaction']:showInteraction('[E] Bag Cocaine | [F] Create Crack')
+                exports['prp-interaction']:showInteraction('[E] Bag Cocaine | [F] Create Crack')
                 if IsControlJustReleased(0, 38) then
-                    if exports['wrp-inventory']:hasEnoughOfItem('drugscales', 1) then
+                    if exports['prp-inventory']:hasEnoughOfItem('drugscales', 1) then
                         ProcessingCocaine = true
                         local lPed = PlayerPedId()
             
@@ -24,11 +24,11 @@ Citizen.CreateThread(function()
                         end
                         ClearPedSecondaryTask(lPed)
                         TaskPlayAnim(lPed, "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-                        exports['wrp-taskbar']:taskBar(10000, 'Packaging Cocaine.')
-                        if exports['wrp-inventory']:hasEnoughOfItem('coke50g', 1) then
-                            local amount = exports['wrp-inventory']:getQuantity('coke50g')
-                            if exports['wrp-inventory']:hasEnoughOfItem('dopebag', math.ceil(amount*5)) then
-                                local amount = exports['wrp-inventory']:getQuantity('coke50g')
+                        exports['prp-taskbar']:taskBar(10000, 'Packaging Cocaine.')
+                        if exports['prp-inventory']:hasEnoughOfItem('coke50g', 1) then
+                            local amount = exports['prp-inventory']:getQuantity('coke50g')
+                            if exports['prp-inventory']:hasEnoughOfItem('dopebag', math.ceil(amount*5)) then
+                                local amount = exports['prp-inventory']:getQuantity('coke50g')
                                 TriggerEvent('DoLongHudText', 'Cocaine Packaged!')
                                 TriggerEvent("inventory:removeItem", 'coke50g', amount)
                                 TriggerEvent('inventory:removeItem', 'dopebag', math.ceil(amount*5))
@@ -37,7 +37,7 @@ Citizen.CreateThread(function()
                                     TriggerEvent('inventory:removeItem', 'drugscales', 1)
                                 end
                                 local baggiedcoke = amount * 5
-                                TriggerEvent('wrp-banned:getID', 'coke5g', baggiedcoke)
+                                TriggerEvent('prp-banned:getID', 'coke5g', baggiedcoke)
                                 ProcessingCocaine = false
                                 Citizen.Wait(10000)
                             end
@@ -53,12 +53,12 @@ Citizen.CreateThread(function()
                         end
                         ClearPedSecondaryTask(lPed)
                         TaskPlayAnim(lPed, "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-                        exports['wrp-taskbar']:taskBar(10000, 'Preparing Crack.')
-                        if exports['wrp-inventory']:hasEnoughOfItem('coke50g', 1) then
-                            local amount = exports['wrp-inventory']:getQuantity('coke50g')
-                            if exports['wrp-inventory']:hasEnoughOfItem('dopebag', math.ceil(amount*8)) then
-                                if exports['wrp-inventory']:hasEnoughOfItem('bakingsoda', 1) then
-                                    local amount = exports['wrp-inventory']:getQuantity('coke50g')
+                        exports['prp-taskbar']:taskBar(10000, 'Preparing Crack.')
+                        if exports['prp-inventory']:hasEnoughOfItem('coke50g', 1) then
+                            local amount = exports['prp-inventory']:getQuantity('coke50g')
+                            if exports['prp-inventory']:hasEnoughOfItem('dopebag', math.ceil(amount*8)) then
+                                if exports['prp-inventory']:hasEnoughOfItem('bakingsoda', 1) then
+                                    local amount = exports['prp-inventory']:getQuantity('coke50g')
                                     TriggerEvent('DoLongHudText', 'Crack Successfully Prepared!')
                                     TriggerEvent('inventory:removeItem', 'coke50g', amount)
                                     TriggerEvent('inventory:removeItem', 'dopebag', math.ceil(amount*8))
@@ -67,7 +67,7 @@ Citizen.CreateThread(function()
                                         TriggerEvent('inventory:removeItem', 'drugscales', 1)
                                     end
                                     local crack = amount * 8
-                                    TriggerEvent('wrp-banned:getID', '1gcrack', crack)
+                                    TriggerEvent('prp-banned:getID', '1gcrack', crack)
                                     ProcessingCocaine = false
                                     Citizen.Wait(10000)
                                 end
@@ -77,7 +77,7 @@ Citizen.CreateThread(function()
                 end
             end
         elseif distance < 200 and not ProcessingCocaine then
-            exports['wrp-interaction']:hideInteraction()
+            exports['prp-interaction']:hideInteraction()
             Citizen.Wait(10000)
         end
     end
@@ -90,7 +90,7 @@ function loadAnimDict( dict )
     end
 end 
 
-RegisterNetEvent('wrp-snow:inrangeMate')
-AddEventHandler('wrp-snow:inrangeMate', function(player)
-    exports['wrp-interaction']:showInteraction('[E] Process Cocaine.')
+RegisterNetEvent('prp-snow:inrangeMate')
+AddEventHandler('prp-snow:inrangeMate', function(player)
+    exports['prp-interaction']:showInteraction('[E] Process Cocaine.')
 end)

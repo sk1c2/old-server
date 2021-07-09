@@ -52,10 +52,10 @@ Citizen.CreateThread(function()
    if IsControlJustPressed(0, 47) and GetLastInputMethod(2) then
     if not vehicleSearched[plate] and not hasVehicleKey(plate) and showText and not vehicleHotwired[plate] and GetPedInVehicleSeat(vehicle, -1) == PlayerPedId() then
      showText = false
-     local finished = exports["wrp-taskbar"]:taskBar(10000,"Searching",false,false,vehicle)
+     local finished = exports["prp-taskbar"]:taskBar(10000,"Searching",false,false,vehicle)
      if finished == 100 then
       Citizen.Wait(10)
-      local finished2 = exports["wrp-taskbar"]:taskBar(10000,"Searching Backseats",false,false,vehicle)
+      local finished2 = exports["prp-taskbar"]:taskBar(10000,"Searching Backseats",false,false,vehicle)
       if finished2 == 100 then
         vehicleSearched[plate] = true
         if not hasVehicleKey(plate) then
@@ -252,7 +252,7 @@ Citizen.CreateThread(function()
       end
        TriggerEvent('animation:hotwire', true)
        showText = false
-       local finished = exports["wrp-taskbar"]:taskBar(15000,"Attempting Hotwire",false,false,vehicle)
+       local finished = exports["prp-taskbar"]:taskBar(15000,"Attempting Hotwire",false,false,vehicle)
        if finished == 100 then
         TriggerEvent('animation:hotwire', false)
         if math.random(1, 10) <= 5 then
@@ -282,11 +282,11 @@ Citizen.CreateThread(function()
      useLockpick = false
      TriggerEvent('animation:hotwire', true)
      showText = false
-     local finished = exports["wrp-taskbar"]:taskBar(20000,"Modifying Ignition Stage 1",false,false,vehicle)
+     local finished = exports["prp-taskbar"]:taskBar(20000,"Modifying Ignition Stage 1",false,false,vehicle)
       if finished == 100 then
-        local finished2 = exports["wrp-taskbar"]:taskBar(20000,"Modifying Ignition Stage 2",false,false,vehicle)
+        local finished2 = exports["prp-taskbar"]:taskBar(20000,"Modifying Ignition Stage 2",false,false,vehicle)
         if finished2 == 100 then
-          local finished3 = exports["wrp-taskbar"]:taskBar(20000,"Modifying Ignition Stage 3",false,false,vehicle)
+          local finished3 = exports["prp-taskbar"]:taskBar(20000,"Modifying Ignition Stage 3",false,false,vehicle)
           if finished3 == 100 then
             TriggerEvent('animation:hotwire', false)
             vehicleHotwired[plate] = true
@@ -527,7 +527,7 @@ AddEventHandler('lockpick:vehicleUse', function()
      TriggerEvent('carLockpickAnim')
 
      Citizen.CreateThread(function()
-      local finished = exports["wrp-taskbar"]:taskBar(20000,"Lockpicking Vehicle",false,false,vehicle)
+      local finished = exports["prp-taskbar"]:taskBar(20000,"Lockpicking Vehicle",false,false,vehicle)
       if finished == 100 then
        isLockpicking = false
        SetVehicleDoorsLocked(vehicle, 1)
@@ -606,10 +606,10 @@ RegisterCommand('transferconfirm', function(source)
     TriggerEvent('DoLongHudText', 'Please type /transferveh cid plate, then perform this command.')
   else
     ExecuteCommand('e clipboard')
-    exports['wrp-taskbar']:taskBar(5000, 'Checking if you own this Vehicle')
+    exports['prp-taskbar']:taskBar(5000, 'Checking if you own this Vehicle')
     Citizen.Wait(100)
-    exports['wrp-taskbar']:taskBar(2000, 'Transferring Vehicle')
-    TriggerServerEvent('wrp-transferveh', exports['isPed']:isPed('cid'), transferplate, transfercid)
+    exports['prp-taskbar']:taskBar(2000, 'Transferring Vehicle')
+    TriggerServerEvent('prp-transferveh', exports['isPed']:isPed('cid'), transferplate, transfercid)
 
     wantstotransfer = false
   end
@@ -636,7 +636,7 @@ Citizen.CreateThread(function()
      TriggerEvent('urp:alert:vehtheft')
      gotKeys = true
      Wait(500)
-     local finished = exports["wrp-taskbar"]:taskBar(2000,"Taking Keys",false,false,vehicle)
+     local finished = exports["prp-taskbar"]:taskBar(2000,"Taking Keys",false,false,vehicle)
       if finished == 100 then
         TriggerEvent('DoLongHudText', 'You have received keys to a vehicle')
         TriggerServerEvent('garage:addKeys', plate1)

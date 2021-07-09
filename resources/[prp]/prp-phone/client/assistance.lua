@@ -144,7 +144,7 @@ AddEventHandler('phone:assistNotify', function(id, service, player)
     elseif (exports['isPed']:isPed('job') == 'Police' or job == 'news') and (service == 'AIcall27' or service == 'AIcall26' or service == 'AIcall25' or service == 'AIcall24' or service == 'AIcall23' or service == 'AIcall' or service == 'AIcall2' or service == 'AIcall3a' or service == 'AIcall3' or service == 'AIcall4' or service == 'AIcall5' or service == 'AIcall6' or service == 'AIcall7' or service == 'AIcall8' or service == 'AIcall17' or service == 'AIcall18' or service == 'AIcall19' or service == 'AIcall20' or service == 'AIcall21' or service == 'AIcall22' or service == 'AIcall9') then
       if job == 'news' then
         addBlip({service = service, player = player, id = id,jobType = "news"})
-        local radiocount = exports["wrp-inventory"]:getQuantity("scanner")
+        local radiocount = exports["prp-inventory"]:getQuantity("scanner")
         if radiocount > 0 then
           TriggerEvent("chatMessage", "RADIO CHATTER: ", {255, 0, 0}, "A 911 call has been picked up on your radio scanner!")
         end

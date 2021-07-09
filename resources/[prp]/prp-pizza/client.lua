@@ -105,7 +105,7 @@ Citizen.CreateThread(function()
                 if IsControlJustPressed(1,38) then
                     posibilidad = math.random(1, 100)
                     if (posibilidad > 70) and (posibilidad < 90) then
-                        TriggerServerEvent( 'wrp-pizza:cash', 75)
+                        TriggerServerEvent( 'prp-pizza:cash', 75)
                     end
                     isToHouse = false
                     isToPizzaria = true
@@ -124,7 +124,7 @@ Citizen.CreateThread(function()
                     if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("panto"))  then
                         if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("panto")) then
                             TriggerEvent('DoLongHudText', 'You were payed $' .. paga .. ' for this delivery', 1)
-                            TriggerServerEvent( 'wrp-pizza:cash', 75)
+                            TriggerServerEvent( 'prp-pizza:cash', 75)
                             isToHouse = false
                             isToPizzaria = false
                             isInJobPizz = false

@@ -64,7 +64,7 @@ Citizen.CreateThread(function()
             if distance <= 1.2 then
                 DrawText3DDs(x,y,z, drawtext) 
                 if IsControlJustReleased(0, 38) then
-                    TriggerEvent("wrp-ac:triggeredItemSpawn", "30", "Craft");
+                    TriggerEvent("prp-ac:triggeredItemSpawn", "30", "Craft");
                 end
             end
         end
@@ -78,7 +78,7 @@ Citizen.CreateThread(function()
                 if distance2 <= 1.2 then
                     DrawText3DDs(x2,y2,z2, drawtext2) 
                     if IsControlJustReleased(0, 38) then
-                        TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "biz")
+                        TriggerEvent("prp-ac:triggeredItemSpawn", "1", "biz")
                     end
                 end
             end
@@ -93,7 +93,7 @@ Citizen.CreateThread(function()
                 if distance3 <= 1.2 then
                     DrawText3DDs(x3,y3,z3, drawtext3) 
                     if IsControlJustReleased(0, 38) then
-                        exports['wrp-menudialog']:AddButton("Spawn Flatbed" , "spawn a Flatbed" , "bennys:spawnveh" , "flatbed")
+                        exports['prp-menudialog']:AddButton("Spawn Flatbed" , "spawn a Flatbed" , "bennys:spawnveh" , "flatbed")
                         if DoesEntityExist(flatbed) then
                             DeleteEntity(flatbed)
                             TriggerEvent('DoShortHudText', 'Vehicle Despawned', 2)
@@ -219,7 +219,7 @@ local function saveVehicle()
             vehicleMods.extras[i] = 0
         end
     end
-	local myCar = exports['wrp-base']:FetchVehProps(veh)
+	local myCar = exports['prp-base']:FetchVehProps(veh)
     TriggerServerEvent('updateVehicle',myCar)  
 end
 
@@ -229,9 +229,9 @@ function AttemptPurchase(type, upgradeLevel)
     if upgradeLevel ~= nil then
         upgradeLevel = upgradeLevel + 2
     end
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
-    TriggerServerEvent("wrp-bennys:attemptPurchase", Player.id, Player.cash, type, upgradeLevel)
+    TriggerServerEvent("prp-bennys:attemptPurchase", Player.id, Player.cash, type, upgradeLevel)
 
     attemptingPurchase = true
 
@@ -1158,9 +1158,9 @@ Citizen.CreateThread(function()
 end)
 
 --#[Event Handlers]#--
-RegisterNetEvent("wrp-bennys:purchaseSuccessful")
-AddEventHandler("wrp-bennys:purchaseSuccessful", function(cash)
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+RegisterNetEvent("prp-bennys:purchaseSuccessful")
+AddEventHandler("prp-bennys:purchaseSuccessful", function(cash)
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:removeCash(Player.id, cash)
     isPurchaseSuccessful = true
@@ -1168,8 +1168,8 @@ AddEventHandler("wrp-bennys:purchaseSuccessful", function(cash)
     TriggerEvent('DoLongHudText', 'Purchase Successful')
 end)
 
-RegisterNetEvent("wrp-bennys:purchaseFailed")
-AddEventHandler("wrp-bennys:purchaseFailed", function()
+RegisterNetEvent("prp-bennys:purchaseFailed")
+AddEventHandler("prp-bennys:purchaseFailed", function()
     isPurchaseSuccessful = false
     attemptingPurchase = false
     TriggerEvent('DoLongHudText', 'Not enough cash', 2)
@@ -1227,17 +1227,17 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent("wrp-camel:stash")
-AddEventHandler("wrp-camel:stash", function()
+RegisterNetEvent("prp-camel:stash")
+AddEventHandler("prp-camel:stash", function()
     if job == 'CamelTowing' then
-        TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "camel")
+        TriggerEvent("prp-ac:triggeredItemSpawn", "1", "camel")
     end
 end)
 
-RegisterNetEvent("wrp-camel:crafting")
-AddEventHandler("wrp-camel:crafting", function()
+RegisterNetEvent("prp-camel:crafting")
+AddEventHandler("prp-camel:crafting", function()
     local rank = exports["isPed"]:GroupRank("CamelTowing")
     if rank > 2 then
-        TriggerEvent("wrp-ac:triggeredItemSpawn", "30", "Craft")
+        TriggerEvent("prp-ac:triggeredItemSpawn", "30", "Craft")
     end
 end)

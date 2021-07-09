@@ -301,7 +301,7 @@ function rewarduber()
 	if ispedhomechance == 1 then
 		chanceofcivstick = math.random(1,6)
 		price = math.random(80,100)
-        TriggerServerEvent( 'wrp-uber:pay', 82 )
+        TriggerServerEvent( 'prp-uber:pay', 82 )
 		TriggerEvent('DoLongHudText', 'Package Delivered', 1)
 		TriggerEvent('DoLongHudText', 'Recieved Tip', 2)
 		removeblips()
@@ -312,7 +312,7 @@ function rewarduber()
 		enditall()
 		elseif ispedhomechance ~= 1 then
 		price = math.random(60,80)
-		TriggerServerEvent( 'wrp-uber:pay', 82 )
+		TriggerServerEvent( 'prp-uber:pay', 82 )
 		TriggerEvent('DoLongHudText', 'Package Delivered', 1)
 		removeblips()
 		hasdelivery = false
@@ -575,7 +575,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery1 = false
@@ -604,7 +604,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-							exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+							exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -639,7 +639,7 @@ Citizen.CreateThread(function ()
 							droppingpackage = true
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-							exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+							exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 						--	deliv = math.random(1,2)
@@ -669,7 +669,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-							exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+							exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -707,7 +707,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery3 = false
@@ -738,7 +738,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -773,7 +773,7 @@ Citizen.CreateThread(function ()
 							droppingpackage = true
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 						--	deliv = math.random(1,2)
@@ -803,7 +803,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -841,7 +841,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery5 = false
@@ -872,7 +872,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -908,7 +908,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery6 = false
@@ -939,7 +939,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -975,7 +975,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery7 = false
@@ -1005,7 +1005,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -1041,7 +1041,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery8 = false
@@ -1072,7 +1072,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -1108,7 +1108,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery9 = false
@@ -1139,7 +1139,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -1175,7 +1175,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery10 = false
@@ -1206,7 +1206,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -1242,7 +1242,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery11 = false
@@ -1273,7 +1273,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -1309,7 +1309,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery12 = false
@@ -1340,7 +1340,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -1377,7 +1377,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery13 = false
@@ -1408,7 +1408,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -1445,7 +1445,7 @@ Citizen.CreateThread(function ()
 							TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 							droppingpackage = true
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Giving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							delivery14 = false
@@ -1476,7 +1476,7 @@ Citizen.CreateThread(function ()
 				 	droppingpackage = true
 				 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true) -- Because IT FITSSSSSSS - 99kr
 					 		Citizen.Wait(0)
-					 		exports["wrp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
+					 		exports["prp-taskbar"]:taskBar(math.random(5000,10000), "Leaving Package...")
 							ClearPedTasks(PlayerPedId())
 							ClearPedTasks(PlayerPedId(-1))
 							local PackageDeliveryObject = CreateObject(GetHashKey("prop_cs_cardbox_01"), plyPos.x, plyPos.y, plyPos.z, true)
@@ -1545,8 +1545,8 @@ end
 
 
 
-RegisterNetEvent('wrp-uberdelivery:start')
-AddEventHandler('wrp-uberdelivery:start', function()
+RegisterNetEvent('prp-uberdelivery:start')
+AddEventHandler('prp-uberdelivery:start', function()
  local pedxd = GetPlayerPed( -1 )
  	if not starteduber and uerdeliveryamount ~= 10 then
 		TriggerEvent('DoLongHudText', 'Uber Delivery: Active [Wait for Delivery]', 1)
@@ -1555,8 +1555,8 @@ AddEventHandler('wrp-uberdelivery:start', function()
 	end
 end)
 
-RegisterNetEvent('wrp-uberdelivery:end')
-AddEventHandler('wrp-uberdelivery:end', function()
+RegisterNetEvent('prp-uberdelivery:end')
+AddEventHandler('prp-uberdelivery:end', function()
  local pedxd = GetPlayerPed( -1 )
  	if starteduber then
 		TriggerEvent('DoLongHudText', 'Uber Delivery: Deactivated', 1)

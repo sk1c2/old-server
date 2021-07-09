@@ -140,8 +140,8 @@ end)
 --     TriggerClientEvent('robbery:sendServerFlags', -1, Prison_Electric_State,Prison_Physical_State,false,Prison_Power_State,true,Paleto_Power_State,CityCard,PaletoCard)
 -- end)
 
-RegisterNetEvent('wrp-robbery:setstate')
-AddEventHandler('wrp-robbery:setstate', function()
+RegisterNetEvent('prp-robbery:setstate')
+AddEventHandler('prp-robbery:setstate', function()
     TriggerClientEvent('robbery:sendServerFlags', -1, false,Prison_Physical_State,false,false,door,false,false,false)
 end)
 
@@ -177,7 +177,7 @@ AddEventHandler("robbery:robberyFinished", function(locationID, ToolType, itemid
     if marker.attachedDoor ~= nil and marker.attachedDoor ~= 0 and marker.attachedDoor ~= -22 then 
        -- print("i am about to unlock the door rn bud")
         print('should be opening vault')
-        TriggerEvent('wrp-doors:ForceLockState', marker.attachedDoor, 0) end
+        TriggerEvent('prp-doors:ForceLockState', marker.attachedDoor, 0) end
     if locationID == 16 then
         TriggerClientEvent('robbery:sendServerFlags', -1, false,Prison_Physical_State,false,false,door,false,false,false)
     end
@@ -188,14 +188,14 @@ AddEventHandler("robbery:robberyFinished", function(locationID, ToolType, itemid
         TriggerClientEvent('robbery:sendServerFlags', -1, false,Prison_Physical_State,false,false,door,false,false,false)
     end
     if locationID == 1 then
-        TriggerEvent('wrp-doors:ForceLockState', 137, 0) end
+        TriggerEvent('prp-doors:ForceLockState', 137, 0) end
     if locationID == 2 then
-        TriggerEvent('wrp-doors:ForceLockState', 138, 0) end
+        TriggerEvent('prp-doors:ForceLockState', 138, 0) end
     if marker.attachedDoor ~= nil and marker.attachedDoor == -22 then end
     if locationID > 36 and locationID < 40 then
-        TriggerClientEvent("wrp-banned:getID",src,"markedbills",math.random(10,50))
+        TriggerClientEvent("prp-banned:getID",src,"markedbills",math.random(10,50))
         if math.random(100) > 70 then
-            TriggerClientEvent("wrp-banned:getID",src,"Gruppe6Card22", 1)
+            TriggerClientEvent("prp-banned:getID",src,"Gruppe6Card22", 1)
         end
         return
     end
@@ -204,17 +204,17 @@ AddEventHandler("robbery:robberyFinished", function(locationID, ToolType, itemid
         return
     end
     if locationID == 5 then
-        TriggerEvent('wrp-doors:ForceLockState', 139, 0)
+        TriggerEvent('prp-doors:ForceLockState', 139, 0)
         return
     end
     if locationID == 8 then
-        TriggerEvent('wrp-doors:ForceLockState', 140, 0)
+        TriggerEvent('prp-doors:ForceLockState', 140, 0)
     end
     if marker.dropChance ~= 0 or marker.dropChance ~= 0 then
         if math.random(2) == 2 then
-            TriggerClientEvent("wrp-banned:getID",src,"markedbills", math.random(10,50))
+            TriggerClientEvent("prp-banned:getID",src,"markedbills", math.random(10,50))
         else
-            TriggerClientEvent("wrp-banned:getID",src,"inkedmoneybag", math.random(1,2))
+            TriggerClientEvent("prp-banned:getID",src,"inkedmoneybag", math.random(1,2))
         end
 
 
@@ -278,7 +278,7 @@ function electricDisable(GroupType)
             flags[k].toolUsed = 0
             flags[k].inUse = false
             if v.attachedDoor ~= nil and v.attachedDoor ~= -22 and v.attachedDoor ~= 0 then
-                TriggerClientEvent("wrp-doors:ForceLockState",v.attachedDoor,0)
+                TriggerClientEvent("prp-doors:ForceLockState",v.attachedDoor,0)
             end
         end
     end
@@ -286,25 +286,25 @@ end
 
 function lockdown()
     TriggerClientEvent("jail:lockdown", -1, true)
-    TriggerEvent("wrp-doors:ForceLockState",211,1)
-    TriggerEvent("wrp-doors:ForceLockState",212,1)
-    TriggerEvent("wrp-doors:ForceLockState",213,1)
-    TriggerEvent("wrp-doors:ForceLockState",214,1)
+    TriggerEvent("prp-doors:ForceLockState",211,1)
+    TriggerEvent("prp-doors:ForceLockState",212,1)
+    TriggerEvent("prp-doors:ForceLockState",213,1)
+    TriggerEvent("prp-doors:ForceLockState",214,1)
 end
 
 function endLockdown()
     TriggerClientEvent("jail:lockdown", -1, false)
-    TriggerEvent("wrp-doors:ForceLockState",211,0)
-    TriggerEvent("wrp-doors:ForceLockState",212,0)
-    TriggerEvent("wrp-doors:ForceLockState",213,0)
-    TriggerEvent("wrp-doors:ForceLockState",214,0)
+    TriggerEvent("prp-doors:ForceLockState",211,0)
+    TriggerEvent("prp-doors:ForceLockState",212,0)
+    TriggerEvent("prp-doors:ForceLockState",213,0)
+    TriggerEvent("prp-doors:ForceLockState",214,0)
 end
 
 function CheckLargeBanks()
     for k,v in pairs(markers) do
         if v.attachedDoor ~= nil and v.attachedDoor ~= -22 and v.attachedDoor ~= 0 then
-            if not flags[k].isFinished and not exports["wrp-doors"]:isDoorLocked(v.attachedDoor) then
-                TriggerEvent("wrp-doors:ForceLockState", v.attachedDoor,1)
+            if not flags[k].isFinished and not exports["prp-doors"]:isDoorLocked(v.attachedDoor) then
+                TriggerEvent("prp-doors:ForceLockState", v.attachedDoor,1)
             end
         end
         if flags[k].time ~= 0 and (os.time() - flags[k].time) > 5400 then
@@ -326,8 +326,8 @@ function resetArea(locationID)
     end
 end
 
--- RegisterServerEvent('wrp-robbery:checkflag')
--- AddEventHandler('wrp-robbery:checkflag', function(data)
+-- RegisterServerEvent('prp-robbery:checkflag')
+-- AddEventHandler('prp-robbery:checkflag', function(data)
 --     -- Prison_Power
 --     local check = false
 --     local marker = markers[data]
@@ -345,8 +345,8 @@ end
 --     end
 -- end)
 
-RegisterServerEvent('wrp-robbery:checkflag')
-AddEventHandler('wrp-robbery:checkflag', function()
+RegisterServerEvent('prp-robbery:checkflag')
+AddEventHandler('prp-robbery:checkflag', function()
     -- Prison_Power
    total = total + 1
   -- print(total)

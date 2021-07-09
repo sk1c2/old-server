@@ -253,8 +253,8 @@ Citizen.CreateThread(function()
     while true do
 		Citizen.Wait(5000)
 		
-        local amountofcash = exports['wrp-base']:getModule("LocalPlayer"):getCurrentCharacter()
-        TriggerServerEvent("wrp-drugdeliveries:amount", amountofcash)
+        local amountofcash = exports['prp-base']:getModule("LocalPlayer"):getCurrentCharacter()
+        TriggerServerEvent("prp-drugdeliveries:amount", amountofcash)
     end
 end)
 
@@ -499,7 +499,7 @@ function HasStolenGoods()
 		return true
 	else
 		for i = 84, 97 do
-			local itemcount = exports["wrp-inventory"]:hasEnoughOfItem(stolenGoodsTable[i],1,false)
+			local itemcount = exports["prp-inventory"]:hasEnoughOfItem(stolenGoodsTable[i],1,false)
 			if itemcount then
 				TriggerEvent("inventory:removeItem",stolenGoodsTable[i], 1)
 				-- TriggerEvent("attachItemDrugs","cashcase01")
@@ -531,8 +531,8 @@ function DoDropOff(requestMoney)
 		if HasStolenGoods() then
 
 			if math.random(10) == 1 then
-				TriggerEvent( "wrp-banned:getID", "Gruppe6Card3 ", 1 )
-				TriggerEvent( "wrp-banned:getID", "locksystem", math.random(4) )
+				TriggerEvent( "prp-banned:getID", "Gruppe6Card3 ", 1 )
+				TriggerEvent( "prp-banned:getID", "locksystem", math.random(4) )
 			end
 			
 			if math.random(49) == 49 then
@@ -543,20 +543,20 @@ function DoDropOff(requestMoney)
 
 				cashPayment = math.random(100,200)
 				
-				if exports["wrp-inventory"]:hasEnoughOfItem("inkedmoneybag",1,false) then     
+				if exports["prp-inventory"]:hasEnoughOfItem("inkedmoneybag",1,false) then     
 					-- RepPlus()
 					TriggerEvent("inventory:removeItem","inkedmoneybag", 1)   
 					cashPayment = cashPayment + 50000  
 
-		        elseif exports["wrp-inventory"]:hasEnoughOfItem("rollcash",30,false) then     
+		        elseif exports["prp-inventory"]:hasEnoughOfItem("rollcash",30,false) then     
 		            TriggerEvent("inventory:removeItem","rollcash", 30)   
 		            cashPayment = cashPayment + rollcashprice             
 		            TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-		        elseif exports["wrp-inventory"]:hasEnoughOfItem("markedbills",20,false) then     
+		        elseif exports["prp-inventory"]:hasEnoughOfItem("markedbills",20,false) then     
 		            TriggerEvent("inventory:removeItem","markedbills", 20)   
 		            cashPayment = cashPayment + markedbillsprice            
 		            TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-				elseif exports["wrp-inventory"]:hasEnoughOfItem("band",20,false) then     
+				elseif exports["prp-inventory"]:hasEnoughOfItem("band",20,false) then     
 					TriggerEvent("inventory:removeItem","band", 20)   
 					cashPayment = cashPayment + bandprice           
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
@@ -565,7 +565,7 @@ function DoDropOff(requestMoney)
 		        end
 
 				if math.random(100) > 45 then
-					TriggerEvent( "wrp-banned:getID", "oxy", math.random(7) )
+					TriggerEvent( "prp-banned:getID", "oxy", math.random(7) )
 				end
 
 			else
@@ -620,14 +620,14 @@ function DoDropOff(requestMoney)
 
 		PlayAmbientSpeech1(deliveryPed, "Generic_Thanks", "Speech_Params_Force_Shouted_Critical")
 		if math.random(7) == 5 then
-			TriggerEvent("wrp-banned:getID","pix1",1)
+			TriggerEvent("prp-banned:getID","pix1",1)
 		end
 
 		if math.random(55) == 5 then
-			TriggerEvent("wrp-banned:getID","pix2",1)
+			TriggerEvent("prp-banned:getID","pix2",1)
 		end
 
-		TriggerEvent('wrp-ac:checkforkick', cashPayment)
+		TriggerEvent('prp-ac:checkforkick', cashPayment)
 		TriggerServerEvent("police:multipledenominators",true)
 		TriggerEvent("denoms",true)
 		TriggerEvent("client:newStress",true,math.ceil(1250))
@@ -713,7 +713,7 @@ function SearchPockets(ai)
             if IsControlJustReleased(1,38) and #(pos - GetEntityCoords(PlayerPedId())) < 3.0 then
                 searching = true
                 TriggerEvent("animation:PlayAnimation","search")
-                local finished = exports["wrp-taskbar"]:taskBar(15000,"Searching Thug")
+                local finished = exports["prp-taskbar"]:taskBar(15000,"Searching Thug")
 
                 if tonumber(finished) == 100 then
                     DropItemPed(ai)
@@ -1094,12 +1094,12 @@ AddEventHandler('payment:chopshopscrap', function(rarity,playsound)
 	
 	if playsound then
 		-- if math.random(50) == 20 then
-		-- 	TriggerEvent( "wrp-banned:getID", "Gruppe6Card3", 1 )
+		-- 	TriggerEvent( "prp-banned:getID", "Gruppe6Card3", 1 )
 		-- end
 		TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 2.0, 'impactdrill', 0.5)
 	end
 	local amount = rarity * 5
-		--TriggerEvent('wrp-banned:getID', tradingTable[math.random(#tradingTable)], amount)	
+		--TriggerEvent('prp-banned:getID', tradingTable[math.random(#tradingTable)], amount)	
 	if amount <= 50 then
 		TriggerServerEvent('loot:useItem', 'chopchop')
 	else
@@ -1148,7 +1148,7 @@ function CompleteScrapping(vehicle, originalVehicleLocation)
 
 	TaskPlayAnim(PlayerPedId(), "mp_car_bomb", "car_bomb_mechanic", 8.0, -8, -1, 49, 0, 0, 0, 0)
 
-	local finished = exports["wrp-taskbar"]:taskBar(20000,"Scrapping Car")
+	local finished = exports["prp-taskbar"]:taskBar(20000,"Scrapping Car")
 	local currentLocation = GetEntityCoords(vehicle)
 	if finished == 100 then
 	    local vehicleDifference = #(currentLocation - originalVehicleLocation)
@@ -1181,7 +1181,7 @@ end)
 RegisterNetEvent('payment:chopPixerium')
 AddEventHandler('payment:chopPixerium', function()
 	if not recentpix then
-		--TriggerEvent("wrp-banned:getID","pix1",1)
+		--TriggerEvent("prp-banned:getID","pix1",1)
 		TriggerServerEvent('loot:useItem', 'chopchop2')
 		recentpix = true
 		TriggerEvent("resetpix")
@@ -1217,7 +1217,7 @@ function CleanUpArea()
     EndFindObject(handle)
 end
 function buyDrugs()
-	TriggerEvent( "wrp-banned:getID", "oxy", 1)
+	TriggerEvent( "prp-banned:getID", "oxy", 1)
 end
 
 local GoldBarTime = false
@@ -1229,7 +1229,7 @@ end)
 
 RegisterNetEvent('goldtrade')
 AddEventHandler('goldtrade', function()
-	if exports["wrp-inventory"]:hasEnoughOfItem("goldbar",70,true) then
+	if exports["prp-inventory"]:hasEnoughOfItem("goldbar",70,true) then
 		TriggerEvent("inventory:removeItem", "goldbar", 70)
 		TriggerEvent('mission:completed', 35000)
 	end
@@ -1259,8 +1259,8 @@ Citizen.CreateThread(function()
 				DrawText3Ds(-112.58, 6468.93, 31.63, "[E] to Exchange 70 Gold Bars for $35000 (5p)") 
 								
 				if IsControlJustReleased(0,38) then
-					if exports["wrp-inventory"]:hasEnoughOfItem("goldbar",70,true) then
-						local finished = exports["wrp-taskbar"]:taskBar(120000,"Trading Bars")
+					if exports["prp-inventory"]:hasEnoughOfItem("goldbar",70,true) then
+						local finished = exports["prp-taskbar"]:taskBar(120000,"Trading Bars")
 						if finished == 100 then
 							TriggerEvent("pixerium:check",5,"goldtrade",false)
 						end
@@ -1291,7 +1291,7 @@ Citizen.CreateThread(function()
 
 			DrawText3Ds(-1469.541, 25.18418, 53.64828, "[E] $1500 - Delivery Job (Payment Cash + Oxy", costs)
             if IsControlJustReleased(0,38) then
-                local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+                local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
                 local Player = LocalPlayer:getCurrentCharacter()
                 local costs = 1500
                 if Player.cash >= costs then
@@ -1500,11 +1500,11 @@ Citizen.CreateThread(function()
 							if 1 + 1 ~= 2 then
 		            			TriggerEvent("DoLongHudText","Its too late - noones buying shit!",2)
 		            		else
-								if exports['wrp-inventory']:hasEnoughOfItem('oxy', 12) then
+								if exports['prp-inventory']:hasEnoughOfItem('oxy', 12) then
 									mygang = drugLocs[i]["gang"]
-									local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+									local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 									local Player = LocalPlayer:getCurrentCharacter()
-									TriggerEvent("wrp-ac:InfoPass",math.random(200,300))
+									TriggerEvent("prp-ac:InfoPass",math.random(200,300))
 									TriggerEvent('inventory:removeItem', 'oxy', 12)
 									Citizen.Wait(1500)
 								end
@@ -1618,9 +1618,9 @@ end)
 
 -- they pay $1000 for $3000 worth of product and start event.
 
-RegisterNetEvent('wrp-ac:checkforkick')
-AddEventHandler('wrp-ac:checkforkick', function(amount)
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+RegisterNetEvent('prp-ac:checkforkick')
+AddEventHandler('prp-ac:checkforkick', function(amount)
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:addCash(Player.id, amount)
 end)

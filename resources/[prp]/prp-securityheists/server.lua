@@ -24,8 +24,8 @@ licenseArray[#licenseArray+1] = license
     TriggerClientEvent('sec:AllowHeist', _source)
 end)
 
-RegisterServerEvent('wrp-securityheists:gatherjob')
-AddEventHandler('wrp-securityheists:gatherjob', function(jobname)
+RegisterServerEvent('prp-securityheists:gatherjob')
+AddEventHandler('prp-securityheists:gatherjob', function(jobname)
     job = jobname
     --print(job)
 end)

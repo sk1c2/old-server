@@ -7,8 +7,8 @@ local CopPed                    = 0
 local DragStatus = {}
 DragStatus.IsDragged = false
 
-RegisterNetEvent('wrp-ambulancejob:drag')
-AddEventHandler('wrp-ambulancejob:drag', function(copID)
+RegisterNetEvent('prp-ambulancejob:drag')
+AddEventHandler('prp-ambulancejob:drag', function(copID)
 
 	DragStatus.IsDragged = not DragStatus.IsDragged
 	DragStatus.CopId     = tonumber(copID)
@@ -31,8 +31,8 @@ AddEventHandler('wrp-ambulancejob:drag', function(copID)
 		end
 end)
 
-RegisterNetEvent('wrp-ambulancejob:putInVehicle')
-AddEventHandler('wrp-ambulancejob:putInVehicle', function()
+RegisterNetEvent('prp-ambulancejob:putInVehicle')
+AddEventHandler('prp-ambulancejob:putInVehicle', function()
 	local playerPed = PlayerPedId()
 	local coords    = GetEntityCoords(playerPed)
 
@@ -59,8 +59,8 @@ AddEventHandler('wrp-ambulancejob:putInVehicle', function()
 	end
 end)
 
-RegisterNetEvent('wrp-ambulancejob:pullOutVehicle')
-AddEventHandler('wrp-ambulancejob:pullOutVehicle', function()
+RegisterNetEvent('prp-ambulancejob:pullOutVehicle')
+AddEventHandler('prp-ambulancejob:pullOutVehicle', function()
 	local playerPed = PlayerPedId()
 
 	if not IsPedSittingInAnyVehicle(playerPed) then
@@ -71,14 +71,14 @@ AddEventHandler('wrp-ambulancejob:pullOutVehicle', function()
 	TaskLeaveVehicle(playerPed, vehicle, 16)
 end)
 
-RegisterNetEvent('wrp-ambulancejob:drag')
-AddEventHandler('wrp-ambulancejob:drag', function(cop)
+RegisterNetEvent('prp-ambulancejob:drag')
+AddEventHandler('prp-ambulancejob:drag', function(cop)
 	IsDragged = not IsDragged
 	CopPed = tonumber(cop)
 end)
 
-RegisterNetEvent('wrp-ambulancejob:un_drag')
-AddEventHandler('wrp-ambulancejob:un_drag', function(cop)
+RegisterNetEvent('prp-ambulancejob:un_drag')
+AddEventHandler('prp-ambulancejob:un_drag', function(cop)
 	IsDragged = not IsDragged
 	DetachEntity(GetPlayerPed(-1), true, false)
 end)
@@ -114,23 +114,23 @@ function drawLoadingText(text, red, green, blue, alpha)
 	EndTextCommandDisplayText(0.5, 0.5)
 end
 
-RegisterNetEvent('wrp-ambulancejob:heal')
-AddEventHandler('wrp-ambulancejob:heal', function(target,healType)
+RegisterNetEvent('prp-ambulancejob:heal')
+AddEventHandler('prp-ambulancejob:heal', function(target,healType)
     local playerPed = PlayerPedId(target)
     local maxHealth = GetEntityMaxHealth(playerPed)
 
     local health = GetEntityHealth(playerPed)
     local newHealth = math.min(maxHealth, math.floor(health + maxHealth / 10))
     SetEntityHealth(playerPed, newHealth)
-    TriggerEvent('wrp-hospital:client:RemoveBleed')
+    TriggerEvent('prp-hospital:client:RemoveBleed')
 
-    TriggerEvent('wrp-hospital:client:RemoveBleed')
-    TriggerEvent('wrp-hospital:client:ResetLimbs')
+    TriggerEvent('prp-hospital:client:RemoveBleed')
+    TriggerEvent('prp-hospital:client:ResetLimbs')
 	TriggerEvent('DoLongHudText', 'You have been healed!', 1)
 end)
 
--- RegisterNetEvent('wrp-ambulancejob:heal')
--- AddEventHandler('wrp-ambulancejob:heal', function(healType)
+-- RegisterNetEvent('prp-ambulancejob:heal')
+-- AddEventHandler('prp-ambulancejob:heal', function(healType)
 --     local playerPed = PlayerPedId()
 --     local maxHealth = GetEntityMaxHealth(playerPed)
 
@@ -138,13 +138,13 @@ end)
 --         local health = GetEntityHealth(playerPed)
 --         local newHealth = math.min(maxHealth, math.floor(health + maxHealth / 10))
 --         SetEntityHealth(playerPed, newHealth)
---         TriggerEvent('wrp-hospital:client:RemoveBleed')
+--         TriggerEvent('prp-hospital:client:RemoveBleed')
 -- 	elseif healType == 'big' then
 -- 		local health = GetEntityHealth(playerPed)
 --         local newHealth = math.min(maxHealth, math.floor(health + maxHealth / 10))
 --         SetEntityHealth(playerPed, newHealth)
---         TriggerEvent('wrp-hospital:client:RemoveBleed')
---         TriggerEvent('wrp-hospital:client:ResetLimbs')
+--         TriggerEvent('prp-hospital:client:RemoveBleed')
+--         TriggerEvent('prp-hospital:client:ResetLimbs')
 --     end
 
 -- 	TriggerEvent('DoLongHudText', 'You have been healed!')
@@ -204,12 +204,12 @@ AddEventHandler("tp:emsRevive", function()
 				Citizen.Wait(10000)
 				ClearPedTasks(playerPed)
 				TriggerServerEvent('admin:revivePlayer', GetPlayerServerId(closestPlayer))
-				-- TriggerServerEvent('wrp-ambulancejob:revive', GetPlayerServerId(closestPlayer))
+				-- TriggerServerEvent('prp-ambulancejob:revive', GetPlayerServerId(closestPlayer))
 			if Config.ReviveReward > 0 then
 				TriggerEvent('DoLongHudText', 'You have revived '.. GetPlayerName(closestPlayer)..' and earned $'..Config.ReviveReward)
-				LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+				LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
 				Player = LocalPlayer:getCurrentCharacter()
-				TriggerServerEvent('wrp-business:givepass', 'EMS', math.random(850, 1000))
+				TriggerServerEvent('prp-business:givepass', 'EMS', math.random(850, 1000))
 				LocalPlayer:addCash(Player.id, math.random(500, 650))
 			else
 				TriggerEvent('DoLongHudText', 'You have successfully revived player')
@@ -240,8 +240,8 @@ AddEventHandler("tp:pdrevive", function()
 				Citizen.Wait(10000)
 				ClearPedTasks(playerPed)
 				TriggerServerEvent('admin:revivePlayer', GetPlayerServerId(closestPlayer))
-				TriggerEvent('wrp-hospital:client:FinishServices')
-				-- TriggerServerEvent('wrp-ambulancejob:revive', GetPlayerServerId(closestPlayer))
+				TriggerEvent('prp-hospital:client:FinishServices')
+				-- TriggerServerEvent('prp-ambulancejob:revive', GetPlayerServerId(closestPlayer))
 	
 			if 1 + 1 > 0 then
 				TriggerEvent('DoLongHudText', 'You have revived '.. GetPlayerName(closestPlayer)..' !')
@@ -304,13 +304,13 @@ AddEventHandler('tp:emssmallheal', function()
 	
 				IsBusy = true
 				TriggerEvent('DoLongHudText', 'Small Healing In Progress', 1)
-				TriggerEvent('wrp-hospital:client:RemoveBleed')
-				TriggerEvent('wrp-hospital:client:ResetLimbs')
+				TriggerEvent('prp-hospital:client:RemoveBleed')
+				TriggerEvent('prp-hospital:client:ResetLimbs')
 				TriggerEvent("animation:PlayAnimation","layspike")
 				Citizen.Wait(2000)
 				ClearPedTasks(playerPed)
 	
-				TriggerServerEvent('wrp-ambulancejob:heal', GetPlayerServerId(closestPlayer))
+				TriggerServerEvent('prp-ambulancejob:heal', GetPlayerServerId(closestPlayer))
 	
 				TriggerEvent('DoLongHudText', 'You have successfully healed '..GetPlayerName(closestPlayer), 1)
 				IsBusy = false
@@ -345,9 +345,9 @@ end)
 -- 				Citizen.Wait(2000)
 -- 				ClearPedTasks(playerPed)
 	
--- 				TriggerEvent('wrp-hospital:items:healplayer')
+-- 				TriggerEvent('prp-hospital:items:healplayer')
 -- 				Citizen.Wait(1000)
--- 				TriggerEvent('wrp-hospital:items:healplayer')
+-- 				TriggerEvent('prp-hospital:items:healplayer')
 				
 -- 				TriggerEvent('DoLongHudText', 'You have successfully healed player')
 -- 				IsBusy = false
@@ -376,13 +376,13 @@ RegisterCommand('healsmall', function()
 	
 					IsBusy = true
 					TriggerEvent('DoLongHudText', 'Small Healing In Progress', 1)
-					TriggerEvent('wrp-hospital:client:RemoveBleed')
-					TriggerEvent('wrp-hospital:client:ResetLimbs')
+					TriggerEvent('prp-hospital:client:RemoveBleed')
+					TriggerEvent('prp-hospital:client:ResetLimbs')
 					TriggerEvent("animation:PlayAnimation","layspike")
 					Citizen.Wait(2000)
 					ClearPedTasks(playerPed)
 	
-					TriggerServerEvent('wrp-ambulancejob:heal', GetPlayerServerId(closestPlayer))
+					TriggerServerEvent('prp-ambulancejob:heal', GetPlayerServerId(closestPlayer))
 	
 					TriggerEvent('DoLongHudText', 'You have successfully healed '..GetPlayerName(closestPlayer), 1)
 					IsBusy = false
@@ -413,13 +413,13 @@ AddEventHandler("tp:emsbigheal", function()
 		
 					IsBusy = true
 					TriggerEvent('DoLongHudText', 'Big Healing In Progress')
-					TriggerEvent('wrp-hospital:client:RemoveBleed')
-					TriggerEvent('wrp-hospital:client:ResetLimbs')
+					TriggerEvent('prp-hospital:client:RemoveBleed')
+					TriggerEvent('prp-hospital:client:ResetLimbs')
 					TriggerEvent("animation:PlayAnimation","layspike")
 					Citizen.Wait(2000)
 					ClearPedTasks(playerPed)
 		
-					TriggerEvent('wrp-hospital:client:FinishServices')
+					TriggerEvent('prp-hospital:client:FinishServices')
 		
 					TriggerEvent('DoLongHudText', 'You have successfully healed player')
 					IsBusy = false
@@ -449,13 +449,13 @@ RegisterCommand('healbig', function()
 		
 					IsBusy = true
 					TriggerEvent('DoLongHudText', 'Big Healing In Progress')
-					TriggerEvent('wrp-hospital:client:RemoveBleed')
-					TriggerEvent('wrp-hospital:client:ResetLimbs')
+					TriggerEvent('prp-hospital:client:RemoveBleed')
+					TriggerEvent('prp-hospital:client:ResetLimbs')
 					TriggerEvent("animation:PlayAnimation","layspike")
 					Citizen.Wait(2000)
 					ClearPedTasks(playerPed)
 		
-					TriggerEvent('wrp-hospital:client:FinishServices')
+					TriggerEvent('prp-hospital:client:FinishServices')
 		
 					TriggerEvent('DoLongHudText', 'You have successfully healed player')
 					IsBusy = false
@@ -470,7 +470,7 @@ RegisterNetEvent("tp:emsputinvehicle")
 AddEventHandler("tp:emsputinvehicle", function()
     local closestPlayer, closestDistance = GetClosestPlayer()
     if closestPlayer ~= -1 and closestDistance <= 3.0 then
-        TriggerServerEvent('wrp-ambulancejob:putInVehicle', GetPlayerServerId(closestPlayer))
+        TriggerServerEvent('prp-ambulancejob:putInVehicle', GetPlayerServerId(closestPlayer))
     else
 		TriggerEvent('DoLongHudText', 'There is no player(s) nearby!',2)
     end
@@ -480,7 +480,7 @@ RegisterNetEvent("tp:emstakeoutvehicle")
 AddEventHandler("tp:emstakeoutvehicle", function()
     local closestPlayer, closestDistance = GetClosestPlayer()
     if closestPlayer ~= -1 and closestDistance <= 3.0 then
-        TriggerServerEvent('wrp-ambulancejob:pullOutVehicle', GetPlayerServerId(closestPlayer))
+        TriggerServerEvent('prp-ambulancejob:pullOutVehicle', GetPlayerServerId(closestPlayer))
     else
 		TriggerEvent('DoLongHudText', 'There is no player(s) nearby!',2)
     end
@@ -490,7 +490,7 @@ RegisterNetEvent("tp:emsdrag")
 AddEventHandler("tp:emsdrag", function()
     local closestPlayer, closestDistance = GetClosestPlayer()
     if closestPlayer ~= -1 and closestDistance <= 3.0 then
-        TriggerServerEvent('wrp-ambulancejob:drag', GetPlayerServerId(closestPlayer))
+        TriggerServerEvent('prp-ambulancejob:drag', GetPlayerServerId(closestPlayer))
     else
 		TriggerEvent('DoLongHudText', 'There is no player(s) nearby!',2)
     end
@@ -500,7 +500,7 @@ RegisterNetEvent("tp:emsundrag")
 AddEventHandler("tp:emsundrag", function()
     local closestPlayer, closestDistance = GetClosestPlayer()
     if closestPlayer ~= -1 and closestDistance <= 3.0 then
-        TriggerServerEvent('wrp-ambulancejob:undrag', GetPlayerServerId(closestPlayer))
+        TriggerServerEvent('prp-ambulancejob:undrag', GetPlayerServerId(closestPlayer))
     else
 		TriggerEvent('DoLongHudText', 'There is no player(s) nearby!',2)
     end

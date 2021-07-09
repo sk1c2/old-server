@@ -5,130 +5,130 @@ function loadAnimDict(dict)
 	end
 end
 
-RegisterNetEvent("wrp-hospital:items:gauze")
-AddEventHandler("wrp-hospital:items:gauze", function(item)
+RegisterNetEvent("prp-hospital:items:gauze")
+AddEventHandler("prp-hospital:items:gauze", function(item)
     loadAnimDict("missheistdockssetup1clipboard@idle_a")
     TaskPlayAnim( PlayerPedId(), "missheistdockssetup1clipboard@idle_a", "idle_a", 3.0, 1.0, -1, 49, 0, 0, 0, 0 ) 
 --    exports["urp_taskbar"]:StartDelayedFunction('Packing Wounds', 1500, function()
-        local finished = exports["wrp-taskbar"]:taskBar(1500,"Packing Wounds")
+        local finished = exports["prp-taskbar"]:taskBar(1500,"Packing Wounds")
         if finished == 100 then
-        TriggerEvent('wrp-hospital:client:FieldTreatBleed')
+        TriggerEvent('prp-hospital:client:FieldTreatBleed')
         ClearPedTasks(PlayerPedId())
     end
 end)
 
-RegisterNetEvent("wrp-hospital:items:bandage")
-AddEventHandler("wrp-hospital:items:bandage", function(item)
+RegisterNetEvent("prp-hospital:items:bandage")
+AddEventHandler("prp-hospital:items:bandage", function(item)
     loadAnimDict("missheistdockssetup1clipboard@idle_a")
     TaskPlayAnim( PlayerPedId(), "missheistdockssetup1clipboard@idle_a", "idle_a", 3.0, 1.0, -1, 49, 0, 0, 0, 0 ) 
 --    exports["urp_taskbar"]:StartDelayedFunction('Using Bandage', 5000, function()
-        local finished = exports["wrp-taskbar"]:taskBar(5000,"Using Bandage")
+        local finished = exports["prp-taskbar"]:taskBar(5000,"Using Bandage")
         if finished == 100 then
         local maxHealth = GetEntityMaxHealth(PlayerPedId())
 		local health = GetEntityHealth(PlayerPedId())
 		local newHealth = math.min(maxHealth, math.floor(health + maxHealth / 16))
         SetEntityHealth(PlayerPedId(), newHealth)
-        TriggerEvent('wrp-hospital:client:RemoveBleed')
+        TriggerEvent('prp-hospital:client:RemoveBleed')
         ClearPedTasks(PlayerPedId())
     end
 end)
 
-RegisterNetEvent("wrp-hospital:items:healplayer")
-AddEventHandler("wrp-hospital:items:healplayer", function(item)
+RegisterNetEvent("prp-hospital:items:healplayer")
+AddEventHandler("prp-hospital:items:healplayer", function(item)
 --    exports["urp_taskbar"]:StartDelayedFunction('Using Bandage', 5000, function()
     local maxHealth = GetEntityMaxHealth(PlayerPedId())
 	local health = GetEntityHealth(PlayerPedId())
 	local newHealth = math.min(maxHealth, math.floor(health + maxHealth / 16))
     SetEntityHealth(PlayerPedId(), newHealth)
-    TriggerEvent('wrp-hospital:client:RemoveBleed')
+    TriggerEvent('prp-hospital:client:RemoveBleed')
     ClearPedTasks(PlayerPedId())
 end)
 
-RegisterNetEvent("wrp-hospital:items:firstaid")
-AddEventHandler("wrp-hospital:items:firstaid", function(item)
+RegisterNetEvent("prp-hospital:items:firstaid")
+AddEventHandler("prp-hospital:items:firstaid", function(item)
     loadAnimDict("missheistdockssetup1clipboard@idle_a")
     TaskPlayAnim( PlayerPedId(), "missheistdockssetup1clipboard@idle_a", "idle_a", 3.0, 1.0, -1, 49, 0, 0, 0, 0 ) 
 --    exports["urp_taskbar"]:StartDelayedFunction('Using First Aid', 10000, function()
-        local finished = exports["wrp-taskbar"]:taskBar(10000,"Using First Aid")
+        local finished = exports["prp-taskbar"]:taskBar(10000,"Using First Aid")
         if finished == 100 then
         local maxHealth = GetEntityMaxHealth(PlayerPedId())
 		local health = GetEntityHealth(PlayerPedId())
 		local newHealth = math.min(maxHealth, math.floor(health + maxHealth / 8))
         SetEntityHealth(PlayerPedId(), newHealth)
-        TriggerEvent('wrp-hospital:client:RemoveBleed')
+        TriggerEvent('prp-hospital:client:RemoveBleed')
         ClearPedTasks(PlayerPedId())
     end
 end)
 
-RegisterNetEvent("wrp-hospital:items:medkit")
-AddEventHandler("wrp-hospital:items:medkit", function(item)
+RegisterNetEvent("prp-hospital:items:medkit")
+AddEventHandler("prp-hospital:items:medkit", function(item)
     loadAnimDict("missheistdockssetup1clipboard@idle_a")
     TaskPlayAnim( PlayerPedId(), "missheistdockssetup1clipboard@idle_a", "idle_a", 3.0, 1.0, -1, 49, 0, 0, 0, 0 ) 
 --    exports["urp_taskbar"]:StartDelayedFunction('Using Medkit', 20000, function()
-        local finished = exports["wrp-taskbar"]:taskBar(20000,"Using Medkit")
+        local finished = exports["prp-taskbar"]:taskBar(20000,"Using Medkit")
         if finished == 100 then
         SetEntityHealth(PlayerPedId(), GetEntityMaxHealth(PlayerPedId()))
-        TriggerEvent('wrp-hospital:client:FieldTreatLimbs')
+        TriggerEvent('prp-hospital:client:FieldTreatLimbs')
         ClearPedTasks(PlayerPedId())
     end
 end)
 
-RegisterNetEvent("wrp-hospital:items:vicodin")
-AddEventHandler("wrp-hospital:items:vicodin", function(item)
+RegisterNetEvent("prp-hospital:items:vicodin")
+AddEventHandler("prp-hospital:items:vicodin", function(item)
     loadAnimDict("mp_suicide")
     TaskPlayAnim( PlayerPedId(), "mp_suicide", "pill", 3.0, 1.0, -1, 49, 0, 0, 0, 0 ) 
 --    exports["urp_taskbar"]:StartDelayedFunction('Taking Oxycodone', 1000, function()
 
-        local finished = exports["wrp-taskbar"]:taskBar(10000,"Taking Oxycodone")
+        local finished = exports["prp-taskbar"]:taskBar(10000,"Taking Oxycodone")
         if finished == 100 then
 
 
-        TriggerEvent('wrp-hospital:client:UsePainKiller', 1)
+        TriggerEvent('prp-hospital:client:UsePainKiller', 1)
         ClearPedTasks(PlayerPedId())
     end
 end)
 
-RegisterNetEvent("wrp-hospital:items:ifak")
-AddEventHandler("wrp-hospital:items:ifak", function(item)
+RegisterNetEvent("prp-hospital:items:ifak")
+AddEventHandler("prp-hospital:items:ifak", function(item)
     loadAnimDict("mp_suicide")
     TaskPlayAnim( PlayerPedId(), "amb@world_human_clipboard@male@idle_a", "idle_c", 3.0, 1.0, 10000, 49, 0, 0, 0, 0 ) 
 --    exports["urp_taskbar"]:StartDelayedFunction('Using IFAK', 10000, function()
 
-        local finished = exports["wrp-taskbar"]:taskBar(10000,"Using IFAK")
+        local finished = exports["prp-taskbar"]:taskBar(10000,"Using IFAK")
         if finished == 100 then
 
             
-        TriggerEvent('wrp-hospital:client:UsePainKiller', 1)
+        TriggerEvent('prp-hospital:client:UsePainKiller', 1)
         ClearPedTasks(PlayerPedId())
     end
 end)
 
-RegisterNetEvent("wrp-hospital:items:hydrocodone")
-AddEventHandler("wrp-hospital:items:hydrocodone", function(item)
+RegisterNetEvent("prp-hospital:items:hydrocodone")
+AddEventHandler("prp-hospital:items:hydrocodone", function(item)
     loadAnimDict("mp_suicide")
     TaskPlayAnim( PlayerPedId(), "mp_suicide", "pill", 3.0, 1.0, -1, 49, 0, 0, 0, 0 ) 
 --    exports["urp_taskbar"]:StartDelayedFunction('Taking Hydrocodone', 1000, function()
 
-        local finished = exports["wrp-taskbar"]:taskBar(1000,"Taking Hydrocodone")
+        local finished = exports["prp-taskbar"]:taskBar(1000,"Taking Hydrocodone")
         if finished == 100 then
 
 
-        TriggerEvent('wrp-hospital:client:UsePainKiller', 2)
+        TriggerEvent('prp-hospital:client:UsePainKiller', 2)
         ClearPedTasks(PlayerPedId())
     end
 end)
 
-RegisterNetEvent("wrp-hospital:items:morphine")
-AddEventHandler("wrp-hospital:items:morphine", function(item)
+RegisterNetEvent("prp-hospital:items:morphine")
+AddEventHandler("prp-hospital:items:morphine", function(item)
     loadAnimDict("mp_suicide")
     TaskPlayAnim( PlayerPedId(), "mp_suicide", "pill", 3.0, 1.0, -1, 49, 0, 0, 0, 0 ) 
 --    exports["urp_taskbar"]:StartDelayedFunction('Taking Morphine', 2000, function()
 
-        local finished = exports["wrp-taskbar"]:taskBar(2000,"Taking Morphine")
+        local finished = exports["prp-taskbar"]:taskBar(2000,"Taking Morphine")
         if finished == 100 then
 
         
-        TriggerEvent('wrp-hospital:client:UsePainKiller', 6)
+        TriggerEvent('prp-hospital:client:UsePainKiller', 6)
         ClearPedTasks(PlayerPedId())
     end
 end)

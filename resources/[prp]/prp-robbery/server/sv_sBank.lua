@@ -7,8 +7,8 @@ local banks = {
     [6] = {x = 1176.0682373047, y = 2712.8735351562, z = 38.088050842285, h = 87.942642211914, recent = false, robbing = false, rob = {}}
 }
 
-RegisterNetEvent('wrp-robbery:smallBankAttempt')
-AddEventHandler('wrp-robbery:smallBankAttempt', function(bId)
+RegisterNetEvent('prp-robbery:smallBankAttempt')
+AddEventHandler('prp-robbery:smallBankAttempt', function(bId)
     if banks[bId] == nil then return end
     if banks[bId]['recent'] then
         TriggerClientEvent('DoLongHudText', source, 'This bank has already been robbed.', 2)
@@ -21,15 +21,15 @@ AddEventHandler('wrp-robbery:smallBankAttempt', function(bId)
     end
 
     banks[bId]['robbing'] = true
-    TriggerClientEvent('wrp-robbery:updateBankData', -1, banks)
+    TriggerClientEvent('prp-robbery:updateBankData', -1, banks)
     --print('Robbing Bank; ' .. tostring(bId))
 end)
 
-RegisterNetEvent('wrp-robbery:sBankBox')
-AddEventHandler('wrp-robbery:sBankBox', function(bId, iType)
+RegisterNetEvent('prp-robbery:sBankBox')
+AddEventHandler('prp-robbery:sBankBox', function(bId, iType)
 
     banks[bId]['rob'][iType] = true
-    TriggerClientEvent('wrp-robbery:updateBankData', -1, banks)
-    TriggerClientEvent('wrp-robbery:sBankLoot', source)
+    TriggerClientEvent('prp-robbery:updateBankData', -1, banks)
+    TriggerClientEvent('prp-robbery:sBankLoot', source)
     --print('Robbing Box; ' .. tostring(iType))
 end)

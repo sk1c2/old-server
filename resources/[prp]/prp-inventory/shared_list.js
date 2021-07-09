@@ -1197,7 +1197,7 @@ itemList['fishingbass'] = {
     weight: 5,
     nonStack: false,
     model: '',
-    image: 'wrp-souffle.png',
+    image: 'prp-souffle.png',
     information: 'Yummy! Best Cafe Food',
     deg: false,
   };

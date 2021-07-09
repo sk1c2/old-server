@@ -8,8 +8,8 @@ local keybindControls = {
 
 local MAX_MENU_ITEMS = 7
 
-RegisterNetEvent('wrp-menu:refreshui')
-AddEventHandler('wrp-menu:refreshui', function()
+RegisterNetEvent('prp-menu:refreshui')
+AddEventHandler('prp-menu:refreshui', function()
     showMenu = false
     SetNuiFocus(false, false)
     SendNUIMessage({

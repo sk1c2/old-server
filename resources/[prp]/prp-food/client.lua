@@ -8,24 +8,24 @@ Temperature2 = 20
 
 RegisterNetEvent('burgershot:pickup')
 AddEventHandler('burgershot:pickup', function()
-	TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "burgerjob_counter")
+	TriggerEvent("prp-ac:triggeredItemSpawn", "1", "burgerjob_counter")
 end)
 
 RegisterNetEvent('burgershot:pickup2')
 AddEventHandler('burgershot:pickup2', function()
-	TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "burgerjob_counter2")
+	TriggerEvent("prp-ac:triggeredItemSpawn", "1", "burgerjob_counter2")
 end)
 
 RegisterNetEvent('burgershot:pickup3')
 AddEventHandler('burgershot:pickup3', function()
-	TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "burgerjob_counter3")
+	TriggerEvent("prp-ac:triggeredItemSpawn", "1", "burgerjob_counter3")
 end)
 
 RegisterNetEvent('burgershot:shelf')
 AddEventHandler('burgershot:shelf', function()
     local rank = exports["isPed"]:GroupRank("BurgerShot")
     if rank > 0 then
-	    TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "burgerjob_shelf")
+	    TriggerEvent("prp-ac:triggeredItemSpawn", "1", "burgerjob_shelf")
     end
 end)
 
@@ -34,9 +34,9 @@ AddEventHandler('burgershot:drinks', function()
     local rank = exports["isPed"]:GroupRank("BurgerShot")
     if rank > 0 then
         FreezeEntityPosition(PlayerPedId(), true)
-        exports["wrp-taskbar"]:taskBar(10000,"Preparing Drinks")
+        exports["prp-taskbar"]:taskBar(10000,"Preparing Drinks")
         FreezeEntityPosition(PlayerPedId(), false)
-	    TriggerEvent("wrp-ac:triggeredItemSpawn", "12", "Craft")
+	    TriggerEvent("prp-ac:triggeredItemSpawn", "12", "Craft")
     end
 end)
 
@@ -46,9 +46,9 @@ AddEventHandler('burgershot:food', function()
     if rank > 0 then
         ExecuteCommand('e handshake')
         FreezeEntityPosition(PlayerPedId(), true)
-        exports["wrp-taskbar"]:taskBar(10000,"Preparing Food")
+        exports["prp-taskbar"]:taskBar(10000,"Preparing Food")
         FreezeEntityPosition(PlayerPedId(), false)
-	    TriggerEvent("wrp-ac:triggeredItemSpawn", "31", "Craft")
+	    TriggerEvent("prp-ac:triggeredItemSpawn", "31", "Craft")
     end
 end)
 
@@ -56,7 +56,7 @@ RegisterNetEvent('burgershot:storage')
 AddEventHandler('burgershot:storage', function()
     local rank = exports["isPed"]:GroupRank("BurgerShot")
     if rank > 0 then
-	    TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "Stolen-Goods")
+	    TriggerEvent("prp-ac:triggeredItemSpawn", "1", "Stolen-Goods")
     end
 end)
 
@@ -65,11 +65,11 @@ AddEventHandler('burgershot:fries', function()
     local job = exports['isPed']:isPed('job')
     if job == 'BurgerShot' then
         FreezeEntityPosition(PlayerPedId(), true)
-        exports["wrp-taskbar"]:taskBar(8000,"Frying The Fries")
+        exports["prp-taskbar"]:taskBar(8000,"Frying The Fries")
         FreezeEntityPosition(PlayerPedId(), false)
-        if exports['wrp-inventory']:hasEnoughOfItem('potato', 1) then
+        if exports['prp-inventory']:hasEnoughOfItem('potato', 1) then
             TriggerEvent('inventory:removeItem', 'potato', 1)
-	        TriggerEvent('wrp-banned:getID', 'fries', 1)
+	        TriggerEvent('prp-banned:getID', 'fries', 1)
         end
     end
 end)
@@ -77,14 +77,14 @@ end)
 
 RegisterNetEvent('iatra:openCounter')
 AddEventHandler('iatra:openCounter', function()
-    TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "bakery_counter")
+    TriggerEvent("prp-ac:triggeredItemSpawn", "1", "bakery_counter")
 end)
 
 RegisterNetEvent('iatra:openStorage:shelf')
 AddEventHandler('iatra:openStorage:shelf', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
-	    TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "bakery_shelf")
+	    TriggerEvent("prp-ac:triggeredItemSpawn", "1", "bakery_shelf")
     end
 end)
 
@@ -95,58 +95,58 @@ function loadAnimDict( dict )
     end
 end
 
-RegisterNetEvent('wrp-obtaindrinkiatria')
-AddEventHandler('wrp-obtaindrinkiatria', function()
+RegisterNetEvent('prp-obtaindrinkiatria')
+AddEventHandler('prp-obtaindrinkiatria', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
         loadAnimDict('mini@repair')
         TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-        exports['wrp-taskbar']:taskBar(5000, 'Pouring Drinks')
+        exports['prp-taskbar']:taskBar(5000, 'Pouring Drinks')
         ClearPedTasks(PlayerPedId())
-        TriggerEvent("wrp-ac:triggeredItemSpawn", "513", "Craft")
+        TriggerEvent("prp-ac:triggeredItemSpawn", "513", "Craft")
     end
 end)
 
-RegisterNetEvent('wrp-graborder')
-AddEventHandler('wrp-graborder', function()
+RegisterNetEvent('prp-graborder')
+AddEventHandler('prp-graborder', function()
     loadAnimDict('mini@repair')
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-    exports['wrp-taskbar']:taskBar(5000, 'Grabbing Order')
+    exports['prp-taskbar']:taskBar(5000, 'Grabbing Order')
     ClearPedTasks(PlayerPedId())
-    TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "bakery_counter")
+    TriggerEvent("prp-ac:triggeredItemSpawn", "1", "bakery_counter")
 end)
 
 
-RegisterNetEvent('wrp-collectdrink')
-AddEventHandler('wrp-collectdrink', function()
+RegisterNetEvent('prp-collectdrink')
+AddEventHandler('prp-collectdrink', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
         loadAnimDict('mini@repair')
         TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-        exports['wrp-taskbar']:taskBar(5000, 'Grabbing Drinks')
+        exports['prp-taskbar']:taskBar(5000, 'Grabbing Drinks')
         ClearPedTasks(PlayerPedId())
-        TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "bakery_drinks")
+        TriggerEvent("prp-ac:triggeredItemSpawn", "1", "bakery_drinks")
     end
 end)
 
-RegisterNetEvent('wrp-collectbottom')
-AddEventHandler('wrp-collectbottom', function()
+RegisterNetEvent('prp-collectbottom')
+AddEventHandler('prp-collectbottom', function()
     loadAnimDict('mini@repair')
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-    exports['wrp-taskbar']:taskBar(5000, 'Grabbing Order')
+    exports['prp-taskbar']:taskBar(5000, 'Grabbing Order')
     ClearPedTasks(PlayerPedId())
-    TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "bakery_counter")
+    TriggerEvent("prp-ac:triggeredItemSpawn", "1", "bakery_counter")
 end)
 
-RegisterNetEvent('wrp-bakerystoragemain')
-AddEventHandler('wrp-bakerystoragemain', function()
+RegisterNetEvent('prp-bakerystoragemain')
+AddEventHandler('prp-bakerystoragemain', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
         loadAnimDict('mini@repair')
         TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-        exports['wrp-taskbar']:taskBar(5000, 'Accessing Storage')
+        exports['prp-taskbar']:taskBar(5000, 'Accessing Storage')
         ClearPedTasks(PlayerPedId())
-        TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "bakery_storage")
+        TriggerEvent("prp-ac:triggeredItemSpawn", "1", "bakery_storage")
     end
 end)
 
@@ -161,35 +161,35 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('wrp-souffle')
-AddEventHandler('wrp-souffle', function()
+RegisterNetEvent('prp-souffle')
+AddEventHandler('prp-souffle', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
                 if Temperature < 50 then
                     loadAnimDict('mini@repair')
                     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-                    exports['wrp-taskbar']:taskBar(5000, 'Heating Up Cooker')
+                    exports['prp-taskbar']:taskBar(5000, 'Heating Up Cooker')
                     ClearPedTasks(PlayerPedId())
                     Temperature2 = Temperature2 + 10
                     part1 = true
                 else
-                    if exports['wrp-inventory']:hasEnoughOfItem('foodingredient', 1) then
-                        exports['wrp-taskbar']:taskBar(2500, 'Putting Ingredients Into Cooker..')
+                    if exports['prp-inventory']:hasEnoughOfItem('foodingredient', 1) then
+                        exports['prp-taskbar']:taskBar(2500, 'Putting Ingredients Into Cooker..')
                         Citizen.Wait(100)
-                        exports['wrp-taskbar']:taskBar(2500, 'Checking Temperature..')
+                        exports['prp-taskbar']:taskBar(2500, 'Checking Temperature..')
                         Citizen.Wait(100)
                         if Temperature < 50 then
                             TriggerEvent('DoLongHudText', 'You left the Cooker Too Long! Its cold!', 2)
                         else
                             Citizen.Wait(10)
-                            exports['wrp-taskbar']:taskBar(2500, 'Mixing Ingredients')
+                            exports['prp-taskbar']:taskBar(2500, 'Mixing Ingredients')
                             Citizen.Wait(100)
-                            exports['wrp-taskbar']:taskBar(15000, 'Allowing Ingredients to Set')
+                            exports['prp-taskbar']:taskBar(15000, 'Allowing Ingredients to Set')
                             Citizen.Wait(100)
                             TriggerEvent('DoLongHudText', 'Ingredients have Set!')
-                            exports['wrp-taskbar']:taskBar(2500, 'Taking out the Souffle')
+                            exports['prp-taskbar']:taskBar(2500, 'Taking out the Souffle')
                             Citizen.Wait(100)
-                            TriggerEvent('wrp-banned:getID', 'souffle', math.random(1,5))
+                            TriggerEvent('prp-banned:getID', 'souffle', math.random(1,5))
                             TriggerEvent('inventory:removeItem', 'foodingredient', 2)
                         end
                     end
@@ -197,35 +197,35 @@ AddEventHandler('wrp-souffle', function()
             end
         end)
 
-RegisterNetEvent('wrp-latticepie')
-AddEventHandler('wrp-latticepie', function()
+RegisterNetEvent('prp-latticepie')
+AddEventHandler('prp-latticepie', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
     if Temperature < 50 then
         loadAnimDict('mini@repair')
         TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-        exports['wrp-taskbar']:taskBar(5000, 'Heating Up Microwave')
+        exports['prp-taskbar']:taskBar(5000, 'Heating Up Microwave')
         ClearPedTasks(PlayerPedId())
         Temperature = Temperature + 10
         part1 = true
     else
-        if exports['wrp-inventory']:hasEnoughOfItem('foodingredient', 1) then
-            exports['wrp-taskbar']:taskBar(2500, 'Putting Ingredients Into Microwave..')
+        if exports['prp-inventory']:hasEnoughOfItem('foodingredient', 1) then
+            exports['prp-taskbar']:taskBar(2500, 'Putting Ingredients Into Microwave..')
             Citizen.Wait(100)
-            exports['wrp-taskbar']:taskBar(2500, 'Checking Microwave..')
+            exports['prp-taskbar']:taskBar(2500, 'Checking Microwave..')
             Citizen.Wait(100)
             if Temperature < 50 then
                 TriggerEvent('DoLongHudText', 'You left the Microwave Too Long! Its cold!', 2)
             else
                 Citizen.Wait(10)
-                exports['wrp-taskbar']:taskBar(2500, 'Checking Lattice Topped Pie Slice')
+                exports['prp-taskbar']:taskBar(2500, 'Checking Lattice Topped Pie Slice')
                 Citizen.Wait(100)
-                exports['wrp-taskbar']:taskBar(15000, 'Allowing Pie to Set')
+                exports['prp-taskbar']:taskBar(15000, 'Allowing Pie to Set')
                 Citizen.Wait(100)
                 TriggerEvent('DoLongHudText', 'Pie has Set!')
-                exports['wrp-taskbar']:taskBar(2500, 'Taking out the Pie')
+                exports['prp-taskbar']:taskBar(2500, 'Taking out the Pie')
                 Citizen.Wait(100)
-                TriggerEvent('wrp-banned:getID', 'latticetopped', math.random(1,5))
+                TriggerEvent('prp-banned:getID', 'latticetopped', math.random(1,5))
                 TriggerEvent('inventory:removeItem', 'foodingredient', 2)
             end
         end
@@ -233,35 +233,35 @@ AddEventHandler('wrp-latticepie', function()
     end
 end)
 
-RegisterNetEvent('wrp-brownie')
-AddEventHandler('wrp-brownie', function()
+RegisterNetEvent('prp-brownie')
+AddEventHandler('prp-brownie', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
     if Temperature < 50 then
         loadAnimDict('mini@repair')
         TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-        exports['wrp-taskbar']:taskBar(5000, 'Heating Up Microwave')
+        exports['prp-taskbar']:taskBar(5000, 'Heating Up Microwave')
         ClearPedTasks(PlayerPedId())
         Temperature = Temperature + 10
         part1 = true
     else
-        if exports['wrp-inventory']:hasEnoughOfItem('foodingredient', 1) then
-            exports['wrp-taskbar']:taskBar(2500, 'Putting Ingredients Into Microwave..')
+        if exports['prp-inventory']:hasEnoughOfItem('foodingredient', 1) then
+            exports['prp-taskbar']:taskBar(2500, 'Putting Ingredients Into Microwave..')
             Citizen.Wait(100)
-            exports['wrp-taskbar']:taskBar(2500, 'Checking Microwave..')
+            exports['prp-taskbar']:taskBar(2500, 'Checking Microwave..')
             Citizen.Wait(100)
             if Temperature < 50 then
                 TriggerEvent('DoLongHudText', 'You left the Microwave Too Long! Its cold!', 2)
             else
                 Citizen.Wait(10)
-                exports['wrp-taskbar']:taskBar(2500, 'Checking Brownie')
+                exports['prp-taskbar']:taskBar(2500, 'Checking Brownie')
                 Citizen.Wait(100)
-                exports['wrp-taskbar']:taskBar(15000, 'Allowing Brownie to Set')
+                exports['prp-taskbar']:taskBar(15000, 'Allowing Brownie to Set')
                 Citizen.Wait(100)
                 TriggerEvent('DoLongHudText', 'Brownie has Set!')
-                exports['wrp-taskbar']:taskBar(2500, 'Taking out the Brownie')
+                exports['prp-taskbar']:taskBar(2500, 'Taking out the Brownie')
                 Citizen.Wait(100)
-                TriggerEvent('wrp-banned:getID', 'brownie', math.random(1,5))
+                TriggerEvent('prp-banned:getID', 'brownie', math.random(1,5))
                 TriggerEvent('inventory:removeItem', 'foodingredient', 2)
             end
         end
@@ -269,35 +269,35 @@ AddEventHandler('wrp-brownie', function()
     end
 end)
 
-RegisterNetEvent('wrp-doughnut')
-AddEventHandler('wrp-doughnut', function()
+RegisterNetEvent('prp-doughnut')
+AddEventHandler('prp-doughnut', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
     if Temperature < 50 then
         loadAnimDict('mini@repair')
         TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-        exports['wrp-taskbar']:taskBar(5000, 'Heating Up Microwave')
+        exports['prp-taskbar']:taskBar(5000, 'Heating Up Microwave')
         ClearPedTasks(PlayerPedId())
         Temperature = Temperature + 10
         part1 = true
     else
-        if exports['wrp-inventory']:hasEnoughOfItem('foodingredient', 1) then
-            exports['wrp-taskbar']:taskBar(2500, 'Putting Ingredients Into Microwave..')
+        if exports['prp-inventory']:hasEnoughOfItem('foodingredient', 1) then
+            exports['prp-taskbar']:taskBar(2500, 'Putting Ingredients Into Microwave..')
             Citizen.Wait(100)
-            exports['wrp-taskbar']:taskBar(2500, 'Checking Microwave..')
+            exports['prp-taskbar']:taskBar(2500, 'Checking Microwave..')
             Citizen.Wait(100)
             if Temperature < 50 then
                 TriggerEvent('DoLongHudText', 'You left the Microwave Too Long! Its cold!', 2)
             else
                 Citizen.Wait(10)
-                exports['wrp-taskbar']:taskBar(2500, 'Checking Glazed Doughnut')
+                exports['prp-taskbar']:taskBar(2500, 'Checking Glazed Doughnut')
                 Citizen.Wait(100)
-                exports['wrp-taskbar']:taskBar(15000, 'Allowing Glazed Doughnut to Set')
+                exports['prp-taskbar']:taskBar(15000, 'Allowing Glazed Doughnut to Set')
                 Citizen.Wait(100)
                 TriggerEvent('DoLongHudText', 'Doughnut has Set!')
-                exports['wrp-taskbar']:taskBar(2500, 'Taking out the Doughnut')
+                exports['prp-taskbar']:taskBar(2500, 'Taking out the Doughnut')
                 Citizen.Wait(100)
-                TriggerEvent('wrp-banned:getID', 'glazingdonut', math.random(1,5))
+                TriggerEvent('prp-banned:getID', 'glazingdonut', math.random(1,5))
                 TriggerEvent('inventory:removeItem', 'foodingredient', 2)
             end
         end
@@ -305,35 +305,35 @@ AddEventHandler('wrp-doughnut', function()
     end
 end)
 
-RegisterNetEvent('wrp-macaroon')
-AddEventHandler('wrp-macaroon', function()
+RegisterNetEvent('prp-macaroon')
+AddEventHandler('prp-macaroon', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
     if Temperature < 50 then
         loadAnimDict('mini@repair')
         TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-        exports['wrp-taskbar']:taskBar(5000, 'Heating Up Microwave')
+        exports['prp-taskbar']:taskBar(5000, 'Heating Up Microwave')
         ClearPedTasks(PlayerPedId())
         Temperature = Temperature + 10
         part1 = true
     else
-        if exports['wrp-inventory']:hasEnoughOfItem('foodingredient', 1) then
-            exports['wrp-taskbar']:taskBar(2500, 'Putting Ingredients Into Microwave..')
+        if exports['prp-inventory']:hasEnoughOfItem('foodingredient', 1) then
+            exports['prp-taskbar']:taskBar(2500, 'Putting Ingredients Into Microwave..')
             Citizen.Wait(100)
-            exports['wrp-taskbar']:taskBar(2500, 'Checking Microwave..')
+            exports['prp-taskbar']:taskBar(2500, 'Checking Microwave..')
             Citizen.Wait(100)
             if Temperature < 50 then
                 TriggerEvent('DoLongHudText', 'You left the Microwave Too Long! Its cold!', 2)
             else
                 Citizen.Wait(10)
-                exports['wrp-taskbar']:taskBar(2500, 'Checking Coconut Macaroon')
+                exports['prp-taskbar']:taskBar(2500, 'Checking Coconut Macaroon')
                 Citizen.Wait(100)
-                exports['wrp-taskbar']:taskBar(15000, 'Allowing Coconut Macaroon to Set')
+                exports['prp-taskbar']:taskBar(15000, 'Allowing Coconut Macaroon to Set')
                 Citizen.Wait(100)
                 TriggerEvent('DoLongHudText', 'Macaroon has Set!')
-                exports['wrp-taskbar']:taskBar(2500, 'Taking out the Macaroon')
+                exports['prp-taskbar']:taskBar(2500, 'Taking out the Macaroon')
                 Citizen.Wait(100)
-                TriggerEvent('wrp-banned:getID', 'coconutmaca', math.random(1,5))
+                TriggerEvent('prp-banned:getID', 'coconutmaca', math.random(1,5))
                 TriggerEvent('inventory:removeItem', 'foodingredient', 2)
             end
         end
@@ -341,80 +341,80 @@ AddEventHandler('wrp-macaroon', function()
     end
 end)
 
-RegisterNetEvent('wrp-thumbprintcookie')
-AddEventHandler('wrp-thumbprintcookie', function()
+RegisterNetEvent('prp-thumbprintcookie')
+AddEventHandler('prp-thumbprintcookie', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
-    exports['wrp-taskbar']:taskBar(2000, 'Grabbing Cookie from Refridgerator')
-    TriggerEvent('wrp-banned:getID', 'thumbcookie', 1)
+    exports['prp-taskbar']:taskBar(2000, 'Grabbing Cookie from Refridgerator')
+    TriggerEvent('prp-banned:getID', 'thumbcookie', 1)
     end
 end)
 
-RegisterNetEvent('wrp-pretzel')
-AddEventHandler('wrp-pretzel', function()
+RegisterNetEvent('prp-pretzel')
+AddEventHandler('prp-pretzel', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
-    exports['wrp-taskbar']:taskBar(2000, 'Grabbing Pretzel from Refridgerator')
-    TriggerEvent('wrp-banned:getID', 'pretzel', 1)
+    exports['prp-taskbar']:taskBar(2000, 'Grabbing Pretzel from Refridgerator')
+    TriggerEvent('prp-banned:getID', 'pretzel', 1)
     end
 end)
 
-RegisterNetEvent('wrp-eclair')
-AddEventHandler('wrp-eclair', function()
+RegisterNetEvent('prp-eclair')
+AddEventHandler('prp-eclair', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
-    exports['wrp-taskbar']:taskBar(2000, 'Grabbing Eclair from Refridgerator')
-    TriggerEvent('wrp-banned:getID', 'eclair', 1)
+    exports['prp-taskbar']:taskBar(2000, 'Grabbing Eclair from Refridgerator')
+    TriggerEvent('prp-banned:getID', 'eclair', 1)
     end
 end)
 
-RegisterNetEvent('wrp-creampuff')
-AddEventHandler('wrp-creampuff', function()
+RegisterNetEvent('prp-creampuff')
+AddEventHandler('prp-creampuff', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
-    exports['wrp-taskbar']:taskBar(2000, 'Getting a Cream Puff')
-    TriggerEvent('wrp-banned:getID', 'creampuff', 1)
+    exports['prp-taskbar']:taskBar(2000, 'Getting a Cream Puff')
+    TriggerEvent('prp-banned:getID', 'creampuff', 1)
     end
 end)
 
-RegisterNetEvent('wrp-strudel')
-AddEventHandler('wrp-strudel', function()
+RegisterNetEvent('prp-strudel')
+AddEventHandler('prp-strudel', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
-    exports['wrp-taskbar']:taskBar(2000, 'Grabbing a Strudel')
-    TriggerEvent('wrp-banned:getID', 'strudel', 1)
+    exports['prp-taskbar']:taskBar(2000, 'Grabbing a Strudel')
+    TriggerEvent('prp-banned:getID', 'strudel', 1)
     end
 end)
 
-RegisterNetEvent('wrp-cinnanomroll')
-AddEventHandler('wrp-cinnanomroll', function()
+RegisterNetEvent('prp-cinnanomroll')
+AddEventHandler('prp-cinnanomroll', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
     if Temperature < 50 then
         loadAnimDict('mini@repair')
         TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-        exports['wrp-taskbar']:taskBar(5000, 'Heating Up Cooker')
+        exports['prp-taskbar']:taskBar(5000, 'Heating Up Cooker')
         ClearPedTasks(PlayerPedId())
         Temperature = Temperature + 10
         part1 = true
     else
-        if exports['wrp-inventory']:hasEnoughOfItem('foodingredient', 1) then
-            exports['wrp-taskbar']:taskBar(2500, 'Putting Ingredients Into Cooker..')
+        if exports['prp-inventory']:hasEnoughOfItem('foodingredient', 1) then
+            exports['prp-taskbar']:taskBar(2500, 'Putting Ingredients Into Cooker..')
             Citizen.Wait(100)
-            exports['wrp-taskbar']:taskBar(2500, 'Checking Cooker..')
+            exports['prp-taskbar']:taskBar(2500, 'Checking Cooker..')
             Citizen.Wait(100)
             if Temperature < 50 then
                 TriggerEvent('DoLongHudText', 'You left the Cooker Too Long! Its cold!', 2)
             else
                 Citizen.Wait(10)
-                exports['wrp-taskbar']:taskBar(2500, 'Checking Cinnamon Roll')
+                exports['prp-taskbar']:taskBar(2500, 'Checking Cinnamon Roll')
                 Citizen.Wait(100)
-                exports['wrp-taskbar']:taskBar(15000, 'Allowing Cinnamon Roll to Set')
+                exports['prp-taskbar']:taskBar(15000, 'Allowing Cinnamon Roll to Set')
                 Citizen.Wait(100)
                 TriggerEvent('DoLongHudText', 'Cinnamon Roll has Set!')
-                exports['wrp-taskbar']:taskBar(2500, 'Taking out the Cinnamon Roll')
+                exports['prp-taskbar']:taskBar(2500, 'Taking out the Cinnamon Roll')
                 Citizen.Wait(100)
-                TriggerEvent('wrp-banned:getID', 'cinnamonroll', math.random(1,5))
+                TriggerEvent('prp-banned:getID', 'cinnamonroll', math.random(1,5))
                 TriggerEvent('inventory:removeItem', 'foodingredient', 2)
             end
         end
@@ -422,35 +422,35 @@ AddEventHandler('wrp-cinnanomroll', function()
     end
 end)
 
-RegisterNetEvent('wrp-raspberryslice')
-AddEventHandler('wrp-raspberryslice', function()
+RegisterNetEvent('prp-raspberryslice')
+AddEventHandler('prp-raspberryslice', function()
     local job = exports['isPed']:isPed('job')
     if job == 'Bakery' then
     if Temperature < 50 then
         loadAnimDict('mini@repair')
         TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-        exports['wrp-taskbar']:taskBar(5000, 'Heating Up Cooker')
+        exports['prp-taskbar']:taskBar(5000, 'Heating Up Cooker')
         ClearPedTasks(PlayerPedId())
         Temperature = Temperature + 10
         part1 = true
     else
-        if exports['wrp-inventory']:hasEnoughOfItem('foodingredient', 1) then
-            exports['wrp-taskbar']:taskBar(2500, 'Putting Ingredients Into Cooker..')
+        if exports['prp-inventory']:hasEnoughOfItem('foodingredient', 1) then
+            exports['prp-taskbar']:taskBar(2500, 'Putting Ingredients Into Cooker..')
             Citizen.Wait(100)
-            exports['wrp-taskbar']:taskBar(2500, 'Checking Cooker..')
+            exports['prp-taskbar']:taskBar(2500, 'Checking Cooker..')
             Citizen.Wait(100)
             if Temperature < 50 then
                 TriggerEvent('DoLongHudText', 'You left the Cooker Too Long! Its cold!', 2)
             else
                 Citizen.Wait(10)
-                exports['wrp-taskbar']:taskBar(2500, 'Checking Raspberry Slice')
+                exports['prp-taskbar']:taskBar(2500, 'Checking Raspberry Slice')
                 Citizen.Wait(100)
-                exports['wrp-taskbar']:taskBar(15000, 'Allowing Raspberry Slice to Set')
+                exports['prp-taskbar']:taskBar(15000, 'Allowing Raspberry Slice to Set')
                 Citizen.Wait(100)
                 TriggerEvent('DoLongHudText', 'Raspberry Slice has Set!')
-                exports['wrp-taskbar']:taskBar(2500, 'Taking out the Roulade Roll')
+                exports['prp-taskbar']:taskBar(2500, 'Taking out the Roulade Roll')
                 Citizen.Wait(100)
-                TriggerEvent('wrp-banned:getID', 'rasberryrouladeslice', math.random(1,5))
+                TriggerEvent('prp-banned:getID', 'rasberryrouladeslice', math.random(1,5))
                 TriggerEvent('inventory:removeItem', 'foodingredient', 2)
             end
         end
@@ -482,6 +482,6 @@ RegisterNetEvent('skyhigh:crafting')
 AddEventHandler('skyhigh:crafting', function()
     local PlayerPed = PlayerPedId(-1)
     if exports['isPed']:isPed('job') == 'SkyHighEnterprise' then
-        TriggerEvent("wrp-ac:triggeredItemSpawn", "6969", "Craft")
+        TriggerEvent("prp-ac:triggeredItemSpawn", "6969", "Craft")
     end
 end)

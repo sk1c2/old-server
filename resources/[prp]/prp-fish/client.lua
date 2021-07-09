@@ -33,51 +33,51 @@ Citizen.CreateThread(function()
         if dis <= 5 then
             DrawText3Ds(471.2034, 2607.535, 44.47722,'[E] Sell Fish')
             if IsControlJustReleased(0, 38) then
-                if exports["wrp-inventory"]:hasEnoughOfItem("fish",2,false) then 
+                if exports["prp-inventory"]:hasEnoughOfItem("fish",2,false) then 
                     TriggerEvent("inventory:removeItem", "fish", 2)
-                    local finished = exports["wrp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
+                    local finished = exports["prp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
                     if finished == 100 then
                         SellItems(math.random(40,50))
                         Citizen.Wait(2000)
                     end
-                elseif exports['wrp-inventory']:hasEnoughOfItem('fishingbass',2, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('fishingbass',2, false) then
                     TriggerEvent("inventory:removeItem", "fishingbass", 2)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
                     local ItemSell = math.random(50,60)
                     SellItems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold two bass for $' .. ItemSell .. '!')
                     Citizen.Wait(2000)
-                elseif exports['wrp-inventory']:hasEnoughOfItem('fishingbluefish',2, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('fishingbluefish',2, false) then
                     TriggerEvent("inventory:removeItem", "fishingbluefish", 2)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
                     local ItemSell = math.random(40,60)
                     SellItems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold two blue fish for $' .. ItemSell .. '!')
                     Citizen.Wait(2000)
-                elseif exports['wrp-inventory']:hasEnoughOfItem('fishingcod',2, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('fishingcod',2, false) then
                     TriggerEvent("inventory:removeItem", "fishingcod", 2)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
                     local ItemSell = math.random(50,100)
                     SellItems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold two cod for $' .. ItemSell .. '!')
                     Citizen.Wait(2000)
-                elseif exports['wrp-inventory']:hasEnoughOfItem('fishingwhale',2, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('fishingwhale',2, false) then
                     TriggerEvent("inventory:removeItem", "fishingwhale", 2)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
                     local ItemSell = math.random(400,500)
                     SellItems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold two baby whales for $' .. ItemSell .. '!')
                     Citizen.Wait(2000)
-                elseif exports['wrp-inventory']:hasEnoughOfItem('fishingdolphin',2, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('fishingdolphin',2, false) then
                     TriggerEvent("inventory:removeItem", "fishingdolphin", 2)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
                     local ItemSell = math.random(250,400)
                     SellItems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold two dolphins for $' .. ItemSell .. '!')
                     Citizen.Wait(2000)
-                elseif exports['wrp-inventory']:hasEnoughOfItem('fishingshark',2, false) then
+                elseif exports['prp-inventory']:hasEnoughOfItem('fishingshark',2, false) then
                     TriggerEvent("inventory:removeItem", "fishingshark", 2)
-                    exports["wrp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
+                    exports["prp-taskbar"]:taskBar(2000,"Selling Fish",true,false,playerVeh)
                     local ItemSell = math.random(300,500)
                     SellItems(ItemSell)
                     TriggerEvent('DoLongHudText', 'You have sold two baby sharks for $' .. ItemSell .. '!')
@@ -103,7 +103,7 @@ Citizen.CreateThread(function()
 			DrawText3Ds(x,y,z, drawtext2) 
             if IsControlJustReleased(0, 38) then
                 if canSpawn == true then
-                    TriggerEvent('wrp-base:getdata', 500)
+                    TriggerEvent('prp-base:getdata', 500)
                     Citizen.Wait(500)
                         canSpawn = false
                         RequestModel(car)
@@ -167,7 +167,7 @@ Citizen.CreateThread(function()
 			DrawText3Ds(x,y,z, drawtext2) 
             if IsControlJustReleased(0, 38) then
                 if canSpawn == true then
-                    TriggerEvent('wrp-base:getdata', 500)
+                    TriggerEvent('prp-base:getdata', 500)
                     Citizen.Wait(500)
                         canSpawn = false
                         RequestModel(car)
@@ -232,7 +232,7 @@ Citizen.CreateThread(function()
 			DrawText3Ds(x,y,z, drawtext2) 
             if IsControlJustReleased(0, 38) then
                 if canSpawn == true then
-                    TriggerEvent('wrp-base:getdata', 500)
+                    TriggerEvent('prp-base:getdata', 500)
                     Citizen.Wait(500)
                         canSpawn = false
                         RequestModel(car)
@@ -285,8 +285,8 @@ Citizen.CreateThread(function()
 end)
 --- suntrap tropic marquis
 
-RegisterNetEvent('wrp-fish:lego')
-AddEventHandler('wrp-fish:lego', function()
+RegisterNetEvent('prp-fish:lego')
+AddEventHandler('prp-fish:lego', function()
     if isFishing == false then
         StartFish()
     elseif isFishing == true then
@@ -324,13 +324,13 @@ function StartFish()
     checkZone()
     Citizen.Wait(250)
     if IsEntityInWater(boat) and IsPedSwimming(ply) == false and inZone == true then
-        if exports["wrp-inventory"]:hasEnoughOfItem('fishingrod',1,false) then
+        if exports["prp-inventory"]:hasEnoughOfItem('fishingrod',1,false) then
             isFishing = true
             cancel = false
             Fish()
         end
     elseif IsEntityInWater(ply) and IsPedSwimming(ply) == false and inZone == true then 
-        if exports["wrp-inventory"]:hasEnoughOfItem('fishingrod',1,false) then
+        if exports["prp-inventory"]:hasEnoughOfItem('fishingrod',1,false) then
             isFishing = true
             cancel = false
             Fish()
@@ -362,9 +362,9 @@ function Catch()
     if cancel == false then
         local ply = PlayerPedId()
         TriggerEvent('DoLongHudText', 'There is a fish on the line.', 1)
-        local finished = exports["wrp-taskbarskill"]:taskBar(math.random(1000,2000),math.random(15,20))
+        local finished = exports["prp-taskbarskill"]:taskBar(math.random(1000,2000),math.random(15,20))
         if finished == 100 then
-            local finished2 = exports["wrp-taskbarskill"]:taskBar(3000,math.random(2,5))
+            local finished2 = exports["prp-taskbarskill"]:taskBar(3000,math.random(2,5))
             if finished2 == 100 then
                 isFishing = false
                 local rdn = math.random(1,100)
@@ -374,7 +374,7 @@ function Catch()
                     ClearPedTasksImmediately(ply)
                 elseif rdn > 4 then
                     TriggerEvent('DoLongHudText', 'You caught a Fish!', 1)
-                    TriggerServerEvent('wrp-fish:getFish')
+                    TriggerServerEvent('prp-fish:getFish')
                     SetCurrentPedWeapon(ply, `WEAPON_UNARMED`, true)
                     ClearPedTasksImmediately(ply)
                 end
@@ -413,7 +413,7 @@ function SellItems(sellfish)
     TriggerServerEvent('fish:returnDepo', sellfish)
     Citizen.Wait(2000)
     if sellfish > 2000 then
-        TriggerServerEvent('wrp-ac:sort')
+        TriggerServerEvent('prp-ac:sort')
     end
 end
 

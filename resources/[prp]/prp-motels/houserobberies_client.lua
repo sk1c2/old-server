@@ -618,12 +618,12 @@ end
 
 
 
- if exports['wrp-inventory']:hasEnoughOfItem('lockpick', 1, false) and isNight() and not isRobbing then
+ if exports['prp-inventory']:hasEnoughOfItem('lockpick', 1, false) and isNight() and not isRobbing then
   local playerCoords = GetEntityCoords(PlayerPedId(), true)
   for id,v in pairs(robbableHouses) do
    if GetDistanceBetweenCoords(playerCoords, v.x, v.y, v.z, true) <= 2.5 then
 	TriggerEvent('lockpickAnimation')
-    if exports["wrp-lockpicking"]:lockpick(100,5,2,10) == 100 then
+    if exports["prp-lockpicking"]:lockpick(100,5,2,10) == 100 then
      isLockpicking = false
      pedSpawned = false
 
@@ -649,7 +649,7 @@ end
 	end
    end
   end
- elseif exports['wrp-inventory']:hasEnoughOfItem('advlockpick', 0, false) and not isRobbing then
+ elseif exports['prp-inventory']:hasEnoughOfItem('advlockpick', 0, false) and not isRobbing then
   TriggerEvent('DoLongHudText', 'No Advanced Lockpick', 2)
  elseif not isNight() and not isRobbing then
   TriggerEvent('DoLongHudText', "It's too bright outside", 2)
@@ -812,7 +812,7 @@ Citizen.CreateThread(function()
  			 disturbance = disturbance + 10
       end
 	  FreezeEntityPosition(GetPlayerPed(-1),true)
-      exports["wrp-taskbar"]:taskBar(20000, "Searching "..myRobbableItems[i]['name'])
+      exports["prp-taskbar"]:taskBar(20000, "Searching "..myRobbableItems[i]['name'])
 	   TriggerServerEvent('houseRobberies:searchItem')
 	   FreezeEntityPosition(GetPlayerPed(-1),false)
      end

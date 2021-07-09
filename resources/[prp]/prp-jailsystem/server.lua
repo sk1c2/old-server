@@ -32,7 +32,7 @@ end)
 
 RegisterCommand('unjail', function(source, args)
     local src = source
-    local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+    local player = exports['prp-base']:GetCurrentCharacterInfo(src)
     if player.job == 'Police' then
         if args[1] then
             TriggerClientEvent("endJailTime", args[1])
@@ -42,15 +42,15 @@ RegisterCommand('unjail', function(source, args)
     end
 end)
 
-RegisterServerEvent('wrp-jailhehe')
-AddEventHandler('wrp-jailhehe', function(targetid, time, name, cid)
+RegisterServerEvent('prp-jailhehe')
+AddEventHandler('prp-jailhehe', function(targetid, time, name, cid)
     TriggerClientEvent("beginJail", targetid, time, name, cid)
     TriggerClientEvent("drawScaleformJail", targetid, time, name, cid)
 end)
 -- RegisterCommand('jail', function(source, args)
 --     local src = source
---     local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
---     local JailPlayer = exports['wrp-base']:GetCurrentCharacterInfo(args[1])
+--     local player = exports['prp-base']:GetCurrentCharacterInfo(src)
+--     local JailPlayer = exports['prp-base']:GetCurrentCharacterInfo(args[1])
 --     local name = JailPlayer.first_name .. ' ' .. JailPlayer.last_name 
 --     local cid = JailPlayer.id
 --     local date = os.date()

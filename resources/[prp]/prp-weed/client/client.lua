@@ -7,11 +7,11 @@ local crops = {
 
 inhouse = false
 
-RegisterNetEvent('wrp-weed:inhouse')
-AddEventHandler('wrp-weed:inhouse', function(st)
+RegisterNetEvent('prp-weed:inhouse')
+AddEventHandler('prp-weed:inhouse', function(st)
 if st then 
 inhouse = true
-TriggerServerEvent('wrp-weed:requestTable')
+TriggerServerEvent('prp-weed:requestTable')
 else
 inhouse = false
 end
@@ -28,13 +28,13 @@ local tohum
 RegisterNetEvent('urp:base:loadplayer')
 AddEventHandler('urp:base:loadplayer', function()
  
-	TriggerServerEvent("wrp-weed:requestTable")
+	TriggerServerEvent("prp-weed:requestTable")
     blnPlySpawned = true
 end)
 
 AddEventHandler('onResourceStart', function(resourceName)
     if (GetCurrentResourceName() == resourceName) then
-    TriggerServerEvent("wrp-weed:setStatus2")
+    TriggerServerEvent("prp-weed:setStatus2")
     blnPlySpawned = true
     end
   end)
@@ -90,7 +90,7 @@ function canGrown()
 local saat =	GetClockHours()
 local dk =	GetClockMinutes()
    if saat == 9 and dk == 0 then	
-	TriggerServerEvent("wrp-weed:setStatus2")
+	TriggerServerEvent("prp-weed:setStatus2")
    end
   
 
@@ -102,7 +102,7 @@ function InsertPlant(seed)
 		plyId = PlayerPedId()
 		local strain = seed
     	local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(plyId, 0.0, 0.4, 0.0))
-    	TriggerServerEvent("wrp-weed:createplant",x,y,z,strain, exports['isPed']:isPed('cid'))
+    	TriggerServerEvent("prp-weed:createplant",x,y,z,strain, exports['isPed']:isPed('cid'))
 	else
 		TriggerEvent('DoLongHudText', 'You cannot do this outside!', 2)
 	end
@@ -117,8 +117,8 @@ function DeleteTrees()
 	end
 end
 
-RegisterNetEvent("wrp-weed:currentcrops")
-AddEventHandler("wrp-weed:currentcrops", function(result)
+RegisterNetEvent("prp-weed:currentcrops")
+AddEventHandler("prp-weed:currentcrops", function(result)
 	local newcrops = {}
 	for i = 1, #result do
         local table = result[i]
@@ -130,8 +130,8 @@ AddEventHandler("wrp-weed:currentcrops", function(result)
 end)
 
 
-RegisterNetEvent("wrp-weed:startcrop")
-AddEventHandler("wrp-weed:startcrop", function(seedType)
+RegisterNetEvent("prp-weed:startcrop")
+AddEventHandler("prp-weed:startcrop", function(seedType)
 	print('ok')
     local plyId = PlayerPedId()
     local plyCoords = GetEntityCoords(plyId)
@@ -154,11 +154,11 @@ AddEventHandler("wrp-weed:startcrop", function(seedType)
     end
 
 	if success and Seed == "Male" then
-		--TriggerServerEvent("wrp-weed:RemoveItem", Config.MaleSeed, 1)
-	  -- TriggerServerEvent("wrp-weed:RemoveItem", Config.Pot, 1)
+		--TriggerServerEvent("prp-weed:RemoveItem", Config.MaleSeed, 1)
+	  -- TriggerServerEvent("prp-weed:RemoveItem", Config.Pot, 1)
 	else
-	--	TriggerServerEvent("wrp-weed:RemoveItem", Config.FemaleSeed, 1)
-	   --TriggerServerEvent("wrp-weed:RemoveItem", Config.Pot, 1)
+	--	TriggerServerEvent("prp-weed:RemoveItem", Config.FemaleSeed, 1)
+	   --TriggerServerEvent("prp-weed:RemoveItem", Config.Pot, 1)
 	end
 
 	if success then
@@ -167,8 +167,8 @@ AddEventHandler("wrp-weed:startcrop", function(seedType)
 
 end)
 
-RegisterNetEvent("wrp-weed:updateplantwithID")
-AddEventHandler("wrp-weed:updateplantwithID", function(ids,newPercent,status)
+RegisterNetEvent("prp-weed:updateplantwithID")
+AddEventHandler("prp-weed:updateplantwithID", function(ids,newPercent,status)
 	if status == "alter" then
 		for i = 1, #crops do
 			if(crops[i] ~= nil) then
@@ -219,17 +219,17 @@ RegisterNetEvent("weed:giveitems")
 AddEventHandler("weed:giveitems", function(strain)
 
 	if strain == "Seeded" then
-		TriggerEvent("wrp-banned:getID", Config.FemaleSeed,math.random(1,10))
+		TriggerEvent("prp-banned:getID", Config.FemaleSeed,math.random(1,10))
 		if math.random(100) < 10 then
-	        TriggerEvent("wrp-banned:getID",Config.MaleSeed, 1)
+	        TriggerEvent("prp-banned:getID",Config.MaleSeed, 1)
 	    end    
 	else
 		if strain == "Male" then
-			TriggerEvent("wrp-banned:getID", Config.Weed,math.random(3,8))
+			TriggerEvent("prp-banned:getID", Config.Weed,math.random(3,8))
 		else
-			TriggerEvent("wrp-banned:getID", Config.Weedoz,math.random(1,4))
+			TriggerEvent("prp-banned:getID", Config.Weedoz,math.random(1,4))
 			Citizen.Wait(500)
-			TriggerEvent("wrp-banned:getID", Config.Weed,math.random(10,30))
+			TriggerEvent("prp-banned:getID", Config.Weed,math.random(10,30))
 		end
 	end
 end)
@@ -299,50 +299,50 @@ Citizen.CreateThread( function()
 					if IsControlJustReleased(2, Controlkey["generalUse"][1]) and #(vector3(crops[close]["x"],crops[close]["y"],crops[close]["z"]-0.3) - plyCoords) < 2.0 and counter == 0 then
 						if crops[close]["growth"] >= 100 then
 							local plyPed = GetPlayerPed(-1)
-							exports["wrp-taskbar"]:taskBar(20000,"Harvesting")
+							exports["prp-taskbar"]:taskBar(20000,"Harvesting")
 							TaskStartScenarioInPlace(plyPed, "PROP_HUMAN_BUM_BIN", 0, true)
 							TaskStartScenarioInPlace(plyPed, "PROP_HUMAN_BUM_BIN", 0, false)
 							Wait(100)
 							ClearPedTasksImmediately(plyPed)
-                            TriggerServerEvent("wrp-weed:requestTable")
-							TriggerServerEvent("wrp-weed:killplant",crops[close]["dbID"])
+                            TriggerServerEvent("prp-weed:requestTable")
+							TriggerServerEvent("prp-weed:killplant",crops[close]["dbID"])
 							TriggerEvent("weed:giveitems",crops[close]["strain"])
 						else
 							if crops[close]["status"] == 1 then
 								TriggerEvent("DoLongHudText", "This plant does not need any further attention!", 1)
 							else
 								if crops[close]["strain"] == "Seeded" then
-									if exports['wrp-inventory']:hasEnoughOfItem('fertilizer', 1) then
+									if exports['prp-inventory']:hasEnoughOfItem('fertilizer', 1) then
 										TriggerEvent('inventory:removeItem', 'fertilizer', 1)
-											if exports['wrp-inventory']:hasEnoughOfItem('fertilizer', 1) then 
+											if exports['prp-inventory']:hasEnoughOfItem('fertilizer', 1) then 
 											ClearPedSecondaryTask(PlayerPedId())
 											loadAnimDict( "mp_arresting" ) 
                         					TaskPlayAnim( PlayerPedId(), "mp_arresting", "a_uncuff", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
-											local finished = exports["wrp-taskbar"]:taskBar(5000,"Fertilising the Plant")
+											local finished = exports["prp-taskbar"]:taskBar(5000,"Fertilising the Plant")
 											Citizen.Wait(100)
 											ClearPedTasks(PlayerPedId())    
 											if math.random(100) > 85 then
 											TriggerEvent("DoLongHudText", "You fertilised the plant!", 1)
 											end
 											local new = crops[close]["growth"] + math.random(25,45)
-											TriggerServerEvent("wrp-weed:UpdateWeedGrowth",crops[close]["dbID"],new)
-											TriggerServerEvent('wrp-weed:Use-Fertiliser')
+											TriggerServerEvent("prp-weed:UpdateWeedGrowth",crops[close]["dbID"],new)
+											TriggerServerEvent('prp-weed:Use-Fertiliser')
 										else
 											TriggerEvent("DoLongHudText", "You need fertiliser to do this!", 1)
                                     end
                                 end
                                 else
-									if exports['wrp-inventory']:hasEnoughOfItem('water', 1) then
+									if exports['prp-inventory']:hasEnoughOfItem('water', 1) then
                                     -- if qtty >= 1 then  
 									TriggerEvent('inventory:removeItem', 'water', 1)
 									loadAnimDict( "mp_arresting" ) 
 									TaskPlayAnim( PlayerPedId(), "mp_arresting", "a_uncuff", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
-									local finished = exports["wrp-taskbar"]:taskBar(5000,"Giving Plant Water")
+									local finished = exports["prp-taskbar"]:taskBar(5000,"Giving Plant Water")
 									Citizen.Wait(100)
 									ClearPedTasks(PlayerPedId())    
 									local new = crops[close]["growth"] + math.random(14,17)
-									TriggerServerEvent("wrp-weed:UpdateWeedGrowth",crops[close]["dbID"],new)
-									TriggerServerEvent('wrp-weed:Use-Water')
+									TriggerServerEvent("prp-weed:UpdateWeedGrowth",crops[close]["dbID"],new)
+									TriggerServerEvent('prp-weed:Use-Water')
 									else
 									TriggerEvent("DoLongHudText", "You need 1 bottle of water to do this!", 1)
                                     end

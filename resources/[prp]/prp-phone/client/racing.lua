@@ -448,8 +448,8 @@ function SaveMap(name,description)
 end
 
 RegisterNUICallback('racing:events:list', function()
-  if (exports["wrp-inventory"]:hasEnoughOfItem("racingusb1", 1) or exports["wrp-inventory"]:hasEnoughOfItem("racingusb0", 1, true)) then
-      if exports["wrp-inventory"]:hasEnoughOfItem("racingusb1", 1) then
+  if (exports["prp-inventory"]:hasEnoughOfItem("racingusb1", 1) or exports["prp-inventory"]:hasEnoughOfItem("racingusb0", 1, true)) then
+      if exports["prp-inventory"]:hasEnoughOfItem("racingusb1", 1) then
           SendNUIMessage({
               openSection = "racing:events:list",
                 races = currentRaces,

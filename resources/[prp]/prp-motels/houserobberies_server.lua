@@ -35,7 +35,7 @@ RegisterServerEvent('houseRobberies:giveMoney')
 AddEventHandler('houseRobberies:giveMoney', function()
  local source = tonumber(source)
  local cash = math.random(50, 200)
- TriggerClientEvent('wrp-ac:InfoPass',cash)
+ TriggerClientEvent('prp-ac:InfoPass',cash)
  TriggerClientEvent('DoLongHudText',  source, 'You found $'..cash , 1)
 end)
 
@@ -51,11 +51,11 @@ AddEventHandler('houseRobberies:searchItem', function()
   if math.random(1, 15) >= item.chance then
     if tonumber(item.id) == 0 and not gotID[item.id] then
         gotID[item.id] = true
-        TriggerClientEvent('wrp-ac:InfoPass', source, item.quantity)
+        TriggerClientEvent('prp-ac:InfoPass', source, item.quantity)
         TriggerClientEvent('DoLongHudText',  source, 'You found $'..item.quantity , 1)
     elseif not gotID[item.id] then
         gotID[item.id] = true
-        TriggerClientEvent('wrp-banned:getID', source, item.id, item.quantity)
+        TriggerClientEvent('prp-banned:getID', source, item.id, item.quantity)
         TriggerClientEvent('DoLongHudText', source, 'Item Added!', 1)
     end
   else

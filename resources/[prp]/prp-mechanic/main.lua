@@ -166,7 +166,7 @@ RegisterCommand("matadd", function(source, args)
     if exports['isPed']:isPed('job') == "CamelTowing" or exports['isPed']:isPed('job') =="Harmony" then
         local mat = args[1]
         local amount = args[2]
-        if exports["wrp-inventory"]:hasEnoughOfItem(args[1],1,false) then
+        if exports["prp-inventory"]:hasEnoughOfItem(args[1],1,false) then
             TriggerServerEvent("mech:add:materials", args[1],tonumber(args[2]))
             TriggerEvent("notification", "Material added", 1)
         else
@@ -287,7 +287,7 @@ function repairVeh(args)
             Wait(100)
             TaskPlayAnim(playerped,"mp_car_bomb","car_bomb_mechanic",8.0, -8, -1, 49, 0, 0, 0, 0)
                 FreezeEntityPosition(playerped, true)
-                local finished = exports["wrp-taskbar"]:taskBar(15000,"Repairing")
+                local finished = exports["prp-taskbar"]:taskBar(15000,"Repairing")
                 local coordA = GetEntityCoords(playerped, 1)
                 local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 5.0, 0.0)
                 local targetVehicle = getVehicleInDirection(coordA, coordB)
@@ -317,7 +317,7 @@ function bob(vehicle)
             TaskPlayAnim(playerped,"mp_car_bomb","car_bomb_mechanic",8.0, -8, -1, 49, 0, 0, 0, 0)
             Wait(100)
             TaskPlayAnim(playerped,"mp_car_bomb","car_bomb_mechanic",8.0, -8, -1, 49, 0, 0, 0, 0)
-        local finished = exports["wrp-taskbar"]:taskBar(10000,"Reparing")
+        local finished = exports["prp-taskbar"]:taskBar(10000,"Reparing")
         if finished == 100 then
             ClearPedTasks(ped)
             FreezeEntityPosition(PlayerPedId(), false)
@@ -334,7 +334,7 @@ function cleanveh(vehicle)
     local playerPed = PlayerPedId()
     TaskStartScenarioInPlace(playerPed, 'WORLD_HUMAN_MAID_CLEAN', 0, true)
     FreezeEntityPosition(playerPed, true)
-    local finished = exports["wrp-taskbar"]:taskBar(10000,"Cleaning")
+    local finished = exports["prp-taskbar"]:taskBar(10000,"Cleaning")
     if finished == 100 then
         ClearPedTasks(ped)
         FreezeEntityPosition(playerPed, false)
@@ -460,7 +460,7 @@ Citizen.CreateThread(function ()
 		if (isInMarker) then
             HasAlreadyEnteredMarker = true
             if beingchopped == false then
-                TriggerEvent('wrp-chopshop:entered')
+                TriggerEvent('prp-chopshop:entered')
             end
             if IsPedSittingInAnyVehicle(GetPlayerPed(-1)) and beingchopped == false then
                 Draw3dText(Config.MarkerPos.x, Config.MarkerPos.y, Config.MarkerPos.z + 1.0, "[E] - Start Chopping")
@@ -471,7 +471,7 @@ Citizen.CreateThread(function ()
 
 		if not isInMarker and HasAlreadyEnteredMarker then
             HasAlreadyEnteredMarker = false
-			TriggerEvent('wrp-chopshop:exited')
+			TriggerEvent('prp-chopshop:exited')
         end
 
         if beingchopped then
@@ -558,7 +558,7 @@ Citizen.CreateThread(function()
                     ClearPedTasksImmediately(chopshop_mechanic)
                     TaskStartScenarioInPlace(chopshop_mechanic, Config.NPCScenerioInProg, 0, true)
                     SetVehicleEngineOn(GetVehiclePedIsUsing(GetPlayerPed(-1)), false, false, true)
-                    TriggerEvent('wrp-chopshop:startchop')
+                    TriggerEvent('prp-chopshop:startchop')
                 end
             end
         end
@@ -569,35 +569,35 @@ function OpenParts()
     local ped = GetPlayerPed(-1)
     local vehicle = GetVehiclePedIsUsing(ped)
     Citizen.Wait(10)
-    exports["wrp-taskbar"]:taskBar(3000, "Opening Driver Door")
+    exports["prp-taskbar"]:taskBar(3000, "Opening Driver Door")
     Citizen.Wait(10)
     SetVehicleDoorOpen(vehicle, 0, false, false)
     Citizen.Wait(10)
-    exports["wrp-taskbar"]:taskBar(3000, "Opening Passenger Door")
+    exports["prp-taskbar"]:taskBar(3000, "Opening Passenger Door")
     Citizen.Wait(10)
     SetVehicleDoorOpen(vehicle, 1, false, false)
     Citizen.Wait(10)
     if GetEntityBoneIndexByName(vehicle, 'door_dside_r') ~= -1 then
         Citizen.Wait(10)
-        exports["wrp-taskbar"]:taskBar(3000, "Opening Back Left Door")
+        exports["prp-taskbar"]:taskBar(3000, "Opening Back Left Door")
         Citizen.Wait(10)
         SetVehicleDoorOpen(vehicle, 2, false, false)
         Citizen.Wait(10)
-        exports["wrp-taskbar"]:taskBar(3000, "Opening Back Right Door")
+        exports["prp-taskbar"]:taskBar(3000, "Opening Back Right Door")
         Citizen.Wait(10)
         SetVehicleDoorOpen(vehicle, 3, false, false)
         Citizen.Wait(10)
     end
     if GetEntityBoneIndexByName(vehicle, 'bonnet') ~= -1 then
         Citizen.Wait(10)
-        exports["wrp-taskbar"]:taskBar(3000, "Opening Hood")
+        exports["prp-taskbar"]:taskBar(3000, "Opening Hood")
         Citizen.Wait(10)
         SetVehicleDoorOpen(vehicle, 4, false, false)
         Citizen.Wait(10)
     end
     if GetEntityBoneIndexByName(vehicle, 'boot') ~= -1 then
         Citizen.Wait(10)
-        exports["wrp-taskbar"]:taskBar(3000, "Opening Trunk")
+        exports["prp-taskbar"]:taskBar(3000, "Opening Trunk")
         Citizen.Wait(10)
         SetVehicleDoorOpen(vehicle, 5, false, false)
         Citizen.Wait(10)
@@ -616,41 +616,41 @@ function RemoveParts()
     local ped = GetPlayerPed(-1)
     local vehicle = GetVehiclePedIsUsing(ped)
     Citizen.Wait(10)
-    exports["wrp-taskbar"]:taskBar(3000, "Removing Driver Door")
+    exports["prp-taskbar"]:taskBar(3000, "Removing Driver Door")
     Citizen.Wait(10)
     SetVehicleDoorBroken(vehicle,0, true)
     Citizen.Wait(10)
-    exports["wrp-taskbar"]:taskBar(3000, "Removing Passenger Door")
+    exports["prp-taskbar"]:taskBar(3000, "Removing Passenger Door")
     Citizen.Wait(10)
     SetVehicleDoorBroken(vehicle,1, true)
     if GetEntityBoneIndexByName(vehicle, 'door_dside_r') ~= -1 then
         Citizen.Wait(10)
-        exports["wrp-taskbar"]:taskBar(3000, "Removing Back Left Door")
+        exports["prp-taskbar"]:taskBar(3000, "Removing Back Left Door")
         Citizen.Wait(10)
         SetVehicleDoorBroken(vehicle,2, true)
         Citizen.Wait(10)
-        exports["wrp-taskbar"]:taskBar(3000, "Removing Back Right Door")
+        exports["prp-taskbar"]:taskBar(3000, "Removing Back Right Door")
         Citizen.Wait(10)
         SetVehicleDoorBroken(vehicle,3, true)
         Citizen.Wait(10)
     end
     if GetEntityBoneIndexByName(vehicle, 'bonnet') ~= -1 then
         Citizen.Wait(10)
-        exports["wrp-taskbar"]:taskBar(3000, "Removing Hood")
+        exports["prp-taskbar"]:taskBar(3000, "Removing Hood")
         Citizen.Wait(10)
         SetVehicleDoorBroken(vehicle,4, true)
         Citizen.Wait(10)
     end
     if GetEntityBoneIndexByName(vehicle, 'boot') ~= -1 then
         Citizen.Wait(10)
-        exports["wrp-taskbar"]:taskBar(3000, "Removing Trunk")
+        exports["prp-taskbar"]:taskBar(3000, "Removing Trunk")
         Citizen.Wait(10)
         SetVehicleDoorBroken(vehicle,5, true)
     end
 end
 
-RegisterNetEvent('wrp-chopshop:startchop')
-AddEventHandler('wrp-chopshop:startchop', function ()
+RegisterNetEvent('prp-chopshop:startchop')
+AddEventHandler('prp-chopshop:startchop', function ()
     beingchopped = true
     CurrentActionMsg = nil
     local ped = GetPlayerPed( -1 )
@@ -660,7 +660,7 @@ AddEventHandler('wrp-chopshop:startchop', function ()
 
             for key, value in pairs(table2) do
                 if IsPedInAnyVehicle(ped, true) then
-                    exports["wrp-taskbar"]:taskBar(2000, value)
+                    exports["prp-taskbar"]:taskBar(2000, value)
                     Citizen.Wait(key*200)
                 else
                     break
@@ -718,11 +718,11 @@ AddEventHandler('wrp-chopshop:startchop', function ()
                 ShutParts()
                 ssstring = ssstring:gsub('%%car%%',carnamepedin)
                 -- ssstring = ssstring:gsub('%%plate%%',plate)
-                TriggerServerEvent('wrp-chopshop:addCash', source)
+                TriggerServerEvent('prp-chopshop:addCash', source)
                 TriggerEvent('DoLongHudText', 'You got scraps for the vehcile!', 1)
                 local luck = math.random(1,4)
                 if luck == 4 then
-                    TriggerEvent('wrp-ac:InfoPass', math.random(20,60))
+                    TriggerEvent('prp-ac:InfoPass', math.random(20,60))
                 end
                 beingchopped = false
                 return
@@ -740,11 +740,11 @@ AddEventHandler('wrp-chopshop:startchop', function ()
                 ShutParts()
                 ssstring = ssstring:gsub('%%car%%',carnamepedin)
                 -- ssstring = ssstring:gsub('%%plate%%',plate)
-                TriggerServerEvent('wrp-chopshop:addCash', source)
+                TriggerServerEvent('prp-chopshop:addCash', source)
                 TriggerEvent('DoLongHudText', 'You got scraps for the vehcile!', 1)
                 local luck = math.random(1,4)
                 if luck == 4 then
-                    TriggerEvent('wrp-ac:InfoPass', math.random(20,60))
+                    TriggerEvent('prp-ac:InfoPass', math.random(20,60))
                 end
                 beingchopped = false
                 return
@@ -762,11 +762,11 @@ AddEventHandler('wrp-chopshop:startchop', function ()
                 ShutParts()
                 ssstring = ssstring:gsub('%%car%%',carnamepedin)
                 -- ssstring = ssstring:gsub('%%plate%%',plate)
-                TriggerServerEvent('wrp-chopshop:addCash', source)
+                TriggerServerEvent('prp-chopshop:addCash', source)
                 TriggerEvent('DoLongHudText', 'You got scraps and money for the vehicle.', 1)
                 local luck = math.random(1,4)
                 if luck == 4 then
-                    TriggerEvent('wrp-ac:InfoPass', math.random(20,60))
+                    TriggerEvent('prp-ac:InfoPass', math.random(20,60))
                 end
                 beingchopped = false
                 return
@@ -804,14 +804,14 @@ end)
 	EndTextCommandSetBlipName(blip)
 end)]]--
 
-AddEventHandler('wrp-chopshop:entered', function ()
+AddEventHandler('prp-chopshop:entered', function ()
     local playerPed = PlayerPedId()
     if IsPedInAnyVehicle(playerPed, true) then
         CurrentActionMsg = Config.ActionMsg
     end
 end)
 
-AddEventHandler('wrp-chopshop:exited', function ()
+AddEventHandler('prp-chopshop:exited', function ()
 	CurrentActionMsg = nil
 end)
 

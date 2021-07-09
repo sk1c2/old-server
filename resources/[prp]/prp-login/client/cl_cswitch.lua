@@ -28,7 +28,7 @@ AddEventHandler('event:control:login', function(useID)
                 local curTime = GetGameTimer() * 0.001
                 local timeRemaining = 30 - math.floor(curTime - (firstPress * 0.001))
 
-                exports["wrp-base"]:getModule("Util"):DrawText("Switching character in ~b~" .. timeRemaining .. "~s~ seconds, press ~b~E~s~ to cancel.", 0, 1, 0.5, 0.8, 0.6, 255, 255, 255, 255)
+                exports["prp-base"]:getModule("Util"):DrawText("Switching character in ~b~" .. timeRemaining .. "~s~ seconds, press ~b~E~s~ to cancel.", 0, 1, 0.5, 0.8, 0.6, 255, 255, 255, 255)
 
                 if IsControlJustPressed(0, 38) then
                     Citizen.Wait(500)
@@ -39,8 +39,8 @@ AddEventHandler('event:control:login', function(useID)
                     TransitionToBlurred(500)
                     DoScreenFadeOut(500)
                     Citizen.Wait(1000)
-                    TriggerEvent("wrp-base:clearStates")
-                    exports["wrp-base"]:getModule("SpawnManager"):Initialize()
+                    TriggerEvent("prp-base:clearStates")
+                    exports["prp-base"]:getModule("SpawnManager"):Initialize()
                     waiting = false
                     return
                 end
@@ -61,7 +61,7 @@ Citizen.CreateThread(function()
                 DrawMarker(27, v[1], v[2], v[3] - 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 0, 155, 255, 10, false, false, 0, false, 0, 0, false)
 
                 if Vdist2(pedCoords, v[1], v[2], v[3]) < 1.0 then
-                    if not waiting then exports["wrp-base"]:getModule("Util"):DrawText("Press ~b~E~s~ to switch your ~b~ character", 0, 1, 0.5, 0.8, 0.6, 255, 255, 255, 255) end
+                    if not waiting then exports["prp-base"]:getModule("Util"):DrawText("Press ~b~E~s~ to switch your ~b~ character", 0, 1, 0.5, 0.8, 0.6, 255, 255, 255, 255) end
                 end
             end
         end

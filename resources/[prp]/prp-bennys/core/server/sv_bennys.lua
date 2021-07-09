@@ -1,31 +1,31 @@
 local chicken = vehicleBaseRepairCost
 
-RegisterServerEvent('wrp-bennys:attemptPurchase')
-AddEventHandler('wrp-bennys:attemptPurchase', function(cid, cash, type, upgradeLevel)
+RegisterServerEvent('prp-bennys:attemptPurchase')
+AddEventHandler('prp-bennys:attemptPurchase', function(cid, cash, type, upgradeLevel)
     local source = source
     if type == "repair" then
         if cash >= chicken then
-            TriggerClientEvent('wrp-bennys:purchaseSuccessful', source, chicken)
+            TriggerClientEvent('prp-bennys:purchaseSuccessful', source, chicken)
         else
-            TriggerClientEvent('wrp-bennys:purchaseFailed', source)
+            TriggerClientEvent('prp-bennys:purchaseFailed', source)
         end
     elseif type == "performance" then
         if cash >= vehicleCustomisationPrices[type].prices[upgradeLevel] then
-            TriggerClientEvent('wrp-bennys:purchaseSuccessful', source, vehicleCustomisationPrices[type].prices[upgradeLevel])
+            TriggerClientEvent('prp-bennys:purchaseSuccessful', source, vehicleCustomisationPrices[type].prices[upgradeLevel])
         else
-            TriggerClientEvent('wrp-bennys:purchaseFailed', source)
+            TriggerClientEvent('prp-bennys:purchaseFailed', source)
         end
     else
         if cash >= vehicleCustomisationPrices[type].price then
-            TriggerClientEvent('wrp-bennys:purchaseSuccessful', source, vehicleCustomisationPrices[type].price)
+            TriggerClientEvent('prp-bennys:purchaseSuccessful', source, vehicleCustomisationPrices[type].price)
         else
-            TriggerClientEvent('wrp-bennys:purchaseFailed', source)
+            TriggerClientEvent('prp-bennys:purchaseFailed', source)
         end
     end
 end)
 
-RegisterServerEvent('wrp-bennys:updateRepairCost')
-AddEventHandler('wrp-bennys:updateRepairCost', function(cost)
+RegisterServerEvent('prp-bennys:updateRepairCost')
+AddEventHandler('prp-bennys:updateRepairCost', function(cost)
     chicken = cost
 end)
 
@@ -40,6 +40,6 @@ end)
 
 RegisterCommand('breasty', function(source)
     local src = source
-    local player = exports['wrp-base']:GetCurrentCharacterInfo(source)
+    local player = exports['prp-base']:GetCurrentCharacterInfo(source)
     TriggerClientEvent('DoShortHudText', src, player.id)
 end)

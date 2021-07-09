@@ -47,9 +47,9 @@ AddEventHandler('Relog', function()
     TriggerServerEvent("Evidence:checkDna")
 	TriggerEvent("banking:viewBalance")
 	TriggerServerEvent("police:getLicensesCiv")
-	TriggerServerEvent('wrp-doors:requestlatest')
+	TriggerServerEvent('prp-doors:requestlatest')
 	TriggerServerEvent("item:UpdateItemWeight")
-	TriggerServerEvent("wrp-weapons:getAmmo")
+	TriggerServerEvent("prp-weapons:getAmmo")
 	TriggerServerEvent("ReturnHouseKeys")
 	TriggerServerEvent("requestOffices")
     Wait(500)
@@ -61,8 +61,8 @@ AddEventHandler('Relog', function()
 	TriggerServerEvent("TokoVoip:clientHasSelecterCharecter")
 	
 	Wait(4000)
-	TriggerServerEvent('wrp-base:sv:player_control')
-	TriggerServerEvent('wrp-base:sv:player_settings')
+	TriggerServerEvent('prp-base:sv:player_control')
+	TriggerServerEvent('prp-base:sv:player_settings')
 end)
 
 apartments1 = {
@@ -121,7 +121,7 @@ end)
 RegisterNetEvent('hotel:AttemptUpgrade')
 AddEventHandler('hotel:AttemptUpgrade', function()
 	if #(vector3(260.16, -374.99, -44.14) - GetEntityCoords(PlayerPedId())) < 3.0 then
-		local LocalPlayer = exports['wrp-base']:getModule('LocalPlayer')
+		local LocalPlayer = exports['prp-base']:getModule('LocalPlayer')
 		local Player = LocalPlayer:getCurrentCharacter()
 		if Player.bank >= 25000 then
 			TriggerServerEvent('hotel:upgradeApartment', exports['isPed']:isPed('cid'), myRoomType, myRoomNumber)
@@ -481,7 +481,7 @@ function confirmSpawning(isClothesSpawn)
 	TriggerEvent("spawning",false)
 	TriggerEvent('DoLongHudText', "Tax is currently set to: 15%")
 	TriggerServerEvent('admin:getGroup')
-	TriggerServerEvent('wrp-policejob:spawned')
+	TriggerServerEvent('prp-policejob:spawned')
 	TriggerEvent('givemethehandle')
   	TriggerServerEvent('getYP')
 	TriggerServerEvent('stocks:retrieve', exports['isPed']:isPed('cid'))
@@ -501,11 +501,11 @@ function confirmSpawning(isClothesSpawn)
         FreezeEntityPosition(GetPlayerPed(-1), false)
         RenderScriptCams(false, true, 1, true, true)
 		TriggerEvent('raid_clothes:defaultReset')
-		if not exports["wrp-inventory"]:hasEnoughOfItem("idcard",1,false) then
-			TriggerEvent("wrp-banned:getID","idcard",1,true)
+		if not exports["prp-inventory"]:hasEnoughOfItem("idcard",1,false) then
+			TriggerEvent("prp-banned:getID","idcard",1,true)
 		end
-		if not exports["wrp-inventory"]:hasEnoughOfItem("mobilephone",1,false)then
-			TriggerEvent("wrp-banned:getID","mobilephone",1)
+		if not exports["prp-inventory"]:hasEnoughOfItem("mobilephone",1,false)then
+			TriggerEvent("prp-banned:getID","mobilephone",1)
 		end
 	end
 
@@ -2507,9 +2507,9 @@ function logout()
 	Citizen.Wait(1000)
 	myRoomType = 0   
 	TriggerEvent('inhotel', false)
-	TriggerEvent("wrp-base:clearStates")
+	TriggerEvent("prp-base:clearStates")
 	TriggerServerEvent('hotel:clearStates', exports['isPed']:isPed('cid'))
-    exports["wrp-base"]:getModule("SpawnManager"):Initialize()
+    exports["prp-base"]:getModule("SpawnManager"):Initialize()
 
 	Citizen.Wait(1000)
 end
@@ -2795,7 +2795,7 @@ Citizen.CreateThread(function()
 						if not isForced then
 							TriggerServerEvent('hotel:getID')
 						end
-						TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "motel"..curRoomType.."-"..hid)
+						TriggerEvent("prp-ac:triggeredItemSpawn", "1", "motel"..curRoomType.."-"..hid)
 
 						TriggerEvent("actionbar:setEmptyHanded")
 					else
@@ -2834,7 +2834,7 @@ Citizen.CreateThread(function()
 					TriggerServerEvent('hotel:getID')
 					--TriggerServerEvent('hotel:GetInteract',maxRoomWeight,forcedID)
 
-					TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "motel"..curRoomType.."-"..forcedID)
+					TriggerEvent("prp-ac:triggeredItemSpawn", "1", "motel"..curRoomType.."-"..forcedID)
 
 				else
 					TriggerEvent("DoLongHudText","This is not your stash!",2)
@@ -2994,7 +2994,7 @@ RegisterNetEvent('hotel:outfit')
 AddEventHandler('hotel:outfit', function(id, args,sentType)
 
 	if nearClothingMotel() then
-		local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+		local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     	local Player = LocalPlayer:getCurrentCharacter()
 		if sentType == 1 then
 			local id = id

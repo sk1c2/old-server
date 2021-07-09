@@ -523,7 +523,7 @@ AddEventHandler('drugs:corner', function()
     MyStreetName = GetStreetNameFromHashKey(currentStreetHash)
     local dst = #(vector3(plyCoords) - vector3(143.62,-1766.86,28.4))
 
-    if (MyStreetName == "Forum Dr" or MyStreetName == "Brouge Ave" or MyStreetName == "Grove St" or MyStreetName == "Macdonald St" or MyStreetName == "Jamestown St" or MyStreetName == "Carson Ave") and exports["wrp-inventory"]:hasEnoughOfItem("weedq",1,false) and dst < 500.0 then
+    if (MyStreetName == "Forum Dr" or MyStreetName == "Brouge Ave" or MyStreetName == "Grove St" or MyStreetName == "Macdonald St" or MyStreetName == "Jamestown St" or MyStreetName == "Carson Ave") and exports["prp-inventory"]:hasEnoughOfItem("weedq",1,false) and dst < 500.0 then
 
 	    	TriggerEvent("DoShortHudText", "You are corner selling weed.",10)
 	    	sellingweed = true
@@ -788,18 +788,18 @@ function SellDrugs(NPC,saleprice, amount)
 		return
 	end
 
-	local crack = exports["wrp-inventory"]:hasEnoughOfItem("1gcrack",amount,false)
+	local crack = exports["prp-inventory"]:hasEnoughOfItem("1gcrack",amount,false)
 	if crack and sellingcrack then
 		TriggerEvent("inventory:removeItem", "1gcrack", amount)
 	end
 
-	local weedbaggies = exports["wrp-inventory"]:hasEnoughOfItem("weedq",amount,false)
+	local weedbaggies = exports["prp-inventory"]:hasEnoughOfItem("weedq",amount,false)
 	if weedbaggies and sellingweed then
 		TriggerEvent("inventory:removeItem", "weedq", amount)
 	end
 
 
-	local cocaine = exports["wrp-inventory"]:hasEnoughOfItem("1gcocaine",amount,false) 
+	local cocaine = exports["prp-inventory"]:hasEnoughOfItem("1gcocaine",amount,false) 
 	if cocaine and sellingcocaine then
 		TriggerEvent("inventory:removeItem", "1gcocaine", amount)
 	end
@@ -863,7 +863,7 @@ function SellDrugs(NPC,saleprice, amount)
 
 		PlayAmbientSpeech1(NPC, "Generic_Thanks", "Speech_Params_Force_Shouted_Critical")
 
-		TriggerEvent("wrp-banned:getID","rollcash",saleprice)
+		TriggerEvent("prp-banned:getID","rollcash",saleprice)
 
 		TriggerServerEvent("police:multipledenominators",true)
 		TriggerEvent("denoms",true)
@@ -1049,7 +1049,7 @@ end)
 
 function CheckAcceptWeed(workNumber,amountRequired)
 	local itemid = workArray[workNumber]["itemid"]
-	local hasitems = exports["wrp-inventory"]:hasEnoughOfItem(itemid,amountRequired,false)
+	local hasitems = exports["prp-inventory"]:hasEnoughOfItem(itemid,amountRequired,false)
 	if hasitems then
 		currentWorkNumber = 0
 		TriggerEvent("DoLongHudText","You have fixed the problems.",1)
@@ -2247,9 +2247,9 @@ local storageCoords = {
 -- 						local rank = exports["isPed"]:GroupRank(storageCoords[i]["groupid"])
 -- 						local myjob = exports["isPed"]:isPed("myjob")
 -- 						if currentStorage == "strip_club" and rank > 3 or myjob == "police" or myjob == "judge" then
--- 							TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "storage-"..storageCoords[i]["groupid"])
+-- 							TriggerEvent("prp-ac:triggeredItemSpawn", "1", "storage-"..storageCoords[i]["groupid"])
 -- 						elseif currentStorage ~= "strip_club" and rank > 1 or myjob == "police" or myjob == "judge" then
--- 							TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "storage-"..storageCoords[i]["groupid"]);	
+-- 							TriggerEvent("prp-ac:triggeredItemSpawn", "1", "storage-"..storageCoords[i]["groupid"]);	
 -- 						else
 -- 							TriggerEvent("DoLongHudText","You dont have permission to use this.")
 -- 						end
@@ -2405,7 +2405,7 @@ RegisterNetEvent("weed:startcrop")
 AddEventHandler("weed:startcrop", function(seedType)
 
 
-	if not exports["wrp-inventory"]:hasEnoughOfItem("plastic",3,true) then
+	if not exports["prp-inventory"]:hasEnoughOfItem("plastic",3,true) then
 		return
 	end
 
@@ -2452,7 +2452,7 @@ AddEventHandler("weed:destroyplant", function()
 			end
 		end
 	end
-	local finished = exports["wrp-taskbar"]:taskBar(6000,"Destroy")
+	local finished = exports["prp-taskbar"]:taskBar(6000,"Destroy")
 	if finished == 100 then
 		TriggerServerEvent("weed:destroy",crops[close]["dbID"])
 	end
@@ -2499,18 +2499,18 @@ RegisterNetEvent("weed:giveitems")
 AddEventHandler("weed:giveitems", function(strain)
 
 	if strain == "Seeded" then
-        TriggerEvent( "wrp-banned:getID","femaleseed",math.random(1,12))
+        TriggerEvent( "prp-banned:getID","femaleseed",math.random(1,12))
 		if math.random(100) < 10 then
-	        TriggerEvent( "wrp-banned:getID","maleseed",1)
+	        TriggerEvent( "prp-banned:getID","maleseed",1)
 	    end    
 	else
 		if strain == "Male" then
-			TriggerEvent( "wrp-banned:getID","femaleseed",math.random(1,2))
-			TriggerEvent( "wrp-banned:getID","weedq",math.random(3,8))
+			TriggerEvent( "prp-banned:getID","femaleseed",math.random(1,2))
+			TriggerEvent( "prp-banned:getID","weedq",math.random(3,8))
 		else
 
 			Citizen.Wait(500)
-			TriggerEvent( "wrp-banned:getID","weedq",math.random(10,25))
+			TriggerEvent( "prp-banned:getID","weedq",math.random(10,25))
 		end
 	end
 end)
@@ -2569,7 +2569,7 @@ Citizen.CreateThread( function()
 					DrawText3Ds( crops[close]["x"],crops[close]["y"], crops[close]["z"] , "["..Controlkey["generalUse"][2].."] " .. crops[close]["strain"] .. " Strain  @ " .. crops[close]["growth"] .. "% - " .. cropstatus[num]["info"])
 					if IsControlJustReleased(2, Controlkey["generalUse"][1]) and #(vector3(crops[close]["x"],crops[close]["y"],crops[close]["z"]-0.3) - plyCoords) < 2.0 and counter == 0 then
 						if crops[close]["growth"] > 100 then
-							local finished = exports["wrp-taskbar"]:taskBar(1000,"Picking")
+							local finished = exports["prp-taskbar"]:taskBar(1000,"Picking")
 							TriggerEvent("Evidence:StateSet",4,1600)
 							
 							TriggerServerEvent("weed:killplant",crops[close]["dbID"])
@@ -2579,7 +2579,7 @@ Citizen.CreateThread( function()
 								TriggerEvent("customNotification","This crop doesnt need any attention.")
 							else
 								if crops[close]["strain"] == "Seeded" then
-									if exports["wrp-inventory"]:hasEnoughOfItem("fertilizer",1,false) then
+									if exports["prp-inventory"]:hasEnoughOfItem("fertilizer",1,false) then
 										TriggerEvent("Evidence:StateSet",4,1600)
 										if math.random(100) > 85 then
 											TriggerEvent("customNotification","You just consumed all the Fertilizer.")
@@ -2591,7 +2591,7 @@ Citizen.CreateThread( function()
 										TriggerEvent("customNotification","You need Fertilizer for this!")
 									end
 								else
-									if exports["wrp-inventory"]:hasEnoughOfItem("water",1,false) then
+									if exports["prp-inventory"]:hasEnoughOfItem("water",1,false) then
 										TriggerEvent("Evidence:StateSet",4,1600)
 										TriggerEvent("inventory:removeItem", "water", 1)
 										local new = crops[close]["growth"] + math.random(14,17)
@@ -2625,9 +2625,9 @@ end)
              DrawText3Ds(x,y,z, drawtext) 
              if IsControlJustReleased(0, 38) then
  			if currentStorage == "tuner_carshop" and rank > 2 or job == "Police" or job == "DOJ" then
- 				TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "storage-tuner_carshop")
+ 				TriggerEvent("prp-ac:triggeredItemSpawn", "1", "storage-tuner_carshop")
  			elseif currentStorage ~= "tuner_carshop" and rank > 2 or job == "Police" or job == "DOJ" then
- 				TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "storage-tuner_carshop")	
+ 				TriggerEvent("prp-ac:triggeredItemSpawn", "1", "storage-tuner_carshop")	
  			else
  				TriggerEvent("DoLongHudText","You dont have permission to use this.")
              	end
@@ -2651,9 +2651,9 @@ Citizen.CreateThread(function()
 			DrawText3Ds(x,y,z, drawtext) 
 			if IsControlJustReleased(0, 38) then
 			if currentStorage == "tuner_carshop" and rank > 0 or job == "Police" or job == "DOJ" then
-				TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "storage-materials")
+				TriggerEvent("prp-ac:triggeredItemSpawn", "1", "storage-materials")
 			elseif currentStorage ~= "tuner_carshop" and rank > 0 or job == "Police" or job == "DOJ" then
-				TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "storage-materials")	
+				TriggerEvent("prp-ac:triggeredItemSpawn", "1", "storage-materials")	
 			else
 				TriggerEvent("DoLongHudText","You dont have permission to use this.")
 				end
@@ -2682,7 +2682,7 @@ RegisterNetEvent('tuner:crafting')
 AddEventHandler('tuner:crafting', function()
 	local job = exports['isPed']:isPed('job')
 	if job == 'tuner_carshop' or job == 'tuner_shop' then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "28", "Craft");
+		TriggerEvent("prp-ac:triggeredItemSpawn", "28", "Craft");
 	end
 end)
 
@@ -2690,7 +2690,7 @@ RegisterNetEvent('tuner:materials')
 AddEventHandler('tuner:materials', function()
 	local job = exports['isPed']:isPed('job')
 	if job == 'tuner_carshop' or job == 'tuner_shop' then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "storage-materials")
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "storage-materials")
 	end
 end)
 
@@ -2698,7 +2698,7 @@ RegisterNetEvent('tuner:stash')
 AddEventHandler('tuner:stash', function()
 	local rank = exports["isPed"]:GroupRank("tuner_carshop")
 	if rank > 2 then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "storage-tuner_carshop")	
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "storage-tuner_carshop")	
 	end
 end)
 
@@ -2706,7 +2706,7 @@ RegisterNetEvent('tuner:stash2')
 AddEventHandler('tuner:stash2', function()
 	local rank = exports["isPed"]:GroupRank("tuner_carshop")
 	if rank > 2 then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "36", "Craft");	
+		TriggerEvent("prp-ac:triggeredItemSpawn", "36", "Craft");	
 	end
 end)
 
@@ -2714,16 +2714,16 @@ RegisterNetEvent('drift:stash')
 AddEventHandler('drift:stash', function()
 	local rank = exports["isPed"]:GroupRank("DriftSchool")
 	if rank > 0 then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "drift")	
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "drift")	
 	end
 end)
 
 RegisterNetEvent('trade:in')
 AddEventHandler('trade:in', function()
-	if exports['wrp-inventory']:hasEnoughOfItem('goldbar', 100) then
+	if exports['prp-inventory']:hasEnoughOfItem('goldbar', 100) then
 		TriggerEvent('inventory:removeItem', "goldbar", 100)
 		FreezeEntityPosition(PlayerPedId(), true)
-		local finished = exports['wrp-taskbar']:taskBar(60000, 'Trading Gold Bars!')
+		local finished = exports['prp-taskbar']:taskBar(60000, 'Trading Gold Bars!')
 		if finished == 100 then
 			FreezeEntityPosition(PlayerPedId(), false)
 			TriggerServerEvent('trade:pay', math.random(35000, 45000))

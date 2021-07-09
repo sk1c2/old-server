@@ -24,7 +24,7 @@ AddEventHandler('garage:searchItem', function(plate)
   item = robbableItems[math.random(1, #robbableItems)]
   if math.random(1, 9) >= item.chance then
    if tonumber(item.id) == 0 then
-    TriggerClientEvent('wrp-ac:InfoPass', source, item.quantity)
+    TriggerClientEvent('prp-ac:InfoPass', source, item.quantity)
     TriggerClientEvent("DoLongHudText", source, 'You found $'..item.quantity)
    elseif tonumber(item.id) == 1 then
     TriggerClientEvent("DoLongHudText", source, 'You have found the keys to the vehicle!')
@@ -33,7 +33,7 @@ AddEventHandler('garage:searchItem', function(plate)
     TriggerClientEvent('garage:updateKeys', source, vehicleKeys, ident)
     TriggerClientEvent('vehicle:start', source)
    else
-    TriggerClientEvent('wrp-banned:getID', source, item.id, item.quantity)
+    TriggerClientEvent('prp-banned:getID', source, item.id, item.quantity)
     TriggerClientEvent("DoLongHudText", source, 'Item Added!')
    end
   else
@@ -94,13 +94,13 @@ RegisterServerEvent('removelockpick')
 AddEventHandler('removelockpick', function()
  local source = tonumber(source)
  if math.random(1, 20) == 1 then
-  TriggerClientEvent('wrp-banned:getID', source, "lockpick", 1)
+  TriggerClientEvent('prp-banned:getID', source, "lockpick", 1)
   TriggerClientEvent("DoLongHudText", source, 'The lockpick bent out of shape.')
  end
 end)
 
-RegisterServerEvent('wrp-transferveh')
-AddEventHandler('wrp-transferveh', function(owner, plate, playercid)
+RegisterServerEvent('prp-transferveh')
+AddEventHandler('prp-transferveh', function(owner, plate, playercid)
   print(owner)
   print(plate)
   print(playercid)

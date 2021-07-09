@@ -105,7 +105,7 @@ window.onload = function(e)
                 var val1 = $("." + menu + " .item_selected").attr("class").split(" ")[0];
                 var val2 = $("." + menu + " .item_selected .item1").text();
                 var val3 = $("." + menu + " .item_selected .item2").text();
-                $.post("http://wrp-bennysmech/selectedItem", JSON.stringify({
+                $.post("http://prp-bennysmech/selectedItem", JSON.stringify({
                     id: val1,
                     item: val2,
                     item2: val3
@@ -131,7 +131,7 @@ window.onload = function(e)
                 var val1 = $("." + menu + " .item_selected").attr("class").split(" ")[0];
                 var val2 = $("." + menu + " .item_selected .item1").text();
                 var val3 = $("." + menu + " .item_selected .item2").text();
-                $.post("http://wrp-bennysmech/selectedItem", JSON.stringify({
+                $.post("http://prp-bennysmech/selectedItem", JSON.stringify({
                     id: val1,
                     item: val2,
                     item2: val3
@@ -149,7 +149,7 @@ window.onload = function(e)
     function updateItem2TextOnly(menu, id, text)
     {
         $("." + menu + " ." + id + " .item2").text(text);
-        $.post("http://wrp-bennysmech/updateItem2", JSON.stringify({
+        $.post("http://prp-bennysmech/updateItem2", JSON.stringify({
             item: text
         }));
     }
@@ -179,7 +179,7 @@ window.onload = function(e)
             menuStructure[menu].previousSelectedItemID = null
         }
 
-        $.post("http://wrp-bennysmech/updateItem2", JSON.stringify({
+        $.post("http://prp-bennysmech/updateItem2", JSON.stringify({
             item: text
         }));
     }
@@ -208,7 +208,7 @@ window.onload = function(e)
                     var val1 = $("." + menu + " .item_selected").attr("class").split(" ")[0];
                     var val2 = $("." + menu + " .item_selected .item1").text();
                     var val3 = $("." + menu + " .item_selected .item2").text();
-                    $.post("http://wrp-bennysmech/selectedItem", JSON.stringify({
+                    $.post("http://prp-bennysmech/selectedItem", JSON.stringify({
                         id: val1,
                         item: val2,
                         item2: val3
@@ -231,7 +231,7 @@ window.onload = function(e)
                     var val1 = $("." + menu + " .item_selected").attr("class").split(" ")[0];
                     var val2 = $("." + menu + " .item_selected .item1").text();
                     var val3 = $("." + menu + " .item_selected .item2").text();
-                    $.post("http://wrp-bennysmech/selectedItem", JSON.stringify({
+                    $.post("http://prp-bennysmech/selectedItem", JSON.stringify({
                         id: val1,
                         item: val2,
                         item2: val3
@@ -260,7 +260,7 @@ window.onload = function(e)
                     var val1 = $("." + menu + " .item_selected").attr("class").split(" ")[0];
                     var val2 = $("." + menu + " .item_selected .item1").text();
                     var val3 = $("." + menu + " .item_selected .item2").text();
-                    $.post("http://wrp-bennysmech/selectedItem", JSON.stringify({
+                    $.post("http://prp-bennysmech/selectedItem", JSON.stringify({
                         id: val1,
                         item: val2,
                         item2: val3
@@ -292,7 +292,7 @@ window.onload = function(e)
                     var val1 = $("." + menu + " .item_selected").attr("class").split(" ")[0];
                     var val2 = $("." + menu + " .item_selected .item1").text();
                     var val3 = $("." + menu + " .item_selected .item2").text();
-                    $.post("http://wrp-bennysmech/selectedItem", JSON.stringify({
+                    $.post("http://prp-bennysmech/selectedItem", JSON.stringify({
                         id: val1,
                         item: val2,
                         item2: val3
@@ -312,7 +312,7 @@ window.onload = function(e)
                     var val1 = $("." + menu + " .item_selected").attr("class").split(" ")[0];
                     var val2 = $("." + menu + " .item_selected .item1").text();
                     var val3 = $("." + menu + " .item_selected .item2").text();
-                    $.post("http://wrp-bennysmech/selectedItem", JSON.stringify({
+                    $.post("http://prp-bennysmech/selectedItem", JSON.stringify({
                         id: val1,
                         item: val2,
                         item2: val3
@@ -336,7 +336,7 @@ window.onload = function(e)
                     var val1 = $("." + menu + " .item_selected").attr("class").split(" ")[0];
                     var val2 = $("." + menu + " .item_selected .item1").text();
                     var val3 = $("." + menu + " .item_selected .item2").text();
-                    $.post("http://wrp-bennysmech/selectedItem", JSON.stringify({
+                    $.post("http://prp-bennysmech/selectedItem", JSON.stringify({
                         id: val1,
                         item: val2,
                         item2: val3

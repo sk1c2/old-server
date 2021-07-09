@@ -2,8 +2,8 @@
 
 local st
 local iden
-RegisterServerEvent("wrp-weed:createplant")
-AddEventHandler("wrp-weed:createplant", function(x, y, z, strain, cid)
+RegisterServerEvent("prp-weed:createplant")
+AddEventHandler("prp-weed:createplant", function(x, y, z, strain, cid)
     _source = source
     iden =  cid
     if strain == "Seeded" then
@@ -23,24 +23,24 @@ AddEventHandler("wrp-weed:createplant", function(x, y, z, strain, cid)
         }, function(lol)
         exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `weeds` ORDER BY `id`) sub ORDER BY `id`", {}, function(weeds)
             for c = 1, #weeds do
-            TriggerClientEvent("wrp-weed:currentcrops", -1, weeds)  
+            TriggerClientEvent("prp-weed:currentcrops", -1, weeds)  
             end
         end)
     end)
 end)
 
-RegisterServerEvent("wrp-weed:requestTable")
-AddEventHandler("wrp-weed:requestTable", function()
+RegisterServerEvent("prp-weed:requestTable")
+AddEventHandler("prp-weed:requestTable", function()
     _source = source
      exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `weeds` ORDER BY `id`) sub ORDER BY `id`", {}, function(weeds)
         for c = 1, #weeds do
-         TriggerClientEvent("wrp-weed:currentcrops", -1, weeds)  
+         TriggerClientEvent("prp-weed:currentcrops", -1, weeds)  
         end
 end)
 end)
 
-RegisterServerEvent("wrp-weed:setStatus2")
-AddEventHandler("wrp-weed:setStatus2", function()
+RegisterServerEvent("prp-weed:setStatus2")
+AddEventHandler("prp-weed:setStatus2", function()
     _source = source
     local status
      exports.ghmattimysql:execute("SELECT * FROM (SELECT * FROM `weeds` ORDER BY `id`) sub ORDER BY `id`", {}, function(weeds)
@@ -55,25 +55,25 @@ AddEventHandler("wrp-weed:setStatus2", function()
             ['@id'] = weeds[c].id,
             ['@status'] = status
         }, function(lol) 
-           TriggerEvent("wrp-weed:requestTable")
+           TriggerEvent("prp-weed:requestTable")
           end)
        end
    end)
 end)
 
-RegisterServerEvent("wrp-weed:killplant")
-AddEventHandler("wrp-weed:killplant", function(id)
+RegisterServerEvent("prp-weed:killplant")
+AddEventHandler("prp-weed:killplant", function(id)
    _source = source
     exports.ghmattimysql:execute('DELETE FROM `weeds` WHERE `id` = @id', {
     ['@id'] = id,
      }, function(lol) 
-    TriggerClientEvent('wrp-weed:updateplantwithID', -1, id, '0', "remove")
+    TriggerClientEvent('prp-weed:updateplantwithID', -1, id, '0', "remove")
      end)
 end)
     
 
-RegisterServerEvent("wrp-weed:UpdateWeedGrowth")
-AddEventHandler("wrp-weed:UpdateWeedGrowth", function(id, new)
+RegisterServerEvent("prp-weed:UpdateWeedGrowth")
+AddEventHandler("prp-weed:UpdateWeedGrowth", function(id, new)
     _source = source
     print(id)
     exports.ghmattimysql:execute('UPDATE `weeds` SET `growth` = @growth,  `status` = @status WHERE `id` = @id', {
@@ -81,19 +81,19 @@ AddEventHandler("wrp-weed:UpdateWeedGrowth", function(id, new)
         ['@status'] = 1,
         ['@growth'] = new
     }, function(lol) 
-      TriggerClientEvent('wrp-weed:updateplantwithID', -1, id, new, "alter")
+      TriggerClientEvent('prp-weed:updateplantwithID', -1, id, new, "alter")
   end)
 end)
 
-RegisterServerEvent("wrp-weed:UpdateWeedStatus")
-AddEventHandler("wrp-weed:UpdateWeedStatus", function(id, status)
+RegisterServerEvent("prp-weed:UpdateWeedStatus")
+AddEventHandler("prp-weed:UpdateWeedStatus", function(id, status)
     _source = source
     print(id)
     exports.ghmattimysql:execute('UPDATE `weeds` SET `status` = @status WHERE `id` = @id', {
         ['@id'] = id,
         ['@status'] = 1
     }, function(lol) 
-      TriggerClientEvent('wrp-weed:updateplantwithID', -1, id, new, 'alter')
+      TriggerClientEvent('prp-weed:updateplantwithID', -1, id, new, 'alter')
 
 end)
 end)

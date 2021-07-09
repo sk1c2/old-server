@@ -66,7 +66,7 @@ end)
 RegisterServerEvent('house:givekey')
 AddEventHandler('house:givekey', function(house_id,house_model,house_name,target)
     local src = source
-    local firstname, lastname, cid = exports['wrp-base']:getModule("Player"):getCharacterNameFromSource(tonumber(target))
+    local firstname, lastname, cid = exports['prp-base']:getModule("Player"):getCharacterNameFromSource(tonumber(target))
     exports.ghmattimysql:execute('SELECT `house_id` FROM __housekeys WHERE `cid`= ?', {cid}, function(data)
         local penis = json.encode(data)
         if penis == "[]" then
@@ -89,7 +89,7 @@ AddEventHandler('house:retrieveKeys', function(house_id, house_model)
                 if v.house_id == house_id then
                     local random = math.random(1111,9999)
                     shared[random] = {}
-                    local player = exports['wrp-base']:getModule("Player"):getCharacterFromCid(v.cid)
+                    local player = exports['prp-base']:getModule("Player"):getCharacterFromCid(v.cid)
                     local name = player.first_name .. " " .. player.last_name
                     table.insert(shared[random], {["sharedHouseName"] = v.housename, ["sharedId"] = v.cid, ["sharedName"] = name})
                     TriggerClientEvent('house:returnKeys', src, shared)
@@ -102,7 +102,7 @@ end)
 RegisterServerEvent('house:removeKey')
 AddEventHandler('house:removeKey', function(house_id, house_model, target)
     local src = source
-    local player = exports['wrp-base']:getModule("Player"):getCharacterFromCid(target)
+    local player = exports['prp-base']:getModule("Player"):getCharacterFromCid(target)
     exports.ghmattimysql:execute('DELETE FROM __housekeys WHERE `house_id`= ? AND `house_model`= ? AND `cid`= ?', {house_id, house_model, target})
     TriggerClientEvent('DoLongHudText', src, "You removed " .. player.first_name .. " " .. player.last_name .. "'s keys.")
     TriggerClientEvent('DoLongHudText', player.playerSrc, "Your keys were removed by the home owner.", 2)

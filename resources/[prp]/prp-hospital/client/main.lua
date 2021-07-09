@@ -53,7 +53,7 @@ function LeaveBed()
     Citizen.Wait(5000)
     ClearPedTasks(PlayerPedId())
     FreezeEntityPosition(PlayerPedId(), false)
-    TriggerServerEvent('wrp-hospital:server:LeaveBed', bedOccupying)
+    TriggerServerEvent('prp-hospital:server:LeaveBed', bedOccupying)
 
     FreezeEntityPosition(bedObject, false)
     
@@ -62,13 +62,13 @@ function LeaveBed()
     bedOccupyingData = nil
 end
 
-RegisterNetEvent('wrp-hospital:client:RPCheckPos')
-AddEventHandler('wrp-hospital:client:RPCheckPos', function()
-    TriggerServerEvent('wrp-hospital:server:RPRequestBed', GetEntityCoords(PlayerPedId()))
+RegisterNetEvent('prp-hospital:client:RPCheckPos')
+AddEventHandler('prp-hospital:client:RPCheckPos', function()
+    TriggerServerEvent('prp-hospital:server:RPRequestBed', GetEntityCoords(PlayerPedId()))
 end)
 
-RegisterNetEvent('wrp-hospital:client:RPSendToBed')
-AddEventHandler('wrp-hospital:client:RPSendToBed', function(id, data)
+RegisterNetEvent('prp-hospital:client:RPSendToBed')
+AddEventHandler('prp-hospital:client:RPSendToBed', function(id, data)
     bedOccupying = id
     bedOccupyingData = data
 
@@ -106,8 +106,8 @@ AddEventHandler('wrp-hospital:client:RPSendToBed', function(id, data)
     end)
 end)
 
-RegisterNetEvent('wrp-hospital:client:SendToBed')
-AddEventHandler('wrp-hospital:client:SendToBed', function(id, data)
+RegisterNetEvent('prp-hospital:client:SendToBed')
+AddEventHandler('prp-hospital:client:SendToBed', function(id, data)
     bedOccupying = id
     bedOccupyingData = data
 
@@ -130,24 +130,24 @@ AddEventHandler('wrp-hospital:client:SendToBed', function(id, data)
         
         TriggerEvent('DoLongHudText', 'Doctors Are Treating You')
         Citizen.Wait(Config.AIHealTimer * 1000)
-        TriggerServerEvent('wrp-hospital:server:EnteredBed')
-        TriggerEvent('wrp-hospital:client:RemoveBleed')
+        TriggerServerEvent('prp-hospital:server:EnteredBed')
+        TriggerEvent('prp-hospital:client:RemoveBleed')
     end)
 end)
 
-RegisterNetEvent('wrp-hospital:client:FinishNancy')
-AddEventHandler('wrp-hospital:client:FinishNancy', function()
+RegisterNetEvent('prp-hospital:client:FinishNancy')
+AddEventHandler('prp-hospital:client:FinishNancy', function()
 	SetEntityHealth(PlayerPedId(), GetEntityMaxHealth(PlayerPedId()))
-    TriggerEvent('wrp-hospital:client:RemoveBleed')
-    TriggerEvent('wrp-hospital:client:ResetLimbs')
+    TriggerEvent('prp-hospital:client:RemoveBleed')
+    TriggerEvent('prp-hospital:client:ResetLimbs')
     TriggerEvent('DoLongHudText', 'Treated.')
 end)
 
-RegisterNetEvent('wrp-hospital:client:FinishServices')
-AddEventHandler('wrp-hospital:client:FinishServices', function()
+RegisterNetEvent('prp-hospital:client:FinishServices')
+AddEventHandler('prp-hospital:client:FinishServices', function()
 	SetEntityHealth(PlayerPedId(), GetEntityMaxHealth(PlayerPedId()))
-    TriggerEvent('wrp-hospital:client:RemoveBleed')
-    TriggerEvent('wrp-hospital:client:ResetLimbs')
+    TriggerEvent('prp-hospital:client:RemoveBleed')
+    TriggerEvent('prp-hospital:client:ResetLimbs')
     TriggerEvent('DoLongHudText', 'Treated.')
     LeaveBed()
 end)
@@ -167,19 +167,19 @@ end)
 --                                 Citizen.Wait(0)
 --                             end
 --                             TaskPlayAnim(PlayerPedId(), "anim@narcotics@trash" , "drop_front" ,8.0, -8.0, -1, 1, 0, false, false, false )
---                             local finished = exports["wrp-taskbar"]:taskBar(1700,"Checking Credentials")
+--                             local finished = exports["prp-taskbar"]:taskBar(1700,"Checking Credentials")
 --                             if finished == 100 then
 --                                 TriggerEvent('reviveFunction')
---                                 TriggerEvent('wrp-hospital:client:FinishServices')
+--                                 TriggerEvent('prp-hospital:client:FinishServices')
 --                                 SetEntityHealth(PlayerPedId(), GetEntityMaxHealth(PlayerPedId()))
---                                 TriggerEvent('wrp-hospital:client:RemoveBleed')
---                                 TriggerEvent('wrp-hospital:client:ResetLimbs')
+--                                 TriggerEvent('prp-hospital:client:RemoveBleed')
+--                                 TriggerEvent('prp-hospital:client:ResetLimbs')
 --                                 SetEntityHealth(PlayerPedId(), GetEntityMaxHealth(PlayerPedId()))
---                                 TriggerEvent('wrp-hospital:client:RemoveBleed')
---                                 TriggerEvent('wrp-hospital:client:ResetLimbs')
+--                                 TriggerEvent('prp-hospital:client:RemoveBleed')
+--                                 TriggerEvent('prp-hospital:client:ResetLimbs')
 --                                 ClearPedTasks(PlayerPedId())
 --                                 Citizen.Wait(1000)
---                                 TriggerServerEvent('wrp-hospital:server:RequestBed')
+--                                 TriggerServerEvent('prp-hospital:server:RequestBed')
 --                             end
 --                         else
 --                             TriggerEvent('DoLongHudText', 'You do not need medical attention', 2)

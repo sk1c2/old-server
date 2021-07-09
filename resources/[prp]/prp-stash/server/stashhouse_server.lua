@@ -1,7 +1,7 @@
-RegisterNetEvent('wrp-stash:fetchInitialState')
-AddEventHandler('wrp-stash:fetchInitialState', function()
+RegisterNetEvent('prp-stash:fetchInitialState')
+AddEventHandler('prp-stash:fetchInitialState', function()
 	local source = source
-	  TriggerClientEvent('wrp-stash:setInitialState', source, Config.Stash)
+	  TriggerClientEvent('prp-stash:setInitialState', source, Config.Stash)
 end)
 
 

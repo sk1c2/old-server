@@ -57,5 +57,5 @@ AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
 end)
 
 Citizen.CreateThread(function()
-    print('\27[32m[wrp-base]\27[0m: wrp-base has been loaded successfully!')
+    print('\27[32m[prp-base]\27[0m: prp-base has been loaded successfully!')
 end)

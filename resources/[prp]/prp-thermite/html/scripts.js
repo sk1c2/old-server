@@ -119,7 +119,7 @@ $(document).ready(function(){
 
     function gameOver() {
       playSound("failure",0.5)
-      $.post('http://wrp-thermite/failure', JSON.stringify({}));
+      $.post('http://prp-thermite/failure', JSON.stringify({}));
       gameOn = false;
       clearInterval(cleanupInterval);
       getAllAnimations().forEach(function(anim) {
@@ -207,7 +207,7 @@ $(document).ready(function(){
       {
         soundSet = true
         playSound("success",0.9)
-        $.post('http://wrp-thermite/complete', JSON.stringify({}));
+        $.post('http://prp-thermite/complete', JSON.stringify({}));
       }
     }
     setupNextLetter();
@@ -215,7 +215,7 @@ $(document).ready(function(){
     backupTimeout = setTimeout(function() {
       soundSet = true
       playSound("success",0.9)
-      $.post('http://wrp-thermite/complete', JSON.stringify({}));
+      $.post('http://prp-thermite/complete', JSON.stringify({}));
       clearTimeout(backupTimeout)
     }, (DropAmount * intervalSet) + 2500);
   }
@@ -300,7 +300,7 @@ $(document).ready(function(){
 
   // document.onkeyup = function (data) {
   //   if (data.which == 27 ) {
-  //     $.post('http://wrp-thermite/close', JSON.stringify({}));
+  //     $.post('http://prp-thermite/close', JSON.stringify({}));
   //   }
   // };
 

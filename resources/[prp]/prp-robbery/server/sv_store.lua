@@ -24,8 +24,8 @@ storeLocations = {
     [10] = {x = 1697.6986083984, y = 4923.0517578125, z = 42.06364440918, h = 321.22326660156, recent = false, registers = {}}
 }
 
-RegisterNetEvent('wrp-robbery:attemptRegisterRobbery')
-AddEventHandler('wrp-robbery:attemptRegisterRobbery', function(sId, rId)
+RegisterNetEvent('prp-robbery:attemptRegisterRobbery')
+AddEventHandler('prp-robbery:attemptRegisterRobbery', function(sId, rId)
     if storeLocations[sId].recent or #storeLocations[sId].registers >= 2 then 
         TriggerClientEvent('DoLongHudText', source, 'This store has been robbed recently.', 2)
         return
@@ -41,11 +41,11 @@ AddEventHandler('wrp-robbery:attemptRegisterRobbery', function(sId, rId)
 
     table.insert(storeLocations[sId].registers, rId)
 
-    TriggerClientEvent('wrp-robbery:regSuccess', source)
+    TriggerClientEvent('prp-robbery:regSuccess', source)
 end)
 
-RegisterNetEvent('wrp-robbery:attemptSafeRobbery')
-AddEventHandler('wrp-robbery:attemptSafeRobbery', function(sId)
+RegisterNetEvent('prp-robbery:attemptSafeRobbery')
+AddEventHandler('prp-robbery:attemptSafeRobbery', function(sId)
     --print('Debug!')
     if safeLocations[sId].robbed then 
         TriggerClientEvent('DoLongHudText', source, 'This safe has been robbed recently.', 2)
@@ -54,15 +54,15 @@ AddEventHandler('wrp-robbery:attemptSafeRobbery', function(sId)
 
     safeLocations[sId].robbed = true
 
-    TriggerClientEvent('wrp-robbery:safeSuccess', source)
+    TriggerClientEvent('prp-robbery:safeSuccess', source)
 end)
 
 RegisterServerEvent('store:give')
 AddEventHandler('store:give', function(money)
     local source = source
-    local LocalPlayer = exports['wrp-base']:getModule('LocalPlayer')
+    local LocalPlayer = exports['prp-base']:getModule('LocalPlayer')
     if money ~= nil then
-       TriggerClientEvent('wrp-ac:InfoPass', source, money)
+       TriggerClientEvent('prp-ac:InfoPass', source, money)
        TriggerClientEvent('DoLongHudText', source, 'You got $'.. money .. ' from the Register!', 1)
     end
 end)

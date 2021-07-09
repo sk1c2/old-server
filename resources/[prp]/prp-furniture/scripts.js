@@ -24,7 +24,7 @@ $(document).ready(function(){
 
   $(".btnClose").click(function(){
       closeMain()
-      $.post('http://wrp-furniture/close', JSON.stringify({}));
+      $.post('http://prp-furniture/close', JSON.stringify({}));
   });
 
   $(".btnNew").click(function(){
@@ -45,20 +45,20 @@ $(document).ready(function(){
   $(".btnMove").click(function(){
       $(".wrapSelectObjects").css("display", "none");
       $(".SelectObject").css("display", "none");
-      $.post('http://wrp-furniture/scanObject', JSON.stringify({}));
+      $.post('http://prp-furniture/scanObject', JSON.stringify({}));
   });
 
   $(".btnFree").click(function(){
       $(".wrapSelectObjects").css("display", "none");
       $(".SelectObject").css("display", "none");
-      $.post('http://wrp-furniture/FreeCam', JSON.stringify({}));
+      $.post('http://prp-furniture/FreeCam', JSON.stringify({}));
   });
 
 
   $(".btnModify").click(function(){
       $(".wrapSelectObjects").css("display", "none");
       $(".SelectObject").css("display", "none");
-      $.post('http://wrp-furniture/newObject', JSON.stringify({}));
+      $.post('http://prp-furniture/newObject', JSON.stringify({}));
 
   });
   $(".btnLeaveDel").click(function(){
@@ -67,7 +67,7 @@ $(document).ready(function(){
   });
 
   $(".btnDelObj").click(function(){
-    $.post('http://wrp-furniture/DelSelectedObj', JSON.stringify({}));
+    $.post('http://prp-furniture/DelSelectedObj', JSON.stringify({}));
   });
 
 
@@ -76,14 +76,14 @@ $(document).ready(function(){
       $(".SelectObject").css("display", "none");
       $(".wrapbuttons").css("display", "none");
       $(".NextPrev").css("display", "block");
-      $.post('http://wrp-furniture/DelObj', JSON.stringify({}));
+      $.post('http://prp-furniture/DelObj', JSON.stringify({}));
   });
 
   $(".btnNextObj").click(function(){
-    $.post('http://wrp-furniture/NextObj', JSON.stringify({}));
+    $.post('http://prp-furniture/NextObj', JSON.stringify({}));
   });
   $(".btnPrevObj").click(function(){
-    $.post('http://wrp-furniture/PrevObj', JSON.stringify({}));
+    $.post('http://prp-furniture/PrevObj', JSON.stringify({}));
   });
 
 
@@ -161,7 +161,7 @@ $(document).ready(function(){
               $list.hide();
 
 
-              $.post('http://wrp-furniture/selectObject', JSON.stringify({selectObject: $this.val()}));
+              $.post('http://prp-furniture/selectObject', JSON.stringify({selectObject: $this.val()}));
           });
         
           $(document).click(function() {

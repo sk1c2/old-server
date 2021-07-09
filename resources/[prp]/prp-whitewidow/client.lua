@@ -12,8 +12,8 @@ AddEventHandler('weed:fertilizer', function()
 	if job == 'WhiteWidow' then
         TriggerEvent("animation:fertilizer")
         FreezeEntityPosition(GetPlayerPed(-1),true)
-		exports['wrp-taskbar']:taskBar(10000, 'Grabbing Fertilizer')
-        TriggerEvent('wrp-banned:getID',"highgradefert", 1)
+		exports['prp-taskbar']:taskBar(10000, 'Grabbing Fertilizer')
+        TriggerEvent('prp-banned:getID',"highgradefert", 1)
         FreezeEntityPosition(GetPlayerPed(-1),false)
 	end
 end)
@@ -61,35 +61,35 @@ function loadAnimDict( dict )
     end
 end
 
-RegisterNetEvent('wrp-cookshit')
-AddEventHandler('wrp-cookshit', function()
+RegisterNetEvent('prp-cookshit')
+AddEventHandler('prp-cookshit', function()
     local job = exports['isPed']:isPed('job')
     if job == 'WhiteWidow' then
     if Temperature < 50 then
         loadAnimDict('mini@repair')
         TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_player", 8.0, -8, -1, 16, 0, 0, 0, 0)
-        exports['wrp-taskbar']:taskBar(5000, 'Pouring Fertilizer..')
+        exports['prp-taskbar']:taskBar(5000, 'Pouring Fertilizer..')
         ClearPedTasks(PlayerPedId())
         Temperature = Temperature + 10
         part1 = true
     else
-        if exports['wrp-inventory']:hasEnoughOfItem('highgradefert', 2) then
-            exports['wrp-taskbar']:taskBar(2500, 'Setting Fertilizer..')
+        if exports['prp-inventory']:hasEnoughOfItem('highgradefert', 2) then
+            exports['prp-taskbar']:taskBar(2500, 'Setting Fertilizer..')
             Citizen.Wait(100)
-            exports['wrp-taskbar']:taskBar(2500, 'Checking Fertilizer')
+            exports['prp-taskbar']:taskBar(2500, 'Checking Fertilizer')
             Citizen.Wait(100)
             if Temperature < 50 then
                 TriggerEvent('DoLongHudText', 'You let the fertilizer set for to long!', 2)
             else
                 Citizen.Wait(10)
-                exports['wrp-taskbar']:taskBar(2500, 'Checking Fertilizer..')
+                exports['prp-taskbar']:taskBar(2500, 'Checking Fertilizer..')
                 Citizen.Wait(100)
-                exports['wrp-taskbar']:taskBar(15000, 'Allowing Fertilizer to set..')
+                exports['prp-taskbar']:taskBar(15000, 'Allowing Fertilizer to set..')
                 Citizen.Wait(100)
                 TriggerEvent('DoLongHudText', 'Fertilizer has set!')
-                exports['wrp-taskbar']:taskBar(2500, 'Picking the weed!')
+                exports['prp-taskbar']:taskBar(2500, 'Picking the weed!')
                 Citizen.Wait(100)
-                TriggerEvent('wrp-banned:getID', 'weedq', math.random(1,5))
+                TriggerEvent('prp-banned:getID', 'weedq', math.random(1,5))
                 TriggerEvent('inventory:removeItem', 'highgradefert', 2)
             end
         end
@@ -101,7 +101,7 @@ RegisterNetEvent('weed:make')
 AddEventHandler('weed:make', function()
 	local job = exports['isPed']:isPed('job')
 	if job == 'WhiteWidow' then
-        TriggerEvent("wrp-ac:triggeredItemSpawn", "86", "Craft");
+        TriggerEvent("prp-ac:triggeredItemSpawn", "86", "Craft");
     end
 end)
 
@@ -109,11 +109,11 @@ RegisterNetEvent('weed:stash')
 AddEventHandler('weed:stash', function()
 	local job = exports['isPed']:isPed('job')
 	if job == 'WhiteWidow' then
-		TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "storage-whitewidow")	
+		TriggerEvent("prp-ac:triggeredItemSpawn", "1", "storage-whitewidow")	
 	end
 end)
 
 RegisterNetEvent('whitewidow:pickup')
 AddEventHandler('whitewidow:pickup', function()
-	TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "whitewidow_counter")
+	TriggerEvent("prp-ac:triggeredItemSpawn", "1", "whitewidow_counter")
 end)

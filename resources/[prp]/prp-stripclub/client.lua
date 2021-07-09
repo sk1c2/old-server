@@ -40,9 +40,9 @@ Citizen.CreateThread(function()
                 FreezeEntityPosition(GetPlayerPed(-1),true)
                 local dancecooldown = math.random(20000,25000)
                 Citizen.Wait(dancecooldown)
-                local finished = exports['wrp-taskbarskill']:taskBar(4000,3)
+                local finished = exports['prp-taskbarskill']:taskBar(4000,3)
                 if finished == 100 then
-                    TriggerEvent('wrp-ac:InfoPass', math.random(10,20))
+                    TriggerEvent('prp-ac:InfoPass', math.random(10,20))
                 else
                     dancing = false
                     ClearPedTasks(PlayerPedId(-1))
@@ -58,9 +58,9 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1),true)
 			local dancecooldown = math.random(20000,25000)
 			Citizen.Wait(dancecooldown)
-			local finished = exports['wrp-taskbarskill']:taskBar(4000,3)
+			local finished = exports['prp-taskbarskill']:taskBar(4000,3)
 			if finished == 100 then
-				TriggerEvent('wrp-ac:InfoPass', math.random(10,20))
+				TriggerEvent('prp-ac:InfoPass', math.random(10,20))
 			else
                 dancing = false
                 ClearPedTasks(PlayerPedId(-1))
@@ -74,6 +74,6 @@ RegisterNetEvent('drinks:bar')
 AddEventHandler('drinks:bar', function()
     local rank = exports["isPed"]:GroupRank("VanillaUnicorn")
     if rank > 0 then
-	    TriggerEvent("wrp-ac:triggeredItemSpawn", "14", "Shop")
+	    TriggerEvent("prp-ac:triggeredItemSpawn", "14", "Shop")
     end
 end)

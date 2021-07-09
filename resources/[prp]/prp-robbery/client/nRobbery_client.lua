@@ -271,7 +271,7 @@ function attemptToRob(itemID,activePolice)
         Wait(300)
         TriggerEvent("animation:lockpickcar")
         local pick = difficult.lockpicking
-        local finished = exports["wrp-lockpicking"]:lockpick(pick[1],pick[2],pick[3],pick[4])
+        local finished = exports["prp-lockpicking"]:lockpick(pick[1],pick[2],pick[3],pick[4])
         ClearPedTasks(PlayerPedId())
         if finished == 100 then 
             TriggerServerEvent("robbery:robberyFinished",locationID,marker.toolType,itemNum)
@@ -310,7 +310,7 @@ function attemptToRob(itemID,activePolice)
 
             local thermite = markerDifficult[locationID].thermite
 
-            local outcome = exports["wrp-thermite"]:startGame(thermite[1],thermite[2],thermite[3],thermite[4])
+            local outcome = exports["prp-thermite"]:startGame(thermite[1],thermite[2],thermite[3],thermite[4])
             local finished = 0
             if outcome then finished = 100 end
             local rnd = math.random(1,99999)
@@ -332,11 +332,11 @@ function attemptToRob(itemID,activePolice)
                 ClearPedTasks(PlayerPedId())
                 
                 TriggerEvent("DoLongHudText","Thermite Success!")
-                TriggerServerEvent('wrp-robbery:checkflag')
+                TriggerServerEvent('prp-robbery:checkflag')
                 
             else
                 if math.random(1,100) > 1 then
-                    exports["wrp-thermite"]:startFireAtLocation(marker.pos[1],marker.pos[2],marker.pos[3]-0.3,10000)                   
+                    exports["prp-thermite"]:startFireAtLocation(marker.pos[1],marker.pos[2],marker.pos[3]-0.3,10000)                   
                 end
 
                 TriggerEvent('inventory:removeItem',"thermite", 1)
@@ -349,7 +349,7 @@ function attemptToRob(itemID,activePolice)
                 ClearPedTasks(PlayerPedId())
             else
                 if marker["group"] == "prisonPower" then
-                    TriggerServerEvent("wrp-robbery:setstate")
+                    TriggerServerEvent("prp-robbery:setstate")
                 end
                 TriggerServerEvent("robbery:alarmTrigger",locationID)
                 TriggerServerEvent("robbery:robberyFailed",locationID,itemID)
@@ -361,14 +361,14 @@ function attemptToRob(itemID,activePolice)
 
     if itemID == "Gruppe6Card2" then
 
-        if exports["wrp-inventory"]:hasEnoughOfItem("electronickit",1,false) then
-            local card = exports["wrp-taskbar"]:taskBar(9000,"Inserting Card")
+        if exports["prp-inventory"]:hasEnoughOfItem("electronickit",1,false) then
+            local card = exports["prp-taskbar"]:taskBar(9000,"Inserting Card")
             FreezeEntityPosition(PlayerPedId(), true)
             if card == 100 then
                 Wait(400)
                 TriggerEvent("animation:cancel")
                 TriggerServerEvent("robbery:alarmTrigger",locationID)
-                local rdif = exports["wrp-taskbar"]:taskBar(6000,"Hacking..")
+                local rdif = exports["prp-taskbar"]:taskBar(6000,"Hacking..")
                 if  rdif == 100 then
                     local kit = difficult.kit
                     FreezeEntityPosition(PlayerPedId(), false)
@@ -390,13 +390,13 @@ function attemptToRob(itemID,activePolice)
     if itemID == "Gruppe6Card22" then
 
 
-        if exports["wrp-inventory"]:hasEnoughOfItem("electronickit",1,false) then
-            local card = exports["wrp-taskbar"]:taskBar(9000,"Inserting Card")
+        if exports["prp-inventory"]:hasEnoughOfItem("electronickit",1,false) then
+            local card = exports["prp-taskbar"]:taskBar(9000,"Inserting Card")
             if card == 100 then
                 Wait(400)
                  TriggerEvent("animation:cancel")
                 TriggerServerEvent("robbery:alarmTrigger",locationID)
-                local rdif = exports["wrp-taskbar"]:taskBar(6000,"Hacking..")
+                local rdif = exports["prp-taskbar"]:taskBar(6000,"Hacking..")
                 if  rdif == 100 then
                     local kit = difficult.kit
                     TriggerEvent('inventory:removeItem',"Gruppe6Card22", 1)
@@ -434,7 +434,7 @@ function thermiteHandle(locationID,itemID)
     local marker = markers[locationID]
     local particle = particlePos[locationID]
 
-    local taskFinished = exports["wrp-taskbar"]:taskBar(1000,"Getting Thermite ready")
+    local taskFinished = exports["prp-taskbar"]:taskBar(1000,"Getting Thermite ready")
     if taskFinished == 100 then
        
         TriggerEvent("attachItem","minigameThermite")

@@ -44,7 +44,7 @@ end
 --             if distance <= 1.2 then
 --                 DrawText3DDs(x,y,z, drawtext) 
 --                 if IsControlJustReleased(0, 38) then
---                     TriggerEvent("wrp-ac:triggeredItemSpawn", "30", "Craft");
+--                     TriggerEvent("prp-ac:triggeredItemSpawn", "30", "Craft");
 --                 end
 --             end
 --         end
@@ -58,7 +58,7 @@ end
 --                 if distance2 <= 1.2 then
 --                     DrawText3DDs(x2,y2,z2, drawtext2) 
 --                     if IsControlJustReleased(0, 38) then
---                         TriggerEvent("wrp-ac:triggeredItemSpawn", "1", "biz")
+--                         TriggerEvent("prp-ac:triggeredItemSpawn", "1", "biz")
 --                     end
 --                 end
 --             end
@@ -223,7 +223,7 @@ local function saveVehicle()
             vehicleMods.extras[i] = 0
         end
     end
-	local myCar = exports['wrp-base']:FetchVehProps(veh)
+	local myCar = exports['prp-base']:FetchVehProps(veh)
     TriggerServerEvent('updateVehicle2',myCar)  
 end
 
@@ -233,9 +233,9 @@ function AttemptPurchase(type, upgradeLevel)
     if upgradeLevel ~= nil then
         upgradeLevel = upgradeLevel + 2
     end
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
-    TriggerServerEvent("wrp-mechanic:attemptPurchase", Player.id, Player.cash, type, upgradeLevel)
+    TriggerServerEvent("prp-mechanic:attemptPurchase", Player.id, Player.cash, type, upgradeLevel)
 
     attemptingPurchase = true
 
@@ -1271,9 +1271,9 @@ Citizen.CreateThread(function()
 end)
 
 --#[Event Handlers]#--
-RegisterNetEvent("wrp-mechanic:purchaseSuccessful")
-AddEventHandler("wrp-mechanic:purchaseSuccessful", function(cash)
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+RegisterNetEvent("prp-mechanic:purchaseSuccessful")
+AddEventHandler("prp-mechanic:purchaseSuccessful", function(cash)
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:removeCash(Player.id, cash)
     isPurchaseSuccessful = true
@@ -1281,8 +1281,8 @@ AddEventHandler("wrp-mechanic:purchaseSuccessful", function(cash)
     TriggerEvent('DoLongHudText', 'Purchase Successful')
 end)
 
-RegisterNetEvent("wrp-mechanic:purchaseFailed")
-AddEventHandler("wrp-mechanic:purchaseFailed", function()
+RegisterNetEvent("prp-mechanic:purchaseFailed")
+AddEventHandler("prp-mechanic:purchaseFailed", function()
     isPurchaseSuccessful = false
     attemptingPurchase = false
     TriggerEvent('DoLongHudText', 'Not enough cash', 2)

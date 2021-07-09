@@ -246,7 +246,7 @@ RegisterNUICallback('bankGroup', function(data)
     local gangid = data.gangid
     local cashamount = data.cashamount
 
-    local lPlayer = exports['wrp-base']:getModule('LocalPlayer')
+    local lPlayer = exports['prp-base']:getModule('LocalPlayer')
     local pBank = lPlayer:getCurrentCharacter().bank
     local pId = lPlayer:getCurrentCharacter().id
 
@@ -267,7 +267,7 @@ RegisterNUICallback('payGroup', function(data)
 end)
 
 RegisterNUICallback('promoteGroup', function(data)
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
     local gangid = data.gangid
     local cid = data.cid
@@ -295,7 +295,7 @@ RegisterCommand('fine', function(source, args)
           return
       end    
 
-      TriggerServerEvent('wrp-fine:received', reciever, amount)
+      TriggerServerEvent('prp-fine:received', reciever, amount)
       -- TriggerEvent('DoLongHudText', reciever, 'You have recieved a fine of $' ..amount.. '!', 2)
       Citizen.Wait(100)
       TriggerEvent('DoLongHudText', 'You have given a fine to ID:' ..reciever.. '!')
@@ -326,7 +326,7 @@ end
 RegisterNUICallback('manageGroup', function(data)
     local groupid = data.GroupID
 
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     local jRank = tonumber(LocalPlayer:getRank())
     local job = exports['isPed']:isPed('job')
@@ -746,13 +746,13 @@ end)
 
 
 RegisterNUICallback('btnTaskGroups', function()
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
-    local jobs = exports['wrp-base']:GetRanks()
+    local jobs = exports['prp-base']:GetRanks()
     local pJob = Player.job
     local groupObject = {}
 
-    local LocalPlayer = exports['wrp-base']:getModule('LocalPlayer')
+    local LocalPlayer = exports['prp-base']:getModule('LocalPlayer')
     local jRank = LocalPlayer:getRank()
     local jId = 0
 
@@ -916,7 +916,7 @@ end)
 
 
 RegisterNUICallback('btnGarage', function()
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   TriggerServerEvent("garages:CheckGarageForVeh", Player.id)
 end)
@@ -943,7 +943,7 @@ RegisterNUICallback('vehiclePay', function(data)
 end)
 
 --RegisterNUICallback('vehiclePay', function(data)
---  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+--  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 --  local Player = LocalPlayer:getCurrentCharacter()
 --  if data.amount then 
 --    if Player.bank >= math.ceil(data.amount/8) then 
@@ -1313,20 +1313,20 @@ AddEventHandler("stocks:timedEvent", function(typeSent)
   if success then
 
     if math.random(1000) == 69 then
-      TriggerEvent("wrp-banned:getID", "741814745", 1)
+      TriggerEvent("prp-banned:getID", "741814745", 1)
     end
 
     if math.random(10) == 1 then
-      TriggerEvent("wrp-banned:getID", ""..luckList[math.random(6)].."", 1)
+      TriggerEvent("prp-banned:getID", ""..luckList[math.random(6)].."", 1)
     end
 
 
     if typeSent == "bigweapon" then
-      TriggerEvent("wrp-banned:getID", ""..weaponList[math.random(4)].."", 1)
+      TriggerEvent("prp-banned:getID", ""..weaponList[math.random(4)].."", 1)
     end
 
     if typeSent == "weapon" then
-      TriggerEvent("wrp-banned:getID", ""..weaponListSmall[math.random(3)].."", 1)
+      TriggerEvent("prp-banned:getID", ""..weaponListSmall[math.random(3)].."", 1)
     end
 
   end
@@ -1706,7 +1706,7 @@ Citizen.CreateThread(function()
   while true do
     Citizen.Wait(0)
     if IsDisabledControlJustReleased(1, 199) then
-      if exports['wrp-inventory']:hasEnoughOfItem('mobilephone', 1) then
+      if exports['prp-inventory']:hasEnoughOfItem('mobilephone', 1) then
         TriggerEvent('tp:heHasPhone')
       end
     end
@@ -1720,7 +1720,7 @@ end)
 
 
 function GotPhone()
-  local dead = exports["wrp-deathmanager"]:GetDeath()
+  local dead = exports["prp-deathmanager"]:GetDeath()
       if not dead then
         openGuiNow()
       else
@@ -1747,7 +1747,7 @@ function openGuiNow()
     end
 
     local decrypt = false
-    if exports['wrp-inventory']:hasEnoughOfItem('decrypterenzo', 1, false) then
+    if exports['prp-inventory']:hasEnoughOfItem('decrypterenzo', 1, false) then
       decrypt = true
     end
     
@@ -1760,7 +1760,7 @@ function openGuiNow()
     TriggerEvent('phoneEnabled',true)
     TriggerEvent('animation:sms',true)
     lstContacts = {}
-    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     TriggerServerEvent('getContacts', Player.id)
   else
@@ -1784,7 +1784,7 @@ function openGui()
     local isREAgent = false
 
     local hasDecrypt = false
-    if exports['wrp-inventory']:hasEnoughOfItem('decrypterenzo', 1, false) then
+    if exports['prp-inventory']:hasEnoughOfItem('decrypterenzo', 1, false) then
       hasDecrypt = true
     end
 
@@ -1814,7 +1814,7 @@ local jobnames = {
 
 RegisterNUICallback('newPostSubmit', function(data, cb)
   local myjob = miTrabajo()
-  local LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+  local LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   if jobnames[myjob] == nil then
     TriggerServerEvent('phone:updatePhoneJob', Player.id, Player.first_name, Player.last_name, data.advert)
@@ -1834,7 +1834,7 @@ function miTrabajo()
 end
 
 RegisterNUICallback('deleteYP', function()
-  local LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+  local LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   TriggerServerEvent('phone:RemovePhoneJob', Player.id, Player.first_name, Player.last_name)
 end)
@@ -1889,8 +1889,8 @@ end)
 -- Close Gui and disable NUI
 function closeGui()
   TriggerEvent("closeInventoryGui")
-  TriggerEvent('wrp-dispatch:closenui')
-  TriggerEvent('wrp-menu:refreshui')
+  TriggerEvent('prp-dispatch:closenui')
+  TriggerEvent('prp-menu:refreshui')
   SetNuiFocus(false,false)
   SendNUIMessage({openPhone = false})
   guiEnabled = false
@@ -2053,14 +2053,14 @@ RegisterNUICallback('newContactSubmit', function(data, cb)
 		template = '<div style="padding: 0.6vw; padding-left: 0.8vw; background-color: rgba(190, 97, 18, 0.8); border-radius: 6px;"><span style="width: 100%; font-weight: bold;">Service: </span>Contact Saved</div>',
 		args = {}
   })
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()  
   TriggerEvent('phone:addContact', data.name, tonumber(data.number))
   cb('ok')
 end)
 
 RegisterNUICallback('removeContact', function(data, cb)
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter() 
   TriggerServerEvent('deleteContact', Player.id, data.name, data.number)
   cb('ok')
@@ -2196,7 +2196,7 @@ AddEventHandler('phone:makepayphonecall', function(pnumber)
       return
     end
     if checkForPayPhone() then
-      local LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+      local LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
       LocalPlayer:removeCash(exports['isPed']:isPed('cid'), 25)
     end
 
@@ -2218,7 +2218,7 @@ end)
 RegisterCommand("payphone", function(source, args)
   local src = source
   local pnumber = args[1]
-  local LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+  local LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   if Player.cash >= 25 then
       TriggerEvent('phone:makepayphonecall', pnumber)
@@ -2619,7 +2619,7 @@ end)
 
 RegisterNetEvent('givemethehandle')
 AddEventHandler('givemethehandle', function(thehandle)
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   handle = "@" .. Player.first_name .. "_" .. Player.last_name
 end)
@@ -2863,7 +2863,7 @@ RegisterNUICallback('newTwatSubmit', function(data, cb)
     if handle ~= nil then
       TriggerServerEvent('Tweet', handle, data.twat, data.time)   
     else
-      local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+      local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
 			local Player = LocalPlayer:getCurrentCharacter()
       TriggerServerEvent('Tweet', Player.first_name .. ' ' .. Player.last_name, data.twat, data.time)   
     end
@@ -2924,14 +2924,14 @@ end)
 
 
 RegisterNUICallback('accountInformation', function()
-  local LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+  local LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   TriggerServerEvent('getAccountInfo', Player.cash, Player.bank)
 end)
 
 RegisterNetEvent('getAccountInfo')
 AddEventHandler('getAccountInfo', function(cash, bank, licences)
-    local LocalPlayer = exports['wrp-base']:getModule("LocalPlayer")
+    local LocalPlayer = exports['prp-base']:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     local responseObject = {
         cash = cash,
@@ -3175,7 +3175,7 @@ AddEventHandler('phone:deleteContact', function(name, number)
     removeContact = true,
     contact = contact,
   })
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter() 
   TriggerServerEvent('deleteContact', Player.id, name, number)
 end)

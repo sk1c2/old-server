@@ -4,8 +4,8 @@ ST._Scoreboard = {}
 ST._Scoreboard.PlayersS = {}
 ST._Scoreboard.RecentS = {}
 
-RegisterServerEvent('wrp-scoreboard:AddPlayer')
-AddEventHandler("wrp-scoreboard:AddPlayer", function()
+RegisterServerEvent('prp-scoreboard:AddPlayer')
+AddEventHandler("prp-scoreboard:AddPlayer", function()
 
     local identifiers, steamIdentifier = GetPlayerIdentifiers(source)
     for _, v in pairs(identifiers) do
@@ -20,7 +20,7 @@ AddEventHandler("wrp-scoreboard:AddPlayer", function()
     local scomid = steamIdentifier:gsub("steam:", "")
     local data = { src = source, steamid = stid, comid = scomid, name = ply }
 
-    TriggerClientEvent("wrp-scoreboard:AddPlayer", -1, data )
+    TriggerClientEvent("prp-scoreboard:AddPlayer", -1, data )
     ST.Scoreboard.AddAllPlayers()
 end)
 
@@ -42,7 +42,7 @@ function ST.Scoreboard.AddAllPlayers(self)
         local scomid = steamIdentifier:gsub("steam:", "")
         local data = { src = tonumber(playerId), steamid = stid, comid = scomid, name = ply }
 
-        TriggerClientEvent("wrp-scoreboard:AddAllPlayers", source, data)
+        TriggerClientEvent("prp-scoreboard:AddAllPlayers", source, data)
 
     end
 end
@@ -66,9 +66,9 @@ AddEventHandler("playerDropped", function()
     local plyid = source
     local data = { src = source, steamid = stid, comid = scomid, name = ply }
 
-    TriggerClientEvent("wrp-scoreboard:RemovePlayer", -1, data )
+    TriggerClientEvent("prp-scoreboard:RemovePlayer", -1, data )
     Wait(600000)
-    TriggerClientEvent("wrp-scoreboard:RemoveRecent", -1, plyid)
+    TriggerClientEvent("prp-scoreboard:RemoveRecent", -1, plyid)
 end)
 
 --[[ function ST.Scoreboard.RemovePlayerS(self, data)
@@ -91,7 +91,7 @@ end
 Citizen.CreateThread(function()
     while true do 
         local playersonline = GetNumPlayerIndices()
-        TriggerClientEvent("wrp-scoreboard:playerscount", -1, playersonline)
+        TriggerClientEvent("prp-scoreboard:playerscount", -1, playersonline)
         Citizen.Wait(10000)
     end
 end)

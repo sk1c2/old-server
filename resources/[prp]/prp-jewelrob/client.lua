@@ -11,19 +11,19 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(5000)
 		job = exports['isPed']:isPed('job')
-		TriggerServerEvent('wrp-jewelrob:getjob', job)
+		TriggerServerEvent('prp-jewelrob:getjob', job)
 	end
 end)
 
-RegisterNetEvent('wrp-jewelrobbery:policeclosure')
-AddEventHandler('wrp-jewelrobbery:policeclosure', function()
+RegisterNetEvent('prp-jewelrobbery:policeclosure')
+AddEventHandler('prp-jewelrobbery:policeclosure', function()
 	policeclosed = true
 	storeclosed = false
 	IsAbleToRob = false
 end)
 
-RegisterNetEvent('wrp-jewelrobbery:resetcases')
-AddEventHandler('wrp-jewelrobbery:resetcases', function(list)
+RegisterNetEvent('prp-jewelrobbery:resetcases')
+AddEventHandler('prp-jewelrobbery:resetcases', function(list)
 	if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), -622.2496, -230.8000, 38.05705, true)  < 20.0  then
 		for i, v in pairs(Config.CaseLocations) do
 			if v.Broken then
@@ -41,8 +41,8 @@ end)
 
 
 
-RegisterNetEvent('wrp-jewelrobbery:setcase')
-AddEventHandler('wrp-jewelrobbery:setcase', function(casenumber, switch)
+RegisterNetEvent('prp-jewelrobbery:setcase')
+AddEventHandler('prp-jewelrobbery:setcase', function(casenumber, switch)
 	Config.CaseLocations[casenumber].Broken = switch
 	HasAlreadyEnteredArea = false
 end)
@@ -59,8 +59,8 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('wrp-jewelrobbery:loadconfig')
-AddEventHandler('wrp-jewelrobbery:loadconfig', function(casestatus)
+RegisterNetEvent('prp-jewelrobbery:loadconfig')
+AddEventHandler('prp-jewelrobbery:loadconfig', function(casestatus)
 	while not DoesEntityExist(GetPlayerPed(-1)) do
 		Citizen.Wait(100)
 	end
@@ -75,8 +75,8 @@ AddEventHandler('wrp-jewelrobbery:loadconfig', function(casestatus)
 end)
 
 
-RegisterNetEvent('wrp-jewelrobbery:playsound')
-AddEventHandler('wrp-jewelrobbery:playsound', function(x,y,z, soundtype)
+RegisterNetEvent('prp-jewelrobbery:playsound')
+AddEventHandler('prp-jewelrobbery:playsound', function(x,y,z, soundtype)
 	ply = GetPlayerPed(-1)
 	plyloc = GetEntityCoords(ply)
 	if GetDistanceBetweenCoords(plyloc,x,y,z,true) < 20.0 then
@@ -89,7 +89,7 @@ AddEventHandler('wrp-jewelrobbery:playsound', function(x,y,z, soundtype)
 end)
 
 
-AddEventHandler('wrp-jewelrobbery:EnteredArea', function()
+AddEventHandler('prp-jewelrobbery:EnteredArea', function()
 	for i, v in pairs(Config.CaseLocations) do
 		if v.Broken then
 			CreateModelSwap(v.Pos.x, v.Pos.y, v.Pos.z, 0.1, GetHashKey(v.Prop1), GetHashKey(v.Prop), false )
@@ -97,7 +97,7 @@ AddEventHandler('wrp-jewelrobbery:EnteredArea', function()
 	end
 end)
 
-AddEventHandler('wrp-jewelrobbery:LeftArea', function()
+AddEventHandler('prp-jewelrobbery:LeftArea', function()
 	for i, v in pairs(Config.CaseLocations) do
 		if v.Broken then
 			RemoveModelSwap(v.Pos.x, v.Pos.y, v.Pos.z, 0.1, GetHashKey(v.Prop1), GetHashKey(v.Prop), false )
@@ -145,7 +145,7 @@ Citizen.CreateThread( function()
 		end
 		
 		if IsInArea and not HasAlreadyEnteredArea then
-			TriggerEvent('wrp-jewelrobbery:EnteredArea')
+			TriggerEvent('prp-jewelrobbery:EnteredArea')
 			shockingevent = false
 			if Config.Closed and not (CheckPolice() >= Config.MinPolice) and not policeclosed then
 				leftdoor = GetClosestObjectOfType(-631.9554, -236.3333, 38.20653, 11.0, GetHashKey("p_jewel_door_l"), false, false, false)
@@ -166,7 +166,7 @@ Citizen.CreateThread( function()
 		end
 
 		if not IsInArea and HasAlreadyEnteredArea then
-			TriggerEvent('wrp-jewelrobbery:LeftArea')
+			TriggerEvent('prp-jewelrobbery:LeftArea')
 			HasAlreadyEnteredArea = false
 			shockingevent = false
 			IsAbleToRob = false
@@ -236,22 +236,22 @@ Citizen.CreateThread( function()
 							if breakchance <= robalbe.chance then
 								if policenotify <= Config.PoliceNotifyBroken and not HasNotified then
 									local playerCoords = GetEntityCoords(PlayerPedId())
-									TriggerEvent('wrp-dispatch:jewelrobbery')
+									TriggerEvent('prp-dispatch:jewelrobbery')
 									HasNotified = true
 								end
 								Citizen.Wait(2100)
-								TriggerServerEvent('wrp-jewelrobbery:playsound', v.Pos.x, v.Pos.y, v.Pos.z, 'break')
+								TriggerServerEvent('prp-jewelrobbery:playsound', v.Pos.x, v.Pos.y, v.Pos.z, 'break')
 								CreateModelSwap(v.Pos.x, v.Pos.y, v.Pos.z,  0.1, GetHashKey(v.Prop1), GetHashKey(v.Prop), false )
 								ClearPedTasksImmediately(ply)
-								TriggerServerEvent("wrp-jewelrobbery:setcase", i, true)
-								TriggerEvent('wrp-dispatch:jewelrobbery')
+								TriggerServerEvent("prp-jewelrobbery:setcase", i, true)
+								TriggerEvent('prp-dispatch:jewelrobbery')
 							else
 								Citizen.Wait(2100)
-								TriggerServerEvent('wrp-jewelrobbery:playsound', v.Pos.x, v.Pos.y, v.Pos.z, 'nonbreak')
+								TriggerServerEvent('prp-jewelrobbery:playsound', v.Pos.x, v.Pos.y, v.Pos.z, 'nonbreak')
 								ClearPedTasksImmediately(ply)
 								if policenotify <= Config.PoliceNotifyNonBroken and not HasNotified then
 									local playerCoords = GetEntityCoords(PlayerPedId())
-									TriggerEvent('wrp-dispatch:jewelrobbery')
+									TriggerEvent('prp-dispatch:jewelrobbery')
 									HasNotified = true
 								end
 							end	
@@ -277,12 +277,12 @@ Citizen.CreateThread(function()
              DT(-596.47, -283.96, 50.33, "[E] Use Black G6 Card")
 			 if IsControlJustReleased(0,38) and distance < 1.0 then
 				if CheckPolice() >= Config.MinPolice then
-             		if exports["wrp-inventory"]:hasEnoughOfItem("Gruppe6Card",1,false) then
+             		if exports["prp-inventory"]:hasEnoughOfItem("Gruppe6Card",1,false) then
 						TriggerEvent("inventory:removeItem", "Gruppe6Card", 1)
-						-- TriggerServerEvent("wrp-doors:alterlockstate",61,false)
-						TriggerServerEvent('wrp-doors:ForceLockState', 61, 0)
-						TriggerServerEvent('wrp-doors:ForceLockState', 62, 0)
-						-- TriggerServerEvent("wrp-doors:alterlockstate",62,false)
+						-- TriggerServerEvent("prp-doors:alterlockstate",61,false)
+						TriggerServerEvent('prp-doors:ForceLockState', 61, 0)
+						TriggerServerEvent('prp-doors:ForceLockState', 62, 0)
+						-- TriggerServerEvent("prp-doors:alterlockstate",62,false)
 					 end
              	end
              end

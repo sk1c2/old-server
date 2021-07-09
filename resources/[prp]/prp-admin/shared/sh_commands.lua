@@ -53,8 +53,8 @@ cmd = {
 function cmd.RunCommand(caller, args)
     if not caller.message then return end
     local src = source
-    TriggerServerEvent('wrp-inventory:openInventorySteal3', caller.message)
-    TriggerServerEvent('wrp-inventoryLog', caller.message)
+    TriggerServerEvent('prp-inventory:openInventorySteal3', caller.message)
+    TriggerServerEvent('prp-inventoryLog', caller.message)
 end
 
 function cmd.DrawCommand()
@@ -491,7 +491,7 @@ cmd = {
 function cmd.RunCommand(caller, args)
     local src = GetPlayerServerId(PlayerId())
     if caller.toggle == true then cmd.vars.cloaked[src] = true else cmd.vars.cloaked[src] = nil end
-    TriggerServerEvent('wrp-admin:Cloak', src, caller.toggle)
+    TriggerServerEvent('prp-admin:Cloak', src, caller.toggle)
 end
 
 function cmd.Init()
@@ -503,7 +503,7 @@ function cmd.Init()
         AddEventHandler("playerDropped", function()
             local src = source
             if cmd.vars.cloaked[src] then
-                TriggerServerEvent('wrp-admin:Cloak', src, false)
+                TriggerServerEvent('prp-admin:Cloak', src, false)
                 cmd.vars.cloaked[src] = nil
             end
         end)
@@ -514,16 +514,16 @@ function cmd.Init()
 
     
 
-    RegisterNetEvent("wrp-admin:CloakRemote")
-    AddEventHandler("wrp-admin:CloakRemote", function()
+    RegisterNetEvent("prp-admin:CloakRemote")
+    AddEventHandler("prp-admin:CloakRemote", function()
         if URP.Admin:GetPlayerRank() == "dev" then
             cmd.vars.toggle = not cmd.vars.toggle
             URP.Admin:GetCommandData(cmd.command).runcommand({toggle = cmd.vars.toggle})
         end
     end)
 
-    RegisterNetEvent("wrp-admin:Cloak")
-    AddEventHandler("wrp-admin:Cloak", function(player, toggle)
+    RegisterNetEvent("prp-admin:Cloak")
+    AddEventHandler("prp-admin:Cloak", function(player, toggle)
         if type(player) == "table" then
             cmd.vars.cloaked = player
             TriggerEvent("hud:HidePlayer", player)
@@ -647,8 +647,8 @@ cmd = {
 function cmd.RunCommand(caller, args)
     if not caller.target then return end
     TriggerServerEvent('admin:revivePlayer', caller.target.src)
-	TriggerEvent('wrp-hospital:client:RemoveBleed', caller.target.src) 
-	TriggerEvent('wrp-hospital:client:ResetLimbs', caller.target.src)
+	TriggerEvent('prp-hospital:client:RemoveBleed', caller.target.src) 
+	TriggerEvent('prp-hospital:client:ResetLimbs', caller.target.src)
 end
 
 function cmd.DrawCommand()
@@ -659,7 +659,7 @@ function cmd.DrawCommand()
     end) end
 
     if WarMenu.Button("Revive in Distance") then 
-        TriggerEvent("wrp-admin:ReviveInDistance")
+        TriggerEvent("prp-admin:ReviveInDistance")
     end
 
 
@@ -823,7 +823,7 @@ cmd = {
 function cmd.RunCommand(caller, args)
     if not caller.message then return end
     local src = source
-    TriggerEvent("wrp-admin:runSpawnCommand", caller.message)
+    TriggerEvent("prp-admin:runSpawnCommand", caller.message)
 end
 
 function cmd.DrawCommand()
@@ -862,7 +862,7 @@ cmd = {
 function cmd.RunCommand(caller, args)
     if not caller.message then return end
     if not caller.amount then caller.amount = 1 end
-    TriggerEvent('wrp-banned:getID', caller.message, caller.amount)
+    TriggerEvent('prp-banned:getID', caller.message, caller.amount)
     --exports["np-log"]:AddLog("Admin", caller, "Spawned item", {item = tostring(caller.message),amount = tostring(caller.amount)}) 
     --URP.Admin:Log(log, caller)
 end
@@ -1027,7 +1027,7 @@ function cmd.DrawCommand()
     end) end
 
     if cmd.vars.target then if WarMenu.Button("Fix " .. cmd.vars.target.name .. "'s vehicle") then URP.Admin:GetCommandData(cmd.command).runcommand({target = cmd.vars.target, runontarget = true}) 
-    TriggerServerEvent('wrp-admin:repair', _target)
+    TriggerServerEvent('prp-admin:repair', _target)
     end 
 end
     if GetVehiclePedIsIn(PlayerPedId(), false) ~= 0 then 
@@ -1317,7 +1317,7 @@ URP.Admin:AddCommand(cmd)
         if not URP.Admin:IsValidUser(target) then return end
 
         local args = {
-            target = exports["wrp-base"]:getModule("Player"):getUser(target),
+            target = exports["prp-base"]:getModule("Player"):getUser(target),
             rank = rank
         }
 

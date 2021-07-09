@@ -8,23 +8,23 @@ CasinoOpen = true
 local spinningObject = nil
 local spinningCar = nil
 
-RegisterNetEvent('wrp-casino:unlock')
-AddEventHandler('wrp-casino:unlock', function()
+RegisterNetEvent('prp-casino:unlock')
+AddEventHandler('prp-casino:unlock', function()
   CasinoOpen = true
 end)
 
-RegisterNetEvent('wrp-casino:lock')
-AddEventHandler('wrp-casino:lock', function()
+RegisterNetEvent('prp-casino:lock')
+AddEventHandler('prp-casino:lock', function()
   CasinoOpen = false
 end)
 
 RegisterCommand('casino', function()
   if exports['isPed']:isPed('job') == 'DiamondCasino' then
     if CasinoOpen then
-      TriggerServerEvent('wrp-casino:lock')
+      TriggerServerEvent('prp-casino:lock')
       TriggerEvent('DoLongHudText', 'The Casino Is Now Closed!')
     else
-      TriggerServerEvent('wrp-unlock:casino')
+      TriggerServerEvent('prp-unlock:casino')
       TriggerEvent('DoLongHudText', 'The Casino Is Now Open!')
     end
   else
@@ -33,7 +33,7 @@ RegisterCommand('casino', function()
 end)
 
 AddEventHandler('onClientGameTypeStart', function()
-  TriggerServerEvent('wrp-casino:CheckIfOpen')
+  TriggerServerEvent('prp-casino:CheckIfOpen')
 end)
 
 -- CAR FOR WINS
@@ -55,10 +55,10 @@ function drawCarForWins()
 end
 -- END CAR FOR WINS
 
-AddEventHandler("wrp-casino:elevatorEnterCasino", function()
+AddEventHandler("prp-casino:elevatorEnterCasino", function()
   enterCasino(true, true)
 end)
-AddEventHandler("wrp-casino:elevatorExitCasino", function()
+AddEventHandler("prp-casino:elevatorExitCasino", function()
   enterCasino(false, true)
 end)
 
@@ -83,7 +83,7 @@ Citizen.CreateThread(function()
       if #(GetEntityCoords(PlayerPedId()) - vector3(1089.678, 205.7735, -48.99973)) < 1 then
         DrawText3D(1089.678, 205.7735, -48.99973, '[E] Exit The Casino')
         if IsControlJustPressed(0, 38) then
-          if exports['wrp-inventory']:hasEnoughOfItem('casinokey', 1) then
+          if exports['prp-inventory']:hasEnoughOfItem('casinokey', 1) then
             inCasino = false
             SetEntityCoords(PlayerPedId(), 934.46, 45.83, 81.1 + 0.05, 0.0, 0.0, 0.0, 0)
             SetEntityHeading(PlayerPedId(), 155.6763916)
@@ -105,7 +105,7 @@ Citizen.CreateThread(function()
       if #(GetEntityCoords(PlayerPedId()) - vector3(935.9739, 47.14355, 81.09579)) < 1 then
         DrawText3D(935.9739, 47.14355, 81.09579, '[E] Enter The Casino')
         if IsControlJustPressed(0, 38) then
-          if exports['wrp-inventory']:hasEnoughOfItem('casinokey', 1) then
+          if exports['prp-inventory']:hasEnoughOfItem('casinokey', 1) then
             inCasino = true
             DoScreenFadeIn(1000)
             SetEntityCoords(PlayerPedId(), 1089.73,206.36,-48.99 + 0.05 + 0.05, 0.0, 0.0, 0.0, 0)
@@ -172,8 +172,8 @@ function enterCasino(pIsInCasino, pFromElevator, pCoords, pHeading)
     local pedCoords = GetEntityCoords(PlayerPedId())
     doInitStuff()
   end
-  TriggerEvent("wrp-casino:casinoEnteredEvent")
-  TriggerServerEvent('wrp-infinity:scopes:casino', true)
+  TriggerEvent("prp-casino:casinoEnteredEvent")
+  TriggerServerEvent('prp-infinity:scopes:casino', true)
 end
 
 function spinMeRightRoundBaby()
@@ -327,7 +327,7 @@ function handlePedCoordsBaby(pPedCoords)
     myPeds[#myPeds + 1] = { entity = ped, scenario = pedData.scenario, netId = pedNetId }
     Wait(0)
   end
-  -- RPC.execute("wrp-casino:handoffPedData", myPeds)
+  -- RPC.execute("prp-casino:handoffPedData", myPeds)
   Citizen.CreateThread(function()
     while inCasino do
       for _, ped in pairs(myPeds) do
@@ -413,11 +413,11 @@ end
 --   print(json.encode(coordsBro[#coordsBro]))
 -- end, false)
 -- Citizen.CreateThread(function()
---   exports["wrp-keybinds"]:registerKeyMapping("", "Casino", "Add Coords", "+addCasinoCoords", "-addCasinoCoords")
+--   exports["prp-keybinds"]:registerKeyMapping("", "Casino", "Add Coords", "+addCasinoCoords", "-addCasinoCoords")
 -- end)
 
 -- Citizen.CreateThread(function()
---   for _, v in pairs(exports["wrp-casino"]:getPedCoordsC()) do
+--   for _, v in pairs(exports["prp-casino"]:getPedCoordsC()) do
 --     if #(vector3(v.coords.x, v.coords.y, v.coords.z) - vector3(1094.15,220.64,-48.99) ) < 2.5 then
 --       print(v.coords.x, v.coords.y, v.coords.z)
 --       SetEntityCoords(PlayerPedId(), v.coords.x, v.coords.y, v.coords.z, 0.0, 0.0, 0.0, 0)

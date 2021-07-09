@@ -4,22 +4,22 @@ local steamIds = {
 
 
 
-RegisterServerEvent('wrp-doors:alterlockstate2')
-AddEventHandler('wrp-doors:alterlockstate2', function()
+RegisterServerEvent('prp-doors:alterlockstate2')
+AddEventHandler('prp-doors:alterlockstate2', function()
     --URP.DoorCoords[10]["lock"] = 0
 
-    TriggerClientEvent('wrp-doors:alterlockstateclient', source, URP.DoorCoords)
+    TriggerClientEvent('prp-doors:alterlockstateclient', source, URP.DoorCoords)
 
 end)
 
-RegisterServerEvent('wrp-doors:alterlockstate')
-AddEventHandler('wrp-doors:alterlockstate', function(alterNum)
+RegisterServerEvent('prp-doors:alterlockstate')
+AddEventHandler('prp-doors:alterlockstate', function(alterNum)
     print('lockstate:', alterNum)
     URP.alterState(alterNum)
 end)
 
-RegisterServerEvent('wrp-doors:ForceLockState')
-AddEventHandler('wrp-doors:ForceLockState', function(alterNum, state)
+RegisterServerEvent('prp-doors:ForceLockState')
+AddEventHandler('prp-doors:ForceLockState', function(alterNum, state)
     URP.DoorCoords[alterNum]["lock"] = state
     TriggerClientEvent('URP:Door:alterState', -1,alterNum,state)
 end)

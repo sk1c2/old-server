@@ -1,8 +1,8 @@
 
 
 
-RegisterServerEvent('wrp-reportui:sendReport')
-AddEventHandler('wrp-reportui:sendReport', function(title, description, clips)
+RegisterServerEvent('prp-reportui:sendReport')
+AddEventHandler('prp-reportui:sendReport', function(title, description, clips)
 	
 	sendToDiscord(title, "Description: `" .. description .. "` \n Clips: " .. clips .. ".\n Steam: `" ..GetPlayerName(source).."`", color)
 end)

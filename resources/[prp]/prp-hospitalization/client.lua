@@ -27,7 +27,7 @@ AddEventHandler('event:control:hospitalization', function(useID)
 	if useID == 1 then
 		loadAnimDict('anim@narcotics@trash')
 		TaskPlayAnim(PlayerPedId(),'anim@narcotics@trash', 'drop_front',1.0, 1.0, -1, 1, 0, 0, 0, 0)
-		local finished = exports["wrp-taskbar"]:taskBar(1700,"Checking Credentials")
+		local finished = exports["prp-taskbar"]:taskBar(1700,"Checking Credentials")
 		if finished == 100 then
 			if curDoctors > 0 and not isTriageEnabled then
 				TriggerEvent("DoLongHudText","A doctor has been paged. Please take a seat and wait.",2)
@@ -36,8 +36,8 @@ AddEventHandler('event:control:hospitalization', function(useID)
 				TriggerEvent("bed:checkin")
 				TriggerEvent("Evidence:ClearDamageStates")
 				TriggerEvent('client:lowerStress', 1000)
-				TriggerEvent('wrp-hospital:client:RemoveBleed')
-				TriggerEvent('wrp-hospital:client:ResetLimbs')
+				TriggerEvent('prp-hospital:client:RemoveBleed')
+				TriggerEvent('prp-hospital:client:ResetLimbs')
 			end
 		end
 	elseif useID == 2 then
@@ -133,13 +133,13 @@ Citizen.CreateThread( function()
 
 end)
 
-RegisterNetEvent('wrp-page:doctor')
-AddEventHandler('wrp-page:doctor', function()
+RegisterNetEvent('prp-page:doctor')
+AddEventHandler('prp-page:doctor', function()
 	TriggerEvent('event:control:hospitalization', 2)
 end)
 
-RegisterNetEvent('wrp-checkin:doc')
-AddEventHandler('wrp-checkin:doc', function()
+RegisterNetEvent('prp-checkin:doc')
+AddEventHandler('prp-checkin:doc', function()
 	TriggerEvent('event:control:hospitalization', 1)
 end)
 
@@ -172,7 +172,7 @@ local mychecktype = 0
 function DoHospitalCheck(typeofcheck)
 	loadAnimDict('anim@narcotics@trash')
     TaskPlayAnim(PlayerPedId(),'anim@narcotics@trash', 'drop_front',0.9, -8, 1500, 49, 3.0, 0, 0, 0)
-	local finished = exports["wrp-taskbar"]:taskBar(10000,"Checking Credentials")
+	local finished = exports["prp-taskbar"]:taskBar(10000,"Checking Credentials")
     if finished == 100 then
 		if hospitalization.level > 0 and skipCheckup and typeofcheck == mychecktype then
 			skipCheckup = false
@@ -246,8 +246,8 @@ function ICUscreen(dying)
 end
 
 function logout()
-	TriggerEvent("wrp-base:clearStates")
-	exports["wrp-base"]:getModule("SpawnManager"):Initialize()
+	TriggerEvent("prp-base:clearStates")
+	exports["prp-base"]:getModule("SpawnManager"):Initialize()
 end
 
 Citizen.CreateThread( function()

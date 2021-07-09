@@ -31,18 +31,18 @@ end
 local weapon = nil 
 local canDrop = true
 
-RegisterNetEvent('wrp-weapons:destroyGroundWeapon')
-AddEventHandler('wrp-weapons:destroyGroundWeapon', function()
+RegisterNetEvent('prp-weapons:destroyGroundWeapon')
+AddEventHandler('prp-weapons:destroyGroundWeapon', function()
 	DeleteEntity(weapon)
 end)
 
-RegisterNetEvent('wrp-weapons:allowDrop')
-AddEventHandler('wrp-weapons:allowDrop', function()
+RegisterNetEvent('prp-weapons:allowDrop')
+AddEventHandler('prp-weapons:allowDrop', function()
 	canDrop = true
 end)
 
-RegisterNetEvent('wrp-weapons:dropweapon')
-AddEventHandler('wrp-weapons:dropweapon', function(AmountOfCurrentWeapon,weaponModel,rowID)
+RegisterNetEvent('prp-weapons:dropweapon')
+AddEventHandler('prp-weapons:dropweapon', function(AmountOfCurrentWeapon,weaponModel,rowID)
 	if not canDrop then TriggerEvent("Notification", "Cannot Drop Right now.",2) return end
 	local name = weaponModel
 	if rowID == 0 then return end
@@ -102,21 +102,21 @@ AddEventHandler('wrp-weapons:dropweapon', function(AmountOfCurrentWeapon,weaponM
 
 end)
 
-RegisterNetEvent('wrp-weapons:doHandOver')
-AddEventHandler('wrp-weapons:doHandOver', function(weapon)
+RegisterNetEvent('prp-weapons:doHandOver')
+AddEventHandler('prp-weapons:doHandOver', function(weapon)
   --GiveWeaponToPed(PlayerPedId(), tonumber(weapon), 0, 0, false)
   TriggerEvent("attachWeapons")
 end)
 
-RegisterNetEvent('wrp-weapons:dropWeaponSearch')
-AddEventHandler('wrp-weapons:dropWeaponSearch', function(weapon)
+RegisterNetEvent('prp-weapons:dropWeaponSearch')
+AddEventHandler('prp-weapons:dropWeaponSearch', function(weapon)
 	--RemoveWeaponFromPed(PlayerPedId(),tonumber(weapon))
   TriggerEvent("attachWeapons")
 end)
 
 
-RegisterNetEvent('wrp-weapons:giveweapon')
-AddEventHandler('wrp-weapons:giveweapon', function(toPlayer,AmountOfCurrentWeapon,weaponModel,rowID)
+RegisterNetEvent('prp-weapons:giveweapon')
+AddEventHandler('prp-weapons:giveweapon', function(toPlayer,AmountOfCurrentWeapon,weaponModel,rowID)
 
 
 	if not IsPedInAnyVehicle(PlayerPedId(),true) then
@@ -379,7 +379,7 @@ AddEventHandler('attachWeapons', function()
 	Wait(100)
 	removeAttachedProp()
 	
-	local currentWeapons = exports["wrp-inventory"]:GetCurrentWeapons() 
+	local currentWeapons = exports["prp-inventory"]:GetCurrentWeapons() 
 	weapcount = 1
 	local curw = GetSelectedPedWeapon(PlayerPedId())
 	local curwName = "nothing"

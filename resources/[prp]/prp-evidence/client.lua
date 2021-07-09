@@ -759,7 +759,7 @@ Citizen.CreateThread(
         if IsControlJustReleased(0,38) and minScan < 2.0 then
           local myjob = exports["isPed"]:isPed("job")
 
-          local finished = exports['wrp-taskbar']:taskBar(3000, 'Picking Up Item')
+          local finished = exports['prp-taskbar']:taskBar(3000, 'Picking Up Item')
           if (finished == 100) then
               TriggerServerEvent("evidence:clear", closestID)
               PickUpItem(scannedEvidence[closestID]["meta"]["identifier"],scannedEvidence[closestID]["meta"]["evidenceType"],scannedEvidence[closestID]["meta"]["other"], "evidence")
@@ -784,15 +784,15 @@ function PickUpItem(id,eType,other,item)
     ["eType"] = eType,
     ["other"] = other,
   }
-  TriggerEvent("wrp-banned:getID",item,1,true,information)
+  TriggerEvent("prp-banned:getID",item,1,true,information)
 end
 
 RegisterCommand('evidence', function(source, args)
-  local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   if Player.job == 'Police' or Player.job == 'EMS' then
     if args[1] ~= nil then
-      TriggerEvent('wrp-ac:triggeredItemSpawn', '1', "evidence-" .. args[1])
+      TriggerEvent('prp-ac:triggeredItemSpawn', '1', "evidence-" .. args[1])
     else
       TriggerEvent('DoLongHudText', 'Please provide an evidence identifier.', 2)
     end

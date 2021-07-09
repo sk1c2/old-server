@@ -61,7 +61,7 @@ end)
 RegisterServerEvent("t1ger_drugs:GetSelectedJob")
 AddEventHandler("t1ger_drugs:GetSelectedJob", function(drugType,BuyPrice,minReward,maxReward, cash)
 	if cash >= BuyPrice then
-		TriggerClientEvent('wrp-ac:removeban', source, BuyPrice)
+		TriggerClientEvent('prp-ac:removeban', source, BuyPrice)
 		TriggerEvent("t1ger_drugs:addCooldownToSource",source)
 		TriggerClientEvent("t1ger_drugs:BrowseAvailableJobs",source, 0, drugType, minReward, maxReward)
 		if drugType == "coke" then
@@ -83,7 +83,7 @@ AddEventHandler("t1ger_drugs:JobReward",function(minReward,maxReward,typeDrug)
 	local minDrugReward = minReward
 	local maxDrugReward = maxReward
 	drugAmount = math.random(minDrugReward,maxDrugReward)
-	TriggerClientEvent('wrp-banned:getID', source, 'coke50g', math.ceil(drugAmount))
+	TriggerClientEvent('prp-banned:getID', source, 'coke50g', math.ceil(drugAmount))
 end)
 
 -- -- Usable item to convert drugs:

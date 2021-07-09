@@ -1,13 +1,13 @@
 local stashes = {}
 local instash = 0
-RegisterNetEvent('wrp-stash:setInitialState')
-AddEventHandler('wrp-stash:setInitialState', function(stashesp)
+RegisterNetEvent('prp-stash:setInitialState')
+AddEventHandler('prp-stash:setInitialState', function(stashesp)
     stashes = stashesp
     
 end)
 
 CreateThread(function()
-    TriggerServerEvent("wrp-stash:fetchInitialState")
+    TriggerServerEvent("prp-stash:fetchInitialState")
 end)
 
 RegisterCommand('getnearstash', function(src, args, raw)
@@ -27,8 +27,8 @@ RegisterCommand('getnearstash', function(src, args, raw)
     end
 end, false)
 
-RegisterNetEvent('wrp-stash:getnearstash')
-AddEventHandler('wrp-stash:getnearstash', function()
+RegisterNetEvent('prp-stash:getnearstash')
+AddEventHandler('prp-stash:getnearstash', function()
     local closestDoorDistance, closestDoorId = 9999.9, -1
     local currentPos = GetEntityCoords(PlayerPedId())
     for id, handle in pairs(stashes) do
@@ -84,7 +84,7 @@ end)
 RegisterNUICallback('complete', function(data, cb)
     CloseGui();
     cb('ok');
-    TriggerEvent('wrp-stash:getnearstash')
+    TriggerEvent('prp-stash:getnearstash')
 end)
 
 RegisterCommand('fixblack', function()
@@ -131,7 +131,7 @@ Citizen.CreateThread(function()
                 DrawText3Ds(instash.StashEntry.x - 19.13, instash.StashEntry.y + 1.66, -53.00, '~g~E~w~ - open stash')
                 if IsControlJustReleased(0, 38) then
                     local cid = exports["isPed"]:isPed("cid")
-                    TriggerEvent("wrp-ac:triggeredItemSpawn", "1", 'warehouse-' .. instash.ID)
+                    TriggerEvent("prp-ac:triggeredItemSpawn", "1", 'warehouse-' .. instash.ID)
                 end
             end
         else

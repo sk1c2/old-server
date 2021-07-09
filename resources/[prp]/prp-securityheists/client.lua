@@ -38,9 +38,9 @@ function DropItemPedBankCard()
     local myluck = math.random(2)
 
     if myluck == 1 then
-        TriggerEvent("wrp-banned:getID","gruppe63",1)
+        TriggerEvent("prp-banned:getID","gruppe63",1)
     elseif myluck == 2 then
-        TriggerEvent("wrp-banned:getID","cb",1)
+        TriggerEvent("prp-banned:getID","cb",1)
     end
 end
 
@@ -138,10 +138,10 @@ function pickUpCash()
 
             if chance < 20 then
                 TriggerEvent("alert:noPedCheck", "banktruck")
-                TriggerEvent("wrp-banned:getID","band",math.random(length))
+                TriggerEvent("prp-banned:getID","band",math.random(length))
             end
 
-            TriggerEvent("wrp-banned:getID","rollcash",math.random(length))
+            TriggerEvent("prp-banned:getID","rollcash",math.random(length))
             
             Wait(math.random(4000,6000))
 
@@ -174,7 +174,7 @@ AddEventHandler('sec:usegroup6card', function()
             if aDist < 2.0 then
                 TriggerEvent("alert:noPedCheck", "banktruck")
                 FreezeEntityPosition(GetPlayerPed(-1), true)
-                local finished = exports["wrp-taskbar"]:taskBar(45000, "Unlocking Vehicle")
+                local finished = exports["prp-taskbar"]:taskBar(45000, "Unlocking Vehicle")
                 if finished == 100 then
                     FreezeEntityPosition(GetPlayerPed(-1), false)
                     TriggerEvent("sec:AttemptHeist", targetVehicle)
@@ -194,7 +194,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10000)
         jobname = exports['isPed']:isPed('job')
-        TriggerServerEvent('wrp-securityheists:gatherjob', jobname)
+        TriggerServerEvent('prp-securityheists:gatherjob', jobname)
     end
 end)
 

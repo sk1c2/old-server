@@ -27,7 +27,7 @@ openBin = function(entity)
 	searching = true
 	TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_SHOPPING_CART", 0, true)
 
-	if math.random(100) >= 75 then TriggerEvent('wrp-status:applyStatus', 'Agitated') end
+	if math.random(100) >= 75 then TriggerEvent('prp-status:applyStatus', 'Agitated') end
 
 	CreateThread(function()
         while true do
@@ -44,11 +44,11 @@ openBin = function(entity)
         end
 	end)
 
-	local f = exports["wrp-taskbar"]:taskBar(math.random(17500, 25000),"Searching Dumpster")
+	local f = exports["prp-taskbar"]:taskBar(math.random(17500, 25000),"Searching Dumpster")
 
     if f == 100 then
     	cachedBins[entity] = true
-		TriggerServerEvent('wrp-dumpsters:getItem')
+		TriggerServerEvent('prp-dumpsters:getItem')
     print('asdasdasd')
 		searching = false
     end

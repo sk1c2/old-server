@@ -6,7 +6,7 @@ games { 'gta5' }
 client_scripts {
     'config.lua',
 	'client/main.lua',
-	"@wrp-errorlog/client/cl_errorlog.lua"
+	"@prp-errorlog/client/cl_errorlog.lua"
 }
 
 server_scripts {

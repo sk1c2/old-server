@@ -35,7 +35,7 @@ end)
 RegisterNetEvent( 'cell:doors' )
 AddEventHandler( 'cell:doors', function(num)
     TriggerEvent("dooranim")
-    TriggerServerEvent("wrp-doors:alterlockstate",tonumber(num))
+    TriggerServerEvent("prp-doors:alterlockstate",tonumber(num))
 end)
 
 
@@ -334,7 +334,7 @@ Citizen.CreateThread(function()
                     elseif(closestString == 'Unlocked' or closestString == "Unlocked (" .. curClosestNum .. ")") then
                         color = 'success'                
                     end
-                    exports['wrp-interaction']:showInteraction("["..Controlkey["generalUse"][2].."] " .. closestString .. ""  , color )
+                    exports['prp-interaction']:showInteraction("["..Controlkey["generalUse"][2].."] " .. closestString .. ""  , color )
 
                     -- DrawText3DTest(doorCoordsOffset["x"], doorCoordsOffset["y"], doorCoordsOffset["z"], "["..Controlkey["generalUse"][2].."] - " .. closestString .. "" )
                 else
@@ -373,7 +373,7 @@ Citizen.CreateThread(function()
 
                                     locked, heading = GetStateOfClosestDoorOfType(GetHashKey(targetDoor["doorType"]), doorCoords["x"], doorCoords["y"], doorCoords["z"]) 
                                     heading = math.ceil(heading * 100) 
-                                    exports['wrp-interaction']:showInteraction('Locking'  , 'error' )
+                                    exports['prp-interaction']:showInteraction('Locking'  , 'error' )
 
                                     -- DrawText3DTest(doorCoordsOffset["x"], doorCoordsOffset["y"], doorCoordsOffset["z"], "Locking" )
                                     
@@ -394,7 +394,7 @@ Citizen.CreateThread(function()
                                 local swingcount = 0
                                 while active do
                                     Citizen.Wait(1)
-                                    exports['wrp-interaction']:showInteraction('Unlocking')
+                                    exports['prp-interaction']:showInteraction('Unlocking')
 
                                     -- DrawText3DTest(doorCoordsOffset["x"], doorCoordsOffset["y"], doorCoordsOffset["z"], "Unlocking" )
                                     swingcount = swingcount + 1
@@ -404,7 +404,7 @@ Citizen.CreateThread(function()
                                 end
 
                             end
-                            TriggerServerEvent("wrp-doors:alterlockstate",curClosestNum)
+                            TriggerServerEvent("prp-doors:alterlockstate",curClosestNum)
                         end
 
                     end
@@ -413,7 +413,7 @@ Citizen.CreateThread(function()
             
             
             elseif currentTargetDist > drawdist then
-                exports['wrp-interaction']:hideInteraction()
+                exports['prp-interaction']:hideInteraction()
 
             end
         end

@@ -5,7 +5,7 @@ local DontShowPoundCarsInGarage = true
 RegisterServerEvent("garages:CheckGarageForVeh")
 AddEventHandler("garages:CheckGarageForVeh", function(cid)
     local src = source
-	-- local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+	-- local player = exports['prp-base']:GetCurrentCharacterInfo(src)
 	exports.ghmattimysql:execute('SELECT * FROM __vehicles WHERE cid = ?', {cid}, function(vehicles)
 		TriggerClientEvent('phone:Garage', src, vehicles)
     end)
@@ -64,13 +64,13 @@ end)
 RegisterServerEvent('garages:CheckForSpawnVeh')
 AddEventHandler('garages:CheckForSpawnVeh', function(veh_id, garageCost, current_used_garage, cid)
 	local src = source
-	-- local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+	-- local player = exports['prp-base']:GetCurrentCharacterInfo(src)
 	exports.ghmattimysql:execute('SELECT `cash` FROM __characters WHERE id = ?', {cid}, function(result)
 		if result[1].cash >= garageCost then
 			if garageCost >= 1 then
-				TriggerClientEvent("wrp-base:getdata", src, garageCost)
+				TriggerClientEvent("prp-base:getdata", src, garageCost)
 			else
-				-- TriggerEvent("wrp-ac:removeban", src, 0)
+				-- TriggerEvent("prp-ac:removeban", src, 0)
 			end
 			local veh_id = veh_id
 			exports.ghmattimysql:execute('SELECT * FROM __vehicles WHERE id = ?', {veh_id}, function(result)
@@ -126,7 +126,7 @@ end)
 RegisterServerEvent("garages:CheckForVeh")
 AddEventHandler('garages:CheckForVeh', function(cid)
 	local src = source
-	-- local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+	-- local player = exports['prp-base']:GetCurrentCharacterInfo(src)
 	-- exports.ghmattimysql:execute('SELECT `plate` FROM __vehicles WHERE cid = ?', {cid}, function(result)
 	exports.ghmattimysql:execute('SELECT * FROM __vehicles WHERE `cid` = @cid AND `state` = @state', {
 		['@cid'] = cid, 

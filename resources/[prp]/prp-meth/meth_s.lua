@@ -8,8 +8,8 @@ local PoliceCount = 0
 
 function RewardPlayers(playerA, PlayerB)
 	-- Player A
-	TriggerClientEvent('wrp-banned:getID', source, 'vanmeth', math.random(MinMethReward, MaxMethReward))
-	TriggerClientEvent('wrp-banned:getID', source, 'pseudoephedrine', math.random(1,15))
+	TriggerClientEvent('prp-banned:getID', source, 'vanmeth', math.random(MinMethReward, MaxMethReward))
+	TriggerClientEvent('prp-banned:getID', source, 'pseudoephedrine', math.random(1,15))
 	-- Player B
 end
 

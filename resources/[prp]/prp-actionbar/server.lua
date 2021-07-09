@@ -1,5 +1,5 @@
-RegisterServerEvent("wrp-weapons:updateAmmo")
-AddEventHandler('wrp-weapons:updateAmmo', function(cid,newammo,ammoType,ammoTable, firstLoad)
+RegisterServerEvent("prp-weapons:updateAmmo")
+AddEventHandler('prp-weapons:updateAmmo', function(cid,newammo,ammoType,ammoTable, firstLoad)
     local source = source
     if firstLoad == false then
         exports.ghmattimysql:execute('SELECT `ammoTable` FROM __ammo WHERE id = @id', {
@@ -27,7 +27,7 @@ AddEventHandler('wrp-weapons:updateAmmo', function(cid,newammo,ammoType,ammoTabl
                 --Do nothing
             else
                 -- print(results[1].ammoTable)
-                TriggerClientEvent('wrp-items:SetAmmo', source, json.decode(results[1].ammoTable))
+                TriggerClientEvent('prp-items:SetAmmo', source, json.decode(results[1].ammoTable))
             end
         end)
     end

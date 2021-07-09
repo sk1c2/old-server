@@ -20,11 +20,11 @@ $(function () {
 
     $('.secondary-content').on('click', function() {
         closeMenu();
-        $.post('http://wrp-driftschool/spawntestdrive', JSON.stringify({model: $(this).parents('li').attr('value')}));
+        $.post('http://prp-driftschool/spawntestdrive', JSON.stringify({model: $(this).parents('li').attr('value')}));
     })
 
     $('#close').on('click', function() {
         closeMenu();
-        $.post('http://wrp-driftschool/closemenu', JSON.stringify({}));
+        $.post('http://prp-driftschool/closemenu', JSON.stringify({}));
     })
 })

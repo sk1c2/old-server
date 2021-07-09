@@ -1,7 +1,7 @@
 fx_version 'adamant'
 games { 'gta5' }
 
-client_script "@wrp-errorlog/client/cl_errorlog.lua"
+client_script "@prp-errorlog/client/cl_errorlog.lua"
 
 ui_page 'index.html'
 

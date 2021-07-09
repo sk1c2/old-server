@@ -11,5 +11,5 @@ files {
 
 client_script {
   "client.lua",
-  "@wrp-errorlog/client/cl_errorlog.lua"
+  "@prp-errorlog/client/cl_errorlog.lua"
 }

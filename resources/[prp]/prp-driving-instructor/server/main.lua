@@ -1,5 +1,5 @@
-RegisterServerEvent('wrp-driving-instructor:check')
-AddEventHandler('wrp-driving-instructor:check', function(cid)
+RegisterServerEvent('prp-driving-instructor:check')
+AddEventHandler('prp-driving-instructor:check', function(cid)
 	local src = source
     exports.ghmattimysql:execute("UPDATE __characters SET drivlicense = @drivlicense WHERE id = @id", { 
         ['@id'] = cid,
@@ -7,8 +7,8 @@ AddEventHandler('wrp-driving-instructor:check', function(cid)
     })
 end)
 
-RegisterServerEvent('wrp-driving-instructor:remove')
-AddEventHandler('wrp-driving-instructor:remove', function(cid)
+RegisterServerEvent('prp-driving-instructor:remove')
+AddEventHandler('prp-driving-instructor:remove', function(cid)
 	local src = source
     exports.ghmattimysql:execute("UPDATE __characters SET drivlicense = @drivlicense WHERE id = @id", { 
         ['@id'] = cid,

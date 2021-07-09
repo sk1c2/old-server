@@ -32,19 +32,19 @@ RegisterNetEvent("t1ger_drugs:UsableItem")
 AddEventHandler("t1ger_drugs:UsableItem",function()
 	local player = PlayerPedId()
 	if IsPedInAnyVehicle(player) then
-		exports["wrp-taskbar"]:taskBar(5000,"Decrypting Data",false,false)
+		exports["prp-taskbar"]:taskBar(5000,"Decrypting Data",false,false)
 		Citizen.Wait(10)
-		exports["wrp-taskbar"]:taskBar(5000,"Hacking Into Network",false,false,playerVeh)
+		exports["prp-taskbar"]:taskBar(5000,"Hacking Into Network",false,false,playerVeh)
 		Citizen.Wait(10)
-		exports["wrp-taskbar"]:taskBar(25000,"Uploading Virus",false,false,playerVeh)
+		exports["prp-taskbar"]:taskBar(25000,"Uploading Virus",false,false,playerVeh)
 	else
 		FreezeEntityPosition(player,false)
 		TaskStartScenarioInPlace(player, 'WORLD_HUMAN_STAND_MOBILE', 0, true)
-		exports["wrp-taskbar"]:taskBar(5000,"Decrypting Data",false,false)
+		exports["prp-taskbar"]:taskBar(5000,"Decrypting Data",false,false)
 		Citizen.Wait(10)
-		exports["wrp-taskbar"]:taskBar(5000,"Hacking Into Network",false,false)
+		exports["prp-taskbar"]:taskBar(5000,"Hacking Into Network",false,false)
 		Citizen.Wait(10)
-		exports["wrp-taskbar"]:taskBar(25000,"Uploading Virus",false,false)
+		exports["prp-taskbar"]:taskBar(25000,"Uploading Virus",false,false)
 	end
 	Citizen.Wait(4000)
 	TriggerEvent("mhacking:show")
@@ -118,7 +118,7 @@ AddEventHandler('t1ger_drugs:startMainEvent', function(id,drugType,minReward,max
 			local coords = GetEntityCoords(playerPed)
 			
             if (GetDistanceBetweenCoords(coords, selectedJob.Spot.x, selectedJob.Spot.y, selectedJob.Spot.z, true) > 60) and DeliveryInProgress == false then
-				exports['wrp-interaction']:showInteraction('Reach the Vehicle marked on your GPS')
+				exports['prp-interaction']:showInteraction('Reach the Vehicle marked on your GPS')
 			end
 			
 			if (GetDistanceBetweenCoords(coords, selectedJob.Spot.x, selectedJob.Spot.y, selectedJob.Spot.z, true) < 150) and not selectedJob.VanSpawned then
@@ -182,7 +182,7 @@ AddEventHandler('t1ger_drugs:startMainEvent', function(id,drugType,minReward,max
             end
 			
 			if DeliveryInProgress == false and (GetDistanceBetweenCoords(coords, selectedJob.Spot.x, selectedJob.Spot.y, selectedJob.Spot.z, true) < 60) and (GetDistanceBetweenCoords(coords, selectedJob.Spot.x, selectedJob.Spot.y, selectedJob.Spot.z, true) > 10) then
-				exports['wrp-interaction']:showInteraction('Kill the goons that guard the Vehicle')
+				exports['prp-interaction']:showInteraction('Kill the goons that guard the Vehicle')
 			end
 			
 			if selectedJob.VanSpawned and (GetDistanceBetweenCoords(coords, selectedJob.Spot.x, selectedJob.Spot.y, selectedJob.Spot.z, true) < 60) and not selectedJob.JobPlayer then
@@ -202,7 +202,7 @@ AddEventHandler('t1ger_drugs:startMainEvent', function(id,drugType,minReward,max
             end
 			
 			if isVehicleLockPicked == false and (GetDistanceBetweenCoords(coords, selectedJob.Spot.x, selectedJob.Spot.y, selectedJob.Spot.z, true) < 10) then
-				exports['wrp-interaction']:showInteraction('Steal and lockpick the Vehicle')
+				exports['prp-interaction']:showInteraction('Steal and lockpick the Vehicle')
 			end
 			
 			local VanPosition = GetEntityCoords(JobVan) 
@@ -210,7 +210,7 @@ AddEventHandler('t1ger_drugs:startMainEvent', function(id,drugType,minReward,max
 			if (GetDistanceBetweenCoords(coords, VanPosition.x, VanPosition.y, VanPosition.z, true) <= 2) and isVehicleLockPicked == false then
 				DrawText3Ds(VanPosition.x, VanPosition.y, VanPosition.z, "[G] - Lockpick")
 				if IsControlJustPressed(1, 47) then 
-					if exports["wrp-lockpicking"]:lockpick2(500,1,2,10) == 100 then
+					if exports["prp-lockpicking"]:lockpick2(500,1,2,10) == 100 then
 						LockpickJobVan(selectedJob, JobVan)
 						Citizen.Wait(500)
 					else
@@ -221,7 +221,7 @@ AddEventHandler('t1ger_drugs:startMainEvent', function(id,drugType,minReward,max
 			
 			if isVehicleLockPicked == true and vanIsDelivered == false then
 				if not InsideJobVan then
-					exports['wrp-interaction']:showInteraction('Get into the Vehicle')
+					exports['prp-interaction']:showInteraction('Get into the Vehicle')
 				end
 			end
 			
@@ -254,7 +254,7 @@ AddEventHandler('t1ger_drugs:startMainEvent', function(id,drugType,minReward,max
 				if IsPedInAnyVehicle(GetPlayerPed(-1), true) then
 					local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
 					if GetEntityModel(vehicle) == GetHashKey(Config.JobVan) then
-						exports['wrp-interaction']:showInteraction('Deliver the Vehicle to the destination on your GPS')
+						exports['prp-interaction']:showInteraction('Deliver the Vehicle to the destination on your GPS')
 					end
 				end
 			end
@@ -295,11 +295,11 @@ AddEventHandler('t1ger_drugs:startMainEvent', function(id,drugType,minReward,max
 			end
 			
 			if DeliveryInProgress == true and vanIsDelivered == true and not drugBoxInHand and not drugsTaken then
-				exports['wrp-interaction']:showInteraction('Grab the drug package from the Vehicle')
+				exports['prp-interaction']:showInteraction('Grab the drug package from the Vehicle')
 			end
 			
 			if DeliveryInProgress == true and vanIsDelivered == true and drugBoxInHand and not drugsTaken then
-				exports['wrp-interaction']:showInteraction('Put the drug package in your getaway vehicle')
+				exports['prp-interaction']:showInteraction('Put the drug package in your getaway vehicle')
 			end
 			
 			if vanIsDelivered == true then
@@ -343,7 +343,7 @@ AddEventHandler('t1ger_drugs:startMainEvent', function(id,drugType,minReward,max
 			end
 			
 			if NearJobVehicle == true and not drugBoxInHand and IsControlJustPressed(0, 38) then
-				if exports['wrp-inventory']:hasEnoughOfItem('thermite', 1, true) then
+				if exports['prp-inventory']:hasEnoughOfItem('thermite', 1, true) then
 					TriggerEvent('DoLongHudText', 'Press Right Arrow to Speed Up The Drill, Left Arrow to Slow It Down, Up Arrow to Push It Closer To The Pins, Down Arrow to Move It Away. Make sure it does not overheat!')
 					TriggerEvent("Drilling:Start",function(success)
 						if (success) then
@@ -367,9 +367,9 @@ AddEventHandler('t1ger_drugs:startMainEvent', function(id,drugType,minReward,max
 						else
 							drugsTaken = true
 							StopTheJob = true
-							exports['wrp-interaction']:hideInteraction()
+							exports['prp-interaction']:hideInteraction()
 						end
-					-- local finished = exports['wrp-thermite']:startGame(20,1,8,425)
+					-- local finished = exports['prp-thermite']:startGame(20,1,8,425)
 					-- if finished then
 					end)
 				end
@@ -381,7 +381,7 @@ AddEventHandler('t1ger_drugs:startMainEvent', function(id,drugType,minReward,max
                 ClearPedTasks(GetPlayerPed(-1))
                 DeleteEntity(attachedProp)
 				TriggerServerEvent("t1ger_drugs:JobReward",minRewardD,maxRewardD,typeDrug)
-				exports['wrp-interaction']:hideInteraction()
+				exports['prp-interaction']:hideInteraction()
 				drugsTaken = true
 				StopTheJob = true
 			end
@@ -448,7 +448,7 @@ function LockpickJobVan(selectedJob, vehiclelol)
 	FreezeEntityPosition(playerPed, true)
 	TaskPlayAnimAdvanced(playerPed, animDict, animName, selectedJob.LockpickPos.x, selectedJob.LockpickPos.y, selectedJob.LockpickPos.z, 0.0, 0.0, selectedJob.LockpickHeading, 3.0, 1.0, -1, 31, 0, 0, 0 )
 
-	exports["wrp-taskbar"]:taskBar(7500,"Lockpicking Van",false,false)
+	exports["prp-taskbar"]:taskBar(7500,"Lockpicking Van",false,false)
 	
 	ClearPedTasks(playerPed)
 	FreezeEntityPosition(playerPed, false)
@@ -494,10 +494,10 @@ AddEventHandler("t1ger_drugs:DrugEffects", function(k,v)
 	local ped = GetPlayerPed(-1)
 	if not IsPedInAnyVehicle(GetPlayerPed(-1)) then
 		TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_SMOKING_POT", 0, true)
-		exports['wrp-taskbar']:taskBar(v.UsableTime, v.ProgressBarText)
+		exports['prp-taskbar']:taskBar(v.UsableTime, v.ProgressBarText)
 		ClearPedTasks(PlayerPedId())
 	else
-		exports['wrp-taskbar']:taskBar(v.UsableTime, v.ProgressBarText)
+		exports['prp-taskbar']:taskBar(v.UsableTime, v.ProgressBarText)
 	end
 	if v.BodyArmor then
 		if GetPedArmour(ped) <= (100-v.AddArmorValue) then
@@ -550,11 +550,11 @@ AddEventHandler("t1ger_drugs:ConvertProcess", function(k,v)
 	if not IsPedInAnyVehicle(GetPlayerPed(-1)) then
 		TaskPlayAnim(GetPlayerPed(-1),"misscarsteal1car_1_ext_leadin","base_driver2",8.0, -8, -1, 49, 0, 0, 0, 0)
 		FreezeEntityPosition(GetPlayerPed(-1), true)
-		exports['wrp-taskbar']:taskBar(v.ConversionTime, v.ProgressBarText)
+		exports['prp-taskbar']:taskBar(v.ConversionTime, v.ProgressBarText)
 		FreezeEntityPosition(GetPlayerPed(-1), false)
 		ClearPedTasks(GetPlayerPed(-1))
 	else
-		exports['wrp-taskbar']:taskBar(v.ConversionTime, v.ProgressBarText)
+		exports['prp-taskbar']:taskBar(v.ConversionTime, v.ProgressBarText)
 	end
 end)
 
@@ -587,7 +587,7 @@ RequestAnimDict("mp_common")
 -- 					SetEntityHeading(player,GetHeadingFromVector_2d(pos.x-playerPos.x,pos.y-playerPos.y))
 					
 -- 					local chance = math.random(1,3)
--- 					exports['wrp-taskbar']:taskBar((Config.SellDrugsTime * 1000), Config.SellDrugsBarText)
+-- 					exports['prp-taskbar']:taskBar((Config.SellDrugsTime * 1000), Config.SellDrugsBarText)
 -- 					if chance == 1 or chance == 2 then
 -- 						TaskPlayAnim(player, "mp_common", "givetake2_a", 8.0, 8.0, 2000, 0, 1, 0,0,0)
 -- 						TaskPlayAnim(ped, "mp_common", "givetake2_a", 8.0, 8.0, 2000, 0, 1, 0,0,0)

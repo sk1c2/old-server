@@ -87,7 +87,7 @@ function URP.Admin.BeginAFK(self, stop)
         afk.stringToType = afk.stringToType .. string.lower(c)
     end
 
-    afk.event = AddEventHandler("wrp-admin:afkStringCheck", function(text)
+    afk.event = AddEventHandler("prp-admin:afkStringCheck", function(text)
         if string.lower(text) == afk.stringToType then URP.Admin:BeginAFK(true) return end
     end)
 
@@ -111,7 +111,7 @@ function URP.Admin.BeginAFK(self, stop)
                 TriggerEvent("pNotify:SendNotification", {text = string.format(string, afk.stringToType), layout = "top", timeout = 5000, type = "error", animation = {open = "gta_effects_fade_in", close = "gta_effects_fade_out"}, queue = "afk", progressBar = false})
             end
 
-            if curTime - beginTime >= 300000 then TriggerServerEvent("wrp-admin:Disconnect", "AFK Kick") return end
+            if curTime - beginTime >= 300000 then TriggerServerEvent("prp-admin:Disconnect", "AFK Kick") return end
         end
     end)
 end
@@ -156,52 +156,52 @@ function URP.Admin.AFKCheck(self)
     end)
 end
 
-RegisterNetEvent("wrp-admin:afkStringCheck")
+RegisterNetEvent("prp-admin:afkStringCheck")
 
-RegisterNetEvent("wrp-admin:setStatus")
-AddEventHandler("wrp-admin:setStatus", function(src, status)
+RegisterNetEvent("prp-admin:setStatus")
+AddEventHandler("prp-admin:setStatus", function(src, status)
     local player = URP._Admin.Players[src]
     if not player then return else URP._Admin.Players[src].status = status end
 end)
 
-RegisterNetEvent("wrp-admin:sendPlayerInfo")
-AddEventHandler("wrp-admin:sendPlayerInfo", function(data, discData)
+RegisterNetEvent("prp-admin:sendPlayerInfo")
+AddEventHandler("prp-admin:sendPlayerInfo", function(data, discData)
     URP._Admin.Players = data
     URP._Admin.DiscPlayers = discData
 end)
 
-RegisterNetEvent("wrp-admin:RemovePlayer")
-AddEventHandler("wrp-admin:RemovePlayer", function(data)
+RegisterNetEvent("prp-admin:RemovePlayer")
+AddEventHandler("prp-admin:RemovePlayer", function(data)
     URP._Admin.DiscPlayers[data.src] = data
     URP._Admin.Players[data.src] = nil
 end)
 
-RegisterNetEvent("wrp-admin:RemoveRecent")
-AddEventHandler("wrp-admin:RemoveRecent", function(data)
+RegisterNetEvent("prp-admin:RemoveRecent")
+AddEventHandler("prp-admin:RemoveRecent", function(data)
     if data ~= nil then
         URP._Admin.DiscPlayers[data.src] = nil
     end
 end)
 
-RegisterNetEvent("wrp-admin:AddPlayer")
-AddEventHandler("wrp-admin:AddPlayer", function(player)
+RegisterNetEvent("prp-admin:AddPlayer")
+AddEventHandler("prp-admin:AddPlayer", function(player)
     URP._Admin.Players[player.src] = player
 end)
 
-RegisterNetEvent('wrp-admin:teleportUser')
-AddEventHandler('wrp-admin:teleportUser', function(x, y, z)
+RegisterNetEvent('prp-admin:teleportUser')
+AddEventHandler('prp-admin:teleportUser', function(x, y, z)
     SetEntityCoords(PlayerPedId(), x, y, z)
     TriggerEvent('DoLongHudText', 'You were summoned')
 end)
 
-RegisterNetEvent("wrp-admin:AddAllPlayers")
-AddEventHandler("wrp-admin:AddAllPlayers", function(data)
+RegisterNetEvent("prp-admin:AddAllPlayers")
+AddEventHandler("prp-admin:AddAllPlayers", function(data)
     URP._Admin.Players[data.src] = data
 end)
 
 function URP.Admin.RunCommand(self, args)
     if not args or not args.command then return end
-    TriggerServerEvent("wrp-admin:runCommand", args)
+    TriggerServerEvent("prp-admin:runCommand", args)
 end
 
 function URP.Admin.RunClCommand(self, cmd, args)
@@ -209,21 +209,21 @@ function URP.Admin.RunClCommand(self, cmd, args)
     self:GetCommandData(cmd).runclcommand(args)
 end
 
-RegisterNetEvent("wrp-admin:RunClCommand")
-AddEventHandler("wrp-admin:RunClCommand", function(cmd, args)
+RegisterNetEvent("prp-admin:RunClCommand")
+AddEventHandler("prp-admin:RunClCommand", function(cmd, args)
     URP.Admin:RunClCommand(cmd, args)
 end)
 
-RegisterNetEvent("wrp-admin:updateData")
-AddEventHandler("wrp-admin:updateData", function(src, type, data)
+RegisterNetEvent("prp-admin:updateData")
+AddEventHandler("prp-admin:updateData", function(src, type, data)
     if not src or not type or not data then return end
     if not URP._Admin.Players[src] then return end
     
     URP._Admin.Players[src][type] = data
 end)
 
-RegisterNetEvent("wrp-admin:noLongerAdmin")
-AddEventHandler("wrp-admin:noLongerAdmin", function()
+RegisterNetEvent("prp-admin:noLongerAdmin")
+AddEventHandler("prp-admin:noLongerAdmin", function()
     URP._Admin.Players = {}
     
     for k,v in pairs(URP._Admin.Menu.Menus) do
@@ -231,8 +231,8 @@ AddEventHandler("wrp-admin:noLongerAdmin", function()
     end
 end)
 
-RegisterNetEvent("wrp-admin:bringPlayer")
-AddEventHandler("wrp-admin:bringPlayer", function(targPos)
+RegisterNetEvent("prp-admin:bringPlayer")
+AddEventHandler("prp-admin:bringPlayer", function(targPos)
     local ped = PlayerPedId()
 
 
@@ -255,8 +255,8 @@ AddEventHandler("wrp-admin:bringPlayer", function(targPos)
     end)    
 end)
 
-RegisterNetEvent("wrp-admin:bring")
-AddEventHandler("wrp-admin:bring", function(target)
+RegisterNetEvent("prp-admin:bring")
+AddEventHandler("prp-admin:bring", function(target)
     local posR = GetEntityCoords(PlayerPedId(), false)
 
     local pos = {}
@@ -264,14 +264,14 @@ AddEventHandler("wrp-admin:bring", function(target)
     pos[2] = posR.y
     pos[3] = posR.z
 
-    TriggerServerEvent("wrp-admin:bringPlayerServer",pos,target)   
+    TriggerServerEvent("prp-admin:bringPlayerServer",pos,target)   
 end)
 
 
 
  
-RegisterNetEvent("wrp-admin:runSpawnCommand")
-AddEventHandler("wrp-admin:runSpawnCommand", function(model, livery)
+RegisterNetEvent("prp-admin:runSpawnCommand")
+AddEventHandler("prp-admin:runSpawnCommand", function(model, livery)
     Citizen.CreateThread(function()
         Citizen.Wait(10)
         local hash = GetHashKey(model)
@@ -446,8 +446,8 @@ function URP.Admin.GetBanTimeFromString(self, time)
     return temp, timeSum, addedTime
 end
 
-RegisterNetEvent("wrp-admin:ReviveInDistance")
-AddEventHandler("wrp-admin:ReviveInDistance", function()
+RegisterNetEvent("prp-admin:ReviveInDistance")
+AddEventHandler("prp-admin:ReviveInDistance", function()
     local playerList = {}
 
     local players = GetPlayers()

@@ -323,13 +323,13 @@ URP.Controls.Distcheck.useThird = {
 -- 	if controlTable == nil then
 -- 		URP.Controls.Current  = URP.DataControls.toUpper(URP.Controls.Default) 
 -- 		URP.DataControls.setSecondaryBindTable(URP.Controls.Current)
--- 		--TriggerServerEvent('wrp-base:sv:player_control_set',URP.Controls.Current)
+-- 		--TriggerServerEvent('prp-base:sv:player_control_set',URP.Controls.Current)
 -- 		URP.DataControls.checkForMissing()
 -- 	else
 -- 		if shouldSend then 
 -- 			URP.Controls.Current = URP.DataControls.toUpper(controlTable)
 -- 			URP.DataControls.setSecondaryBindTable(URP.Controls.Current)
--- 			--TriggerServerEvent('wrp-base:sv:player_control_set',URP.Controls.Current)
+-- 			--TriggerServerEvent('prp-base:sv:player_control_set',URP.Controls.Current)
 -- 			URP.DataControls.checkForMissing()
 -- 		else
 -- 			URP.Controls.Current = URP.DataControls.toUpper(controlTable)
@@ -441,7 +441,7 @@ URP.Controls.Distcheck.useThird = {
 
 -- 	if isMissing then
 -- 		URP.DataControls.setSecondaryBindTable(URP.Controls.Current)
--- 		--TriggerServerEvent('wrp-base:sv:player_control_set',URP.Controls.Current)
+-- 		--TriggerServerEvent('prp-base:sv:player_control_set',URP.Controls.Current)
 -- 	end
 
 
@@ -632,8 +632,8 @@ URP.Controls.Distcheck.useThird = {
 -- end)
 
 
--- RegisterNetEvent("wrp-base:cl:player_control")
--- AddEventHandler("wrp-base:cl:player_control", function(controlTable)
+-- RegisterNetEvent("prp-base:cl:player_control")
+-- AddEventHandler("prp-base:cl:player_control", function(controlTable)
 -- 	URP.DataControls.setBindTable(controlTable,false)
 -- end)
 

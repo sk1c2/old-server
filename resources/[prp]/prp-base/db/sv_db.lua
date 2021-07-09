@@ -12,8 +12,8 @@ function sendToDiscord9(name, message, color)
     PerformHttpRequest('https://discord.com/api/webhooks/838405850459537429/cWEDbq4QWRqMbcyGiJtKlvINJR6GfCzBzOq4_UNwUpBdMojpSHc3LPTFqpeWMhKEtda2', function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME, embeds = connect, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
   end
 
-RegisterServerEvent('wrp-vpn:blockconnection')
-AddEventHandler('wrp-vpn:blockconnection', function(source)
+RegisterServerEvent('prp-vpn:blockconnection')
+AddEventHandler('prp-vpn:blockconnection', function(source)
     local steamid  = false
     local license  = false
     local discord  = false
@@ -105,11 +105,11 @@ end
 --                 if tbl["proxy"] == false then
 --                     deferrals.done()
 --                 else
--- 					TriggerEvent('wrp-vpn:blockconnection', player)
+-- 					TriggerEvent('prp-vpn:blockconnection', player)
 --                     deferrals.done("You are using a VPN. Please disable and try again.")
 --                 end
 --             else
--- 				TriggerEvent('wrp-vpn:blockconnection', player)
+-- 				TriggerEvent('prp-vpn:blockconnection', player)
 --                 deferrals.done("There was an error in the API.")
 --             end
 --         end)

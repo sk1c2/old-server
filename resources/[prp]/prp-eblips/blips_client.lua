@@ -24,8 +24,8 @@ end)
 
 local passes = 0
 
-RegisterNetEvent('wrp-eblips:client:syncMyBlips')
-AddEventHandler('wrp-eblips:client:syncMyBlips', function(blips)
+RegisterNetEvent('prp-eblips:client:syncMyBlips')
+AddEventHandler('prp-eblips:client:syncMyBlips', function(blips)
     local me_ped = PlayerPedId()
     server_has_heartbeat = true
     for _, properties in ipairs(blips) do

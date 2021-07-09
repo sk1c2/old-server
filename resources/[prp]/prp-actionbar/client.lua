@@ -239,8 +239,8 @@ AddEventHandler('GiveWeaponToPed', function(hash,name)
 
 end)
 
-RegisterNetEvent("wrp-jobmanager:playerBecameJob")
-AddEventHandler("wrp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
+RegisterNetEvent("prp-jobmanager:playerBecameJob")
+AddEventHandler("prp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
 	job = jobpassed
     if not job then
         job = "None"
@@ -262,8 +262,8 @@ end
 
 
 
-RegisterNetEvent('wrp-items:SetAmmo')
-AddEventHandler('wrp-items:SetAmmo', function(sentammoTable)
+RegisterNetEvent('prp-items:SetAmmo')
+AddEventHandler('prp-items:SetAmmo', function(sentammoTable)
 	if sentammoTable ~= nil then
 		ammoTable = sentammoTable
 		GiveAmmoNow()
@@ -333,7 +333,7 @@ Citizen.CreateThread( function()
 
 			local weapon = "".. hash ..""
 			if throwableWeapons[weapon] then
-				if exports["wrp-inventory"]:hasEnoughOfItem(weapon,1,false) then
+				if exports["prp-inventory"]:hasEnoughOfItem(weapon,1,false) then
 					TriggerEvent("inventory:removeItem", weapon, 1)
 					Citizen.Wait(3000)
 				end
@@ -379,7 +379,7 @@ Citizen.CreateThread( function()
 		end
 
 		if IsPedPlantingBomb(ped) then
-			if exports["wrp-inventory"]:hasEnoughOfItem("741814745",1,false) then
+			if exports["prp-inventory"]:hasEnoughOfItem("741814745",1,false) then
 
 				TriggerEvent("inventory:removeItem", 741814745, 1)
 				Citizen.Wait(3000)
@@ -490,12 +490,12 @@ AddEventHandler('actionbar:ammo', function(hash,amount,addition)
 	ammoTypeCheck(ammoType)
 
 	if ammoTable == nil then
-		TriggerServerEvent("wrp-weapons:updateAmmo")
+		TriggerServerEvent("prp-weapons:updateAmmo")
 		Citizen.Wait(2000)
 	end
 
 	if ammoTable["" .. ammoType .. ""] == nil then
-		TriggerServerEvent("wrp-weapons:updateAmmo")
+		TriggerServerEvent("prp-weapons:updateAmmo")
 		Citizen.Wait(2000)
 	end
 
@@ -563,7 +563,7 @@ function updateAmmoClient()
 		ammoTable["" .. ammoType .. ""]["ammo"] = newammo
 	end
 
-	TriggerEvent("wrp-items:SetAmmo",ammoTable)
+	TriggerEvent("prp-items:SetAmmo",ammoTable)
 end
 
 function updateAmmoNow()
@@ -572,7 +572,7 @@ function updateAmmoNow()
 	local hash = GetSelectedPedWeapon(ped)
 	local newammo = 0
 	local ammoType = Citizen.InvokeNative(0x7FEAD38B326B9F74, ped, hash)
-	local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+	local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
 
 
@@ -596,7 +596,7 @@ function updateAmmoNow()
 			newammo = 150
 		end
 
-		TriggerServerEvent("wrp-weapons:updateAmmo",Player.id,newammo,ammoType,ammoTable, false)
+		TriggerServerEvent("prp-weapons:updateAmmo",Player.id,newammo,ammoType,ammoTable, false)
 
 	end
 
@@ -624,7 +624,7 @@ function updateAmmo()
 	local hash = GetSelectedPedWeapon(ped)
 	local newammo = 0
 	local ammoType = Citizen.InvokeNative(0x7FEAD38B326B9F74, ped, hash)
-	local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
+	local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
 
 	if type(ammoType) == 'number' then 
@@ -647,7 +647,7 @@ function updateAmmo()
 			newammo = 150
 		end
 
-		TriggerServerEvent("wrp-weapons:updateAmmo",Player.id,newammo,ammoType,ammoTable, false)
+		TriggerServerEvent("prp-weapons:updateAmmo",Player.id,newammo,ammoType,ammoTable, false)
 
 	end
 
@@ -676,8 +676,8 @@ function getAmmo(hash)
 	return newammo
 end
 
-RegisterNetEvent('wrp-item:CheckClientAmmo')
-AddEventHandler('wrp-item:CheckClientAmmo', function(weapons)
+RegisterNetEvent('prp-item:CheckClientAmmo')
+AddEventHandler('prp-item:CheckClientAmmo', function(weapons)
 	local ped = PlayerPedId()
 	local ammoType = Citizen.InvokeNative(0x7FEAD38B326B9F74, ped, weapons)
 	local newammo = 0
@@ -809,48 +809,48 @@ end
 
 function AttachmentCheck(weaponhash)
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("silencer_l",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("silencer_l",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_AR_SUPP` )
 	end
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("silencer_l2",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("silencer_l2",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_AR_SUPP_02` )
 	end
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("silencer_s",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("silencer_s",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_PI_SUPP` )
 	end
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("silencer_s2",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("silencer_s2",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_PI_SUPP_02` )	
 	end
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("extended_ap",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("extended_ap",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_APPISTOL_CLIP_02` )	
 	end
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("extended_sns",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("extended_sns",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_SNSPISTOL_CLIP_02` )	
 	end
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("extended_micro",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("extended_micro",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_MICROSMG_CLIP_02` )	
 	end
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("MediumScope",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("MediumScope",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_SCOPE_MEDIUM` )	
 	end
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("SmallScope",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("SmallScope",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_SCOPE_SMALL` )	
 	end
 
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("TinyScope",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("TinyScope",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_SCOPE_MACRO` )	
 	end
 
-	if exports["wrp-inventory"]:hasEnoughOfItem("extended_tec9",1,false) then
+	if exports["prp-inventory"]:hasEnoughOfItem("extended_tec9",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_MACHINEPISTOL_CLIP_02` )	
 	end
 

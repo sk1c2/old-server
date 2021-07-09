@@ -3,8 +3,8 @@ function URP.Core.Initialize(self)
         while true do
             Citizen.Wait(5)
             if NetworkIsSessionStarted() then
-                TriggerEvent("wrp-base:playerSessionStarted")
-                --TriggerServerEvent("wrp-base:playerSessionStarted")
+                TriggerEvent("prp-base:playerSessionStarted")
+                --TriggerServerEvent("prp-base:playerSessionStarted")
                 break
             end
         end
@@ -12,18 +12,18 @@ function URP.Core.Initialize(self)
 end
 URP.Core:Initialize()
 
-AddEventHandler("wrp-base:playerSessionStarted", function()
+AddEventHandler("prp-base:playerSessionStarted", function()
     URP.SpawnManager:Initialize()
 end)
 
-RegisterNetEvent("wrp-base:waitForExports")
-AddEventHandler("wrp-base:waitForExports", function()
+RegisterNetEvent("prp-base:waitForExports")
+AddEventHandler("prp-base:waitForExports", function()
     if not URP.Core.ExportsReady then return end
 
     while true do
         Citizen.Wait(3)
-        if exports and exports["wrp-base"] then
-            TriggerEvent("wrp-base:exportsReady")
+        if exports and exports["prp-base"] then
+            TriggerEvent("prp-base:exportsReady")
             return
         end
     end

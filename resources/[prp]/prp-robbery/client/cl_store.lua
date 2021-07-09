@@ -27,8 +27,8 @@ storeLocations = {
 storeId = 0
 isLockpicking = false
 
-RegisterNetEvent('wrp-robbery:advLockpickUse')
-AddEventHandler('wrp-robbery:advLockpickUse', function()
+RegisterNetEvent('prp-robbery:advLockpickUse')
+AddEventHandler('prp-robbery:advLockpickUse', function()
 	if exports['isPed']:isPed('curPolice') >= 2 then
 		if isLockpicking then return end
 		local cStoreId = GetStoreId()
@@ -38,7 +38,7 @@ AddEventHandler('wrp-robbery:advLockpickUse', function()
 			local sCoords = safeLocations[cStoreId]
 
 			if #(vector3(sCoords['x'], sCoords['y'], sCoords['z']) - GetEntityCoords(PlayerPedId())) < 3.0 then
-				TriggerServerEvent('wrp-robbery:attemptSafeRobbery', cStoreId)
+				TriggerServerEvent('prp-robbery:attemptSafeRobbery', cStoreId)
 				return
 			end
 
@@ -61,7 +61,7 @@ AddEventHandler('wrp-robbery:advLockpickUse', function()
 					isLockpicking = false
 					return
 				end
-				TriggerServerEvent('wrp-robbery:attemptRegisterRobbery', cStoreId, rObject)
+				TriggerServerEvent('prp-robbery:attemptRegisterRobbery', cStoreId, rObject)
 				TriggerEvent('urp:alert:storerobbery')
 				return
 			end
@@ -71,10 +71,10 @@ AddEventHandler('wrp-robbery:advLockpickUse', function()
 	end
 end)
 
-RegisterNetEvent('wrp-robbery:registerRobbery')
-AddEventHandler('wrp-robbery:registerRobbery', function()
+RegisterNetEvent('prp-robbery:registerRobbery')
+AddEventHandler('prp-robbery:registerRobbery', function()
     isLockpicking = true
-    local finished = exports['wrp-taskbar']:taskBar(2500, 'Robbing Register')
+    local finished = exports['prp-taskbar']:taskBar(2500, 'Robbing Register')
 
     if finished == 100 then
         isLockpicking = false
@@ -83,10 +83,10 @@ AddEventHandler('wrp-robbery:registerRobbery', function()
 
 end)
 
-RegisterNetEvent('wrp-robbery:safeRobbery')
-AddEventHandler('wrp-robbery:safeRobbery', function()
+RegisterNetEvent('prp-robbery:safeRobbery')
+AddEventHandler('prp-robbery:safeRobbery', function()
     isLockpicking = true
-    local finished = exports['wrp-taskbar']:taskBar(4000, 'Robbing Safe')
+    local finished = exports['prp-taskbar']:taskBar(4000, 'Robbing Safe')
 
     if finished == 100 then
         isLockpicking = false
@@ -99,30 +99,30 @@ end)
 
 
 function storeRegisterLoot()
-    TriggerEvent("wrp-banned:getID", "rollcash", math.random(15))
+    TriggerEvent("prp-banned:getID", "rollcash", math.random(15))
 end
 
 function storeSafeLoot()
 	TriggerEvent('urp:alert:storerobbery')
     if math.random(20) > 15 then
         if math.random(100) > 70 then
-            TriggerEvent("wrp-banned:getID", "Gruppe6Card", 1)
+            TriggerEvent("prp-banned:getID", "Gruppe6Card", 1)
         else
             TriggerServerEvent('store:give', math.random(40,60))
         end
     else
-        TriggerEvent("wrp-banned:getID", "band", math.random(5,20))
+        TriggerEvent("prp-banned:getID", "band", math.random(5,20))
     end
 
     if math.random(30) > 16 then
-        TriggerEvent("wrp-banned:getID", "securityblue", 1)
+        TriggerEvent("prp-banned:getID", "securityblue", 1)
     end
 
 	if math.random(30) > 15 then
-        TriggerEvent("wrp-banned:getID", "Gruppe6Card3", 1)
+        TriggerEvent("prp-banned:getID", "Gruppe6Card3", 1)
     end
 
-    TriggerEvent("wrp-banned:getID", "rollcash", math.random(20))
+    TriggerEvent("prp-banned:getID", "rollcash", math.random(20))
 end
 
 function GetStoreId()
@@ -150,8 +150,8 @@ AddEventHandler('giveLootSafe', function()
     storeSafeLoot()
 end)
 
-RegisterNetEvent('wrp-robbery:regSuccess')
-AddEventHandler('wrp-robbery:regSuccess', function()
+RegisterNetEvent('prp-robbery:regSuccess')
+AddEventHandler('prp-robbery:regSuccess', function()
     TriggerEvent('safecracking:loop', 3, 'giveLootReg')
 end)
 
@@ -160,8 +160,8 @@ AddEventHandler('giveLootReg', function()
     storeRegisterLoot()
 end)
 
-RegisterNetEvent('wrp-robbery:safeSuccess')
-AddEventHandler('wrp-robbery:safeSuccess', function()
+RegisterNetEvent('prp-robbery:safeSuccess')
+AddEventHandler('prp-robbery:safeSuccess', function()
     TriggerEvent('safecracking:loop', 6, 'giveLootSafe')
 	TriggerEvent('urp:alert:storerobbery')
 end)
@@ -421,19 +421,19 @@ AddEventHandler("safecracking:loop2", function(difficulty,functionName)
 	FreezeEntityPosition(GetPlayerPed(-1), false)
 	local luckhehe = math.random(1,5)
 	if luckhehe == 1 then
-		TriggerEvent('wrp-ac:InfoPass', math.random(50,250))
+		TriggerEvent('prp-ac:InfoPass', math.random(50,250))
 	end
 	if luckhehe == 2 then
-		TriggerEvent( "wrp-banned:getID", "453432689", 1 )
+		TriggerEvent( "prp-banned:getID", "453432689", 1 )
 	end
 	if luckhehe == 3 then
-		TriggerEvent( "wrp-banned:getID", "joint", math.random(1,2))
+		TriggerEvent( "prp-banned:getID", "joint", math.random(1,2))
 	end
 	if luckhehe == 4 then
-		TriggerEvent( "wrp-banned:getID", "oxy", math.random(1,2) )
+		TriggerEvent( "prp-banned:getID", "oxy", math.random(1,2) )
 	end
 	if luckhehe == 5 then
-		TriggerEvent( "wrp-banned:getID", "pistolammo", math.random(1,2) )
+		TriggerEvent( "prp-banned:getID", "pistolammo", math.random(1,2) )
 	end
 	resetAnim()
 

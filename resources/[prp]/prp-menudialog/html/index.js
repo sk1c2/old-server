@@ -1,7 +1,7 @@
 $(document).ready(function () {
     document.onkeyup = function (data) {
         if (data.which == 27) {
-            $.post('http://wrp-menudialog/close', JSON.stringify({}));
+            $.post('http://prp-menudialog/close', JSON.stringify({}));
             $(".container").fadeOut(500)
             setTimeout(() => {
                 // $(buttons).empty()
@@ -33,8 +33,8 @@ $(document).ready(function () {
     });
     $("body").on("click" , ".btn" , function(){
 
-        $.post('http://wrp-menudialog/clicked', JSON.stringify({trigger:$(this).attr("data-trigger") , param:$(this).attr("data-parm")}));
-        $.post('http://wrp-menudialog/close', JSON.stringify({}));
+        $.post('http://prp-menudialog/clicked', JSON.stringify({trigger:$(this).attr("data-trigger") , param:$(this).attr("data-parm")}));
+        $.post('http://prp-menudialog/close', JSON.stringify({}));
         $(".container").fadeOut(500)
         setTimeout(() => {
             $("button").remove()

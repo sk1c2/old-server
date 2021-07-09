@@ -1,6 +1,6 @@
 Citizen.CreateThread(function()
     Citizen.Wait(2000)
-    print('[wrp-phone]: AUTHORIZED')
+    print('[prp-phone]: AUTHORIZED')
 end)
 
 Citizen.CreateThread(function()
@@ -86,30 +86,30 @@ AddEventHandler('group:pullinformation', function(gId, name)
 
 end)
 
-RegisterServerEvent('wrp-fine:received')
-AddEventHandler('wrp-fine:received', function(receiver, amount)
-    TriggerClientEvent("wrp-ac:passInfoBan", receiver, amount)
-    TriggerEvent('wrp-business:givepass', 'Police', amount * 4)
+RegisterServerEvent('prp-fine:received')
+AddEventHandler('prp-fine:received', function(receiver, amount)
+    TriggerClientEvent("prp-ac:passInfoBan", receiver, amount)
+    TriggerEvent('prp-business:givepass', 'Police', amount * 4)
     TriggerClientEvent('DoLongHudText', receiver, 'You have recieved a fine of $' ..amount.. '!', 2)
 end)
 
-RegisterServerEvent('wrp-business:givepass')
-AddEventHandler('wrp-business:givepass', function(job, amount)
+RegisterServerEvent('prp-business:givepass')
+AddEventHandler('prp-business:givepass', function(job, amount)
     local src = source
     exports.ghmattimysql:execute('SELECT `bank` from __job_accounts WHERE name = ?', {job}, function(data)
         totalbank = data[1].bank + amount
-        TriggerEvent('wrp-business:log', amount, totalbank, job)
+        TriggerEvent('prp-business:log', amount, totalbank, job)
         exports.ghmattimysql:execute('UPDATE __job_accounts SET bank = ? WHERE name = ?', {tonumber(totalbank), job})
     end)
 end)
 
-RegisterServerEvent('wrp-business:removepass')
-AddEventHandler('wrp-business:removepass', function(job, amount)
+RegisterServerEvent('prp-business:removepass')
+AddEventHandler('prp-business:removepass', function(job, amount)
     local src = source
     exports.ghmattimysql:execute('SELECT `bank` from __job_accounts WHERE name = ?', {job}, function(data)
         totalbank = data[1].bank - amount
         exports.ghmattimysql:execute('UPDATE __job_accounts SET bank = ? WHERE name = ?', {tonumber(totalbank), job})
-        TriggerEvent('wrp-business:logr', amount, totalbank, job)
+        TriggerEvent('prp-business:logr', amount, totalbank, job)
     end)
 end)
 
@@ -130,18 +130,18 @@ AddEventHandler('server:givepass', function(gangid,newrank,cid)
     end)
 
     local uid = Citizen.Await(userData)
-    local user = exports['wrp-base']:getModule("Player")
+    local user = exports['prp-base']:getModule("Player")
     local char = user:getCurrentCharacter(uid[1].uid)
     local target, index = user:getCharacterFromCid(tonumber(cid))
     local name = char.first_name .. " " .. char.last_name
     local targetname = target.first_name .. " " .. target.last_name
     if tonumber(newrank) == 0 then
         exports.ghmattimysql:execute('UPDATE __characters SET `job`= ?, `rank`= ? WHERE `id`= ?', {"None", newrank, cid})
-        TriggerClientEvent('wrp-base:updateJob', target.playerSrc, "None", newrank)
+        TriggerClientEvent('prp-base:updateJob', target.playerSrc, "None", newrank)
         exports.ghmattimysql:execute('INSERT INTO __employees(`cid`, `giver`, `rank`, `name`, `business_id`) VALUES(?, ?, ?, ?, ?)', {cid, name, newrank, targetname, groupId})
     else
         exports.ghmattimysql:execute('UPDATE __characters SET `job`= ?, `rank`= ? WHERE `id`= ?', {pCurrent[1].name, newrank, cid})
-        TriggerClientEvent('wrp-base:updateJob', target.playerSrc, pCurrent[1].name, newrank)
+        TriggerClientEvent('prp-base:updateJob', target.playerSrc, pCurrent[1].name, newrank)
         exports.ghmattimysql:execute('INSERT INTO __employees(`cid`, `giver`, `rank`, `name`, `business_id`) VALUES(?, ?, ?, ?, ?)', {cid, name, newrank, targetname, groupId})
     end
 end)
@@ -171,10 +171,10 @@ AddEventHandler('server:gankGroup', function(gangid, cashamount, pId)
     local pDepoAmount = pCurrentBank[1].bank - depoAmount
     local jDepoAmount = jCurrentBank[1].bank + depoAmount
 
-    TriggerEvent('wrp-base:updateCharacterBank', pDepoAmount, pCitizenId, false, depoAmount)
+    TriggerEvent('prp-base:updateCharacterBank', pDepoAmount, pCitizenId, false, depoAmount)
 
     exports.ghmattimysql:execute('UPDATE __job_accounts SET bank = ? WHERE id = ?', {jDepoAmount, groupId})
-    TriggerEvent('wrp-business:log', jDepoAmount, bankaccount + jDepoAmount, groupI)
+    TriggerEvent('prp-business:log', jDepoAmount, bankaccount + jDepoAmount, groupI)
     exports.ghmattimysql:execute('UPDATE __characters SET bank = ? WHERE id = ?', {pDepoAmount, cId})
 end)
 end)
@@ -203,17 +203,17 @@ AddEventHandler('server:givepayGroup', function(gangid, cashamount, cid)
     local pDepoAmount = pCurrentBank[1].bank + depoAmount
     local jDepoAmount = jCurrentBank[1].bank - depoAmount
 
-    TriggerEvent('wrp-base:updateCharacterBank', pDepoAmount, cId, true, depoAmount)
+    TriggerEvent('prp-base:updateCharacterBank', pDepoAmount, cId, true, depoAmount)
 
     exports.ghmattimysql:execute('UPDATE __job_accounts SET bank = ? WHERE id = ?', {jDepoAmount, groupId})
-    TriggerEvent('wrp-business:log', jDepoAmount, totalbankamount + jDepoAmount, groupId)
+    TriggerEvent('prp-business:log', jDepoAmount, totalbankamount + jDepoAmount, groupId)
     exports.ghmattimysql:execute('UPDATE __characters SET bank = ? WHERE id = ?', {pDepoAmount, cId})
 
 end)
 end)
 
--- RegisterServerEvent('wrp-phone:restart')
--- AddEventHandler('wrp-phone:restart', function()
+-- RegisterServerEvent('prp-phone:restart')
+-- AddEventHandler('prp-phone:restart', function()
 --     local sourcePlayer = tonumber(source)
 --     local identifier = getPlayerID(source)
 --     local xPlayer = urpCore.GetPlayerFromId(source)
@@ -770,7 +770,7 @@ AddEventHandler('playerDropped', function()
     end)
 
     local uid = Citizen.Await(userData)
-    local user = exports['wrp-base']:getModule("Player")
+    local user = exports['prp-base']:getModule("Player")
     local char = user:getCurrentCharacter(uid[1].uid)
 	local identifier = steamIdentifier
     exports.ghmattimysql:execute("SELECT * FROM __vehicles WHERE cid=@identifier",{['identifier'] = cid}, function(data)
@@ -894,7 +894,7 @@ end)
 RegisterServerEvent('racing-join-race')
 AddEventHandler('racing-join-race', function(identifier)
     local src = source
-    local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+    local player = exports['prp-base']:GetCurrentCharacterInfo(src)
     local playername = player[1].first_name .. ' ' .. player[1].last_name
     Races[identifier]["racers"][cid] = {["name"] = PlayerName, ["cid"] = cid, ["total"] = 0, ["fastest"] = 0 }
     TriggerEvent('racing:server:sendData', identifier, src, 'event')
@@ -903,7 +903,7 @@ end)
 RegisterServerEvent('race:completed2')
 AddEventHandler('race:completed2', function(fastestLap, overall, sprint, identifier)
     local src = source
-    local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+    local player = exports['prp-base']:GetCurrentCharacterInfo(src)
     local playername = player[1].first_name .. ' ' .. player[1].last_name
     Races[identifier]["racers"][cid] = { ["name"] = PlayerName, ["cid"] = cid, ["total"] = overall, ["fastest"] = fastestLap}
     Races[identifier].sprint = sprint
@@ -998,7 +998,7 @@ end)
 RegisterServerEvent('racing-save-map')
 AddEventHandler('racing-save-map', function(currentMap,name,description,distanceMap)
     local src = source
-    local player = exports['wrp-base']:GetCurrentCharacterInfo(src)
+    local player = exports['prp-base']:GetCurrentCharacterInfo(src)
     exports.ghmattimysql:execute('SELECT `first_name`, `last_name` FROM __characters WHERE id = ?', {player.id}, function(player)
         local playername = player[1].first_name .. ' ' .. player[1].last_name
 

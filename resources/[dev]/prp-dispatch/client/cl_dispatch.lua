@@ -218,8 +218,8 @@ AddEventHandler('dispatch:clNotify', function(pNotificationData)
     end
 end)
 
-RegisterNetEvent('wrp-dispatch:closenui')
-AddEventHandler('wrp-dispatch:closenui', function()
+RegisterNetEvent('prp-dispatch:closenui')
+AddEventHandler('prp-dispatch:closenui', function()
   showDispatchLog = false
   SetNuiFocus(false, false)
   SetNuiFocusKeepInput(false)
@@ -730,7 +730,7 @@ function AlertFight()
     blipColor = 25
   })
 
-  TriggerServerEvent('wrp-blips:combatprog', plyPos)
+  TriggerServerEvent('prp-blips:combatprog', plyPos)
   Wait(math.random(5000,15000))
 
   if math.random(10,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -755,7 +755,7 @@ function AlertFight()
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:combatprog', plyPos)
+    TriggerServerEvent('prp-blips:combatprog', plyPos)
     end
   end
 end
@@ -793,8 +793,8 @@ function AlertGunShot()
           dispatchMessage = "Shots Fired in Progress",
         })
         plyPos = GetEntityCoords(PlayerPedId())
-        TriggerServerEvent('wrp-blip:shotsfired', GetEntityCoords(PlayerPedId()))
-        TriggerEvent('wrp-outlawalert:gunshotInProgress', GetEntityCoords(PlayerPedId()))
+        TriggerServerEvent('prp-blip:shotsfired', GetEntityCoords(PlayerPedId()))
+        TriggerEvent('prp-outlawalert:gunshotInProgress', GetEntityCoords(PlayerPedId()))
         Wait(math.random(5000,10000))
       end
       if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -819,8 +819,8 @@ function AlertGunShot()
             z = plyPos.z
           }
         })
-        TriggerServerEvent('wrp-outlawalert:gunshotInProgress')
-        TriggerServerEvent('wrp-blip:shotsfired', plyPos)
+        TriggerServerEvent('prp-outlawalert:gunshotInProgress')
+        TriggerServerEvent('prp-blip:shotsfired', plyPos)
       end
           -- end
     end)
@@ -848,7 +848,7 @@ function CarCrash()
       z = plyPos.z
     }
   })
-  TriggerServerEvent('wrp-blips:vehiclecrash', plyPos)
+  TriggerServerEvent('prp-blips:vehiclecrash', plyPos)
 
   Wait(math.random(5000,15000))
 
@@ -876,7 +876,7 @@ function CarCrash()
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:vehiclecrash', plyPos)
+    TriggerServerEvent('prp-blips:vehiclecrash', plyPos)
 end
 end
 
@@ -906,7 +906,7 @@ function AlertCheckLockpick(object)
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:vehicletheft', plyPos)
+    TriggerServerEvent('prp-blips:vehicletheft', plyPos)
     return
   end
 end
@@ -937,7 +937,7 @@ function AlertDeath(object)
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:downedperson', plyPos)
+    TriggerServerEvent('prp-blips:downedperson', plyPos)
     return
     end
   
@@ -969,7 +969,7 @@ function AlertOfficerDown(object)
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:officerdown', plyPos)
+    TriggerServerEvent('prp-blips:officerdown', plyPos)
     return
     end
   
@@ -1006,7 +1006,7 @@ function MethAlert(object)
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:vehicle-suspicion', plyPos)
+    TriggerServerEvent('prp-blips:vehicle-suspicion', plyPos)
     return
     end
   
@@ -1034,7 +1034,7 @@ function AlertpersonRobbed(vehicle)
       z = plyPos.z
     }
   })
-  TriggerServerEvent('wrp-blips:storerobbery', plyPos)
+  TriggerServerEvent('prp-blips:storerobbery', plyPos)
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) then
@@ -1059,7 +1059,7 @@ function AlertpersonRobbed(vehicle)
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:storerobbery', plyPos)
+    TriggerServerEvent('prp-blips:storerobbery', plyPos)
   end
 end
 
@@ -1086,7 +1086,7 @@ function AlertCheckRobbery2()
     }
   })
 
-  TriggerServerEvent('wrp-blips:houserobbery', plyPos)
+  TriggerServerEvent('prp-blips:houserobbery', plyPos)
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1111,7 +1111,7 @@ function AlertCheckRobbery2()
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:houserobbery', plyPos)
+    TriggerServerEvent('prp-blips:houserobbery', plyPos)
   end
 end
 
@@ -1137,7 +1137,7 @@ function AlertBankTruck()
     }
   })
   
-  TriggerServerEvent('wrp-blips:banktruck', plyPos)
+  TriggerServerEvent('prp-blips:banktruck', plyPos)
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1162,12 +1162,12 @@ function AlertBankTruck()
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:banktruck', plyPos)
+    TriggerServerEvent('prp-blips:banktruck', plyPos)
   end
 end
 
-RegisterNetEvent('wrp-dispatch:jewelrobbery')
-AddEventHandler('wrp-dispatch:jewelrobbery', function()
+RegisterNetEvent('prp-dispatch:jewelrobbery')
+AddEventHandler('prp-dispatch:jewelrobbery', function()
   AlertJewelRob()
 end)
 
@@ -1193,7 +1193,7 @@ function AlertJewelRob()
     }
   })
   
-  TriggerServerEvent('wrp-blips:jewelrobbey', plyPos)
+  TriggerServerEvent('prp-blips:jewelrobbey', plyPos)
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1218,7 +1218,7 @@ function AlertJewelRob()
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:jewelrobbey', plyPos)
+    TriggerServerEvent('prp-blips:jewelrobbey', plyPos)
   end
 end
 
@@ -1244,7 +1244,7 @@ function AlertJailBreak()
     }
   })
   
-  TriggerServerEvent('wrp-blips:jailbreak', plyPos)
+  TriggerServerEvent('prp-blips:jailbreak', plyPos)
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1269,7 +1269,7 @@ function AlertJailBreak()
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:jailbreak', plyPos)
+    TriggerServerEvent('prp-blips:jailbreak', plyPos)
   end
 end
 
@@ -1294,7 +1294,7 @@ function AlertBigBankRobbery()
       z = plyPos.z
     }
   })
-  TriggerServerEvent('wrp-blips:bigbankrobbery', plyPos)
+  TriggerServerEvent('prp-blips:bigbankrobbery', plyPos)
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1319,7 +1319,7 @@ function AlertBigBankRobbery()
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:bigbankrobbery', plyPos)
+    TriggerServerEvent('prp-blips:bigbankrobbery', plyPos)
   end
 end
 
@@ -1344,7 +1344,7 @@ function AlertPowerPlant()
       z = plyPos.z
     }
   })
-  TriggerServerEvent('wrp-blips:powerplant', plyPos)
+  TriggerServerEvent('prp-blips:powerplant', plyPos)
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1369,7 +1369,7 @@ function AlertPowerPlant()
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:fleecarobbery', plyPos)
+    TriggerServerEvent('prp-blips:fleecarobbery', plyPos)
   end
 end
 
@@ -1394,7 +1394,7 @@ function AlertFleecaRobbery()
       z = plyPos.z
     }
   })
-  TriggerServerEvent('wrp-blips:fleecarobbery', plyPos)
+  TriggerServerEvent('prp-blips:fleecarobbery', plyPos)
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1419,7 +1419,7 @@ function AlertFleecaRobbery()
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:fleecarobbery', plyPos)
+    TriggerServerEvent('prp-blips:fleecarobbery', plyPos)
   end
 end
 
@@ -1445,7 +1445,7 @@ function AlertDrugJob()
     }
   })
 
-  TriggerServerEvent('wrp-blips:drugjob', plyPos)
+  TriggerServerEvent('prp-blips:drugjob', plyPos)
   
   Wait(math.random(5000,15000))
 
@@ -1471,7 +1471,7 @@ function AlertDrugJob()
         z = plyPos.z
       }
     })
-    TriggerServerEvent('wrp-blips:drugjob', plyPos)
+    TriggerServerEvent('prp-blips:drugjob', plyPos)
 end
 end
 

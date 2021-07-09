@@ -181,9 +181,9 @@ Citizen.CreateThread(function()
                     if GetDistanceBetweenCoords(GetEntityCoords(ped), locations[i].x, locations[i].y, locations[i].z, true) < 1 then
                      --   GRPCore.ShowHelpNotification("Press ~INPUT_CONTEXT~ to start mining.")
                             if IsControlJustReleased(1, 51) then
-                                if exports['wrp-inventory']:hasEnoughOfItem('pickaxe', 1) then
+                                if exports['prp-inventory']:hasEnoughOfItem('pickaxe', 1) then
                                 Animation()
-                                local finished = exports["wrp-taskbar"]:taskBar(13000,"⛏️ Mining Ore ⛏️")
+                                local finished = exports["prp-taskbar"]:taskBar(13000,"⛏️ Mining Ore ⛏️")
                                 mineActive = true
 
                             end
@@ -205,10 +205,10 @@ Citizen.CreateThread(function()
                 if GetDistanceBetweenCoords(GetEntityCoords(ped), Config.WashingX, Config.WashingY, Config.WashingZ, true) < 1 then
                  --    GRPCore.ShowHelpNotification("Press ~INPUT_CONTEXT~ to wash the stones.")
                         if IsControlJustReleased(1, 51) then
-                            if exports['wrp-inventory']:hasEnoughOfItem('washpan', 1) then
-                            if exports['wrp-inventory']:hasEnoughOfItem('stone', 1) then
+                            if exports['prp-inventory']:hasEnoughOfItem('washpan', 1) then
+                            if exports['prp-inventory']:hasEnoughOfItem('stone', 1) then
                             TriggerEvent("loopUpdateItems")
-                            local finished = exports["wrp-taskbar"]:taskBar(10000,"Washing Stones",true,false,playerVeh)
+                            local finished = exports["prp-taskbar"]:taskBar(10000,"Washing Stones",true,false,playerVeh)
                             TriggerEvent("inventory:removeItem", "stone", 1)
                             TriggerEvent("player:receiveItem","washedstone", 1)
                             -- TriggerServerEvent("grp_miner:washing")
@@ -229,8 +229,8 @@ Citizen.CreateThread(function()
                 if GetDistanceBetweenCoords(GetEntityCoords(ped), Config.RemeltingX, Config.RemeltingY, Config.RemeltingZ, true) < 1 then
                   -- GRPCore.ShowHelpNotification("Press ~INPUT_CONTEXT~ to remelting stones.")
                         if IsControlJustReleased(1, 51) then 
-                            if exports['wrp-inventory']:hasEnoughOfItem('washedstone', 1) then
-                            local finished = exports["wrp-taskbar"]:taskBar(5000,"Smelting Stone")
+                            if exports['prp-inventory']:hasEnoughOfItem('washedstone', 1) then
+                            local finished = exports["prp-taskbar"]:taskBar(5000,"Smelting Stone")
                             TriggerEvent('loopUpdateItems')
                             Citizen.Wait(1500)
                             TriggerEvent( "player:receiveItem", "minedgoods", 1)
@@ -363,7 +363,7 @@ function Animation()
         while impacts < 5 do
             Citizen.Wait(1)
 		local ped = PlayerPedId()
-        if exports['wrp-inventory']:hasEnoughOfItem('pickaxe', 1) then
+        if exports['prp-inventory']:hasEnoughOfItem('pickaxe', 1) then
                 RequestAnimDict("melee@large_wpn@streamed_core")
                 Citizen.Wait(100)
                 TaskPlayAnim((ped), 'melee@large_wpn@streamed_core', 'ground_attack_on_spot', 8.0, 8.0, -1, 80, 0, 0, 0, 0)

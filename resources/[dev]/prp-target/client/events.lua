@@ -61,7 +61,7 @@ Citizen.CreateThread(function()
                     label = "Carry Player!"
                 },
                 {
-                    event = "wrp-stealtrigger", 
+                    event = "prp-stealtrigger", 
                     icon = "fab fa-searchengin",  
                     label = "Rob Target Player!"
                 }
@@ -88,7 +88,7 @@ Citizen.CreateThread(function()
                     label = "Unseat Player!"
                 },
                 {
-                    event = "wrp-givekey",
+                    event = "prp-givekey",
                     icon = "fas fa-key",
                     label = "Give The Car Key!"
                 },
@@ -210,12 +210,12 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-checkin:doc",
+                event = "prp-checkin:doc",
                 icon = "far fa-clipboard",
                 label = "Check In",
             },
             {
-                event = "wrp-page:doctor",
+                event = "prp-page:doctor",
                 icon = "fas fa-pager",
                 label = "Page Doctor",
             },
@@ -254,7 +254,7 @@ Citizen.CreateThread(function()
         AddTargetModel(spikes, {
             options = {
                 {
-                    event = "wrp-spikes:removeSpike",
+                    event = "prp-spikes:removeSpike",
                     icon = "fas fa-wrench",
                     label = "Delete Spikestrip",
                 },
@@ -271,7 +271,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -285,7 +285,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -299,7 +299,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -313,7 +313,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -327,7 +327,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -341,7 +341,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -355,7 +355,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -369,7 +369,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -383,7 +383,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -397,7 +397,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -411,7 +411,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "wrp-weapon:shop",
+                event = "prp-weapon:shop",
                 icon = "fas fa-wrench",
                 label = "Purchase Weapons",
             },
@@ -584,7 +584,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
         }, {
             options = {
                 {
-                    event = "wrp-camel:stash",
+                    event = "prp-camel:stash",
                     icon = "fas fa-box",
                     label = "Storage",
                 },
@@ -598,7 +598,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
         }, {
             options = {
                 {
-                    event = "wrp-camel:crafting",
+                    event = "prp-camel:crafting",
                     icon = "fas fa-wrench",
                     label = "Crafting",
                 },
@@ -1063,22 +1063,22 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
             }, {
                 options = {
                     {
-                        event = "wrp-latticepie",
+                        event = "prp-latticepie",
                         icon = "fas fa-shopping-basket",
                         label = "Lattice Topped Pie Slice",
                     },
                     {
-                        event = "wrp-brownie",
+                        event = "prp-brownie",
                         icon = "fas fa-shopping-basket",
                         label = "Brownie",
                     },
                     {
-                        event = "wrp-doughnut",
+                        event = "prp-doughnut",
                         icon = "fas fa-shopping-basket",
                         label = "Glazed Doughnut",
                     },
                     {
-                        event = "wrp-macaroon",
+                        event = "prp-macaroon",
                         icon = "fas fa-shopping-basket",
                         label = "Coconut Macaroon",
                     },
@@ -1093,27 +1093,27 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                 }, {
                     options = {
                         {
-                            event = "wrp-thumbprintcookie",
+                            event = "prp-thumbprintcookie",
                             icon = "fas fa-shopping-basket",
                             label = "Thumbprint Cookie with Jam Filling",
                         },
                         {
-                            event = "wrp-pretzel",
+                            event = "prp-pretzel",
                             icon = "fas fa-shopping-basket",
                             label = "Pretzel",
                         },
                         {
-                            event = "wrp-eclair",
+                            event = "prp-eclair",
                             icon = "fas fa-shopping-basket",
                             label = "Eclair",
                         },
                         {
-                            event = "wrp-creampuff",
+                            event = "prp-creampuff",
                             icon = "fas fa-shopping-basket",
                             label = "Cream Puff",
                         },
                         {
-                            event = "wrp-strudel",
+                            event = "prp-strudel",
                             icon = "fas fa-shopping-basket",
                             label = "Strudel",
                         },
@@ -1128,12 +1128,12 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                     }, {
                         options = {
                             {
-                                event = "wrp-cinnanomroll",
+                                event = "prp-cinnanomroll",
                                 icon = "fas fa-shopping-basket",
                                 label = "Cinnamon Roll",
                             },
                             {
-                                event = "wrp-raspberryslice",
+                                event = "prp-raspberryslice",
                                 icon = "fas fa-shopping-basket",
                                 label = "Raspberry Roulade Slice",
                             },
@@ -1148,7 +1148,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                         }, {
                             options = {
                                 {
-                                    event = "wrp-souffle",
+                                    event = "prp-souffle",
                                     icon = "fas fa-shopping-basket",
                                     label = "Souffle",
                                 },
@@ -1162,7 +1162,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                             }, {
                                 options = {
                                     {
-                                        event = "wrp-bakerystoragemain",
+                                        event = "prp-bakerystoragemain",
                                         icon = "fas fa-shopping-basket",
                                         label = "Open Storage",
                                     },
@@ -1176,7 +1176,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                                 }, {
                                     options = {
                                         {
-                                            event = "wrp-collectbottom",
+                                            event = "prp-collectbottom",
                                             icon = "fas fa-shopping-basket",
                                             label = "Collect Order",
                                         },
@@ -1190,7 +1190,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                                     }, {
                                         options = {
                                             {
-                                                event = "wrp-collectdrink",
+                                                event = "prp-collectdrink",
                                                 icon = "fas fa-shopping-basket",
                                                 label = "Access Drink Storage",
                                             },
@@ -1204,7 +1204,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                                         }, {
                                             options = {
                                                 {
-                                                    event = "wrp-graborder",
+                                                    event = "prp-graborder",
                                                     icon = "fas fa-shopping-basket",
                                                     label = "Collect Order",
                                                 },
@@ -1218,7 +1218,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                                             }, {
                                                 options = {
                                                     {
-                                                        event = "wrp-obtaindrinkiatria",
+                                                        event = "prp-obtaindrinkiatria",
                                                         icon = "fas fa-shopping-basket",
                                                         label = "Grab a Drink",
                                                     },
@@ -1472,7 +1472,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
             }, {
                 options = {
                     {
-                        event = "wrp-cookshit",
+                        event = "prp-cookshit",
                         icon = "fas fa-shopping-basket",
                         label = "Grow",
                     },
@@ -1590,7 +1590,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                 }, {
                     options = {
                         {
-                            event = "wrp-police:duty",
+                            event = "prp-police:duty",
                             icon = "far fa-clipboard",
                             label = "Duty",
                         },
@@ -1782,7 +1782,7 @@ end
 function deleteVeh(ent)
 	SetVehicleHasBeenOwnedByPlayer(ent, true)
 	NetworkRequestControlOfEntity(ent)
-	local finished = exports["wrp-taskbar"]:taskBar(7500,"Impounding",false,true)	
+	local finished = exports["prp-taskbar"]:taskBar(7500,"Impounding",false,true)	
 	Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(ent))
 	DeleteEntity(ent)
 	DeleteVehicle(ent)
@@ -1822,7 +1822,7 @@ AddEventHandler('impoundVehicleee', function()
 			TriggerServerEvent("garages:SetVehIngarage", licensePlate)
 			TriggerEvent("animation:impound")
 			FreezeEntityPosition(PlayerPedId(),true)
-			local finished = exports["wrp-taskbar"]:taskBar("3000","Completing Task")
+			local finished = exports["prp-taskbar"]:taskBar("3000","Completing Task")
 			if finished == 100 then
 				ClearPedTasks(PlayerPedId())
 				FreezeEntityPosition(PlayerPedId(),false)

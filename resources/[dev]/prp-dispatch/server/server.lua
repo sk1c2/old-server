@@ -4,147 +4,147 @@ AddEventHandler("dispatch:svNotify", function(data)
 end)
 
 
-RegisterNetEvent('server:wrp-outlawalert:gunshotInProgress')
-AddEventHandler('server:wrp-outlawalert:gunshotInProgress', function(targetCoords)
-TriggerClientEvent('wrp-outlawalert:gunshotInProgress', targetCoords)
+RegisterNetEvent('server:prp-outlawalert:gunshotInProgress')
+AddEventHandler('server:prp-outlawalert:gunshotInProgress', function(targetCoords)
+TriggerClientEvent('prp-outlawalert:gunshotInProgress', targetCoords)
 end)
 
-RegisterNetEvent('wrp-blip:shotsfired')
-AddEventHandler('wrp-blip:shotsfired', function(plyPos)
+RegisterNetEvent('prp-blip:shotsfired')
+AddEventHandler('prp-blip:shotsfired', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-outlawalert:gunshotInProgress', playerId, plyPos)
+        TriggerClientEvent('prp-outlawalert:gunshotInProgress', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:vehiclecrash')
-AddEventHandler('wrp-blips:vehiclecrash', function(plyPos)
+RegisterNetEvent('prp-blips:vehiclecrash')
+AddEventHandler('prp-blips:vehiclecrash', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:vehiclecrash', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:vehiclecrash', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:combatprog')
-AddEventHandler('wrp-blips:combatprog', function(plyPos)
+RegisterNetEvent('prp-blips:combatprog')
+AddEventHandler('prp-blips:combatprog', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-outlawalert:combatInProgress', playerId, plyPos)
+        TriggerClientEvent('prp-outlawalert:combatInProgress', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:vehicletheft')
-AddEventHandler('wrp-blips:vehicletheft', function(plyPos)
+RegisterNetEvent('prp-blips:vehicletheft')
+AddEventHandler('prp-blips:vehicletheft', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:vehiclesteal', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:vehiclesteal', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:downedperson')
-AddEventHandler('wrp-blips:downedperson', function(plyPos)
+RegisterNetEvent('prp-blips:downedperson')
+AddEventHandler('prp-blips:downedperson', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:downedperson', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:downedperson', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:officerdownA')
-AddEventHandler('wrp-blips:officerdownA', function(plyPos)
+RegisterNetEvent('prp-blips:officerdownA')
+AddEventHandler('prp-blips:officerdownA', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:policealertA', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:policealertA', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:officerdownB')
-AddEventHandler('wrp-blips:officerdownB', function(plyPos)
+RegisterNetEvent('prp-blips:officerdownB')
+AddEventHandler('prp-blips:officerdownB', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:policealertB', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:policealertB', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:medicDownA')
-AddEventHandler('wrp-blips:medicDownA', function(plyPos)
+RegisterNetEvent('prp-blips:medicDownA')
+AddEventHandler('prp-blips:medicDownA', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:tenForteenA', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:tenForteenA', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:medicDownB')
-AddEventHandler('wrp-blips:medicDownB', function(plyPos)
+RegisterNetEvent('prp-blips:medicDownB')
+AddEventHandler('prp-blips:medicDownB', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:tenForteenB', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:tenForteenB', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-alerts:panic')
-AddEventHandler('wrp-alerts:panic', function(plyPos)
+RegisterNetEvent('prp-alerts:panic')
+AddEventHandler('prp-alerts:panic', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:panic', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:panic', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:storerobbery')
-AddEventHandler('wrp-blips:storerobbery', function(plyPos)
+RegisterNetEvent('prp-blips:storerobbery')
+AddEventHandler('prp-blips:storerobbery', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:storerobbery', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:storerobbery', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:houserobbery')
-AddEventHandler('wrp-blips:houserobbery', function(plyPos)
+RegisterNetEvent('prp-blips:houserobbery')
+AddEventHandler('prp-blips:houserobbery', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:houserobbery', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:houserobbery', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:banktruck')
-AddEventHandler('wrp-blips:banktruck', function(plyPos)
+RegisterNetEvent('prp-blips:banktruck')
+AddEventHandler('prp-blips:banktruck', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:banktruck', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:banktruck', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:jewelrobbey')
-AddEventHandler('wrp-blips:jewelrobbey', function(plyPos)
+RegisterNetEvent('prp-blips:jewelrobbey')
+AddEventHandler('prp-blips:jewelrobbey', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:jewelrobbey', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:jewelrobbey', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:jailbreak')
-AddEventHandler('wrp-blips:jailbreak', function(plyPos)
+RegisterNetEvent('prp-blips:jailbreak')
+AddEventHandler('prp-blips:jailbreak', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:jailbreak', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:jailbreak', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:fleecarobbery')
-AddEventHandler('wrp-blips:fleecarobbery', function(plyPos)
+RegisterNetEvent('prp-blips:fleecarobbery')
+AddEventHandler('prp-blips:fleecarobbery', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:fleecarobbery', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:fleecarobbery', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:bigbankrobbery')
-AddEventHandler('wrp-blips:bigbankrobbery', function(plyPos)
+RegisterNetEvent('prp-blips:bigbankrobbery')
+AddEventHandler('prp-blips:bigbankrobbery', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:bigbankrobbery', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:bigbankrobbery', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:powerplant')
-AddEventHandler('wrp-blips:powerplant', function(plyPos)
+RegisterNetEvent('prp-blips:powerplant')
+AddEventHandler('prp-blips:powerplant', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:powerplant', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:powerplant', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:drugjob')
-AddEventHandler('wrp-blips:drugjob', function(plyPos)
+RegisterNetEvent('prp-blips:drugjob')
+AddEventHandler('prp-blips:drugjob', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:drugjob', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:drugjob', playerId, plyPos)
     end
 end)
 
-RegisterNetEvent('wrp-blips:vehicle-suspicion')
-AddEventHandler('wrp-blips:vehicle-suspicion', function(plyPos)
+RegisterNetEvent('prp-blips:vehicle-suspicion')
+AddEventHandler('prp-blips:vehicle-suspicion', function(plyPos)
     for k, playerId in ipairs(GetPlayers()) do
-        TriggerClientEvent('wrp-alerts:vehiclesuspicion', playerId, plyPos)
+        TriggerClientEvent('prp-alerts:vehiclesuspicion', playerId, plyPos)
     end
 end)

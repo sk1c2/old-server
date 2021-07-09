@@ -434,3 +434,12 @@
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 125 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 121 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 152 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 113 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 117 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
+[38;5;175m[     script:prp-base] [prp-base]: Saved Evan |  Disconnected (Reason: Exiting)
+[38;5;175m[     script:prp-base] prp-BASE::GetCurrentCharacterInfo: Grabbed character {"playerSrc":1,"job":"Bakery","jail":0,"uid":1,"bank":2147483647,"dob":"1994-04-07","phone_number":"4438729235","methint":"1","armor":"0","stocks":"5","drivlicense":"0","gender":0,"stress":"0","first_name":"James","food":"76","rank":5,"story":"Character's background, this can be short and simple","huntlicense":"0","last_name":"Williams","cash":2147483647,"water":"84","license":"0","callsign":0,"id":1,"payslips":"0"}
+[38;5;175m[     script:prp-base] prp-BASE::GetCurrentCharacterInfo: Grabbed character {"playerSrc":1,"job":"Bakery","jail":0,"uid":1,"bank":2147483647,"dob":"1994-04-07","phone_number":"4438729235","methint":"1","armor":"0","stocks":"5","drivlicense":"0","gender":0,"stress":"0","first_name":"James","food":"76","rank":5,"story":"Character's background, this can be short and simple","huntlicense":"0","last_name":"Williams","cash":2147483647,"water":"84","license":"0","callsign":0,"id":1,"payslips":"0"}
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress

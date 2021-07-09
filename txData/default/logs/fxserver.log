@@ -615,3 +615,43 @@
 [38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 116 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 119 milliseconds
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Couldn't find resource prp-garages.
+[38;5;73m[ citizen-server-impl] Couldn't find resource garages.
+[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
+[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
+[38;5;73m[ citizen-server-impl] Started resource prp-garage
+[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
+[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
+[38;5;73m[ citizen-server-impl] Started resource prp-garage
+[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
+[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
+[38;5;73m[ citizen-server-impl] Started resource prp-garage
+[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
+[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
+[38;5;73m[ citizen-server-impl] Started resource prp-garage
+[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
+[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
+[38;5;105m[   script:prp-garage] Error parsing script @prp-garage/server/server.lua in resource prp-garage: @prp-garage/server/server.lua:92: 'end' expected (to close 'function' at line 85) near 'else'
+[38;5;161m[    c-scripting-core] Failed to load script server/server.lua.
+[38;5;73m[ citizen-server-impl] Started resource prp-garage
+[38;5;73m[ citizen-server-impl] Stopping resource prp-garage
+[38;5;161m[    c-scripting-core] Creating script environments for prp-garage
+[38;5;73m[ citizen-server-impl] Started resource prp-garage
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 181 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 228 milliseconds
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 152 milliseconds
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 116 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 121 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 179 milliseconds
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;175m[     script:prp-base] [prp-base]: Saved Evan |  Disconnected (Reason: Exiting)
+[38;5;175m[     script:prp-base] prp-BASE::GetCurrentCharacterInfo: Grabbed character {"job":"Bakery","huntlicense":"0","first_name":"James","bank":2147483647,"water":"78","last_name":"Williams","dob":"1994-04-07","playerSrc":1,"cash":2147483647,"food":"68","drivlicense":"0","stress":"0","methint":"1","uid":1,"stocks":"5","callsign":0,"license":"0","id":1,"rank":5,"phone_number":"4438729235","gender":0,"story":"Character's background, this can be short and simple","jail":0,"armor":"0","payslips":"0"}
+[38;5;175m[     script:prp-base] prp-BASE::GetCurrentCharacterInfo: Grabbed character {"job":"Bakery","huntlicense":"0","first_name":"James","bank":2147483647,"water":"78","last_name":"Williams","dob":"1994-04-07","playerSrc":1,"cash":2147483647,"food":"68","drivlicense":"0","stress":"0","methint":"1","uid":1,"stocks":"5","callsign":0,"license":"0","id":1,"rank":5,"phone_number":"4438729235","gender":0,"story":"Character's background, this can be short and simple","jail":0,"armor":"0","payslips":"0"}
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress

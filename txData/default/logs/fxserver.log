@@ -1,6 +1,6 @@
 
 ================================================================
-======== FXServer starting - 09/07/2021, 20:40:37
+======== FXServer starting - 09/07/2021, 21:12:20
 ================================================================
 [38;5;161m[    c-scripting-core] Creating script environments for _cfx_internal
 [38;5;73m[ citizen-server-impl] Scanning resources.
@@ -309,7 +309,6 @@
 [38;5;73m[ citizen-server-impl] Couldn't find resource prp-Wheels.
 [38;5;216m[              server] Warning: `onesync_enabled` is deprecated. Please use `onesync legacy` instead.
 [38;5;216m[              server] Authenticating server license key...
-[38;5;159m[  script:mysql-async] [mysql-async] [ERROR] connect ETIMEDOUT
 [38;5;84m[      script:monitor] [txAdminClient] Threads and commands set up. All Ready.
 [38;5;66m[          svadhesive] Server license key authentication succeeded. Welcome!
 [38;5;128m[    script:EasyAdmin] 
@@ -319,12 +318,20 @@
 [38;5;128m[    script:EasyAdmin]                            Version 6.0
 [38;5;175m[     script:prp-base] [prp-base]: prp-base has been loaded successfully!
 [38;5;98m[ script:prp-mechanic] Coded for WonderRP
-[38;5;154m[   script:mapmanager] Started map fivem-map-hipster
-[38;5;73m[ citizen-server-impl] Started resource fivem-map-hipster
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 1129 milliseconds
+[38;5;154m[   script:mapmanager] Started map fivem-map-skater
+[38;5;73m[ citizen-server-impl] Started resource fivem-map-skater
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 1333 milliseconds
 [38;5;104m[script:discord_perms] An error occured, please check your config and ensure everything is correct. Error: 401
 [38;5;161m[    c-scripting-core] InvokeNative: execution failed: Argument at index 0 was null.
 [38;5;175m[     script:prp-base] SCRIPT ERROR: Execution of native 000000006e31e993 in script host failed: Argument at index 0 was null.
+[38;5;159m[  script:mysql-async] [mysql-async] [SUCCESS] Database server connection established.
+[38;5;73m[ citizen-server-impl]         fff                          
+[38;5;73m[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[38;5;73m[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[38;5;73m[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[38;5;73m[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[38;5;73m[ citizen-server-impl]                                      
+[38;5;73m[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://benzovvv-p56a9a.users.cfx.re/
 [38;5;128m[    script:EasyAdmin] 
 [38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
 [38;5;128m[    script:EasyAdmin] 
@@ -337,13 +344,6 @@
 [38;5;128m[    script:EasyAdmin] Lots and lots and LOTS of improvements! Temporary+Permanent Ban Permission! Revamped Webhooks, Optimisations
 [38;5;128m[    script:EasyAdmin] 
 [38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
-[38;5;73m[ citizen-server-impl]         fff                          
-[38;5;73m[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
-[38;5;73m[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
-[38;5;73m[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
-[38;5;73m[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
-[38;5;73m[ citizen-server-impl]                                      
-[38;5;73m[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://benzovvv-p56a9a.users.cfx.re/
 [38;5;73m[ citizen-server-impl] -- [server notice: hostname_rework]
 [38;5;73m[ citizen-server-impl] You don't have sv_projectName/sv_projectDesc set.
 [38;5;73m[ citizen-server-impl] These variables augment sv_hostname and fix your server name being cut off in the server list.
@@ -356,90 +356,33 @@
 [38;5;73m[ citizen-server-impl] 
 [38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
 [38;5;220m[    script:prp-phone] [prp-phone]: AUTHORIZED
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 105 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 170 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 146 milliseconds
-[38;5;73m[ citizen-server-impl] network thread hitch warning: timer interval of 167 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 115 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 120 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 137 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
 [38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 164 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 113 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 120 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 330 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 336 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 224 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 246 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 168 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 225 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 180 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 252 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 204 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 165 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 116 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 130 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 198 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 274 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 317 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 217 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 218 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 111 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 150 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 153 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 135 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 197 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 147 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 209 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 115 milliseconds
 [38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 159 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 375 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 151 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 211 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 167 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 171 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 133 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 176 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 155 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;220m[    script:prp-phone] Player Table : [{"sourceID":"steam:11000013fcd2349","timeJoined":100907}]
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 182 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 186 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 146 milliseconds
+[38;5;220m[    script:prp-phone] Player Table : [{"timeJoined":49451,"sourceID":"steam:11000013fcd2349"}]
 [38;5;134m[      script:hardcap] Connecting: Evan
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 220 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 164 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
 [38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 194 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 202 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 105 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 156 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 157 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
-[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 152 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 408 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 152 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 180 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 181 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 151 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
-[38;5;84m[   script:prp-motels] 4
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 113 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 128 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 163 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 125 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 121 milliseconds
 [38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 152 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
+[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 113 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 117 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
-[38;5;175m[     script:prp-base] [prp-base]: Saved Evan |  Disconnected (Reason: Exiting)
-[38;5;175m[     script:prp-base] prp-BASE::GetCurrentCharacterInfo: Grabbed character {"playerSrc":1,"job":"Bakery","jail":0,"uid":1,"bank":2147483647,"dob":"1994-04-07","phone_number":"4438729235","methint":"1","armor":"0","stocks":"5","drivlicense":"0","gender":0,"stress":"0","first_name":"James","food":"76","rank":5,"story":"Character's background, this can be short and simple","huntlicense":"0","last_name":"Williams","cash":2147483647,"water":"84","license":"0","callsign":0,"id":1,"payslips":"0"}
-[38;5;175m[     script:prp-base] prp-BASE::GetCurrentCharacterInfo: Grabbed character {"playerSrc":1,"job":"Bakery","jail":0,"uid":1,"bank":2147483647,"dob":"1994-04-07","phone_number":"4438729235","methint":"1","armor":"0","stocks":"5","drivlicense":"0","gender":0,"stress":"0","first_name":"James","food":"76","rank":5,"story":"Character's background, this can be short and simple","huntlicense":"0","last_name":"Williams","cash":2147483647,"water":"84","license":"0","callsign":0,"id":1,"payslips":"0"}
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;84m[   script:prp-motels] 4

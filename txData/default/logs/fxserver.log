@@ -1,6 +1,6 @@
 
 ================================================================
-======== FXServer starting - 09/07/2021, 21:12:20
+======== FXServer starting - 09/07/2021, 21:16:51
 ================================================================
 [38;5;161m[    c-scripting-core] Creating script environments for _cfx_internal
 [38;5;73m[ citizen-server-impl] Scanning resources.
@@ -320,11 +320,13 @@
 [38;5;98m[ script:prp-mechanic] Coded for WonderRP
 [38;5;154m[   script:mapmanager] Started map fivem-map-skater
 [38;5;73m[ citizen-server-impl] Started resource fivem-map-skater
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 1333 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 1853 milliseconds
 [38;5;104m[script:discord_perms] An error occured, please check your config and ensure everything is correct. Error: 401
 [38;5;161m[    c-scripting-core] InvokeNative: execution failed: Argument at index 0 was null.
 [38;5;175m[     script:prp-base] SCRIPT ERROR: Execution of native 000000006e31e993 in script host failed: Argument at index 0 was null.
 [38;5;159m[  script:mysql-async] [mysql-async] [SUCCESS] Database server connection established.
+[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
+[38;5;220m[    script:prp-phone] [prp-phone]: AUTHORIZED
 [38;5;73m[ citizen-server-impl]         fff                          
 [38;5;73m[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
 [38;5;73m[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
@@ -354,35 +356,98 @@
 [38;5;73m[ citizen-server-impl] Monetize your server using Tebex! Visit https://tebex.io/fivem for more info.
 [38;5;73m[ citizen-server-impl] ================
 [38;5;73m[ citizen-server-impl] 
-[38;5;116m[script:prp-inventory] [prp-inventory]: Authorized.
-[38;5;220m[    script:prp-phone] [prp-phone]: AUTHORIZED
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 137 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 164 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 116 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 150 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 153 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 135 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 197 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 147 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 209 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 115 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 159 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
 [38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 182 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 186 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 146 milliseconds
-[38;5;220m[    script:prp-phone] Player Table : [{"timeJoined":49451,"sourceID":"steam:11000013fcd2349"}]
-[38;5;134m[      script:hardcap] Connecting: Evan
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
-[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 163 milliseconds
 [38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 152 milliseconds
-[38;5;116m[script:prp-inventory] [prp-inventory] Drops & broken items were deleted.
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 179 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 601 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 508 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 340 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 272 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 289 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 202 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 301 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 262 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 293 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 323 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 165 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 190 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 267 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 219 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 294 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 263 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 186 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 179 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 301 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 319 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 289 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 277 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 177 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 169 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 231 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 231 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 207 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 239 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 345 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 328 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 208 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 209 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 339 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 343 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 182 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 115 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 286 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 322 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 168 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 232 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 233 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 200 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 138 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 214 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 188 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 187 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 142 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 153 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 196 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 220 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 236 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 114 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 131 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 134 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 288 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 218 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 106 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 160 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 208 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 345 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 147 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 205 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 224 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 298 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 229 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 237 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 241 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 156 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 186 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 117 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 103 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 117 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 133 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 128 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 203 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 167 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 159 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 199 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 173 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 200 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 167 milliseconds
 [38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 104 milliseconds
-[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 113 milliseconds
-[38;5;84m[   script:prp-motels] 4
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 161 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 153 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 109 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 105 milliseconds

@@ -1803,3 +1803,57 @@ itemList['copperbar'] = {
   information: 'Ready to Melt',
   deg: false,
 };
+
+  //Fireworks//
+  itemList['fireworkfountain'] = {
+    fullyDegrades: false,
+    decayrate: 0.0,
+    displayname: 'Firework Fountain',
+    price: 1500,
+    weight: 10,
+    nonStack: true,
+    model: '',
+    image: 'fireworkfountain.png',
+    information: 'Firework Pack',
+    deg: false,
+  };
+
+  itemList['fireworkrocket'] = {
+    fullyDegrades: false,
+    decayrate: 0.0,
+    displayname: 'Firework Rocket',
+    price: 800,
+    weight: 10,
+    nonStack: true,
+    model: '',
+    image: 'fireworkrocket.png',
+    information: 'Firework Pack',
+    deg: false,
+  };
+
+  itemList['fireworkshotburst'] = {
+    fullyDegrades: false,
+    decayrate: 0.0,
+    displayname: 'Firework Shotburst',
+    price: 1100,
+    weight: 10,
+    nonStack: true,
+    model: '',
+    image: 'fireworkshotburst.png',
+    information: 'Firework Pack',
+    deg: false,
+  };
+
+  itemList["molly"] = {
+    fullyDegrades: true,
+    illegal: true,
+    decayrate: 2.0,
+    displayname: "Molly",
+    price: 500,
+    weight: 0,
+    nonStack: false,
+    model: "",
+    image: "Molly.png",
+    information: "Get Fucked",
+    deg: false,
+  };  

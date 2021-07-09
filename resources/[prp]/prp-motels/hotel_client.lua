@@ -66,10 +66,10 @@ AddEventHandler('Relog', function()
 end)
 
 apartments1 = {
-	[1] = { ["x"] = 283.9516,["y"] = -643.2749, ["z"] = 42.01863},
-	[2] = { ["x"] = 287.6734,["y"] = -644.5722, ["z"] = 42.01863},
-	[3] = { ["x"] = 291.348,["y"] = -645.9218, ["z"] = 42.01863}, 
-	[4] = { ["x"] = 281.3154,["y"] = -650.0172, ["z"] = 42.01865}, 
+	[1] = { ["x"] = -268.9185,["y"] = -962.3575, ["z"] = 31.22314},
+	[2] = { ["x"] = -271.0658,["y"] = -957.789, ["z"] = 31.22314},
+	[3] = { ["x"] = -266.1359,["y"] = -955.5165, ["z"] = 31.22314}, 
+	[4] = { ["x"] = -264.1206,["y"] = -959.858, ["z"] = 31.22314}, 
 	
 
 
@@ -2687,7 +2687,6 @@ Citizen.CreateThread(function()
 					TriggerEvent("dooranim")
 					Citizen.Wait(300)
 					TriggerEvent("dooranim")
-					TriggerEvent('InteractSound_CL:PlayOnOne','DoorOpen', 0.7)
 
 					if #(vector3(269.8034, -632.2916, 42.0198) - plyCoords) < 5 and myRoomType == 2 then	
 						processBuildType(myRoomNumber,myRoomType)
@@ -2702,7 +2701,7 @@ Citizen.CreateThread(function()
 						TriggerServerEvent("hotel:getInfo")
 						Citizen.Wait(500)
 					else
-						TriggerEvent("DoLongHudText","Moved too far away!",2)
+						TriggerEvent("DoLongHudText","Moved too far away!",1)
 					end			
 				end
 			end
@@ -2805,9 +2804,9 @@ Citizen.CreateThread(function()
 				end
 			end
 
-		if 	(#(vector3(curRoom.x - 1.6, curRoom.y + 1.20, curRoom.z + 1.00) - plyCoords) < 2.0 and curRoomType == 1) or 
-			(#(vector3(curRoom.x + 9.8, curRoom.y - 1.35, curRoom.z + 0.15) - plyCoords) < 2.0 and curRoomType == 2) or 
-			(#(vector3(curRoom.x + 1.5, curRoom.y + 8.00, curRoom.z + 1.00) - plyCoords) < 2.0 and curRoomType == 3) and 
+		if 	(#(vector3(curRoom.x - 1.6, curRoom.y + 1.20, curRoom.z + 1.00) - plyCoords) < 10.0 and curRoomType == 1) or 
+			(#(vector3(curRoom.x + 9.8, curRoom.y - 1.35, curRoom.z + 0.15) - plyCoords) < 10.0 and curRoomType == 2) or 
+			(#(vector3(curRoom.x + 1.5, curRoom.y + 8.00, curRoom.z + 1.00) - plyCoords) < 10.0 and curRoomType == 3) and 
 			canInteract 
 		then
 
@@ -2847,9 +2846,9 @@ Citizen.CreateThread(function()
 
 
 	
-		if 	(#(vector3(curRoom.x - 14.3,curRoom.y - 2,curRoom.z+7.02) - plyCoords) < 3.0 and curRoomType == 3) or 
-			(#(vector3(curRoom.x + 4.3,curRoom.y - 15.95,curRoom.z+0.42) - plyCoords) < 3.0 and curRoomType == 2) or 
-			(#(vector3(curRoom.x - 2,curRoom.y - 4,curRoom.z) - plyCoords) < 3.0 and curRoomType == 1) 
+		if 	(#(vector3(curRoom.x - 14.3,curRoom.y - 2,curRoom.z+7.02) - plyCoords) < 10.0 and curRoomType == 3) or 
+			(#(vector3(curRoom.x + 4.3,curRoom.y - 15.95,curRoom.z+0.42) - plyCoords) < 10.0 and curRoomType == 2) or 
+			(#(vector3(curRoom.x - 2,curRoom.y - 4,curRoom.z) - plyCoords) < 10.0 and curRoomType == 1) 
 		then
 				if curRoomType == 2 then
 					DrawText3Ds(curRoom.x + 4.3,curRoom.y - 15.95,curRoom.z+2.42, '~g~'..Controlkey["housingMain"][2]..'~s~ to leave')
@@ -2894,7 +2893,7 @@ Citizen.CreateThread(function()
 			end
 		else
 			if ingarage then
-				if #(vector3(currentGarage.x+9.5 , currentGarage.y-12.7, currentGarage.z+1.0) - plyCoords) < 3.0 then
+				if #(vector3(currentGarage.x+9.5 , currentGarage.y-12.7, currentGarage.z+1.0) - plyCoords) < 10.0 then
 					DrawText3Ds(currentGarage.x+9.5, currentGarage.y-12.7, currentGarage.z+1.0, '~g~'..Controlkey["housingMain"][2]..'~s~ to Room ~g~'..Controlkey["housingSecondary"][2]..'~s~ to Garage Door')
 					if IsControlJustReleased(1, Controlkey["housingMain"][1]) then
 						TriggerEvent("Garages:ToggleHouse",false)

@@ -14,12 +14,12 @@ local robbableItems = {
  [13] = {chance = 4, id = 'sandwich', quantity = 1},
  [14] = {chance = 4, id = 'water', quantity = math.random(1)},
  [15] = {chance = 5, id = 'rolexwatch', quantity = math.random(1, 8)},
- --[6] = {chance = 14, id = 'keycard', name = 'Keycard', quantity = 1}, -- rare
- --[7] = {chance = 13, id = 'keycard2', name = 'Keycard', quantity = 1}, -- rare
- --[8] = {chance = 11, id = 'keycard3', name = 'Keycard', quantity = 1}, -- rare
- --[12] = {chance = 10, id = 'drugItem', name = 'Black USB-C', quantity = 1}, -- rare
- --[13] = {chance = 8, id = 'drugbags', name = 'Baggies', quantity = math.random(1, 6)},
- --[15] = {chance = 6, id = 'rolex', name = 'Rolex', quantity = math.random(1, 5)},
+ [16] = {chance = 14, id = 'advlockpick', name = 'Keycard', quantity = 1}, -- rare
+ [17] = {chance = 13, id = 'bandage', name = 'Keycard', quantity = 1}, -- rare
+ [18] = {chance = 11, id = 'Gruppe6Card', name = 'Keycard', quantity = 1}, -- rare
+ [19] = {chance = 10, id = 'Gruppe6Card3', name = 'Black USB-C', quantity = 1}, -- rare
+ [20] = {chance = 8, id = 'securityblue', name = 'Baggies', quantity = math.random(1, 6)},
+ [21] = {chance = 20, id = '-771403250', name = 'Rolex', quantity = math.random(1, 5)},
 }
 
 --[[chance = 1 is very common, the higher the value the less the chance]]--

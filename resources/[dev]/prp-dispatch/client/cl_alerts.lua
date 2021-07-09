@@ -903,7 +903,7 @@ end)
 ---- Jail Break ----
 
 RegisterNetEvent('prp-alerts:jailbreak')
-AddEventHandler('wrp-alerts:jailbreak', function(plyPos)
+AddEventHandler('prp-alerts:jailbreak', function(plyPos)
 	if exports['isPed']:isPed('job') == 'Police' then	
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)

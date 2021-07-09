@@ -717,16 +717,19 @@ on('__cfx_nui:removeCraftItems', (data, cb) => {
 RegisterNuiCallbackType('stack');
 on('__cfx_nui:stack', (data, cb) => {
     emitNet('server-inventory-stack', cid, data, GetEntityCoords(PlayerPedId()));
+    TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 9.0, 'inv', 1.0)
 });
 
 RegisterNuiCallbackType('move');
 on('__cfx_nui:move', (data, cb) => {
     emitNet('server-inventory-move', cid, data, GetEntityCoords(PlayerPedId()));
+    TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 9.0, 'inv', 1.0)
 });
 
 RegisterNuiCallbackType('swap');
 on('__cfx_nui:swap', (data, cb) => {
     emitNet('server-inventory-swap', cid, data, GetEntityCoords(PlayerPedId()));
+    TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 9.0, 'inv', 1.0)
 });
 
 RegisterNetEvent('prp-ac:triggeredItemSpawn');

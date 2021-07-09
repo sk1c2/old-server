@@ -539,3 +539,56 @@ Citizen.CreateThread(function()
     end
 end)
 
+-- Pop Tires If To High
+local highestZ = 0
+Citizen.CreateThread(function()
+        local waittime = 100
+        while true do
+            Citizen.Wait(waittime)
+            local veh = GetVehiclePedIsIn(PlayerPedId(), false)
+            if DoesEntityExist(veh) and not IsEntityDead(veh) then
+                local model = GetEntityModel(veh)
+                if not IsThisModelABoat(model) and not IsThisModelAHeli(model) and not IsThisModelAPlane(model) then
+                    local vehpos = GetEntityCoords(veh)
+					if IsEntityInAir(veh) then
+						--print(vehpos.z)
+                        waittime = 0
+                        if vehpos.z > highestZ then
+							highestZ = vehpos.z
+							--print(highestZ)
+                        end
+                        DisableControlAction(0, 59)
+                        DisableControlAction(0, 60)
+					else						
+						if highestZ - vehpos.z >= 13 then
+						--	print(highestZ-vehpos.z)
+                            local wheels = {0,1,4,5}
+                            for i=1, math.random(2) do
+								local wheel = math.random(#wheels)
+								--print('pop')
+                                SetVehicleTyreBurst(veh, wheels[wheel], false, 1000.0)
+                                table.remove(wheels, wheel)
+                            end
+                            highestZ = 0
+							waittime = 100
+						end
+						if highestZ - vehpos.z >= 13 then
+						--	print(highestZ-vehpos.z)
+                            for i = 0, 5 do
+								if not IsVehicleTyreBurst(veh, i, true) or IsVehicleTyreBurst(veh, i, false) then
+								--	print('popall')
+                                    SetVehicleTyreBurst(veh, i, false, 1000.0)
+                                end 
+                            end
+                            highestZ = 0
+                            waittime = 100                           
+                        else
+                            highestZ = 0
+                            waittime = 100
+                        end
+                    end
+                end
+            end
+        end
+	end)
+

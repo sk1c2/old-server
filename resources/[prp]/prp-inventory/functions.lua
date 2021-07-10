@@ -78,7 +78,7 @@ Citizen.CreateThread(function()
     while true do 
      Citizen.Wait(10)
      if IsControlJustPressed(0, 311) then 
-        if not exports['prp-deathmanager']:GetDeath() then
+        if not exports['wrp-deathmanager']:GetDeath() then
             TriggerEvent("OpenInv")
         else
             TriggerEvent('DoLongHudText', 'Stop trying to open your pockets when dead!')
@@ -89,8 +89,8 @@ end)
 RegisterNetEvent('inventory:bandage')
 AddEventHandler('inventory:bandage', function()
     TriggerEvent('HealSlow')
-    -- TriggerEvent('prp-hospital:client:UsePainKiller', 1)
-    TriggerEvent('prp-hospital:client:RemoveBleed')
+    -- TriggerEvent('wrp-hospital:client:UsePainKiller', 1)
+    TriggerEvent('wrp-hospital:client:RemoveBleed')
 end)
 
 RegisterNetEvent('HealSlow')
@@ -257,7 +257,7 @@ end
 --         local coord = GetPedBoneCoords(plyPed, HeadBone)
 --         local inPoly = jailBounds:isPointInside(coord)
 --         if inPoly  then
---              TriggerServerEvent("prp-ac:triggeredItemSpawn", startPosition, cid, "1", name);
+--              TriggerServerEvent("wrp-ac:triggeredItemSpawn", startPosition, cid, "1", name);
 --         end
 --     end
 -- end)
@@ -297,8 +297,8 @@ function loadAnimDict( dict )
     end
 end
 
-RegisterNetEvent('prp-stealtrigger')
-AddEventHandler('prp-stealtrigger', function()
+RegisterNetEvent('wrp-stealtrigger')
+AddEventHandler('wrp-stealtrigger', function()
     local cid = exports["isPed"]:isPed("cid")
     local closestPlayer, closestDistance = GetClosestPlayer()
     loadAnimDict("random@shop_robbery")
@@ -307,9 +307,9 @@ AddEventHandler('prp-stealtrigger', function()
         if ( IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "dead", "dead_a", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "amb@code_human_cower_stand@male@base", "base", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "amb@code_human_cower@male@base", "base", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "random@arrests@busted", "idle_a", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "mp_arresting", "idle", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "random@mugging3", "handsup_standing_base", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "missfbi5ig_22", "hands_up_anxious_scientist", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "missfbi5ig_22", "hands_up_loop_scientist", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "missminuteman_1ig_2", "handsup_base", 3) ) then
             if IsPedArmed(GetPlayerPed(-1), 7) then
                 local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-                local finished = exports["prp-taskbar"]:taskBar(3000,"Robbing",false,false,playerVeh)
+                local finished = exports["wrp-taskbar"]:taskBar(3000,"Robbing",false,false,playerVeh)
                 if (finished == 100) then
-                    TriggerServerEvent('prp-inventory:openInventorySteal', GetPlayerServerId(closestPlayer))
+                    TriggerServerEvent('wrp-inventory:openInventorySteal', GetPlayerServerId(closestPlayer))
                     ClearPedTasks(GetPlayerPed(-1))
                 end
             end
@@ -328,9 +328,9 @@ RegisterCommand('steal', function()
         if ( IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "dead", "dead_a", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "amb@code_human_cower_stand@male@base", "base", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "amb@code_human_cower@male@base", "base", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "random@arrests@busted", "idle_a", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "mp_arresting", "idle", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "random@mugging3", "handsup_standing_base", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "missfbi5ig_22", "hands_up_anxious_scientist", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "missfbi5ig_22", "hands_up_loop_scientist", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "missminuteman_1ig_2", "handsup_base", 3) ) then
             if IsPedArmed(GetPlayerPed(-1), 7) then
                 local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-                local finished = exports["prp-taskbar"]:taskBar(3000,"Robbing",false,false,playerVeh)
+                local finished = exports["wrp-taskbar"]:taskBar(3000,"Robbing",false,false,playerVeh)
                 if (finished == 100) then
-                    TriggerServerEvent('prp-inventory:openInventorySteal', GetPlayerServerId(closestPlayer))
+                    TriggerServerEvent('wrp-inventory:openInventorySteal', GetPlayerServerId(closestPlayer))
                     ClearPedTasks(GetPlayerPed(-1))
                 end
             end
@@ -340,63 +340,63 @@ RegisterCommand('steal', function()
     end
 end)
 
-RegisterNetEvent('prp-inventory:openInventorySteal')
-AddEventHandler('prp-inventory:openInventorySteal', function(data)
+RegisterNetEvent('wrp-inventory:openInventorySteal')
+AddEventHandler('wrp-inventory:openInventorySteal', function(data)
     local cid = exports["isPed"]:isPed("cid")
-    TriggerEvent('prp-ac:triggeredItemSpawn', "1", "ply-"..data.id)
+    TriggerEvent('wrp-ac:triggeredItemSpawn', "1", "ply-"..data.id)
 --    print(data.id)
 end)
 
 RegisterNetEvent('cash:remove')
 AddEventHandler('cash:remove', function()
-    TriggerServerEvent('prp-ac:money')
+    TriggerServerEvent('wrp-ac:money')
 end)
 
 RegisterNetEvent('bank:add')
 AddEventHandler('bank:add', function()
-    TriggerServerEvent('prp-ac:money')
+    TriggerServerEvent('wrp-ac:money')
 end)
 
 RegisterNetEvent('bank:remove')
 AddEventHandler('bank:remove', function()
-    TriggerServerEvent('prp-ac:money')
+    TriggerServerEvent('wrp-ac:money')
 end)
 
 RegisterNetEvent('cash:add')
 AddEventHandler('cash:add', function()
-    TriggerServerEvent('prp-ac:money')
+    TriggerServerEvent('wrp-ac:money')
 end)
 
-RegisterNetEvent('prp-ac:removeban')
-AddEventHandler('prp-ac:removeban', function(cash)
+RegisterNetEvent('wrp-ac:removeban')
+AddEventHandler('wrp-ac:removeban', function(cash)
     local src = source
-    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:removeCash(Player.id, cash)
 end)
 
-RegisterNetEvent('prp-ac:checkforban')
-AddEventHandler('prp-ac:checkforban', function(amount)
+RegisterNetEvent('wrp-ac:checkforban')
+AddEventHandler('wrp-ac:checkforban', function(amount)
     local src = source
-    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:addBank(Player.id, amount)
     TriggerEvent("banking:updateBalance", amount)
 end)
 
-RegisterNetEvent('prp-ac:passInfoBan')
-AddEventHandler('prp-ac:passInfoBan', function(amount)
+RegisterNetEvent('wrp-ac:passInfoBan')
+AddEventHandler('wrp-ac:passInfoBan', function(amount)
     local src = source
-    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:removeBank(Player.id, amount)
     TriggerEvent("banking:updateBalance", amount)
 end)
 
-RegisterNetEvent('prp-ac:InfoPass')
-AddEventHandler('prp-ac:InfoPass', function(cash)
+RegisterNetEvent('wrp-ac:InfoPass')
+AddEventHandler('wrp-ac:InfoPass', function(cash)
     local src = source
-    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:addCash(Player.id, cash)
 end)
@@ -404,16 +404,16 @@ end)
 RegisterNetEvent('license:remove')
 AddEventHandler('license:remove', function(argh, cash)
     local src = source
-    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     -- print(Player.id)
     LocalPlayer:removeCash(argh, cash)
 end)
 
-RegisterNetEvent('prp-ac:removebanall')
-AddEventHandler('prp-ac:removebanall', function(cash)
+RegisterNetEvent('wrp-ac:removebanall')
+AddEventHandler('wrp-ac:removebanall', function(cash)
     local src = source
-    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:setCash(Player.id, cash)
 end)
@@ -427,11 +427,11 @@ end)
 --     if closestPlayer ~= -1 and closestDistance <= 3.0 then
 --         if ( IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "dead", "dead_a", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "amb@code_human_cower_stand@male@base", "base", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "amb@code_human_cower@male@base", "base", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "random@arrests@busted", "idle_a", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "mp_arresting", "idle", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "random@mugging3", "handsup_standing_base", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "missfbi5ig_22", "hands_up_anxious_scientist", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "missfbi5ig_22", "hands_up_loop_scientist", 3) or IsEntityPlayingAnim(GetPlayerPed(closestPlayer), "missminuteman_1ig_2", "handsup_base", 3) ) then
 --             if IsPedArmed(GetPlayerPed(-1), 7) then
---                 local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
+--                 local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
 --                 local Player = LocalPlayer:getCurrentCharacter()
 --                 local closestPlayer, closestDistance = GetClosestPlayer()
 --                 if closestPlayer ~= -1 and closestDistance <= 3.0 then
---                     TriggerServerEvent('prp-inventory:openInventorySteal', GetPlayerServerId(closestPlayer))
+--                     TriggerServerEvent('wrp-inventory:openInventorySteal', GetPlayerServerId(closestPlayer))
 --                 else
 --                     TriggerEvent("DoLongHudText", "Too far", 2)
 --                 end
@@ -442,12 +442,12 @@ end)
 
 
 RegisterCommand('search', function()
-    local LocalPlayer = exports["prp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["wrp-base"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     if Player.job == 'Police' then
         local closestPlayer, closestDistance = GetClosestPlayer()
         if closestPlayer ~= -1 and closestDistance <= 3.0 then
-            TriggerServerEvent('prp-inventory:openInventorySteal3', GetPlayerServerId(closestPlayer))
+            TriggerServerEvent('wrp-inventory:openInventorySteal3', GetPlayerServerId(closestPlayer))
         else
             TriggerEvent("DoLongHudText", "Too far", 2)
         end
@@ -596,7 +596,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "tuner") then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-        local finished = exports["prp-taskbar"]:taskBar(2000,"Connecting Tuner Laptop",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(2000,"Connecting Tuner Laptop",false,false,playerVeh)
         if (finished == 100) then
         --  if (finished == 100) then
             TriggerEvent("tuner:open")
@@ -613,42 +613,42 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "thermite") then
       TriggerServerEvent("robbery:triggerItemUsedServer",itemid)
-      TriggerEvent('prp-robbery:securityBlueUsed')
+      TriggerEvent('wrp-robbery:securityBlueUsed')
     end
 
     if (itemid == "racingslick") then
         if exports['isPed']:isPed('job') == 'tuner_carshop' then
-            TriggerEvent('prp-illegals-upgrade-tire', exports['isPed']:isPed('cid'))
+            TriggerEvent('wrp-illegals-upgrade-tire', exports['isPed']:isPed('cid'))
         end
     end
 
     if (itemid == "racingclutch") then
         if exports['isPed']:isPed('job') == 'tuner_carshop' then
-            TriggerEvent('prp-illegals-upgrade-clutch', exports['isPed']:isPed('cid'))
+            TriggerEvent('wrp-illegals-upgrade-clutch', exports['isPed']:isPed('cid'))
         end
     end
 
     if (itemid == "racingintercooler") then
         if exports['isPed']:isPed('job') == 'tuner_carshop' then
-            TriggerEvent('prp-illegals-upgrade-intercooler', exports['isPed']:isPed('cid'))
+            TriggerEvent('wrp-illegals-upgrade-intercooler', exports['isPed']:isPed('cid'))
         end
     end
 
     if (itemid == "racinginjectors") then
         if exports['isPed']:isPed('job') == 'tuner_carshop' then
-            TriggerEvent('prp-illegals-upgrade-fuelinjector', exports['isPed']:isPed('cid'))
+            TriggerEvent('wrp-illegals-upgrade-fuelinjector', exports['isPed']:isPed('cid'))
         end
     end
 
     if (itemid == "racingforge") then
         if exports['isPed']:isPed('job') == 'tuner_carshop' then
-            TriggerEvent('prp-illegals-upgrade-forgeengine', exports['isPed']:isPed('cid'))
+            TriggerEvent('wrp-illegals-upgrade-forgeengine', exports['isPed']:isPed('cid'))
         end
     end
 
     if (itemid == "racingremap") then
         if exports['isPed']:isPed('job') == 'tuner_carshop' then
-            TriggerEvent('prp-illegals-upgrade-remap', exports['isPed']:isPed('cid'))
+            TriggerEvent('wrp-illegals-upgrade-remap', exports['isPed']:isPed('cid'))
         end
     end
 
@@ -672,7 +672,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         TriggerEvent("animation:PlayAnimation","weed")
         remove = true
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-        local finished = exports["prp-taskbar"]:taskBar(3000,"Smokin On That Loud..",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(3000,"Smokin On That Loud..",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("Evidence:StateSet",2,1200)
             TriggerEvent("Evidence:StateSet",24,1200)
@@ -692,14 +692,14 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         end)
       end
       if #(GetEntityCoords(player) - vector3( 2328.94, 2571.4, 46.71)) < 3.0 then
-          local finished = exports["prp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
+          local finished = exports["wrp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
           if finished == 100 then
             -- TriggerEvent("pixerium:check",3,"robbery:decrypt2",true)
             TriggerEvent('unerium:checkrobbery:decrypt2')
           end
       end
       if #(GetEntityCoords(player) - vector3( 1208.73,-3115.29, 5.55)) < 3.0 then
-          local finished = exports["prp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
+          local finished = exports["wrp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
           if finished == 100 then
             TriggerEvent('unerium:checkrobbery:decrypt3')
             -- TriggerEvent("pixerium:check",3,"robbery:decrypt3",true)
@@ -710,7 +710,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     if (itemid == "pix1") then
       if (#(GetEntityCoords(player) - vector3( 1275.49, -1710.39, 54.78)) < 3.0) then
         TriggerEvent("inventory:removeItem",'pix1', 1)
-          local finished = exports["prp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
+          local finished = exports["wrp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
           FreezeEntityPosition(PlayerPedId(), true)
           if (finished == 100) then
             TriggerEvent("Crypto:Unerium",math.random(1,2))
@@ -721,7 +721,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     if (itemid == "pix2") then
       if (#(GetEntityCoords(player) - vector3( 1275.49, -1710.39, 54.78)) < 3.0) then
         TriggerEvent("inventory:removeItem",'pix2', 1)
-          local finished = exports["prp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
+          local finished = exports["wrp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
           FreezeEntityPosition(PlayerPedId(), true)
           if (finished == 100) then
             TriggerEvent("Crypto:GiveUnerium",math.random(5,12))
@@ -734,48 +734,48 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     -- DRUGS BELOW 
 
     if (itemid == "wateringcan") then
-        TriggerServerEvent('prp-DopePlant:wateringcan')
+        TriggerServerEvent('wrp-DopePlant:wateringcan')
     end
 
     if (itemid == "purifiedwater") then
-        TriggerServerEvent('prp-DopePlant:purifiedwater')
+        TriggerServerEvent('wrp-DopePlant:purifiedwater')
     end
 
     if (itemid == "lowgradefert") then
-        TriggerServerEvent('prp-DopePlant:lowgradefert')
+        TriggerServerEvent('wrp-DopePlant:lowgradefert')
     end
 
     if (itemid == "highgradefert") then
-        TriggerServerEvent('prp-DopePlant:highgradefert')
+        TriggerServerEvent('wrp-DopePlant:highgradefert')
     end
 
     if (itemid == "lowgrademaleseed") then
         if hasEnoughOfItem('plantpot', 1) then
-            TriggerEvent('prp-weed:startcrop', 'male')
+            TriggerEvent('wrp-weed:startcrop', 'male')
         end
     end
 
     if (itemid == "highgrademaleseed") then
         if hasEnoughOfItem('plantpot', 1) then
-            TriggerServerEvent('prp-DopePlant:highgrademaleseed')
+            TriggerServerEvent('wrp-DopePlant:highgrademaleseed')
         end
     end
 
     if (itemid == "lowgradefemaleseed") then
         if hasEnoughOfItem('plantpot', 1) then
-            TriggerEvent('prp-weed:startcrop', 'female')
+            TriggerEvent('wrp-weed:startcrop', 'female')
         end
     end
 
     if (itemid == "dopebag") then
         if hasEnoughOfItem('drugscales', 1) and hasEnoughOfItem('trimmedweed', 5) then
-            TriggerServerEvent('prp-DopePlant:dopebag')
+            TriggerServerEvent('wrp-DopePlant:dopebag')
         end
     end
 
     if (itemid == "highgradefemaleseed") then
         if hasEnoughOfItem('plantpot', 1) then
-            TriggerServerEvent('prp-DopePlant:highgradefemaleseed')
+            TriggerServerEvent('wrp-DopePlant:highgradefemaleseed')
         end
     end
 
@@ -789,7 +789,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     end
 
     if (itemid == "fishingrod") then
-        TriggerEvent("prp-fish:lego")
+        TriggerEvent("wrp-fish:lego")
     end
 
 
@@ -807,7 +807,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "weedoz") then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-        local finished = exports["prp-taskbar"]:taskBar(5000,"Packing Q Bags",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(5000,"Packing Q Bags",false,false,playerVeh)
         if (finished == 100) then
             CreateCraftOption("weedq", 100, true)
         end
@@ -816,7 +816,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "weed12oz") then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-        local finished = exports["prp-taskbar"]:taskBar(5000,"Packing Bags",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(5000,"Packing Bags",false,false,playerVeh)
         if (finished == 100) then
             CreateCraftOption("weed5oz", 100, true)
         end
@@ -825,7 +825,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "weed5oz") then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-        local finished = exports["prp-taskbar"]:taskBar(5000,"Packing Bags",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(5000,"Packing Bags",false,false,playerVeh)
         if (finished == 100) then
             CreateCraftOption("weedoz", 100, true)
         end
@@ -835,7 +835,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     if (itemid == "lighter") then
         TriggerEvent("animation:PlayAnimation","lighter")
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-        local finished = exports["prp-taskbar"]:taskBar(2000,"Starting Fire",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(2000,"Starting Fire",false,false,playerVeh)
         if (finished == 100) then
             ClearPedTasks(PlayerPedId())
         end
@@ -848,7 +848,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "joint") then
         remove = true
-        local finished = exports["prp-taskbar"]:taskBar(2000,"Smoking Joint",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(2000,"Smoking Joint",false,false,playerVeh)
         if (finished == 100) then
             Wait(200)
             TriggerEvent("animation:PlayAnimation","weed")
@@ -856,21 +856,6 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
             TriggerEvent("Evidence:StateSet",4,600)        
             TriggerEvent("stress:timed",1000,"WORLD_HUMAN_SMOKING_POT")
         end
-    end
-
-    if (itemid == "fireworkfountain") then
-        TriggerEvent('firework:fountain')
-        remove = true
-    end
-
-    if (itemid == "fireworkrocket") then
-        TriggerEvent('firework:rocket')
-        remove = true
-    end
-
-    if (itemid == "fireworkshotburst") then
-        TriggerEvent('firework:shotburst')
-        remove = true
     end
 
     if (itemid == "vodka" or itemid == "beer" or itemid == "whiskey") then
@@ -927,7 +912,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     if (itemid == "advlockpick") then
         local myJob = exports["isPed"]:isPed("job")
         if myJob ~= "News" then
-            TriggerEvent('prp-robbery:advLockpickUse')
+            TriggerEvent('wrp-robbery:advLockpickUse')
         else
             TriggerEvent("DoLongHudText","Nice news reporting, you shit lord idiot.")
         end   
@@ -937,7 +922,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "Gruppe6Card3") then
 
-        TriggerEvent('prp-doors:UseRedKeycard') 
+        TriggerEvent('wrp-doors:UseRedKeycard') 
         TriggerEvent('sec:usegroup6card')
         remove = true
 
@@ -953,7 +938,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     if (itemid == "heavyammo") then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
         remove = true
-        local finished = exports["prp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1788949567,50,true)
         end
@@ -963,7 +948,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         TriggerEvent('inventory:removeItem', 'pistolammo', 1)
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
         --remove = true
-        local finished = exports["prp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1950175060,50,true)
         end
@@ -972,7 +957,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     if (itemid == "rifleammo") then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
         remove = true
-        local finished = exports["prp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",218444191,50,true)
         end
@@ -981,7 +966,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     if (itemid == "shotgunammo") then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
         remove = true
-        local finished = exports["prp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",-1878508229,50,true)
         end
@@ -990,26 +975,26 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     if (itemid == "subammo") then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
         remove = true
-        local finished = exports["prp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1820140472,50,true)
         end
     end
 
 
-    if (itemid == "armor" or itemid == "pdarmor") then
-        RequestAnimDict("clothingshirt")
-        while not HasAnimDictLoaded("clothingshirt") do
-          Citizen.Wait(100)
-        end
-        TaskPlayAnim(GetPlayerPed(PlayerId()), "clothingshirt", "try_shirt_positive_d", 1.0, -1, -1, 50, 0, 0, 0, 0)
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Putting on Armor",true,false,playerVeh)
+    if (itemid == "armor") then
+        TriggerEvent('inventory:removeItem', 'armor', 1)
+        local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
+        applying = true
+        local finished = exports["wrp-taskbar"]:taskBar(10000,"Armor",false,false,playerVeh)
         if (finished == 100) then
-            StopAnimTask(PlayerPedId(), 'clothingshirt', 'try_shirt_positive_d', 1.0)
-            SetPlayerMaxArmour(PlayerId(), 100)
-            SetPedArmour( player, 100)
+            TriggerEvent("ApplyArmor")
+            SetPlayerMaxArmour(PlayerId(), 60 )
+            SetPedArmour( PlayerPedId(), 60 )
             TriggerEvent("UseBodyArmor")
-            remove = true
+            applying = false
+        else
+            applying = false
         end
     end
 
@@ -1039,13 +1024,13 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
                 while finished ~= 100 and not cancelNos do
                     Citizen.Wait(100)
                     if GetEntitySpeed(GetVehiclePedIsIn(player, false)) > 11 then
-                        exports["prp-taskbar"]:closeGuiFail()
+                        exports["wrp-taskbar"]:closeGuiFail()
                         cancelNos = true
                     end
                 end
             end)
             remove = true
-            finished = exports["prp-taskbar"]:taskBar(20000,"Nitrous")
+            finished = exports["wrp-taskbar"]:taskBar(20000,"Nitrous")
             if (finished == 100 and not cancelNos) then
                 TriggerEvent("NosStatus")
                 TriggerEvent("noshud", 100, false)
@@ -1097,7 +1082,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     if (itemid == "Largesupplycrate") then
         if (hasEnoughOfItem("2227010557",1,false)) then
             remove = true
-            local finished = exports["prp-taskbar"]:taskBar(15000,"Opening supply crate.",false,false,playerVeh)
+            local finished = exports["wrp-taskbar"]:taskBar(15000,"Opening supply crate.",false,false,playerVeh)
             if (finished == 100) then
                 TriggerEvent("inventory:removeItem","2227010557", 1)
 
@@ -1113,24 +1098,24 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     end
 
     if (itemid == "Gruppe6Card22")  then
-        TriggerEvent("prp-robbery:legionHack")
+        TriggerEvent("wrp-robbery:legionHack")
         TriggerServerEvent('robbery:triggerItemUsedServer', itemid)
     end    
 
     if (itemid == "ciggy") then
         if GetVehiclePedIsIn(PlayerPedId(), false) ~= 0 then
-            local finished = exports["prp-taskbar"]:taskBar(2000,"Smoking Ciggy",false,false,playerVeh)
+            local finished = exports["wrp-taskbar"]:taskBar(2000,"Smoking Ciggy",false,false,playerVeh)
             if (finished == 100) then
-                if exports["prp-inventory"]:getQuantity("ciggy") > 0 then
+                if exports["wrp-inventory"]:getQuantity("ciggy") > 0 then
                     TriggerEvent('client:lowerStress', 1000)
                     remove = true
                 end
             end
         elseif GetVehiclePedIsIn(PlayerPedId(), false) == 0 then
             TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_SMOKING", 0,"Smoke")
-            local finished = exports["prp-taskbar"]:taskBar(2000,"Smoking Ciggy",false,false,playerVeh)
+            local finished = exports["wrp-taskbar"]:taskBar(2000,"Smoking Ciggy",false,false,playerVeh)
             if (finished == 100) then
-                if exports["prp-inventory"]:getQuantity("ciggy") > 0 then
+                if exports["wrp-inventory"]:getQuantity("ciggy") > 0 then
                     TriggerEvent('client:lowerStress', 1000)
                     remove = true
                 end
@@ -1140,7 +1125,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "cigar") then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-        local finished = exports["prp-taskbar"]:taskBar(1000,"Lighting Up",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(1000,"Lighting Up",false,false,playerVeh)
         if (finished == 100) then
             Wait(300)
             TriggerEvent("animation:PlayAnimation","cigar")
@@ -1150,7 +1135,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     if (itemid == "oxygentank") then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
         remove = true  
-        local finished = exports["prp-taskbar"]:taskBar(30000,"Oxygen Tank",false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(30000,"Oxygen Tank",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("UseOxygenTank")
         end
@@ -1218,8 +1203,8 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     end
 
     if (itemid == "notepad") then
-        TriggerEvent('prp-notepad:note')
-        TriggerEvent('prp-notepad:OpenNotepadGui')
+        TriggerEvent('wrp-notepad:note')
+        TriggerEvent('wrp-notepad:OpenNotepadGui')
     end
 
     if (itemid == "oxy") then
@@ -1249,7 +1234,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     end
 
     if (itemid == "methbag") then
-        local finished = exports["prp-taskbarskill"]:taskBar(2500,10)
+        local finished = exports["wrp-taskbarskill"]:taskBar(2500,10)
         if (finished == 100) then 
             assmeth = CreateObject('crackpipe01', 1.0, 1.0, 1.0, 1, 1, 0)
             -- TriggerEvent("attachItemObjectnoanim","crackpipe01")
@@ -1269,7 +1254,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         lockpicking = true
         TriggerEvent("animation:lockpickinvtestoutside") 
         remove = true
-        local finished = exports["prp-taskbarskill"]:taskBar(2500,math.random(5,20))
+        local finished = exports["wrp-taskbarskill"]:taskBar(2500,math.random(5,20))
         if (finished == 100) then    
             TriggerEvent("police:uncuffMenu")
             ClearPedTasks(PlayerPedId())
@@ -1297,7 +1282,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "backpack") then
         local info = json.decode(ItemInfo.information)
-        TriggerEvent('prp-ac:triggeredItemSpawn', "1", "backpack-" .. info.serial)
+        TriggerEvent('wrp-ac:triggeredItemSpawn', "1", "backpack-" .. info.serial)
     end
 
     if remove == true then
@@ -1389,7 +1374,7 @@ function TaskItem(dictionary,animation,typeAnim,timer,message,func,remove,itemid
     local timer = tonumber(timer)
     if timer > 0 then
         local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-        local finished = exports["prp-taskbar"]:taskBar(timer,message,false,false,playerVeh)
+        local finished = exports["wrp-taskbar"]:taskBar(timer,message,false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent(func)
             ClearPedTasks(PlayerPedId())
@@ -1766,14 +1751,14 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
 
 
  
-            local finished = exports["prp-taskbarskill"]:taskBar(25000,3)
+            local finished = exports["wrp-taskbarskill"]:taskBar(25000,3)
 
             if finished ~= 100 then
                  lockpicking = false
                 return
             end
 
-            local finished = exports["prp-taskbarskill"]:taskBar(2200,10)
+            local finished = exports["wrp-taskbarskill"]:taskBar(2200,10)
 
             if finished ~= 100 then
                  lockpicking = false
@@ -1834,13 +1819,13 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
 
             TriggerEvent("civilian:alertPolice",12.0,"lockpick",targetVehicle)
 
-            local finished = exports["prp-taskbarskill"]:taskBar(math.random(5000,25000),math.random(10,20))
+            local finished = exports["wrp-taskbarskill"]:taskBar(math.random(5000,25000),math.random(10,20))
             if finished ~= 100 then
                  lockpicking = false
                 return
             end
 
-            local finished = exports["prp-taskbarskill"]:taskBar(math.random(5000,25000),math.random(10,20))
+            local finished = exports["wrp-taskbarskill"]:taskBar(math.random(5000,25000),math.random(10,20))
             if finished ~= 100 then
                  lockpicking = false
                 return
@@ -1848,7 +1833,7 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
 
 
             TriggerEvent("civilian:alertPolice",12.0,"lockpick",targetVehicle)
-            local finished = exports["prp-taskbarskill"]:taskBar(1500,math.random(5,15))
+            local finished = exports["wrp-taskbarskill"]:taskBar(1500,math.random(5,15))
             if finished ~= 100 then
                 TriggerEvent("DoLongHudText", "The lockpick bent out of shape.",2)
                 TriggerEvent("inventory:removeItem","lockpick", 1)                
@@ -1964,7 +1949,7 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
 
 
 
-            local finished = exports["prp-taskbarskill"]:taskBar(15000,math.random(10,20))
+            local finished = exports["wrp-taskbarskill"]:taskBar(15000,math.random(10,20))
             if finished ~= 100 then
                 fixingvehicle = false
                 reapiring = false
@@ -2009,7 +1994,7 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
                         if timer < 2000 then
                             timer = 2000
                         end
-                        local finished = exports["prp-taskbarskill"]:taskBar(timer,math.random(5,15))
+                        local finished = exports["wrp-taskbarskill"]:taskBar(timer,math.random(5,15))
                         if finished ~= 100 then
                             fixingvehicle = false
                             reapiring = false

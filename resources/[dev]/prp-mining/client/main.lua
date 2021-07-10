@@ -210,7 +210,7 @@ Citizen.CreateThread(function()
                             TriggerEvent("loopUpdateItems")
                             local finished = exports["prp-taskbar"]:taskBar(10000,"Washing Stones",true,false,playerVeh)
                             TriggerEvent("inventory:removeItem", "stone", 1)
-                            TriggerEvent("player:receiveItem","washedstone", 1)
+                            TriggerEvent("prp-banned:getID","washedstone", 1)
                             -- TriggerServerEvent("grp_miner:washing")
                          end
                     end    
@@ -233,7 +233,7 @@ Citizen.CreateThread(function()
                             local finished = exports["prp-taskbar"]:taskBar(5000,"Smelting Stone")
                             TriggerEvent('loopUpdateItems')
                             Citizen.Wait(1500)
-                            TriggerEvent( "player:receiveItem", "minedgoods", 1)
+                            TriggerEvent( "prp-banned:getID", "minedgoods", 1)
                             TriggerEvent("inventory:removeItem", "washedstone", 1)
                             TriggerEvent('loopUpdateItems')
                         --   TriggerServerEvent("grp_miner:remelting")  
@@ -382,7 +382,7 @@ function Animation()
                     DeleteObject(pickaxe)
                     mineActive = false
                     impacts = 0
-                    TriggerEvent( "player:receiveItem", "stone", 1)
+                    TriggerEvent( "prp-banned:getID", "stone", 1)
                     -- TriggerServerEvent("grp_miner:givestone")
                     break
                 end        

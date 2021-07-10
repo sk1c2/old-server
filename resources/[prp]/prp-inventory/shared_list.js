@@ -558,6 +558,7 @@ itemList["ironoxide"]	= {fullyDegrades: false, decayrate: 0.0, displayname: "Iro
 itemList["jadeite"]	    = {fullyDegrades: false, decayrate: 0.0, displayname: "Jadeite Stone", price: 1, weight: 0, nonStack: false, model:  "", image: "jadeite-stone.png", information: "With envy", deg: false }
 itemList["joker"]	    = {fullyDegrades: false, decayrate: 0.0, displayname: "Joker Card", price: 1, weight: 0, nonStack: false, model:  "", image: "joker.png", information: "How bout a magic trick?", deg: false }
 itemList["katana"] = {fullyDegrades: false,  decayrate: 0.0, displayname: "Katana", price: 1, weight: 0, nonStack: false, model: "", image: "katana.png", information: "Steel folded over 1000 times", deg: false }
+itemList["pdkeyfob"]	    = {fullyDegrades: false, decayrate: 0.0, displayname: "Keyfob", price: 1, weight: 0, nonStack: false, model:  "", image: "keyfobpd.png", information: "Numbered Key", deg: false }
 itemList["key1"]	    = {fullyDegrades: false, decayrate: 0.0, displayname: "Key 1", price: 1, weight: 0, nonStack: false, model:  "", image: "key1.png", information: "Numbered Key", deg: false }
 itemList["key2"]	    = {fullyDegrades: false, decayrate: 0.0, displayname: "Key 2", price: 1, weight: 0, nonStack: false, model:  "", image: "key2.png", information: "Numbered Key", deg: false }
 itemList["key3"]	    = {fullyDegrades: false, decayrate: 0.0, displayname: "Key 3", price: 1, weight: 0, nonStack: false, model:  "", image: "key3.png", information: "Numbered Key", deg: false }

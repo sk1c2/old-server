@@ -254,7 +254,7 @@ function HardwareStore() {
         { item_id: "binoculars", id: 0, name: "Shop", information: "{}", slot: 12, amount: 1 },
         { item_id: "acetone", id: 0, name: "Shop", information: "{}", slot: 13, amount: 15 },
         { item_id: "sudafed", id: 0, name: "Shop", information: "{}", slot: 14, amount: 15 },
-        { item_id: "-72657034", id: 0, name: "Shop", information: "{}", slot: 15, amount: 1 },
+        { item_id: "washpan", id: 0, name: "Shop", information: "{}", slot: 15, amount: 1 },
         { item_id: "antifreeze", id: 0, name: "Shop", information: "{}", slot: 16, amount: 10 },
         { item_id: "pickaxe", id: 0, name: "Shop", information: "{}", slot: 17, amount: 10 },
     ];

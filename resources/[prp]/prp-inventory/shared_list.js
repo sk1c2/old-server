@@ -870,11 +870,11 @@ itemList['fishingbass'] = {
 
   //BurgerShot Food
 
-  itemList["cheese"]	    = {fullyDegrades: true, decayrate: 0.0008, displayname: "Cheese", price: 4, weight: 1, nonStack: false, model:  "", image: "cheese.png", information: "This Shit Stank", deg: false }
-  itemList["lettuce"]	    = {fullyDegrades: true, decayrate: 0.0008, displayname: "Lettuce", price: 4, weight: 1, nonStack: false, model:  "", image: "lettuce.png", information: "Healthy Stuff... Idk?", deg: false }
-  itemList["hamburgerpatty"]	    = {fullyDegrades: true, decayrate: 0.0008, displayname: "Patty", price: 4, weight: 1, nonStack: false, model:  "", image: "patty.png", information: "Spongebob", deg: false }
-  itemList["hamburgerbun"]	    = {fullyDegrades: true, decayrate: 0.0008, displayname: "Hamburger Bun", price: 4, weight: 1, nonStack: false, model:  "", image: "bun.png", information: "Buns...", deg: false }
-  itemList["potato"]	    = {fullyDegrades: true, decayrate: 0.0008, displayname: "Potatoes", price: 4, weight: 1, nonStack: false, model:  "", image: "potato.png", information: "Spud", deg: false }
+  itemList["cheese"]	    = {fullyDegrades: true, decayrate: 0.1, displayname: "Cheese", price: 4, weight: 1, nonStack: false, model:  "", image: "cheese.png", information: "This Shit Stank", deg: false }
+  itemList["lettuce"]	    = {fullyDegrades: true, decayrate: 0.1, displayname: "Lettuce", price: 4, weight: 1, nonStack: false, model:  "", image: "lettuce.png", information: "Healthy Stuff... Idk?", deg: false }
+  itemList["hamburgerpatty"]	    = {fullyDegrades: true, decayrate: 0.1, displayname: "Patty", price: 4, weight: 1, nonStack: false, model:  "", image: "patty.png", information: "Spongebob", deg: false }
+  itemList["hamburgerbun"]	    = {fullyDegrades: true, decayrate: 0.1, displayname: "Hamburger Bun", price: 4, weight: 1, nonStack: false, model:  "", image: "bun.png", information: "Buns...", deg: false }
+  itemList["potato"]	    = {fullyDegrades: true, decayrate: 0.1, displayname: "Potatoes", price: 4, weight: 1, nonStack: false, model:  "", image: "potato.png", information: "Spud", deg: false }
 
   itemList["heartstopper"] = {fullyDegrades: true, decayrate: 0.01, displayname: "The Heart Stopper", craft: [ {itemid: "hamburgerbun", amount: 1 }, {itemid: "cheese", amount: 1 }, {itemid: "lettuce", amount: 1 }, {itemid: "hamburgerpatty", amount: 1 } ], price: 20, weight: 1,   nonStack: false, model: "", image: "the-heart-stopper.png", information: "Sates Hunger and reduces stress." , deg: false}
 

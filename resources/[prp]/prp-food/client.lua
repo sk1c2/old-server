@@ -29,6 +29,14 @@ AddEventHandler('burgershot:shelf', function()
     end
 end)
 
+RegisterNetEvent('burgershot:fridge')
+AddEventHandler('burgershot:fridge', function()
+    local rank = exports["isPed"]:GroupRank("BurgerShot")
+    if rank > 0 then
+	    TriggerEvent("prp-ac:triggeredItemSpawn", "1", "burgerjob_fridge")
+    end
+end)
+
 RegisterNetEvent('burgershot:drinks')
 AddEventHandler('burgershot:drinks', function()
     local rank = exports["isPed"]:GroupRank("BurgerShot")

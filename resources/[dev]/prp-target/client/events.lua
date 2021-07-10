@@ -514,13 +514,13 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
         options = {
             {
                 event = "burgershot:shelf",
-                icon = "fas fa-box",
+                icon = "fas fa-search",
                 label = "Shelf",
             },
         },
         distance = 1.5
     })
-    AddCircleZone("burgershotdrinks", vector3(-1199.12, -896.18, 14.1), 0.5, {
+    AddCircleZone("burgershotdrinks", vector3(-1199.12, -896.18, 14.1), 0.8, {
         name="burgershotdrinks",
         debugPoly=false,
         useZ=true,
@@ -528,7 +528,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
             options = {
                 {
                     event = "burgershot:drinks",
-                    icon = "fas fa-none",
+                    icon = "fas fa-search",
                     label = "Make Soda",
                 },
             },
@@ -556,7 +556,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
             options = {
                 {
                     event = "burgershot:storage",
-                    icon = "fas fa-box",
+                    icon = "fas fa-search",
                     label = "Storage",
                 },
             },
@@ -570,27 +570,28 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
             options = {
                 {
                     event = "burgershot:fries",
-                    icon = "fas fa-box",
+                    icon = "fas fa-search",
                     label = "Fry Fries",
                 },
             },
             distance = 1.5
         })
-    --CamelTowing--
-    AddCircleZone("cameltowingstash", vector3(1187.26, 2635.77, 38.40), 0.5, {
+    AddCircleZone("cameltowingstash", vector3(-1203.116, -895.9646, 13.99513), 0.5, {
         name="cameltowingstash",
         debugPoly=false,
         useZ=true,
         }, {
             options = {
                 {
-                    event = "prp-camel:stash",
-                    icon = "fas fa-box",
-                    label = "Storage",
+                    event = "burgershot:fridge",
+                    icon = "fas fa-search",
+                    label = "Fridge",
                 },
             },
             distance = 1.5
         })
+
+    --CamelTowing--
     AddCircleZone("cameltowingcrafting", vector3(1174.86, 2635.20, 37.75), 0.5, {
         name="cameltowingcrafting",
         debugPoly=false,

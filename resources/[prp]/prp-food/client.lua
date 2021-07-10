@@ -498,6 +498,10 @@ RegisterNetEvent('keys:get')
 AddEventHandler('keys:get', function()
     local PlayerPed = PlayerPedId(-1)
     if exports['isPed']:isPed('job') == 'Police' then
-        TriggerEvent('prp-banned:getID', 'fries', 1)
+        if exports['prp-inventory']:hasEnoughOfItem('pdkeyfob', 1) then
+        TriggerEvent('DoLongHudText', 'You allready have a keyfob Dingus!', 2)
+        else
+            TriggerEvent('prp-banned:getID', 'pdkeyfob', 1)
+        end
     end
 end)

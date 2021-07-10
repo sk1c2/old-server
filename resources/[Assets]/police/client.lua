@@ -22,19 +22,19 @@ Citizen.CreateThread(function()
 	end
 end)
 
-function giveDutyRadio()
-	if (not exports['prp-inventory']:hasEnoughOfItem('radio', 1, false)) then
-		-- print('dick')
-		TriggerEvent('prp-banned:getID', 'radio', 1)
-	end
-end
+-- function giveDutyRadio()
+-- 	if (not exports['prp-inventory']:hasEnoughOfItem('radio', 1, false)) then
+-- 		-- print('dick')
+-- 		TriggerEvent('prp-banned:getID', 'radio', 1)
+-- 	end
+-- end
 
-function removeDutyRadio()
-	if (exports['prp-inventory']:hasEnoughOfItem('radio', 1, false)) then
-		-- print('dick')
-		TriggerEvent("inventory:removeItem", 'radio', 1)
-	end
-end
+-- function removeDutyRadio()
+-- 	if (exports['prp-inventory']:hasEnoughOfItem('radio', 1, false)) then
+-- 		-- print('dick')
+-- 		-- TriggerEvent("inventory:removeItem", 'radio', 1)
+-- 	end
+-- end
 
 
 local signOnPoint = {
@@ -130,7 +130,7 @@ AddEventHandler("police:in" , function(off)
             LocalPlayer:setJob(Player.id, 'Police')
             TriggerEvent('DoLongHudText', '10-41 and restocked.')
 			TriggerServerEvent('prp-copsonlineincrease')
-			giveDutyRadio()
+			-- giveDutyRadio()
 			TriggerServerEvent('attemptduty', 'Police', exports['isPed']:isPed('cid'), Player.first_name, Player.last_name, Player.callsign)
         end
     elseif(off == "false") then
@@ -141,7 +141,7 @@ AddEventHandler("police:in" , function(off)
 			LocalPlayer:setJob(Player.id, 'OffPolice')
 			TriggerServerEvent('prp-copsonlinedecrease')
 			TriggerServerEvent('attemptoffdutypd')
-			removeDutyRadio()
+			-- removeDutyRadio()
         end
     end
 end)

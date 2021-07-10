@@ -1723,6 +1723,23 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                     }
                 )
 
+                AddBoxZone("tool_shop", vector3(45.38, -1748.86, 29.5), 1, 4, {
+                    name="tool_shop",
+                    heading=0,
+                    debugPoly=false,
+                    minZ=26.5,
+                    maxZ=30.5
+                    }, {
+                        options = {
+                            {
+                                event = "tool:shop",
+                                icon = "fas fa-wrench",
+                                label = "Open Tool Shop",
+                            },
+                        },
+                        distance = 1.5
+                }) 
+
                 AddBoxZone("keys1", vector3(469.44, -992.42, 26.27), 1, 4, {
                     name="keys1",
                     heading=0,

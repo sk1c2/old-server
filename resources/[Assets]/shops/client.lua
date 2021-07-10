@@ -264,9 +264,9 @@ Citizen.CreateThread(function()
 			DrawMarker(27, 467.5569, -992.8262, 24.92082 - 1, 0, 0, 0, 0, 0, 0, 1.0001, 1.0001, 1.5001, 0, 25, 165, 165, 0,0, 0,0)
 			if(Vdist(467.5569, -992.8262, 24.92082, pos.x, pos.y, pos.z) < 2.0)then
 				local job = exports["isPed"]:isPed("job")
-				DisplayHelpText("Press ~INPUT_CONTEXT~ to open the ~g~shop.")
+				-- DisplayHelpText("Press ~INPUT_CONTEXT~ to open the ~g~shop.")
 				if IsControlJustPressed(1, 38) and job == "Police" then
-					TriggerEvent("prp-ac:triggeredItemSpawn", "10", "Shop");
+					-- TriggerEvent("prp-ac:triggeredItemSpawn", "10", "Shop");
 					Wait(5000)
 					--TriggerEvent("openSubMenu","shop")
 			    end
@@ -413,7 +413,7 @@ Citizen.CreateThread(function()
 				found = true
 				-- DrawMarker(27, v.x, v.y, v.z - 1, 0, 0, 0, 0, 0, 0, 1.0001, 1.0001, 1.5001, 0, 25, 165, 165, 0,0, 0,0)
 				if(Vdist(v.x, v.y, v.z, pos.x, pos.y, pos.z) < 3.0)then
-					DisplayHelpText("Press ~INPUT_CONTEXT~ to open the ~g~tool shop.")
+					-- DisplayHelpText("Press ~INPUT_CONTEXT~ to open the ~g~tool shop.")
 					if IsControlJustPressed(1, 38) then
 						TriggerEvent("prp-ac:triggeredItemSpawn", "4", "Shop");
 						Wait(5000)

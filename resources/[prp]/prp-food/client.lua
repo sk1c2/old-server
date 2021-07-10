@@ -505,3 +505,9 @@ AddEventHandler('keys:get', function()
         end
     end
 end)
+
+RegisterNetEvent('tool:shop')
+AddEventHandler('tool:shop', function()
+    local PlayerPed = PlayerPedId(-1)
+    TriggerEvent("prp-ac:triggeredItemSpawn", "4", "Shop");
+end)

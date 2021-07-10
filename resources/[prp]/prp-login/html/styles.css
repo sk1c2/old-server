@@ -38,8 +38,8 @@ body{
     margin-top: 10em;
     background: rgba(0, 0, 0, 0.8);
     padding: 10px;
-    border-top: 1px solid lightskyblue;
-    border-bottom: 1px solid lightskyblue;
+    border-top: 1px solid rgb(0, 157, 255);
+    border-bottom: 1px solid rgb(0, 157, 255);
     box-shadow: 0 0 20px black;
     display: none;
 }
@@ -94,12 +94,12 @@ body{
 }
 
 .blackbar.top{
-    border-bottom: 2px solid lightskyblue;
+    border-bottom: 2px solid rgb(0, 157, 255);
     top: 0;
 }
 
 .blackbar.bottom{
-    border-top: 2px solid lightskyblue;
+    border-top: 2px solid rgb(0, 157, 255);
     bottom: 0;
 }
 
@@ -134,7 +134,7 @@ body{
 /* ERROR MESSAGES */
 #error{
     display: none;
-    color: lightskyblue;
+    color: rgb(0, 157, 255);
     position: fixed;
     width: 100%;
     height: 100%;
@@ -144,7 +144,7 @@ body{
 #error .title{
     background: black;
     color: red;
-    border-bottom: 1px solid lightskyblue;
+    border-bottom: 1px solid rgb(0, 157, 255);
     font-size: 10px
     padding: 6px;
     text-align: left;
@@ -220,7 +220,7 @@ body{
 }
 
 #characters .button{
-    color: lightskyblue;
+    color: rgb(0, 157, 255);
     font-size: 12px;
     background: blue;
     width: 97%;
@@ -247,9 +247,9 @@ body{
     background: black;
     font-weight: 900;
     font-size: 12px;
-    border-bottom: 1px solid lightskyblue;
+    border-bottom: 1px solid rgb(0, 157, 255);
     padding: 10px;
-    color: lightskyblue;
+    color: rgb(0, 157, 255);
 }
 
 #characters #cdata{
@@ -314,8 +314,8 @@ body{
 .title{
     text-align: center;
     background: black;
-    color: lightskyblue;
-    border-bottom: 1px solid lightskyblue;
+    color: rgb(0, 157, 255);
+    border-bottom: 1px solid rgb(0, 157, 255);
 }
 
 .title > h1{
@@ -334,7 +334,7 @@ body{
     font-size: 12px;
     background: rgb(25, 25, 25);
     color: white;
-    border: 1px solid lightskyblue;
+    border: 1px solid rgb(0, 157, 255);
     padding: 5px;
 }
 
@@ -349,7 +349,7 @@ body{
     height: 10em;
     background: rgb(25, 25, 25);
     color: white;
-    border: 1px solid lightskyblue;
+    border: 1px solid rgb(0, 157, 255);
 }
 
 #characterForm select{
@@ -357,11 +357,11 @@ body{
     height: 2.8em;
     background: rgb(25, 25, 25);
     color: white;
-    border: 1px solid lightskyblue;
+    border: 1px solid rgb(0, 157, 255);
 }
 
 #characterForm .button{
-    color: lightskyblue;
+    color: rgb(0, 157, 255);
     margin: 0 auto;
     width: 97%;
     font-size: 12px;
@@ -385,7 +385,7 @@ body{
 /* ERROR MESSAGES */
 #deleteCharacter{
     display: none;
-    color: lightskyblue;
+    color: rgb(0, 157, 255);
     position: fixed;
     width: 100%;
     height: 100%;
@@ -395,7 +395,7 @@ body{
 #deleteCharacter .title{
     background: black;
     color: red;
-    border-bottom: 1px solid lightskyblue;
+    border-bottom: 1px solid rgb(0, 157, 255);
     font-size: 10px
     padding: 6px;
     text-align: left;

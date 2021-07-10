@@ -1766,7 +1766,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                                 label = "Grab Police Car Keys",
                             },
                         },
-                        distance = 1.5
+                        distance = 1
                 }) 
 
                 AddBoxZone("keys3", vector3(469.39, -974.86, 26.27), 1, 4, {
@@ -1783,7 +1783,7 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                                 label = "Grab Police Car Keys",
                             },
                         },
-                        distance = 1.5
+                        distance = 1
                 }) 
 
                 AddBoxZone("MEnter", vector3(247.1107, -1996.614, 20.18834), 1, 4, {

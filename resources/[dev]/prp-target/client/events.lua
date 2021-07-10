@@ -60,11 +60,6 @@ Citizen.CreateThread(function()
                     icon = "fas fa-people-carry", 
                     label = "Carry Player!"
                 },
-                {
-                    event = "prp-stealtrigger", 
-                    icon = "fab fa-searchengin",  
-                    label = "Rob Target Player!"
-                }
             },
             distance = 1.0
         }

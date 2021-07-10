@@ -1723,6 +1723,23 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                     }
                 )
 
+                AddBoxZone("keys1", vector3(469.44, -992.42, 26.27), 1, 4, {
+                    name="keys1",
+                    heading=0,
+                    debugPoly=false,
+                    minZ=23.27,
+                    maxZ=27.27
+                    }, {
+                        options = {
+                            {
+                                event = "police:enterBuilding",
+                                icon = "fas fa-door-open",
+                                label = "Grab Keys",
+                            },
+                        },
+                        distance = 1.5
+                }) 
+
                 AddBoxZone("MEnter", vector3(247.1107, -1996.614, 20.18834), 1, 4, {
                     name="MEnter",
                     heading=52.43266,

@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 games { 'gta5' }
 
-description 'PRP PolyZone'
+description 'SRP PolyZone'
 author 'pkarti'
 version '1.0'
 

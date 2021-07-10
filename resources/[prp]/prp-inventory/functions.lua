@@ -1003,7 +1003,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
           Citizen.Wait(100)
         end
         TaskPlayAnim(GetPlayerPed(PlayerId()), "clothingshirt", "try_shirt_positive_d", 1.0, -1, -1, 50, 0, 0, 0, 0)
-        local finished = exports["wrp-taskbar"]:taskBar(10000,"Putting on Armor",true,false,playerVeh)
+        local finished = exports["prp-taskbar"]:taskBar(10000,"Putting on Armor",true,false,playerVeh)
         if (finished == 100) then
             StopAnimTask(PlayerPedId(), 'clothingshirt', 'try_shirt_positive_d', 1.0)
             SetPlayerMaxArmour(PlayerId(), 100)

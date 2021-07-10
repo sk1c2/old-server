@@ -331,7 +331,7 @@ itemList["leather"]	    = {fullyDegrades: true, decayrate: 0.5, displayname: "Le
 
 
 itemList["advlockpick"]	= {fullyDegrades: true, decayrate: 0.25, displayname: "Adv Lock Pick", craft: [{itemid: "aluminium", amount: 25 }, {itemid: "plastic", amount: 5 }, {itemid: "rubber", amount: 5 }], price: 500, weight: 3, nonStack: false, model: "", image: "advanced-lockpick.png" , deg: false}
-itemList["armor"]	    = {fullyDegrades: true, decayrate: 0.25, displayname: "Chest Armor", craft: [{itemid: "aluminium", amount: 5 }, {itemid: "plastic", amount: 1 }, {itemid: "rubber", amount: 1 }], price: 250, weight: 30, nonStack: false, model: "", image: "chest-armor.png", information: "Protects you from bleeding and stumbling on injuries." , deg: false}
+itemList["armor"]	    = {fullyDegrades: true, decayrate: 0.25, displayname: "Chest Armor", craft: [{itemid: "aluminium", amount: 5 }, {itemid: "plastic", amount: 1 }, {itemid: "rubber", amount: 1 }], price: 250, weight: 18, nonStack: false, model: "", image: "chest-armor.png", information: "Protects you from bleeding and stumbling on injuries." , deg: false}
 itemList["bandage"]	    = {displayname: "Bandage", price: 25, weight: 1, nonStack: false, model: "prop_ld_health_pack", image: "bandage.png", information: "Heals Wounds and Reduces Bleeding" , deg: false}
 
 // job items

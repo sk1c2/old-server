@@ -119,16 +119,18 @@ Citizen.CreateThread(function()
     while true do
 	local ped = PlayerPedId()
         Citizen.Wait(1)
-        if GetDistanceBetweenCoords(GetEntityCoords(ped), Config.WashingX, Config.WashingY, Config.WashingZ, true) < 3 and washingActive == false then
+        if GetDistanceBetweenCoords(GetEntityCoords(ped), Config.WashingX, Config.WashingY, Config.WashingZ, true) < 10 and washingActive == false then
             DrawMarker(20, Config.WashingX, Config.WashingY, Config.WashingZ, 0, 0, 0, 0, 0, 55.0, 1.0, 1.0, 1.0, 0, 155, 253, 155, 0, 0, 2, 0, 0, 0, 0)
-                if GetDistanceBetweenCoords(GetEntityCoords(ped), Config.WashingX, Config.WashingY, Config.WashingZ, true) < 1 then
+                if GetDistanceBetweenCoords(GetEntityCoords(ped), Config.WashingX, Config.WashingY, Config.WashingZ, true) < 10 then
                         if IsControlJustReleased(1, 51) then
                             if exports['prp-inventory']:hasEnoughOfItem('washpan', 1) then
                             if exports['prp-inventory']:hasEnoughOfItem('stone', 2) then
                             TriggerEvent("loopUpdateItems")
+                            FreezeEntityPosition(GetPlayerPed(-1),true)
                             local finished = exports["prp-taskbar"]:taskBar(10000,"Washing Stones",true,false,playerVeh)
                             TriggerEvent("inventory:removeItem", "stone", 2)
                             TriggerEvent("prp-banned:getID","washedstone", 2)
+                            FreezeEntityPosition(GetPlayerPed(-1),false)
                          end
                     end    
                 end
@@ -149,7 +151,7 @@ Citizen.CreateThread(function()
                             local finished = exports["prp-taskbar"]:taskBar(5000,"Smelting Stone")
                             TriggerEvent('loopUpdateItems')
                             Citizen.Wait(1500)
-                            TriggerEvent( "prp-banned:getID", "minedgoods", 2)
+                            TriggerEvent( "prp-banned:getID", "ore", 2)
                             TriggerEvent("inventory:removeItem", "washedstone", 2)
                             TriggerEvent('loopUpdateItems')
                             end

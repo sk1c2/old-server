@@ -997,19 +997,19 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     end
 
 
-    if (itemid == "armor") then
-        TriggerEvent('inventory:removeItem', 'armor', 1)
-        local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
-        applying = true
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Armor",false,false,playerVeh)
+    if (itemid == "armor" or itemid == "pdarmor") then
+        RequestAnimDict("clothingshirt")
+        while not HasAnimDictLoaded("clothingshirt") do
+          Citizen.Wait(100)
+        end
+        TaskPlayAnim(GetPlayerPed(PlayerId()), "clothingshirt", "try_shirt_positive_d", 1.0, -1, -1, 50, 0, 0, 0, 0)
+        local finished = exports["wrp-taskbar"]:taskBar(10000,"Putting on Armor",true,false,playerVeh)
         if (finished == 100) then
-            TriggerEvent("ApplyArmor")
-            SetPlayerMaxArmour(PlayerId(), 60 )
-            SetPedArmour( PlayerPedId(), 60 )
+            StopAnimTask(PlayerPedId(), 'clothingshirt', 'try_shirt_positive_d', 1.0)
+            SetPlayerMaxArmour(PlayerId(), 100)
+            SetPedArmour( player, 100)
             TriggerEvent("UseBodyArmor")
-            applying = false
-        else
-            applying = false
+            remove = true
         end
     end
 

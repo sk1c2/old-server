@@ -1883,9 +1883,9 @@ end
  
 
 local apartmentEntries = {
-    [1] = { ["x"] = -265.4687, ["y"] = -963.457, ["z"] = 31.22313, ["name"] = "Low Class Apartments" },
-    [2] = { ["x"] = 267.48132324219, ["y"] = -638.818359375, ["z"] = 41.020294189453, ["name"] = "Middle Class Apartments" },
-	[3] = { ["x"] = 160.26762390137, ["y"] = -641.96905517578, ["z"] = 47.073524475098, ["name"] = "High Class Apartments" },
+    [1] = { ["x"] = -265.4687, ["y"] = -963.457, ["z"] = 31.22313, ["name"] = "Apartments" },
+    -- [2] = { ["x"] = 267.48132324219, ["y"] = -638.818359375, ["z"] = 41.020294189453, ["name"] = "Middle Class Apartments" },
+	-- [3] = { ["x"] = 160.26762390137, ["y"] = -641.96905517578, ["z"] = 47.073524475098, ["name"] = "High Class Apartments" },
 }
 
 local showMainAppartment = false

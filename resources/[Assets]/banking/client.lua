@@ -314,6 +314,7 @@ if enableBankingGui then
                 DrawText3D(banks[scanid].x, banks[scanid].y, banks[scanid].z,"This bank is closed.")
               else
                 if inBank == false then
+                  DrawText3D(banks[scanid].x, banks[scanid].y, banks[scanid].z,"["..Controlkey["generalUse"][2].."] to use Bank.")
                   -- exports['prp-interaction']:showInteraction('[E] to use Bank.')
                 -- if not IsInVehicle() then exports["np-base"]:getModule("Util"):MissionText("Press '~b~Context Action Key~w~' (Default: ~b~E~w~) to view your account", 500) else exports["np-base"]:getModule("Util"):MissionText("You ~r~cannot~w~~w~ use the bank in a vehicle", 500) end
                   atBank = true

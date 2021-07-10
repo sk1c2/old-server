@@ -68,6 +68,102 @@ rootMenuConfig =  {
         end
     },
     {
+        id = "open-bank",
+        displayName = "Open Bank",
+        icon = "#police-check-bank",
+        functionName = "bank:openGUI",
+
+        enableMenu = function()
+            isDead = exports["prp-deathmanager"]:GetDeath()
+            local platerpedid = PlayerPedId()
+            local plyCoords = GetEntityCoords(platerpedid)
+            local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z,-1212.936 , -330.8351 , 37.78704,false)
+            
+            return (distance <= 2.2)
+            
+        end
+    },
+    {
+        id = "open-bank",
+        displayName = "Open Bank",
+        icon = "#police-check-bank",
+        functionName = "bank:openGUI",
+
+        enableMenu = function()
+            isDead = exports["prp-deathmanager"]:GetDeath()
+            local platerpedid = PlayerPedId()
+            local plyCoords = GetEntityCoords(platerpedid)
+            local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z,314.1961 , -278.6263 , 54.16713,false)
+            
+            return (distance <= 2.2)
+            
+        end
+    },
+    {
+        id = "open-bank",
+        displayName = "Open Bank",
+        icon = "#police-check-bank",
+        functionName = "bank:openGUI",
+
+        enableMenu = function()
+            isDead = exports["prp-deathmanager"]:GetDeath()
+            local platerpedid = PlayerPedId()
+            local plyCoords = GetEntityCoords(platerpedid)
+            local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z,-351.5245 , -49.53419 , 49.04227,false)
+            
+            return (distance <= 2.2)
+            
+        end
+    },
+    {
+        id = "open-bank",
+        displayName = "Open Bank",
+        icon = "#police-check-bank",
+        functionName = "bank:openGUI",
+
+        enableMenu = function()
+            isDead = exports["prp-deathmanager"]:GetDeath()
+            local platerpedid = PlayerPedId()
+            local plyCoords = GetEntityCoords(platerpedid)
+            local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z,241.4591 , 225.4411 , 106.2868,false)
+            
+            return (distance <= 2.2)
+            
+        end
+    },
+    {
+        id = "open-bank",
+        displayName = "Open Bank",
+        icon = "#police-check-bank",
+        functionName = "bank:openGUI",
+
+        enableMenu = function()
+            isDead = exports["prp-deathmanager"]:GetDeath()
+            local platerpedid = PlayerPedId()
+            local plyCoords = GetEntityCoords(platerpedid)
+            local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z,1176.083 , 2706.347 , 38.08348,false)
+            
+            return (distance <= 2.2)
+            
+        end
+    },
+    {
+        id = "open-bank",
+        displayName = "Open Bank",
+        icon = "#police-check-bank",
+        functionName = "bank:openGUI",
+
+        enableMenu = function()
+            isDead = exports["prp-deathmanager"]:GetDeath()
+            local platerpedid = PlayerPedId()
+            local plyCoords = GetEntityCoords(platerpedid)
+            local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z,-2962.582 , 482.6342 , 15.70712,false)
+            
+            return (distance <= 2.2)
+            
+        end
+    },
+    {
         id = "mdt",
         displayName = "MDT",
         icon = "#mdt",

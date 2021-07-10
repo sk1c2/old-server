@@ -1723,7 +1723,7 @@ itemList["stone"] = {
       amount: 1
   }],
   fullyDegrades: true,
-  decayrate: 0.01,
+  decayrate: 0.0,
   displayname: "Stone",
   price: 150,
   weight: 1,
@@ -1740,7 +1740,7 @@ itemList["washedstone"] = {
       amount: 1
   }],
   fullyDegrades: true,
-  decayrate: 0.01,
+  decayrate: 0.0,
   displayname: "Washed Stone",
   price: 150,
   weight: 1,
@@ -1753,7 +1753,7 @@ itemList["washedstone"] = {
 
 itemList['ore'] = {
   fullyDegrades: true,
-  decayrate: 0.1,
+  decayrate: 0.0,
   displayname: 'Mined Ore',
   craft: [{
       itemid: '',

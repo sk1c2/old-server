@@ -173,6 +173,7 @@ local vehshopOwner = {
 			title = "sports",
 			name = "sports",
 			buttons = {
+				{name = "Revolter", costs = 125000, description = {}, model = "revolter"},
 				{name = "9F", costs = 60000, description = {}, model = "ninef"},
 				{name = "9F Cabrio", costs = 60000, description = {}, model = "ninef2"},
 				{name = "Alpha", costs = 15000, description = {}, model = "alpha"},

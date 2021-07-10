@@ -124,7 +124,7 @@ Citizen.CreateThread(function()
                 if GetDistanceBetweenCoords(GetEntityCoords(ped), Config.WashingX, Config.WashingY, Config.WashingZ, true) < 1 then
                         if IsControlJustReleased(1, 51) then
                             if exports['prp-inventory']:hasEnoughOfItem('washpan', 1) then
-                            if exports['prp-inventory']:hasEnoughOfItem('stone', 1) then
+                            if exports['prp-inventory']:hasEnoughOfItem('stone', 2) then
                             TriggerEvent("loopUpdateItems")
                             local finished = exports["prp-taskbar"]:taskBar(10000,"Washing Stones",true,false,playerVeh)
                             TriggerEvent("inventory:removeItem", "stone", 2)
@@ -145,7 +145,7 @@ Citizen.CreateThread(function()
             DrawMarker(20, Config.RemeltingX, Config.RemeltingY, Config.RemeltingZ, 0, 0, 0, 0, 0, 55.0, 1.0, 1.0, 1.0, 0, 155, 253, 155, 0, 0, 2, 0, 0, 0, 0)
                 if GetDistanceBetweenCoords(GetEntityCoords(ped), Config.RemeltingX, Config.RemeltingY, Config.RemeltingZ, true) < 1 then
                         if IsControlJustReleased(1, 51) then 
-                            if exports['prp-inventory']:hasEnoughOfItem('washedstone', 1) then
+                            if exports['prp-inventory']:hasEnoughOfItem('washedstone', 2) then
                             local finished = exports["prp-taskbar"]:taskBar(5000,"Smelting Stone")
                             TriggerEvent('loopUpdateItems')
                             Citizen.Wait(1500)

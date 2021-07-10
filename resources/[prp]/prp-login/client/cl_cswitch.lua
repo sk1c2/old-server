@@ -36,7 +36,7 @@ AddEventHandler('event:control:login', function(useID)
                     return
                 end
                 if timeRemaining <= 0 then
-                    TransitionToBlurred(500)
+                    -- TransitionToBlurred(500)
                     DoScreenFadeOut(500)
                     Citizen.Wait(1000)
                     TriggerEvent("prp-base:clearStates")

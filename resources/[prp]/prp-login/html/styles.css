@@ -46,7 +46,7 @@ body{
 
 
 /* MISC */
-#disconnect {
+/* #disconnect {
     position: absolute;
     margin-left: 10px;
     top: 50%;
@@ -65,7 +65,7 @@ body{
     box-shadow: 0 0 2px 0.5px white inset;
     background: rgb(25, 25, 25);
     color: red;
-}
+} */
 
 .scroll::-webkit-scrollbar {
   width: 5px;
@@ -83,7 +83,7 @@ body{
     text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }
 
-.blackbar{
+/* .blackbar{
     background-color: black;
     width: 100%;
     height: 50px;
@@ -91,9 +91,9 @@ body{
     margin: 0;
     box-shadow: 0px 0px 10px black;
     position: fixed;
-}
+} */
 
-.blackbar.top{
+/* .blackbar.top{
     border-bottom: 2px solid rgb(0, 157, 255);
     top: 0;
 }
@@ -101,7 +101,7 @@ body{
 .blackbar.bottom{
     border-top: 2px solid rgb(0, 157, 255);
     bottom: 0;
-}
+} */
 
 /* LOADING ICON */
 #loading{

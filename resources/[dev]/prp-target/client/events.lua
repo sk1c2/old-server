@@ -1726,15 +1726,32 @@ AddCircleZone("burgerspickup", vector3(-1193.75, -894.28, 13.99), 0.5,{
                 AddBoxZone("keys1", vector3(469.44, -992.42, 26.27), 1, 4, {
                     name="keys1",
                     heading=0,
-                    debugPoly=false,
+                    debugPoly=true,
                     minZ=23.27,
                     maxZ=27.27
                     }, {
                         options = {
                             {
-                                event = "police:enterBuilding",
-                                icon = "fas fa-door-open",
-                                label = "Grab Keys",
+                                event = "keys:get",
+                                icon = "fas fa-key",
+                                label = "Grab Police Car Keys",
+                            },
+                        },
+                        distance = 1.5
+                }) 
+
+                AddBoxZone("keys3", vector3(469.39, -974.86, 26.27), 1, 4, {
+                    name="keys3",
+                    heading=0,
+                    debugPoly=true,
+                    minZ=23.27,
+                    maxZ=27.27
+                    }, {
+                        options = {
+                            {
+                                event = "keys:get",
+                                icon = "fas fa-key",
+                                label = "Grab Police Car Keys",
                             },
                         },
                         distance = 1.5

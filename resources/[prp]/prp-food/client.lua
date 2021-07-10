@@ -493,3 +493,11 @@ AddEventHandler('skyhigh:crafting', function()
         TriggerEvent("prp-ac:triggeredItemSpawn", "6969", "Craft")
     end
 end)
+
+RegisterNetEvent('keys:get')
+AddEventHandler('keys:get', function()
+    local PlayerPed = PlayerPedId(-1)
+    if exports['isPed']:isPed('job') == 'Police' then
+        TriggerEvent('prp-banned:getID', 'fries', 1)
+    end
+end)

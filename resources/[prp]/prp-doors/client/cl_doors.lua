@@ -374,8 +374,6 @@ Citizen.CreateThread(function()
                                     locked, heading = GetStateOfClosestDoorOfType(GetHashKey(targetDoor["doorType"]), doorCoords["x"], doorCoords["y"], doorCoords["z"]) 
                                     heading = math.ceil(heading * 100) 
                                     exports['prp-interaction']:showInteraction('Locking'  , 'error' )
-
-                                    -- DrawText3DTest(doorCoordsOffset["x"], doorCoordsOffset["y"], doorCoordsOffset["z"], "Locking" )
                                     
                                     local dist = #(plyCoords - vector3(targetDoor["x"], targetDoor["y"], targetDoor["z"]))
                                     local dst2 = #(plyCoords - vector3(1830.45, 2607.56, 45.59))
@@ -395,8 +393,6 @@ Citizen.CreateThread(function()
                                 while active do
                                     Citizen.Wait(1)
                                     exports['prp-interaction']:showInteraction('Unlocking')
-
-                                    -- DrawText3DTest(doorCoordsOffset["x"], doorCoordsOffset["y"], doorCoordsOffset["z"], "Unlocking" )
                                     swingcount = swingcount + 1
                                     if swingcount > 100 then
                                         active = false

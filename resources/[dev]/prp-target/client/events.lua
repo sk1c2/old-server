@@ -110,7 +110,6 @@ Citizen.CreateThread(function()
 
     -------- Police --------
 
-
     AddBoxZone("PDArmory", vector3(481.49, -994.94, 30.69), 1, 3.2, {
 	name="PDArmory",
 	heading=0,
@@ -125,8 +124,8 @@ Citizen.CreateThread(function()
                 label = "PD Armory",
             },
         },
-        distance = 3.5
-    })   
+        distance = 1
+    })     
     
     AddBoxZone("EMSShop", vector3(306.7157, -601.7974, 43.2841), 1, 3.2, {
         name="EMSShop",

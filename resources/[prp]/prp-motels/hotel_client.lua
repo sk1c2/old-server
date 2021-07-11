@@ -2692,11 +2692,11 @@ Citizen.CreateThread(function()
 						processBuildType(myRoomNumber,myRoomType)
 						TriggerServerEvent("hotel:getInfo")
 						Citizen.Wait(500)
-					elseif (#(vector3(apartments1[4]["x"],apartments1[4]["y"],apartments1[4]["z"]) - plyCoords) < 5 and myRoomType == 3) or entry4rd < 5 then
+					elseif (#(vector3(apartments1[4]["x"],apartments1[4]["y"],apartments1[4]["z"]) - plyCoords) < 10 and myRoomType == 3) or entry4rd < 5 then
 						processBuildType(myRoomNumber,myRoomType)
 						TriggerServerEvent("hotel:getInfo")
 						Citizen.Wait(500)					
-					elseif #(vector3(apartments1[3]["x"],apartments1[3]["y"],apartments1[3]["z"]) - plyCoords) < 5 and myRoomType == 2 then
+					elseif #(vector3(apartments1[3]["x"],apartments1[3]["y"],apartments1[3]["z"]) - plyCoords) < 10 and myRoomType == 2 then
 						processBuildType(myRoomNumber,myRoomType)
 						TriggerServerEvent("hotel:getInfo")
 						Citizen.Wait(500)

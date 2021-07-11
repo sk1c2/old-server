@@ -7,16 +7,16 @@ local function addToComboZone(zone)
     if comboZone ~= nil then
         comboZone:AddZone(zone)
     else
-        comboZone = ComboZone:Create({ zone }, { name = 'wrp-polyzone' })
+        comboZone = ComboZone:Create({ zone }, { name = 'prp-polyzone' })
         comboZone:onPlayerInOutExhaustive(function(isPointInside, point, insideZones, enteredZones, leftZones)
             if leftZones ~= nil then
               for i = 1, #leftZones do
-                TriggerEvent('wrp-polyzone:exit', leftZones[i].name)
+                TriggerEvent('prp-polyzone:exit', leftZones[i].name)
               end
             end
             if enteredZones ~= nil then
               for i = 1, #enteredZones do
-                TriggerEvent('wrp-polyzone:enter', enteredZones[i].name, enteredZones[i].data, enteredZones[i].center)
+                TriggerEvent('prp-polyzone:enter', enteredZones[i].name, enteredZones[i].data, enteredZones[i].center)
               end
             end
         end, 500)
@@ -67,7 +67,7 @@ exports('AddPolyZone', function(name, vectors, options)
     addToComboZone(zone)
 end)
 
-RegisterNetEvent('wrp-polyzone:createCircleZone')
-AddEventHandler('wrp-polyzone:createCircleZone', function(name, ...)
+RegisterNetEvent('prp-polyzone:createCircleZone')
+AddEventHandler('prp-polyzone:createCircleZone', function(name, ...)
   addCircleZone(name, ...)
 end)

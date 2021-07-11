@@ -3,7 +3,7 @@ local DISCORD_NAME = "prp-log"
 local STEAM_KEY = "5B5D15BFD11992B9A61A9CF87E64493A"
 local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png" -- default is FiveM logo
 
-PerformHttpRequest(DISCORD_WEBHOOK, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME, content = "WonderRP logs Activated", avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
+PerformHttpRequest(DISCORD_WEBHOOK, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME, content = "PlutoRP logs Activated", avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
 
 AddEventHandler('chatMessage', function(source, name, message) 
 
@@ -133,7 +133,7 @@ function sendToDiscord(name, message, color)
             ["title"] = "**".. name .."**",
             ["description"] = message,
             ["footer"] = {
-            ["text"] = "Coded By Wonder RP",
+            ["text"] = "Coded By Pluto RP",
             },
         }
     }

@@ -513,5 +513,5 @@ end
 
 
 Citizen.CreateThread(function()
-	print('^4Coded for WonderRP')
+	print('^4Coded for PlutoRP')
 end)

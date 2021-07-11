@@ -222,7 +222,7 @@ Citizen.CreateThread(function()
 		if onJob == 1 then
 			if IsPedSittingInAnyVehicle(PlayerPedId()) then
 				if IsVehicleModel(GetVehiclePedIsUsing(PlayerPedId()), GetHashKey("taxi", _r)) then
-					TriggerEvent("DoLongHudText","Welcome To Wonder Taxi Job!",1)
+					TriggerEvent("DoLongHudText","Welcome To Pluto Taxi Job!",1)
 
 					StartJob(1)
 				end

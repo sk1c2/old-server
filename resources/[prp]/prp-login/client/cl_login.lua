@@ -75,7 +75,7 @@ local function nuiCallBack(data)
         isnew = data.newchar
         TriggerServerEvent('prp-login:createCharacter', data.chardata, userId, getPhoneRandomNumber())
         TriggerEvent('character:isNew', true)
-        TriggerEvent('chatMessage', "Hey", 2, "^1Welcome to Wonder! If you would like to get started press T and type /help! All information is held there.")
+        TriggerEvent('chatMessage', "Hey", 2, "^1Welcome to Pluto! If you would like to get started press T and type /help! All information is held there.")
         Citizen.Wait(1000)
         sendMessage({createCharacter = 'penis'})
     end

@@ -27,52 +27,52 @@ end)
 
 RegisterServerEvent('prp-ac:sort')
 AddEventHandler('prp-ac:sort', function()
-    DropPlayer(source, 'You have been automatically kicked! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue!')
+    DropPlayer(source, 'You have been automatically kicked! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue!')
 end)
 
 RegisterServerEvent('prp-ac:np-item')
 AddEventHandler('prp-ac:np-item', function()
-    DropPlayer(source, 'You have been automatically kicked for using NoPixel Inventory Natives! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue!')
+    DropPlayer(source, 'You have been automatically kicked for using NoPixel Inventory Natives! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue!')
 end)
 
 RegisterServerEvent('prp-ac:np-openinv')
 AddEventHandler('prp-ac:np-openinv', function()
-    DropPlayer(source, 'You have been automatically kicked for using NoPixel Open Inventory Natives! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue!')
+    DropPlayer(source, 'You have been automatically kicked for using NoPixel Open Inventory Natives! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue!')
 end)
 
 RegisterServerEvent('prp-ac:taxi')
 AddEventHandler('prp-ac:taxi', function()
-    DropPlayer(source, 'You have been automatically kicked for Triggering Taxi Pay! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue!')
+    DropPlayer(source, 'You have been automatically kicked for Triggering Taxi Pay! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue!')
 end)
 
 RegisterServerEvent('prp-ac:missioncompleted')
 AddEventHandler('prp-ac:missioncompleted', function()
-    DropPlayer(source, 'You have been automatically kicked for Triggering Mission Completed Pay! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue!')
+    DropPlayer(source, 'You have been automatically kicked for Triggering Mission Completed Pay! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue!')
 end)
 
 RegisterServerEvent('prp-ac:esxdrug')
 AddEventHandler('prp-ac:esxdrug', function()
-    DropPlayer(source, 'You have been automatically kicked for Triggering ESX Drug Ass! If this was a false-positive, please let the UniWonderty Staff Team know so they can fix this issue!')
+    DropPlayer(source, 'You have been automatically kicked for Triggering ESX Drug Ass! If this was a false-positive, please let the UniPlutoty Staff Team know so they can fix this issue!')
 end)
 
 RegisterServerEvent('prp-ac:police')
 AddEventHandler('prp-ac:police', function()
-    DropPlayer(source, 'You have been automatically kicked for Triggering Police Shit! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue!')
+    DropPlayer(source, 'You have been automatically kicked for Triggering Police Shit! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue!')
 end)
 
 RegisterServerEvent('prp-ac:job')
 AddEventHandler('prp-ac:job', function()
-    DropPlayer(source, 'You have been automatically kicked for Trying to Set Job! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue!')
+    DropPlayer(source, 'You have been automatically kicked for Trying to Set Job! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue!')
 end)
 
 RegisterServerEvent('prp-ac:esxgiveitem')
 AddEventHandler('prp-ac:esxgiveitem', function()
-    DropPlayer(source, 'You have been automatically kicked for Trying to Give ESX Items! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue!')
+    DropPlayer(source, 'You have been automatically kicked for Trying to Give ESX Items! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue!')
 end)
 
 RegisterServerEvent('prp-ac:money')
 AddEventHandler('prp-ac:money', function()
-    DropPlayer(source, 'You have been automatically kicked for Trying to Spawn Money! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue!')
+    DropPlayer(source, 'You have been automatically kicked for Trying to Spawn Money! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue!')
 end)
 
 RegisterServerEvent('prp-ac:request')
@@ -80,13 +80,13 @@ AddEventHandler('prp-ac:request', function(source)
     if source ~= nil then
         TriggerEvent('prp-ac:sort', source)
     else
-        DropPlayer(source, 'You have been automatically kicked! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue! Did you try kick someone?')
+        DropPlayer(source, 'You have been automatically kicked! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue! Did you try kick someone?')
     end
 end)
 
 AddEventHandler('weaponDamageEvent', function(sender, data)
     if data.weaponDamage > 50 then
-        DropPlayer(source, 'You have been automatically kicked for using Damage Multipliers! If this was a false-positive, please let the Wonder Staff Team know so they can fix this issue! Did you try kick someone?')
+        DropPlayer(source, 'You have been automatically kicked for using Damage Multipliers! If this was a false-positive, please let the Pluto Staff Team know so they can fix this issue! Did you try kick someone?')
     end
     print('ID: ' ..sender .. ' | Damage: ' ..data.weaponDamage)
 end)

@@ -69,8 +69,8 @@ Config.ShowTemp = false
 
 -- simple localization
 Config.Language = {
-    joining = "\xF0\x9F\x8E\x89Joining WonderRP...",
-    connecting = "\xE2\x8F\xB3Connecting to WonderRP...",
+    joining = "\xF0\x9F\x8E\x89Joining PlutoRP...",
+    connecting = "\xE2\x8F\xB3Connecting to PlutoRP...",
     idrr = "\xE2\x9D\x97[URPQueue] Error: Couldn't retrieve any of your id's, try restarting.",
     err = "\xE2\x9D\x97[URPQueue] There was an error",
     pos = "\xF0\x9F\x90\x8CYou are %d/%d in queue \xF0\x9F\x95\x9C%s",

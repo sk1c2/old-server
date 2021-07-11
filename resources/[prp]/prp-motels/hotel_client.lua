@@ -2688,7 +2688,7 @@ Citizen.CreateThread(function()
 					Citizen.Wait(300)
 					TriggerEvent("dooranim")
 
-					if #(vector3(269.8034, -632.2916, 42.0198) - plyCoords) < 5 and myRoomType == 2 then	
+					if #(vector3(269.8034, -632.2916, 42.0198) - plyCoords) < 10 and myRoomType == 2 then	
 						processBuildType(myRoomNumber,myRoomType)
 						TriggerServerEvent("hotel:getInfo")
 						Citizen.Wait(500)

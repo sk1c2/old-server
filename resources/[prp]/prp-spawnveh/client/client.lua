@@ -184,7 +184,7 @@ end)
 
 RegisterCommand('sv', function(source, args, user)
 	local job = exports['isPed']:isPed('job')
-if job == 'Police' then
+    if job == 'Police' then
 	local ped = PlayerPedId()
 	local veh = GetVehiclePedIsIn(ped, false)
 	for k,v in pairs(Config.PoliceGarage) do 
